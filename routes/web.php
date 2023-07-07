@@ -1,0 +1,62 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TermController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\AccounttypeController;
+use App\Http\Controllers\TaxcategoryController;
+use App\Http\Controllers\ChartofaccountController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('dashboard', DashboardController::class);
+    Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
+    Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('profiles', ProfileController::class);
+    Route::post ('profiles',[ProfileController::class, 'updateUserDetail']);
+
+    Route::resource('cruds', CrudController::class);
+    Route::resource('companies', CompanyController::class);
+    Route::resource('taxcategories', TaxcategoryController::class);
+    Route::resource('accounttypes', AccounttypeController::class);
+    Route::resource('terms', TermController::class);
+    Route::resource('projects', ProjectController::class);
+    Route::resource('customers', CustomerController::class);
+    Route::resource('departments', DepartmentController::class);
+    Route::resource('chartofaccounts', ChartofaccountController::class);
+    Route::resource('vendors', VendorController::class);
+    Route::resource('careers', CareerController::class);
+
+});
+
+require __DIR__.'/auth.php';
