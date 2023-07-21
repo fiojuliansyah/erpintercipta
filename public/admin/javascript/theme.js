@@ -28,7 +28,7 @@ var Theme = /*#__PURE__*/function () {
         cyan: '#3686A0'
       },
       gray: {
-        100: '#f6f7f9',
+        100: '#F6F7F9',
         200: '#e6e8ed',
         300: '#d6d8e1',
         400: '#c6c9d5',

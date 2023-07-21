@@ -73,6 +73,7 @@ class PermissionSeeder extends Seeder
             'career-create',
             'career-edit',
             'career-delete',
+            'job-portal',
         ];
        
         foreach ($permissions as $permission) {

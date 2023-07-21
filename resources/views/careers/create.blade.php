@@ -2,6 +2,10 @@
 
 @section('title', 'Add Job | InterCipta ERP Management')
 
+@section('css')
+  <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
 <main class="app-main">
     <!-- .wrapper -->
@@ -79,7 +83,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label for="name">Description</label>
-                                <textarea type="text" name="description" class="form-control"></textarea>
+                                <textarea type="text" name="description" class="form-control" id="body"></textarea>
                             @error('jobname')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
@@ -148,6 +152,15 @@
                             @enderror
                             </div>
                         </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                          <div class="form-group">
+                              <label for="applicant">Applicant</label>
+                              <input type="text" name="applicant" class="form-control" placeholder="Tulis Disini">
+                          @error('applicant')
+                              <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                          @enderror
+                          </div>
+                      </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form><!-- /.form -->
@@ -177,3 +190,13 @@
     </div><!-- /.wrapper -->
   </main>
 @endsection
+
+@push('js')
+<script>
+  ClassicEditor
+  .create( document.querySelector( '#body' ) )
+  .catch( error => {
+  console.error( error );
+  } );
+</script>
+@endpush

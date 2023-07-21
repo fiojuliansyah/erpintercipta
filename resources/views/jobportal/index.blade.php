@@ -103,7 +103,7 @@
                   <div class="col-6">
                     <!-- .metric -->
                     <div class="metric">
-                      <h6 class="metric-value"> 40 </h6>
+                      <h6 class="metric-value"> > 7,000 </h6>
                       <p class="metric-label mt-1"> Clients </p>
                     </div><!-- /.metric -->
                   </div><!-- /grid column -->
@@ -147,7 +147,7 @@
                 @endforeach
               </div><!-- /.list-group -->
               <!-- .card-body -->
-              <div class="card-body border-top">
+              {{-- <div class="card-body border-top">
                 <div class="d-flex justify-content-between my-3">
                   <h4 class="card-title"> Recent activity </h4><a href="#">View all</a>
                 </div><!-- .timeline -->
@@ -266,7 +266,7 @@
                     </div><!-- /.timeline-body -->
                   </li><!-- /.timeline-item -->
                 </ul><!-- /.timeline -->
-              </div><!-- /.card-body -->
+              </div><!-- /.card-body --> --}}
             </div><!-- /.card -->
           </div><!-- /.sidebar-section-fill -->
         </div><!-- /.page-sidebar -->

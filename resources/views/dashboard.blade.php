@@ -99,20 +99,52 @@
               <div class="card card-fluid">
                 <!-- .card-body -->
                 <div class="card-body">
-                  <h3 class="card-title"> QR Code </h3><!-- easy-pie-chart -->
-                  <img src="{{asset('/storage/cover/cover.png')}}" class="card-img-top img-fluid" alt="">
                   <div class="text-center pt-3">
+                    <h3 class="card-title"> QR Code </h3><!-- easy-pie-chart -->
+                    <i class="fas fa-qrcode" style="font-size: 300px;"></i>
+                    <div style="padding-top: 20px">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">My QR Code</button>
+                    </div>
                   </div><!-- /easy-pie-chart -->
                 </div><!-- /.card-body -->
               </div>
+            </div>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+              <!-- .modal-dialog -->
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <!-- .modal-content -->
+                <div class="modal-content">
+                  <!-- .modal-header -->
+                  <div class="modal-header">
+                    <h5 id="exampleModalCenterLabel" class="modal-title"> My QR Code </h5>
+                  </div><!-- /.modal-header -->
+                  <!-- .modal-body -->
+                  <div class="modal-body">
+                    <div style="text-align: center">
+                      <p style="text-align: center; padding-top: 25px; font-size: 25px">{{ Auth::user()->name }}</p>
+                      <img src="https://img.freepik.com/premium-vector/qr-code-sample-smartphone-scanning-qr-code-icon-flat-design-stock-vector-illustration_550395-108.jpg?w=2000" width="350px" alt="">
+                      <p style="text-align: center; padding-top: 20px; font-size: 20px">APPLICANT - {{ str_pad(Auth::user()->id, 5, '0', STR_PAD_LEFT) }}</p>
+                      <p>*Gunakan QR Code ini pada saat panggilan Interview dan Test</p>
+                    </div>
+                  </div><!-- /.modal-body -->
+                  <!-- .modal-footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
             </div>
             <div class="masonry-item col-lg-3">
               <div class="card card-fluid">
                 <!-- .card-body -->
                 <div class="card-body">
-                  <h3 class="card-title"> My Resume </h3><!-- easy-pie-chart -->
-                  <img src="{{asset('/storage/cover/cover.png')}}" class="card-img-top img-fluid" alt="">
                   <div class="text-center pt-3">
+                    <h3 class="card-title"> My Resume </h3><!-- easy-pie-chart -->
+                    <br>
+                    <i class="far fa-file-alt" style="font-size: 270px;"></i>
+                    <div style="padding-top: 30px">
+                      <span class="btn btn-primary"> Download Resume </span>
+                    </div>
                   </div><!-- /easy-pie-chart -->
                 </div><!-- /.card-body -->
               </div>
