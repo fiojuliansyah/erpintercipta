@@ -155,7 +155,7 @@
               <div class="dropdown-arrow d-lg-none" x-arrow=""></div>
               <div class="dropdown-arrow ml-3 d-none d-lg-block"></div>
               <h6 class="dropdown-header d-none d-md-block d-lg-none"> {{ Auth::user()->name }} </h6>
-              <a class="dropdown-item" href="{{ url('/profiles') }}"><span class="dropdown-icon oi oi-person"></span> Profile</a>
+              <a class="dropdown-item" href="{{ url('/accountsettings') }}"><span class="dropdown-icon oi oi-person"></span> Pengaturan Akun</a>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

@@ -173,8 +173,8 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form><!-- /.form -->
+                  </div>
+                </form><!-- /.form -->
               </div><!-- /.card-body -->
             </div><!-- /.card -->
           </div><!-- /.page-section -->

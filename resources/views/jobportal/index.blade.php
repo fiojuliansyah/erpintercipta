@@ -272,5 +272,5 @@
         </div><!-- /.page-sidebar -->
       </div><!-- /.page -->
     </div><!-- /.wrapper -->
-  </main>
+</main>
 @endsection

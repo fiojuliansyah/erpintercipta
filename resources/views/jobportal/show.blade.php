@@ -30,7 +30,7 @@
                   <!-- .card-body -->
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
-                      <h2 id="client-billing-contact-tab" class="card-title"> Description </h2>
+                      <h2 id="client-billing-contact-tab" class="card-title"> Deskripsi </h2>
                     </div>
                     <p>{!! html_entity_decode($career->description) !!}</p>
                   </div><!-- /.card-body -->
@@ -39,14 +39,14 @@
                 <div class="card mt-4">
                   <!-- .card-body -->
                   <div class="card-body">
-                    <h2 class="card-title"> Information </h2><!-- .table-responsive -->
+                    <h2 class="card-title"> Informasi</h2><!-- .table-responsive -->
                     <div class="table-responsive">
                       <table class="table table-hover" style="min-width: 678px">
                         <thead>
                           <tr>
-                            <th> Salary </th>
-                            <th> Work Experience </th>
-                            <th> Graduate </th>
+                            <th> Gaji </th>
+                            <th> Pengalaman </th>
+                            <th> Pendidikan </th>
                             <th></th>
                           </tr>
                         </thead>
@@ -68,7 +68,7 @@
                 <div class="card mt-4">
                   <!-- .card-body -->
                   <div class="card-body">
-                    <h2 class="card-title"> About Company </h2><!-- .table-responsive -->
+                    <h2 class="card-title"> Tentang Perusahaan </h2><!-- .table-responsive -->
                     <div class="table-responsive">
                       <h3>InterCipta Corporation</h3>
                       <p>
@@ -76,6 +76,106 @@
                       </p>
                     </div><!-- /.table-responsive -->
                   </div><!-- /.card-body -->
+                  <div class="card-body">
+                    @if(Auth::user()->profile?->avatar != null)   
+                    <button type="button" class="btn btn-success ml-auto" data-toggle="modal" data-target="#exampleModalScrollable">Apply Pekerjaan Ini</button>
+                    @else
+                    <span class="badge badge-lg badge-danger"><span class="oi oi-media-record pulse mr-1"></span>Lengkapi Data untuk melamar pekerjaan ini!</span>
+                    @endif
+                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+                      <!-- .modal-dialog -->
+                      <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <!-- .modal-content -->
+                        <div class="modal-content">
+                          <!-- .modal-header -->
+                          <div class="modal-header">
+                            <h5 id="exampleModalScrollableLabel" class="modal-title"> Cek Informasi Data Diri </h5>
+                          </div><!-- /.modal-header -->
+                          <!-- .modal-body -->
+                          <div class="modal-body">
+                            <img src="{{ Storage::url(Auth::user()->profile?->avatar) }}" width="300" alt="">
+                            <br>
+                            <br>
+                            <div>
+                              <strong>Nama Lengkap</strong>
+                              <p>{{ Auth::user()->name }}</p>
+                            </div>
+                            <div>
+                              <strong>Nama Singkatan</strong>
+                              <p>{{ Auth::user()->profile?->nickname }}</p>
+                            </div>
+                            <div>
+                              <strong>Alamat</strong>
+                              <p>{{ Auth::user()->profile?->address }}</p>
+                            </div>
+                            <div>
+                              <strong>Tempat Tanggal Lahir</strong>
+                              <p>{{ Auth::user()->profile?->birth_place }}, {{ Auth::user()->profile?->birth_date }}</p>
+                            </div>
+                            <div>
+                              <strong>Agama</strong>
+                              <p>{{ Auth::user()->profile?->religion }}</p>
+                            </div>
+                            <div>
+                              <strong>Status</strong>
+                              <p>{{ Auth::user()->profile?->person_status }}</p>
+                            </div>
+                            <div>
+                              <strong>Tinggal Di</strong>
+                              <p>{{ Auth::user()->profile?->stay_in }}</p>
+                            </div>
+                            <div>
+                              <strong>Alamat Keluarga</strong>
+                              <p>{{ Auth::user()->profile?->family_address }}</p>
+                            </div>
+                            <div>
+                              <strong>Berat & Tinggi</strong>
+                              <p>{{ Auth::user()->profile?->weight }} Kg & {{ Auth::user()->profile?->height }} Cm</p>
+                            </div>
+                            <div>
+                              <strong>Hobi</strong>
+                              <p>{{ Auth::user()->profile?->hobby }}</p>
+                            </div>
+                            <div>
+                              <strong>No Rekening</strong>
+                              <p>{{ Auth::user()->profile?->bank_account }}</p>
+                            </div>
+                            <div>
+                              <strong>Nama Bank</strong>
+                              <p>{{ Auth::user()->profile?->bank_name }}</p>
+                            </div>
+                            <div>
+                              <strong>Referensi</strong>
+                              <p>{{ Auth::user()->profile?->reference }}</p>
+                            </div>
+                            <div>
+                              <strong>Jabatan Referensi</strong>
+                              <p>{{ Auth::user()->profile?->reference_job }}</p>
+                            </div>
+                            <div>
+                              <strong>Hubungan Referensi</strong>
+                              <p>{{ Auth::user()->profile?->reference_relation }}</p>
+                            </div>
+                            <div>
+                              <strong>Alamat Referensi</strong>
+                              <p>{{ Auth::user()->profile?->reference_address }}</p>
+                            </div>
+                          </div><!-- /.modal-body -->
+                          <!-- .modal-footer -->
+                          <form action="{{ route('applicants.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="status" value="0">
+                            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            <input type="hidden" name="career_id" value="{{ $career->id }}">
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-light" data-dismiss="modal">Keluar</button>
+                              <button type="submit" class="btn btn-success">Submit</button>
+                            </div><!-- /.modal-footer -->
+                          </form>
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div>
+                  </div>
                   <!-- .card-footer -->
                 </div>
               </div><!-- /.tab-pane -->

@@ -15,4 +15,9 @@ class Career extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function user()
+    {
+        return $this->hasMany(Applicant::class);
+    }
 }

@@ -34,7 +34,7 @@ var ChartjsBarDemo = /*#__PURE__*/function () {
         yellow: '#F7C46C',
         green: '#A7C796',
         teal: '#00A28A',
-        blue: '#346CB0',
+        blue: '#346cb0',
         purple: '#5F4B8B',
         gray: '#BEC1C4'
       };

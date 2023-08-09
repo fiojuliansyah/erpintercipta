@@ -32,41 +32,49 @@
           <!-- .menu -->
           <ul class="menu">
             <!-- .menu-item -->
-            <li class="menu-item">
+            <li class="menu-item {{ Request::path() == 'dashboard' ? 'has-active' : '' }}">
               <a href="{{ url('/dashboard') }}" class="menu-link"><span class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
             </li><!-- /.menu-item -->
-            <li class="menu-item">
+            <li class="menu-item {{ Request::path() == 'jobportal' ? 'has-active' : '' }}">
               <a href="{{ route('jobportal') }}" class="menu-link"><span class="menu-icon 	fas fa-briefcase"></span> <span class="menu-text">Job Portal</span></a>
             </li>
             <!-- .menu-item -->
+            @can('project-menu')
             <li class="menu-header">Project Management</li>
-            <li class="menu-item">
+            <li class="menu-item {{ Request::path() == 'projects/create' ? 'has-active' : '' }}">
               <a href="{{ route('projects.create') }}" class="menu-link"><span class="menu-icon fas fa-city"></span> <span class="menu-text">Project Stepper</span></a>
             </li>
             <li class="menu-item has-child">
               <a href="#" class="menu-link"><span class="menu-icon fas fa-database"></span> <span class="menu-text">Data Master</span></a> <!-- child menu -->
               <ul class="menu">
-                <li class="menu-item">
+                <li class="menu-item {{ Request::path() == 'customers' ? 'has-active' : '' }}">
                   <a href="{{ url('/customers') }}" class="menu-link">Customers</a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::path() == 'departments' ? 'has-active' : '' }}">
                   <a href="{{ url('/departments') }}" class="menu-link">Departments</a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item {{ Request::path() == 'chartofaccounts' ? 'has-active' : '' }}">
                   <a href="{{ url('/chartofaccounts') }}" class="menu-link">Chart Of Accounts</a>
                 </li>
               </ul><!-- /child menu -->
             </li>
-            <li class="menu-item">
+            @endcan
+            @can('vendor-menu')   
+            <li class="menu-item {{ Request::path() == 'vendors' ? 'has-active' : '' }}">
               <a href="{{ url('/vendors') }}" class="menu-link"><span class="menu-icon 	fas fa-address-card"></span> <span class="menu-text">Vendors</span></a>
             </li>
+            @endcan
+            @can('career-menu')  
             <li class="menu-header">Recruitment</li>
-            <li class="menu-item">
+            <li class="menu-item {{ Request::path() == 'careers' ? 'has-active' : '' }}">
               <a href="{{ route('careers.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Post Career</span></a>
             </li>
-            <li class="menu-item">
-              <a href="{{ route('projects.create') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Applicant Data</span></a>
+            @endcan
+            @can('applicant-menu')   
+            <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+              <a href="{{ route('applicants.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Applicant Data</span></a>
             </li>
+            @endcan
 
             <!-- .menu-header -->
             @can('admin-only')

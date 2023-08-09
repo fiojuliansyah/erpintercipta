@@ -15,11 +15,7 @@
             <div class="d-flex flex-column flex-md-row">
               <p class="lead">
                 <span class="font-weight-bold">Hi, {{ Auth::user()->name }}</span> <span class="d-block text-muted">
-                  @if($user->profile?->phone != null)
-                  Here’s what’s happening with your business today.     
-                  @else
-                  <span class="badge badge-warning">Update Your Profile First if you can view a Job</span>  
-                @endif</span>
+                  Here’s what’s happening with your business today. </span>
               </p>
             </div>
           </header><!-- /.page-title-bar -->
@@ -61,7 +57,7 @@
                     <!-- grid column -->
                     <div class="col-auto">
                       <p>
-                        <a href="{{ url('profiles') }}" class="btn btn-primary circle">View Profile <i class="fa fa-arrow-right ml-2"></i></a>
+                        <a href="{{ url('/register-profile') }}" class="btn btn-primary circle">View Profile <i class="fa fa-arrow-right ml-2"></i></a>
                       </p>
                     </div><!-- /grid column -->
                   </div><!-- /grid row -->

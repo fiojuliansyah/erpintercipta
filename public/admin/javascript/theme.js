@@ -17,7 +17,7 @@ var Theme = /*#__PURE__*/function () {
       black: '#14141F',
       brand: {
         blue: '#0179A8',
-        indigo: '#346CB0',
+        indigo: '#346cb0',
         purple: '#5F4B8B',
         pink: '#FF0100',
         red: '#EA6759',
@@ -28,7 +28,7 @@ var Theme = /*#__PURE__*/function () {
         cyan: '#3686A0'
       },
       gray: {
-        100: '#F6F7F9',
+        100: '#FFFFFF',
         200: '#e6e8ed',
         300: '#d6d8e1',
         400: '#c6c9d5',

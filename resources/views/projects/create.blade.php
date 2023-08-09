@@ -236,7 +236,7 @@
                           <div class="form-group">
                             <!-- .custom-control -->
                             <div class="custom-control custom-checkbox">
-                              <input type="checkbox" id="agreement" class="custom-control-input" data-parsley-group="agreement" required=""> <label class="custom-control-label" for="agreement">Agree to terms and conditions</label>
+                              <input type="checkbox" id="agreement" class="custom-control-input" data-parsley-group="agreement"> <label class="custom-control-label" for="agreement">Agree to terms and conditions</label>
                             </div><!-- /.custom-control -->
                           </div><!-- /.form-group -->
                           <hr class="mt-5">

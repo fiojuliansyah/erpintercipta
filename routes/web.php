@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\UserController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AccounttypeController;
@@ -28,22 +30,24 @@ use App\Http\Controllers\ChartofaccountController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
+Route::get('/karir', [DashboardController::class, 'karir'])->name('karir');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::resource('dashboard', DashboardController::class);
+    Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
+
     Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('profiles', ProfileController::class);
     Route::post ('profiles',[ProfileController::class, 'updateUserDetail']);
+    Route::get ('accountsettings',[ProfileController::class, 'indexAccountSettings']);
 
     Route::resource('cruds', CrudController::class);
     Route::resource('companies', CompanyController::class);
@@ -56,6 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('chartofaccounts', ChartofaccountController::class);
     Route::resource('vendors', VendorController::class);
     Route::resource('careers', CareerController::class);
+    Route::resource('applicants', ApplicantController::class);
 
 });
 

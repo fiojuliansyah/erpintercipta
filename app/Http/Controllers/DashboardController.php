@@ -21,6 +21,16 @@ class DashboardController extends Controller
         return view('dashboard' ,compact('user'));
     }
 
+    public function karir()
+    {
+        $user = Auth::user();
+        $careers = Career::all();
+        $allcareer = Career::count();
+        $alluser = User::count();
+        $companies = Company::all();
+        return view('job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+    }
+
     public function jobPortal()
     {
         $user = Auth::user();

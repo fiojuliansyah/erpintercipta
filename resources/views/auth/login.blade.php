@@ -11,9 +11,9 @@
                 <div class="mb-3">
                 <img class="rounded" src="{{ asset('') }}admin/apple-touch-icon.png" alt="" height="72">
                 </div>
-                <h1 class="h3"> Sign In </h1>
+                <h1 class="h3"> Masuk </h1>
             </div>
-            <p class="text-left mb-4"> Don't have a account? <a href="{{ route('register') }}">Create One</a>
+            <p class="text-left mb-4">Tidak punya akun? <a href="{{ route('register') }}">Daftar</a>
             </p><!-- .form-group -->
             <div class="form-group mb-4">
                 <label class="d-block text-left" for="inputUser">Email</label> <input id="email" class="form-control form-control-lg" type="email" name="email" :value="old('email')" required autofocus autocomplete="username">
@@ -28,18 +28,18 @@
             </div><!-- /.form-group -->
             <!-- .form-group -->
             <div class="form-group mb-4">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Masuk</button>
             </div><!-- /.form-group -->
             <!-- .form-group -->
             <div class="form-group text-center">
                 <div class="custom-control custom-control-inline custom-checkbox">
-                <input id="remember_me" type="checkbox" name="remember" class="custom-control-input"> <label class="custom-control-label" for="remember-me">Keep me sign in</label>
+                <input id="remember_me" type="checkbox" name="remember" class="custom-control-input"> <label class="custom-control-label" for="remember-me">Ingat saya</label>
                 </div>
             </div><!-- /.form-group -->
             <!-- recovery links -->
             <p class="py-2">
                 @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}" class="link">Forgot Password?</a>
+                <a href="{{ route('password.request') }}" class="link">Lupa Password?</a>
                 @endif
             </p><!-- /recovery links -->
             <!-- copyright -->

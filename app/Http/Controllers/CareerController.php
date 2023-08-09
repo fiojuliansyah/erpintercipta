@@ -83,9 +83,10 @@ class CareerController extends Controller
      * @param  \App\Models\Career  $career
      * @return \Illuminate\Http\Response
      */
-    public function show(Career $career)
+    public function show($id)
     {
-        //
+        $career = Career::find($id);
+        return view('jobportal.show',compact('career'));
     }
 
     /**
