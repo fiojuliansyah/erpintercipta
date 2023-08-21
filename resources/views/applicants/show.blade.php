@@ -140,7 +140,7 @@
                           </div>
                       </div>
                     </div><!-- /.card-body -->
-                  </div>
+                </div>
                 <!-- .card -->
                 <div class="card mt-4">
                   <!-- .card-body -->
@@ -149,23 +149,29 @@
                       <h2 id="client-billing-contact-tab" class="card-title"> Informasi Dokumen </h2>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-3 mb-4">
                             <strong>SCAN KTP</strong>
                             <br>
                             <br>
-                            <img src="{{ Storage::url($applicant->user?->profile['card_ktp']) }}" width="350" alt="">
+                            <img src="{{ Storage::url($applicant->user?->profile['card_ktp']) }}" width="300" alt="">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-3 mb-4">
+                          <strong>SCAN KARTU KELUARGA</strong>
+                          <br>
+                          <br>
+                          <img src="{{ Storage::url($applicant->user?->profile['card_family']) }}" width="300" alt="">
+                        </div>
+                        <div class="col-md-3 mb-4">
                             <strong>SCAN IJAZAH</strong>
                             <br>
                             <br>
-                            <img src="{{ Storage::url($applicant->user?->profile['card_ijazah']) }}" width="350" alt="">
+                            <img src="{{ Storage::url($applicant->user?->profile['card_ijazah']) }}" width="300" alt="">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-3 mb-4">
                             <strong>SCAN SKCK <span class="badge badge-danger">{{ $applicant->user?->profile['active_date'] }}</span></strong>
                             <br>
                             <br>
-                            <img src="{{ Storage::url($applicant->user?->profile['card_skck']) }}" width="350" alt="">
+                            <img src="{{ Storage::url($applicant->user?->profile['card_skck']) }}" width="300" alt="">
                         </div>
                     </div>
                     <div class="row">
@@ -272,7 +278,7 @@
                             <div class="form-group">
                                 <label for="status">Data Status</label>
                                 <select id="status" class="custom-select custom-select-lg d-block w-100" name="status" required="">
-                                  <option value="{{ $applicant->status }}" @selected(old('$applicant->status') == $applicant )>
+                                <option value="{{ $applicant->status }}"></option>
                                 <option value="0"> Cek Berkas </option>
                                 <option value="1"> Interview </option>
                                 <option value="2"> Training </option>
@@ -283,10 +289,157 @@
                               <button type="button" class="btn btn-light" data-dismiss="modal">Keluar</button>
                               <button type="submit" class="btn btn-success">Submit</button>
                             </div><!-- /.modal-footer -->
-                          </form>
-                      </div>
-                    </div><!-- /.card-body -->
-                </div>
+                        </form>
+                          <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalScrollable">Buat PKWT</a>
+                        </div>
+                      </div><!-- /.card-body -->
+                    </div>
+                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
+                      <!-- .modal-dialog -->
+                      <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <!-- .modal-content -->
+                        <div class="modal-content">
+                          <!-- .modal-header -->
+                          <div class="modal-header">
+                            <h5 id="exampleModalScrollableLabel" class="modal-title"> Generate SKK/PKWT </h5>
+                          </div><!-- /.modal-header -->
+                          <!-- .modal-body -->
+                          <div class="modal-body">
+                            <form action="{{ route('pkwts.store') }}" method="POST" enctype="multipart/form-data">
+                              @csrf
+                              <input type="hidden" name="user_id" value="{{ $applicant->user['id'] }}">
+                              <input type="hidden" name="company_id" value="{{ $applicant->career?->company['id'] }}">
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" name="reference_number" required=""> <label for="reference_number">No SURAT</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" value="{{ $applicant->career?->company['company'] }}" readonly> <label for="name">Perusahaan</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" value="{{ $applicant->user['name'] }}" readonly> <label for="name">Nama Lengkap (sesuai KTP/Ijazah)</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" value="{{ $applicant->user?->profile['gender'] }}" readonly> <label for="name">Jenis Kelamin</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                              </div>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" value="{{ $applicant->user?->profile['birth_place'] }}, {{ $applicant->user?->profile['birth_date'] }}" readonly> <label for="name">Tempat Tanggal Lahir</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" value="{{ $applicant->user?->profile['nik_number'] }}" readonly> <label for="name">No NIK</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" value="{{ $applicant->user?->profile['address'] }}" readonly> <label for="name">Alamat</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <p> Masukan Tanggal </p>
+                              <div class="row">
+                                <div class="col-md-3 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" name="date"> <label for="name">Tanggal</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                                <div class="col-md-9 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" name="date_abjad"> <label for="name">Abjad</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" name="month"> <label for="name">Bulan</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                                <div class="col-md-9 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" name="month_abjad"> <label for="name">Abjad</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-3 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" name="year"> <label for="name">Tahun</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                                <div class="col-md-9 mb-4">
+                                    <div class="form-label-group">
+                                    <input type="text" class="form-control" name="year_abjad"> <label for="name">Abjad</label>
+                                    </div>
+                                    <div class="invalid-feedback"> Wajib Diisi! </div>
+                                </div>
+                              </div>
+                              <p> Penempatan </p>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" name="project" required=""> <label for="name">Proyek</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" name="area" required=""> <label for="name">Area</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <p> Gaji & Tunjangan </p>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" name="salary" required=""> <label for="name">Gaji</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" name="allowance" required=""> <label for="name">Tunjangan</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <br>
+                              <br>
+                              <div class="form-group mb-4">
+                                <div class="form-label-group">
+                                <input type="text" class="form-control" name="place" required=""> <label for="palce">Tempat Tanda Terima</label>
+                                </div>
+                                <div class="invalid-feedback"> Wajib Diisi! </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">CLose</button>
+                                <button type="submit" class="btn btn-warning">Submit</button>
+                              </div><!-- /.modal-footer -->
+                            </form>
+                          </div><!-- /.modal-body -->
+                          <!-- .modal-footer -->
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div>
               </div><!-- /.tab-pane -->
             </div>
           </div><!-- /.section-block -->

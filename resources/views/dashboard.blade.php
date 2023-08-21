@@ -24,11 +24,7 @@
             <div class="masonry-item col-lg-6">
               <!-- .card -->
               <div class="card card-fluid">
-                  @if($user->profile?->cover != null)
-                  <img src="{{ Storage::url($user ? $user->profile?->cover : '') }}" alt="" class="card-img-top img-fluid">    
-                  @else
-                  <img src="{{asset('/storage/cover/cover.png')}}" class="card-img-top img-fluid" alt="">      
-                  @endif
+                  <img src="{{asset('/admin/images/dummy/cover.png')}}" class="card-img-top img-fluid" alt="">      
                  <!-- .card-body -->
                 <div class="card-body pt-2">
                   <!-- grid row -->
@@ -40,7 +36,7 @@
                         @if($user->profile?->avatar != null)
                         <img src="{{ Storage::url($user ? $user->profile?->avatar : '') }}" alt="">     
                         @else
-                        <img src="{{asset('/storage/avatars/default.png')}}"  alt="">      
+                        <img src="{{asset('/admin/images/avatars/team4.jpg')}}"  alt="">      
                         @endif
                       </a> <!-- /.user-avatar -->
                     </div><!-- /grid column -->

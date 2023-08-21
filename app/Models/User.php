@@ -2,6 +2,7 @@
   
 namespace App\Models;
   
+use App\Models\Pkwt;
 use App\Models\Profile;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Models\Role;
@@ -49,5 +50,10 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
+
+    public function pkwt()
+    {
+        return $this->hasOne(Pkwt::class, 'user_id', 'id');
     }
 }

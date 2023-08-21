@@ -53,6 +53,7 @@ class ProfileController extends Controller
         $existingDocumentB = $user->profile->add_document_B ?? null;
         $existingDocumentC = $user->profile->add_document_c ?? null;
         $existingTransfer = $user->profile->transfer ?? null;
+        $existingCardFamily = $user->profile->card_family ?? null;
         
 
         if ($request->hasFile('avatar')) {
@@ -121,6 +122,12 @@ class ProfileController extends Controller
             $path10 = $existingDocumentC;
         }
 
+        if ($request->hasFile('card_family')) {
+            $path11 = $request->file('card_family')->store('public/card_families');
+        } else {
+            $path11 = $existingCardFamily;
+        }
+
         $user->profile()->updateOrCreate(
             [
                 'user_id' => $user->id,
@@ -133,9 +140,11 @@ class ProfileController extends Controller
                 'birth_date' => $request->birth_date,
                 'religion' => $request->religion,
                 'person_status' => $request->person_status,
+                'mother_name' => $request->mother_name,
                 'stay_in' => $request->stay_in,
                 'family_name' => $request->family_name,
                 'family_address' => $request->family_address,
+                'weight' => $request->gender,
                 'weight' => $request->weight,
                 'height' => $request->height,
                 'hobby' => $request->hobby,
@@ -146,12 +155,15 @@ class ProfileController extends Controller
                 'reference_relation' => $request->reference_relation,
                 'reference_address' => $request->reference_address,
                 'card_ktp' => $path2,
+                'nik_number' => $request->nik_number,
+                'card_family' => $path11,
                 'card_ijazah' => $path3,
                 'card_skck' => $path4,
                 'active_date' => $request->active_date,
                 'card_certificate' => $path5,
                 'card_sim' => $path6,
                 'card_npwp' => $path7,
+                'npwp_number' => $request->npwp_number,
                 'add_name_document_a' => $request->add_name_document_a,
                 'add_document_a' => $path8,
                 'add_name_document_b' => $request->add_name_document_b,
@@ -178,6 +190,6 @@ class ProfileController extends Controller
             ]
         );
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->url('/dashboard');
     }
 }

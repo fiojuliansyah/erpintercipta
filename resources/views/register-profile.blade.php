@@ -157,21 +157,28 @@
                                     <div class="invalid-feedback"> Wajib Diisi! </div>
                                 </div>
                                 </div>
-
-                                <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                    <select class="custom-select" name="person_status" id="person_status" data-parsley-group="fieldset01" required="">
-                                    <option value=""> Pilih... </option>
-                                    <option value="TK-0"> TK-0 : Tidak Kawin (lajang/janda/duda) </option>
-                                    <option value="TK-1"> TK-1 : Duda/Janda (punya anak 1) </option>
-                                    <option value="TK-2"> TK-2 : Duda/Janda (punya anak 2) </option>
-                                    <option value="TK-3"> TK-3 : Duda/Janda (punya anak 3) </option>
-                                    <option value="K-0"> K-0 : Kawin </option>
-                                    <option value="K-1"> K-1 : Kawin (punya anak 1) </option>
-                                    <option value="K-2"> K-2 : Kawin (punya anak 2) </option>
-                                    <option value="K-3"> K-3 : Kawin (punya anak 3) </option>
-                                    </select> <label for="fls1">Status Perkawinan</label>
-                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                    <div class="form-label-group">
+                                        <select class="custom-select" name="person_status" id="person_status" data-parsley-group="fieldset01" required="">
+                                        <option value=""> Pilih... </option>
+                                        <option value="TK-0"> TK-0 : Tidak Kawin (lajang/janda/duda) </option>
+                                        <option value="TK-1"> TK-1 : Duda/Janda (punya anak 1) </option>
+                                        <option value="TK-2"> TK-2 : Duda/Janda (punya anak 2) </option>
+                                        <option value="TK-3"> TK-3 : Duda/Janda (punya anak 3) </option>
+                                        <option value="K-0"> K-0 : Kawin </option>
+                                        <option value="K-1"> K-1 : Kawin (punya anak 1) </option>
+                                        <option value="K-2"> K-2 : Kawin (punya anak 2) </option>
+                                        <option value="K-3"> K-3 : Kawin (punya anak 3) </option>
+                                        </select> <label for="fls1">Status Perkawinan</label>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-label-group">
+                                        <input type="text" id="mother_name" name="mother_name" class="form-control" autocomplete="off" data-parsley-group="fieldset01" required=""> <label for="mother_name">Nama Ibu Kandung</label>
+                                        </div>
+                                        <div class="invalid-feedback"> Wajib Diisi! </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -192,11 +199,21 @@
                                     </div>
                                 </div>
                                 </div>
-
-                                <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                    <input type="text" class="form-control" name="family_address" autocomplete="off" data-parsley-group="fieldset01"> <label for="family_address">Alamat Saudara/Family, KOS, Pemilik Rumah <small><strong>(opsional)</strong></small></label>
-                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                    <div class="form-label-group">
+                                        <input type="text" class="form-control" name="family_address" autocomplete="off" data-parsley-group="fieldset01"> <label for="family_address">Alamat Saudara/Family, KOS, Pemilik Rumah <small><strong>(opsional)</strong></small></label>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-label-group">
+                                        <select class="custom-select" name="gender" id="gender" data-parsley-group="fieldset01" required="">
+                                            <option value=""> Pilih... </option>
+                                            <option value="L"> Laki-Laki </option>
+                                            <option value="P"> Perempuan </option>
+                                        </select> <label for="fls1">Jenis Kelamin</label>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -282,32 +299,45 @@
                             <!-- fieldset -->
                             <fieldset>
                                 <legend>Dokumen <small style="color: red"><strong>(wajib)</strong></small></legend> <!-- .row -->
-                                <div class="form-group mb-4">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="card_ktp" id="card_ktp" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_ktp">Upload SCAN KTP</label>
-                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="card_ktp" id="card_ktp" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_ktp">Upload SCAN KTP</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-label-group">
+                                        <input type="text" id="nik_number" name="nik_number" class="form-control" autocomplete="off" data-parsley-group="fieldset02" required=""> <label for="nik_number">No NIK KTP</label>
+                                        </div>
+                                        <div class="invalid-feedback"> Wajib Diisi! </div>
+                                    </div>
                                 </div>
                                 <div class="form-group mb-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="card_ijazah" id="card_ijazah" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_ijazah">Upload SCAN Ijazah Terakhir</label>
                                 </div>
                                 </div>
-                                <!-- .form-group -->
-                                <div class="row">
-                                <div class="col-md-6 mb-4">
+                                <div class="form-group mb-4">
                                     <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="card_skck" id="card_skck" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_skck">Upload SCAN SKCK</label>
+                                        <input type="file" class="custom-file-input" name="card_family" id="card_family" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_family">Upload SCAN kartu Keluarga</label>
                                     </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-label-group">
-                                    <label for="active_date">Masa Berlaku SKCK</label>
-                                    <input type="date" id="active_date" class="form-control" name="active_date" data-parsley-group="fieldset02" required="">
                                     </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                                </div>
+                                <!-- .form-group -->
                                 <legend>Dokumen <small style="color: gold"><strong>(opsional)</strong></small></legend>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="card_skck" id="card_skck" autocomplete="off" data-parsley-group="fieldset02" multiple=""> <label class="custom-file-label" for="card_skck">Upload SCAN SKCK</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-label-group">
+                                        <label for="active_date">Masa Berlaku SKCK</label>
+                                        <input type="date" id="active_date" class="form-control" name="active_date" data-parsley-group="fieldset02">
+                                        </div>
+                                        <div class="invalid-feedback"> Wajib Diisi! </div>
+                                    </div>
+                                </div>
                                 <div class="form-group mb-4">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="card_certificate" id="card_certificate" autocomplete="off" data-parsley-group="fieldset02" multiple=""> <label class="custom-file-label" for="card_certificate">Upload SCAN Sertifikat</label>
@@ -318,10 +348,18 @@
                                     <input type="file" class="custom-file-input" name="card_sim" id="card_sim" autocomplete="off" data-parsley-group="fieldset02" multiple=""> <label class="custom-file-label" for="card_sim">Upload SCAN SIM</label>
                                 </div>
                                 </div>
-                                <div class="form-group mb-4">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="card_npwp" id="card_npwp" autocomplete="off" data-parsley-group="fieldset02" multiple=""> <label class="custom-file-label" for="card_npwp">Upload SCAN NPWP</label>
-                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="card_npwp" id="card_npwp" autocomplete="off" data-parsley-group="fieldset02" multiple=""> <label class="custom-file-label" for="card_npwp">Upload SCAN NPWP</label>
+                                    </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-label-group">
+                                        <input type="text" id="npwp_number" name="npwp_number" class="form-control" autocomplete="off" data-parsley-group="fieldset02"> <label for="npwp_number">No NPWP</label>
+                                        </div>
+                                        <div class="invalid-feedback"> Wajib Diisi! </div>
+                                    </div>
                                 </div>
                                 <legend>Dokumen <small style="color: dodgerblue"><strong>(tambahan)</strong></small></legend>
                                 <div class="row">
@@ -492,7 +530,7 @@
                                         <p>Isilah data diri Anda secara jujur, benar, dan lengkap. Saya menyatakan dengan sesungguhnya bahwa segala keterangan yang saya berikan dalam Formulir ini adalah benar adanya dan saya memahami jika saya memberikan keterangan yang tidak benar atau dipalsukan, maka saya bersedia mempertanggungjawabkannya di hadapan hukum.</p>
                                     </div>
                                 </div><!-- /.card -->
-                                <strong>Masukan Bukti Transfer Senilai <span class="badge badge-success">Rp. 10.000,-</span></strong>
+                                {{-- <strong>Masukan Bukti Transfer Senilai <span class="badge badge-success">Rp. 10.000,-</span></strong>
                                 <br>
                                 <br>
                                 <div class="form-group mb-4">
@@ -500,7 +538,7 @@
                                         <input type="file" name="transfer" id="transfer" class="form-control" autocomplete="off" data-parsley-group="fieldset04" required="">
                                         </div>
                                     <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
+                                </div> --}}
                                 <!-- .form-group -->
                                 <div class="form-group">
                                 <!-- .custom-control -->

@@ -24,8 +24,10 @@ return new class extends Migration
             $table->string('religion')->nullable();
             $table->string('person_status')->nullable();
             $table->string('stay_in')->nullable();
+            $table->string('mother_name')->nullable();
             $table->text('family_name')->nullable();
             $table->text('family_address')->nullable();
+            $table->string('gender')->nullable();
             $table->string('weight')->nullable();
             $table->string('height')->nullable();
             $table->string('hobby')->nullable();
@@ -36,12 +38,15 @@ return new class extends Migration
             $table->string('reference_relation')->nullable();
             $table->text('reference_address')->nullable();
             $table->string('card_ktp')->nullable();
+            $table->string('nik_number')->nullable();
+            $table->string('card_family')->nullable();
             $table->string('card_ijazah')->nullable();
             $table->string('card_skck')->nullable();
             $table->string('active_date')->nullable();
             $table->string('card_certificate')->nullable();
             $table->string('card_sim')->nullable();
             $table->string('card_npwp')->nullable();
+            $table->string('npwp_number')->nullable();
             $table->string('add_name_document_a')->nullable();
             $table->string('add_document_a')->nullable();
             $table->string('add_name_document_b')->nullable();

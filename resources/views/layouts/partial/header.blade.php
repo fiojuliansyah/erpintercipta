@@ -1,4 +1,4 @@
-<header class="app-header app-header-dark">
+<header class="app-header">
     <!-- .top-bar -->
     <div class="top-bar">
       <!-- .top-bar-brand -->
@@ -143,7 +143,7 @@
                 @if(Auth::user()->profile?->avatar != null)
                 <img src="{{ Storage::url(Auth::user()->profile?->avatar) }}" alt="">     
                 @else
-                <img src="{{asset('/storage/avatars/default.png')}}"  alt="">      
+                <img src="{{asset('/admin/images/avatars/team4.jpg')}}"  alt="">      
                 @endif
               </span> 
               <span class="account-summary pr-lg-4 d-none d-lg-block">

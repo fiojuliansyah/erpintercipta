@@ -9,7 +9,7 @@
             @if(Auth::user()->profile?->avatar != null)
             <img src="{{ Storage::url(Auth::user()->profile?->avatar) }}" alt="">     
             @else
-            <img src="{{asset('/storage/avatars/default.png')}}"  alt="">      
+            <img src="{{asset('/admin/images/avatars/team4.jpg')}}"  alt="">      
             @endif
           </span> 
           {{-- <span class="user-avatar user-avatar-lg"><img src="assets/images/avatars/profile.jpg" alt=""></span> --}}
@@ -37,6 +37,9 @@
             </li><!-- /.menu-item -->
             <li class="menu-item {{ Request::path() == 'jobportal' ? 'has-active' : '' }}">
               <a href="{{ route('jobportal') }}" class="menu-link"><span class="menu-icon 	fas fa-briefcase"></span> <span class="menu-text">Job Portal</span></a>
+            </li>
+            <li class="menu-item {{ Request::path() == 'jobportal' ? 'has-active' : '' }}">
+              <a href="{{ route('pkwt-show') }}" class="menu-link"><span class="menu-icon 	fas fa-file-alt"></span> <span class="menu-text">Tanda Tangan</span></a>
             </li>
             <!-- .menu-item -->
             @can('project-menu')
@@ -73,6 +76,9 @@
             @can('applicant-menu')   
             <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
               <a href="{{ route('applicants.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Applicant Data</span></a>
+            </li>
+            <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+              <a href="{{ route('pkwts.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">PKWT & SKK</span></a>
             </li>
             @endcan
 

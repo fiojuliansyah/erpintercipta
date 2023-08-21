@@ -18,6 +18,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AccounttypeController;
 use App\Http\Controllers\TaxcategoryController;
 use App\Http\Controllers\ChartofaccountController;
+use App\Http\Controllers\PkwtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
 
     Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
+    Route::get('/pkwt', [DashboardController::class, 'pkwt'])->name('pkwt-show');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
@@ -61,6 +63,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('vendors', VendorController::class);
     Route::resource('careers', CareerController::class);
     Route::resource('applicants', ApplicantController::class);
+    Route::resource('pkwts', PkwtController::class);
 
 });
 

@@ -91,6 +91,11 @@ class PermissionSeeder extends Seeder
             'applicant-create',
             'applicant-edit',
             'applicant-delete',
+            'pkwt-menu',
+            'pkwt-list',
+            'pkwt-create',
+            'pkwt-edit',
+            'pkwt-delete',
             'job-portal',
         ];
        

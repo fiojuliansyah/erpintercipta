@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pkwt;
 use App\Models\User;
 use App\Models\Career;
 use App\Models\Company;
@@ -45,6 +46,11 @@ class DashboardController extends Controller
     {
         $career = Career::find($id);
         return view('jobportal.show',compact('career'));
+    }
+
+    public function pkwt(Pkwt $pkwt)
+    {
+        return view('tanda-tangan',compact('pkwt'));
     }
 
     /**

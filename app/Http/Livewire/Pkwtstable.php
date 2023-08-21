@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Pkwt;
 use Livewire\Component;
-use App\Models\Applicant;
 use Livewire\WithPagination;
 
-class Applicantstable extends Component
+class Pkwtstable extends Component
 {
     use withPagination;
     protected $paginationTheme = 'bootstrap' ;
@@ -21,13 +21,13 @@ class Applicantstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Applicant::whereRelation('user', 'name', 'like', '%' . $this->search . '%')
-                ->orWhereRelation('career', 'like', '%' . $this->search . '%')
+            $data = Pkwt::whereRelation('user', 'name', 'like', '%' . $this->search . '%')
+                ->orWhereRelation('company', 'company', 'like', '%' . $this->search . '%')
                 ->paginate(10);
         } else {
-            $data = Applicant::paginate(10);
+            $data = Pkwt::paginate(10);
         }
 
-        return view('livewire.applicantstable', compact('data'));
+        return view('livewire.pkwtstable', compact('data'));
     }
 }
