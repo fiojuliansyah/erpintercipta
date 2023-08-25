@@ -14,7 +14,7 @@
               <use class="fill-warning" xlink:href="#a"></use>
             </g>
           </svg></a> --}}
-          <p>INTERCIPTA</p>
+          <img src="https://production.interciptacorp.com/company-page/images/logo.png" alt="">
       </div><!-- /.top-bar-brand -->
       <!-- .top-bar-list -->
       <div class="top-bar-list">
