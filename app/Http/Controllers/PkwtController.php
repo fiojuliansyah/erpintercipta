@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pkwt;
+use App\Imports\ImportPkwts;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorePkwtRequest;
 use App\Http\Requests\UpdatePkwtRequest;
 
@@ -122,5 +124,11 @@ class PkwtController extends Controller
     public function destroy(Pkwt $pkwt)
     {
         //
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new ImportPkwts, $request->file('file')->store('files'));
+        return redirect()->back();
     }
 }

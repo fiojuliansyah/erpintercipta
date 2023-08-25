@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('careers', CareerController::class);
     Route::resource('applicants', ApplicantController::class);
     Route::resource('pkwts', PkwtController::class);
+    Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
     Route::resource('signatures', SignatureController::class);
 
 });
