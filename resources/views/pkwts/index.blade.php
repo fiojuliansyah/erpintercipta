@@ -24,21 +24,7 @@
             {{-- <a href="{{ route('projects.create') }}">
               <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> <!-- /floating action -->
             </a>            <!-- title and toolbar --> --}}
-            <div class="d-md-flex align-items-md-start">
-              <h1 class="page-title mr-sm-auto"> Pkwt List </h1><!-- .btn-toolbar -->
-              <div class="btn-toolbar">
-                <div class="dropdown">
-                  <button type="button" class="btn btn-light" data-toggle="dropdown"><i class="oi oi-data-transfer-upload"></i> <span>Import</span> <span class="fa fa-caret-down"></span></button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-arrow"></div><a href="#" class="dropdown-item">Add tasks</a>
-                  </div>
-                  <button type="button" class="btn btn-light" data-toggle="dropdown"><i class="oi oi-data-transfer-download"></i> <span>Export</span> <span class="fa fa-caret-down"></span></button>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-arrow"></div><a href="#" class="dropdown-item">Add tasks</a>
-                  </div>
-                </div>
-              </div><!-- /.btn-toolbar -->
-            </div><!-- /title and toolbar -->
+            <!-- /title and toolbar -->
           </header><!-- /.page-title-bar -->
           <!-- .page-section -->
           <div class="page-section">

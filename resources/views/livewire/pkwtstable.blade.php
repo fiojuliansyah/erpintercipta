@@ -1,14 +1,29 @@
 <div>
+    <div class="d-md-flex align-items-md-start">
+      <h1 class="page-title mr-sm-auto"> Pkwt List </h1><!-- .btn-toolbar -->
+      <div class="btn-toolbar">
+        <div class="dropdown">
+          <button type="button" class="btn btn-light"><i class="oi oi-data-transfer-upload"></i> <span>Upload</span></button>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="btn btn-light" data-toggle="dropdown"><i class="oi oi-data-transfer-download"></i> <span>Export</span> <span class="fa fa-caret-down"></span></button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png" width="20" alt="">&nbsp;&nbsp;Export Excel</button>
+          </div>
+        </div>
+      </div><!-- /.btn-toolbar -->
+    </div>
     <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
         </div><input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
-  </div>
+    </div>
     <div class="table-responsive">
         <table id="roletable" class="table">
           <!-- thead -->
           <thead>
             <tr>
+                <th width="50px"></th>
                 <th>No</th>
                 <th>Perusahaan</th>
                 <th>No Surat</th>
@@ -24,6 +39,9 @@
           <tbody>
             @foreach ($data as $key => $pkwt)
               <tr>
+                  <td>
+                    <input type="checkbox" wire:model="selectedIds" value="{{ $pkwt->id }}">
+                  </td>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                   <td>{{ $pkwt->company ['company'] }}</td>
                   <td>{{ $pkwt->reference_number }}</td>
