@@ -178,8 +178,11 @@
                     <div class="col-md-6 mb-4 text-center">
                         <p>PIHAK KEDUA</p>
                         <br>
-                        <br>
-                        <br>
+                        @if ($pkwt->user?->signature == null) 
+                        <br>   
+                        @else                         
+                        <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+                        @endif
                         <br>
                         <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
                         <p>Karyawan</p>
@@ -263,8 +266,11 @@
                     <div class="col-md-6 mb-4 text-center">
                         <p>PIHAK KEDUA</p>
                         <br>
-                        <br>
-                        <br>
+                        @if ($pkwt->user?->signature == null) 
+                        <br>   
+                        @else                         
+                        <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+                        @endif
                         <br>
                         <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
                         <p>Karyawan</p>

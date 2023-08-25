@@ -45,6 +45,10 @@
     <link rel="stylesheet" href="{{ asset('') }}admin/stylesheets/theme.min.css" data-skin="default">
     <link rel="stylesheet" href="{{ asset('') }}admin/stylesheets/theme-dark.min.css" data-skin="dark">
     <link rel="stylesheet" href="{{ asset('') }}admin/stylesheets/custom.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+
     @yield('css')
     <script>
       var skin = localStorage.getItem('skin') || 'default';
@@ -93,6 +97,7 @@
     <script src="{{ asset('') }}admin/javascript/pages/dashboard-demo.js"></script> 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116692175-1"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
 

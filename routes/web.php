@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PkwtController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\UserController;
@@ -14,11 +15,11 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AccounttypeController;
 use App\Http\Controllers\TaxcategoryController;
 use App\Http\Controllers\ChartofaccountController;
-use App\Http\Controllers\PkwtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('dashboard', DashboardController::class);
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
 
+
     Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
     Route::get('/pkwt', [DashboardController::class, 'pkwt'])->name('pkwt-show');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
@@ -64,6 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('careers', CareerController::class);
     Route::resource('applicants', ApplicantController::class);
     Route::resource('pkwts', PkwtController::class);
+    Route::resource('signatures', SignatureController::class);
 
 });
 

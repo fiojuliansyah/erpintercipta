@@ -9,6 +9,7 @@
         <!-- thead -->
         <thead>
           <tr>
+              <th><input type="checkbox" id="select-all"></th>
               <th>No</th>
               <th>Perusahaan</th>
               <th>Nama Lengkap</th>
@@ -34,6 +35,7 @@
         <tbody>
           @foreach ($data as $key => $applicant)
             <tr>
+                <td><input type="checkbox" name="selected_ids[]" value="{{ $applicant->id }}"></td>
                 <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                 <td>{{ $applicant->career?->company['company'] }}</td>
                 <td>{{ $applicant->user['name'] }}</td>
@@ -47,7 +49,7 @@
                 <td>{{ $applicant->user?->profile['family_address'] }}</td>
                 <td>{{ $applicant->user?->profile['weight'] }}Kg & {{ $applicant->user?->profile['height'] }}Cm</td>
                 <td>{{ $applicant->user?->profile['hobby'] }}</td>
-                <td>{{ $applicant->user?->profile['account_number'] }}</td>
+                <td>{{ $applicant->user?->profile['bank_account'] }}</td>
                 <td>{{ $applicant->user?->profile['bank_name'] }}</td>
                 <td>{{ $applicant->user?->profile['nik_number'] }}</td>
                 <td>{{ $applicant->user?->profile['npwp_number'] }}</td>

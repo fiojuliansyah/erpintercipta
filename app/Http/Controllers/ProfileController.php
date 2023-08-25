@@ -8,6 +8,7 @@ use App\Models\Jobhistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
 
@@ -144,7 +145,7 @@ class ProfileController extends Controller
                 'stay_in' => $request->stay_in,
                 'family_name' => $request->family_name,
                 'family_address' => $request->family_address,
-                'weight' => $request->gender,
+                'gender' => $request->gender,
                 'weight' => $request->weight,
                 'height' => $request->height,
                 'hobby' => $request->hobby,
@@ -190,6 +191,6 @@ class ProfileController extends Controller
             ]
         );
 
-        return redirect()->url('/dashboard');
+        return Redirect::to('/dashboard');
     }
 }

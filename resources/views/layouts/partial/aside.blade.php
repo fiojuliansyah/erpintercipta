@@ -21,7 +21,7 @@
         <div id="dropdown-aside" class="dropdown-aside collapse">
           <!-- dropdown-items -->
           <div class="pb-3">
-            <a class="dropdown-item" href="user-profile.html"><span class="dropdown-icon oi oi-person"></span> Profile</a> <a class="dropdown-item" href="auth-signin-v1.html"><span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
+            <a class="dropdown-item" href=""><span class="dropdown-icon oi oi-person"></span> Profile</a> <a class="dropdown-item" href="auth-signin-v1.html"><span class="dropdown-icon oi oi-account-logout"></span> Logout</a>
             <div class="dropdown-divider"></div>
         </div><!-- /.dropdown-aside -->
       </header><!-- /.aside-header -->
@@ -38,9 +38,12 @@
             <li class="menu-item {{ Request::path() == 'jobportal' ? 'has-active' : '' }}">
               <a href="{{ route('jobportal') }}" class="menu-link"><span class="menu-icon 	fas fa-briefcase"></span> <span class="menu-text">Job Portal</span></a>
             </li>
-            <li class="menu-item {{ Request::path() == 'jobportal' ? 'has-active' : '' }}">
+            @if (Auth::user()->signature != null)   
+            @else
+            <li class="menu-item {{ Request::path() == 'pkwt-show' ? 'has-active' : '' }}">
               <a href="{{ route('pkwt-show') }}" class="menu-link"><span class="menu-icon 	fas fa-file-alt"></span> <span class="menu-text">Tanda Tangan</span></a>
-            </li>
+            </li>  
+            @endif
             <!-- .menu-item -->
             @can('project-menu')
             <li class="menu-header">Project Management</li>

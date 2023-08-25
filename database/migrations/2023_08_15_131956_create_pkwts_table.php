@@ -29,8 +29,6 @@ return new class extends Migration
             $table->string('salary')->nullable();
             $table->string('allowance')->nullable();
             $table->string('place')->nullable();
-            $table->string('signature')->nullable();
-            $table->string('admin_signature')->nullable();
             $table->timestamps();
         });
     }
