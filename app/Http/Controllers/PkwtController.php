@@ -46,35 +46,9 @@ class PkwtController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'date' => 'required',
-            'date_abjad' => 'required',
-            'month' => 'required',
-            'month_abjad' => 'required',
-            'year' => 'required',
-            'year_abjad' => 'required',
-            'project' => 'required',
-            'area' => 'required',
-            'salary' => 'required',
-            'allowance' => 'required',
-            'place' => 'required',
-        ]);
-        
         $pkwt = new Pkwt;
-        $pkwt->reference_number = $request->reference_number;
+        $pkwt->addendum_id = $request->addendum_id;
         $pkwt->user_id = $request->user_id;
-        $pkwt->company_id = $request->company_id;
-        $pkwt->date = $request->date;
-        $pkwt->date_abjad = $request->date_abjad;
-        $pkwt->month = $request->month;
-        $pkwt->month_abjad = $request->month_abjad;
-        $pkwt->year = $request->year;
-        $pkwt->year_abjad = $request->year_abjad;
-        $pkwt->project = $request->project;
-        $pkwt->area = $request->area;
-        $pkwt->salary = $request->salary;
-        $pkwt->allowance = $request->allowance;
-        $pkwt->place = $request->place;
         $pkwt->save();
         // Pkwt::create($request->all());
         return redirect()->route('pkwts.index')

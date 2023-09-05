@@ -114,7 +114,7 @@
                   <div class="modal-body">
                     <div style="text-align: center">
                       <p style="text-align: center; padding-top: 25px; font-size: 25px">{{ Auth::user()->name }}</p>
-                      <img src="https://img.freepik.com/premium-vector/qr-code-sample-smartphone-scanning-qr-code-icon-flat-design-stock-vector-illustration_550395-108.jpg?w=2000" width="350px" alt="">
+                      {!! html_entity_decode(Auth::user()->applicant?->qr_link) !!}
                       <p style="text-align: center; padding-top: 20px; font-size: 20px">APPLICANT - {{ str_pad(Auth::user()->id, 5, '0', STR_PAD_LEFT) }}</p>
                       <p>*Gunakan QR Code ini pada saat panggilan Interview dan Test</p>
                     </div>

@@ -15,20 +15,10 @@ return new class extends Migration
     {
         Schema::create('pkwts', function (Blueprint $table) {
             $table->id();
-            $table->string('reference_number');
+            $table->string('addendum_id')->nullable();
             $table->string('user_id')->nullable();
-            $table->string('company_id')->nullable();
-            $table->string('date')->nullable();
-            $table->string('date_abjad')->nullable();
-            $table->string('month')->nullable();
-            $table->string('month_abjad')->nullable();
-            $table->string('year')->nullable();
-            $table->string('year_abjad')->nullable();
-            $table->string('project')->nullable();
-            $table->string('area')->nullable();
-            $table->string('salary')->nullable();
-            $table->string('allowance')->nullable();
-            $table->string('place')->nullable();
+            $table->string('user_hrd')->nullable();
+            $table->string('signature_hrd')->nullable();
             $table->timestamps();
         });
     }

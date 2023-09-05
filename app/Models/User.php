@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Signature::class, 'user_id', 'id');
     }
+
+    public function applicant()
+    {
+        return $this->hasOne(Applicant::class, 'user_id', 'id');
+    }
 }

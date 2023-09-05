@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{{ asset('') }}admin/vendor/%40fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('') }}admin/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('') }}admin/vendor/flatpickr/flatpickr.min.css">
+    @yield('plugin')
   <!-- END PLUGINS STYLES -->
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" href="{{ asset('') }}admin/stylesheets/theme.min.css" data-skin="default">

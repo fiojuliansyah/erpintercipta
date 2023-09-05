@@ -36,7 +36,7 @@
               <th>Nama Lengkap</th>
               <th>Nama Panggilan</th>
               <th>Alamat</th>
-              <th>TTL</th>
+              {{-- <th>TTL</th>
               <th>Agama</th>
               <th>Status</th>
               <th>Nama Ibu Kandung</th>
@@ -47,7 +47,8 @@
               <th>No Rekening</th>
               <th>Nama BANK</th>
               <th>No NIK</th>
-              <th>No NPWP</th>
+              <th>No NPWP</th> --}}
+              <th>QR Code</th>
               <th>Lamaran Masuk</th>
               <th width="100px"></th>
           </tr>
@@ -65,7 +66,7 @@
                 <td>{{ $applicant->user['name'] }}</td>
                 <td>{{ $applicant->user?->profile['nickname'] }}</td>
                 <td>{{ $applicant->user?->profile['address'] }}</td>
-                <td>{{ $applicant->user?->profile['birth_place'] }}, {{ $applicant->user?->profile['birth_date'] }}</td>
+                {{-- <td>{{ $applicant->user?->profile['birth_place'] }}, {{ $applicant->user?->profile['birth_date'] }}</td>
                 <td>{{ $applicant->user?->profile['religion'] }}</td>
                 <td>{{ $applicant->user?->profile['person_status'] }}</td>
                 <td>{{ $applicant->user?->profile['mother_name'] }}</td>
@@ -76,7 +77,8 @@
                 <td>{{ $applicant->user?->profile['bank_account'] }}</td>
                 <td>{{ $applicant->user?->profile['bank_name'] }}</td>
                 <td>{{ $applicant->user?->profile['nik_number'] }}</td>
-                <td>{{ $applicant->user?->profile['npwp_number'] }}</td>
+                <td>{{ $applicant->user?->profile['npwp_number'] }}</td> --}}
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Show</button></td>
                 <td>{{ $applicant->created_at }}</td>
                 <td class="align-middle text-right">
                 <form action="{{ route('applicants.destroy',$applicant->id) }}" method="POST">
@@ -89,6 +91,33 @@
                 </form>  
               </td>
             </tr><!-- /tr -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+              <!-- .modal-dialog -->
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <!-- .modal-content -->
+                <div class="modal-content">
+                  <!-- .modal-header -->
+                  <div class="modal-header">
+                    <h5 id="exampleModalCenterLabel" class="modal-title"> QR Code </h5>
+                  </div><!-- /.modal-header -->
+                  <!-- .modal-body -->
+                  <div class="modal-body">
+                    <div style="text-align: center">
+                      {!! html_entity_decode($applicant->qr_link) !!}
+                    </div>
+                  </div><!-- /.modal-body -->
+                  <!-- .modal-footer -->
+                  <div class="modal-footer">
+                        <form action="{{ route('update-qrcode', ['id' => $applicant->id]) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                            <button type="submit" class="btn btn-sm btn-warning">Update QR Code</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </form>
+                  </div><!-- /.modal-footer -->
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div>
           @endforeach
         </tbody><!-- /tbody -->
       </table>

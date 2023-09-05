@@ -80,8 +80,16 @@
             <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
               <a href="{{ route('applicants.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Applicant Data</span></a>
             </li>
-            <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
-              <a href="{{ route('pkwts.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">PKWT & SKK</span></a>
+            <li class="menu-item has-child">
+              <a href="#" class="menu-link"><span class="menu-icon fas fa-database"></span> <span class="menu-text">PKWT</span></a> <!-- child menu -->
+              <ul class="menu">
+                <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+                  <a href="{{ route('pkwts.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Generate PKWT</span></a>
+                </li>
+                <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+                  <a href="{{ route('addendums.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Create Addendum</span></a>
+                </li>
+              </ul><!-- /child menu -->
             </li>
             @endcan
 

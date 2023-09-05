@@ -70,12 +70,13 @@
                     <input type="checkbox" wire:model="selectedIds" value="{{ $pkwt->id }}">
                   </td>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
-                  <td>{{ $pkwt->company ['company'] }}</td>
-                  <td>{{ $pkwt->reference_number }}</td>
+                  <td>{{ $pkwt->addendum?->company['company'] }}</td>
+                  <td>{{ $pkwt->addendum?->reference_number }}</td>
                   <td>APPLICANT - {{ str_pad($pkwt->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
-                  <td>{{ $pkwt->user ['name'] }}</td>
+                  <td>{{ $pkwt->user['name'] }}</td>
                   <td>
                     @if ($pkwt->user?->signature == null) 
+                    <span class="badge badge-danger">Belum Tertanda Tangan</span>
                     @else
                     <span class="badge badge-success">Sudah Tertanda Tangan</span>
                     @endif

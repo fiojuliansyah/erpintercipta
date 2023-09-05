@@ -97,6 +97,11 @@ class PermissionSeeder extends Seeder
             'pkwt-edit',
             'pkwt-delete',
             'job-portal',
+            'addendum-menu',
+            'addendum-list',
+            'addendum-create',
+            'addendum-edit',
+            'addendum-delete'
         ];
        
         foreach ($permissions as $permission) {

@@ -13,25 +13,13 @@ class ImportPkwts implements ToModel, WithStartRow // Implement the WithStartRow
 {
     public function model(array $row)
     {
-        if ($row[0] === 'reference_number' && $row[1] === 'user_id' && $row[2] === 'company_id') {
+        if ($row[0] === 'addendum_id' && $row[1] === 'user_id') {
             return null; // Skip the header row
         }
         // Map the Excel columns to the database columns
         return new Pkwt([
-            'reference_number' => $row[0],
-            'user_id' => $row[1],
-            'company_id' => $row[2],
-            'date' => $row[3],
-            'date_abjad' => $row[4],
-            'month' => $row[5],
-            'month_abjad' => $row[6],
-            'year' => $row[7],
-            'year_abjad' => $row[8],
-            'project' => $row[9],
-            'area' => $row[10],
-            'salary' => $row[11],
-            'allowance' => $row[12],
-            'place' => $row[13],
+            'addendum_id' => $row[0],
+            'user_id' => $row[1]
             // Add more mappings as needed
         ]);
     }

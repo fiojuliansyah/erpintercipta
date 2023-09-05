@@ -12,6 +12,7 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
     Route::get('/pkwt', [DashboardController::class, 'pkwt'])->name('pkwt-show');
+    Route::get('/my-resume', [DashboardController::class, 'MyResume'])->name('my-resume');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
@@ -65,9 +67,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('vendors', VendorController::class);
     Route::resource('careers', CareerController::class);
     Route::resource('applicants', ApplicantController::class);
+    Route::put('/update-qrcode/{id}',[ApplicantController::class,'QRUpdate'])->name('update-qrcode');
     Route::resource('pkwts', PkwtController::class);
     Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
     Route::resource('signatures', SignatureController::class);
+    Route::resource('addendums', AddendumController::class);
 
 });
 

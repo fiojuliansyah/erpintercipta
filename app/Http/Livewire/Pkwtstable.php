@@ -33,15 +33,13 @@ class Pkwtstable extends Component
     
             $modifiedData = $selectedData->map(function ($pkwt) {
                 return [
+                    'addendum_id' => $pkwt->addendum_id,
+                    'user_id' => $pkwt->user['name'],
                     'reference_number' => $pkwt->reference_number,
-                    'user_id' => $pkwt->user_id,
-                    'company_id' => $pkwt->company_id,
+                    'company_id' => $pkwt->company['company'],
                     'date' => $pkwt->date,
-                    'date_abjad' => $pkwt->date_abjad,
                     'month' => $pkwt->month,
-                    'month_abjad' => $pkwt->month_abjad,
                     'year' => $pkwt->year,
-                    'year_abjad' => $pkwt->year_abjad,
                     'project' => $pkwt->project,
                     'area' => $pkwt->area,
                     'salary' => $pkwt->salary,
