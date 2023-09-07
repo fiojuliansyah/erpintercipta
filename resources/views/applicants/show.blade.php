@@ -153,12 +153,14 @@
                             <strong>SCAN KTP</strong>
                             <br>
                             <br>
+                            <p>{{ $applicant->user?->profile['nik_number'] }}</p>
                             <img src="{{ Storage::url($applicant->user?->profile['card_ktp']) }}" width="300" alt="">
                         </div>
                         <div class="col-md-3 mb-4">
                           <strong>SCAN KARTU KELUARGA</strong>
                           <br>
                           <br>
+                          <p>{{ $applicant->user?->profile['family_number'] }}</p>
                           <img src="{{ Storage::url($applicant->user?->profile['card_family']) }}" width="300" alt="">
                         </div>
                         <div class="col-md-3 mb-4">

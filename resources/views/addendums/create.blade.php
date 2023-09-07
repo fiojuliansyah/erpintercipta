@@ -73,6 +73,15 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                          <label for="responsible">Penanggung Jawab</label>
+                          <input type="text" name="responsible" class="form-control" placeholder="Tulis Disini">
+                          @error('responsible')
+                              <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                          @enderror
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="row">
                         <div class="col-md-3">
                             <label for="date">Tanggal</label>
@@ -167,6 +176,7 @@
                       </div>
                     </div>
                     <br>
+                    <a href="{{asset('/admin/format_import/format_draft_pkwt.doc')}}" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" width="20" alt="">&nbsp;&nbsp;Download Format ADDENDUM</a>
                     <div class="col-xs-20 col-sm-20 col-md-12">
                         <div class="section-block">
                             <label for="addendum">Addendum</label>
@@ -180,13 +190,13 @@
                     </div>
                     <div class="col-xs-20 col-sm-20 col-md-12">
                         <div class="section-block">
-                            <label for="skk">SKK</label>
-                            <p class="text-muted"> Buat skk dengan kesepakatan proyek atau area </p>
+                            <label for="skk">LAMPIRAN TAMBAHAN</label>
+                            <p class="text-muted"> Buat lampiran Tambahan dengan kesepakatan proyek atau area </p>
                         </div><!-- /.section-block -->
                         <!-- .card -->
                         <div class="card card-fluid">
                             <!-- #summernote-basic -->
-                            <textarea name="skk" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
+                            <textarea name="attachment" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

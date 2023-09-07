@@ -47,6 +47,7 @@ class ExportApplicants implements FromCollection, WithHeadings
             'Hubungan Referensi',
             'Alamat Referensi',
             'No NIK',
+            'No KK',
             'No NPWP',
             'Status Aktif SKCK',
             // Add more headings as needed

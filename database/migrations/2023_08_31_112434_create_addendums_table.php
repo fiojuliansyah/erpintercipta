@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('addendums', function (Blueprint $table) {
             $table->id();
             $table->text('addendum');
-            $table->text('skk');
+            $table->text('responsible');
+            $table->text('attachment');
             $table->string('reference_number');
             $table->string('company_id')->nullable();
             $table->string('start_date')->nullable();

@@ -13,7 +13,6 @@
                 <th>Status</th>
                 <th>Company</th>
                 <th>Job Name</th>
-                <th>Description</th>
                 <th>Department</th>
                 <th>Location</th>
                 <th>Request By</th>
@@ -37,7 +36,6 @@
                   </td>
                   <td>{{ $career->company['company'] }}</td>
                   <td>{{ $career->jobname }}</td>
-                  <td>{{ $career->description }}</td>
                   <td>{{ $career->department }}</td>
                   <td>{{ $career->location }}</td>
                   <td>{{ $career->user_id }}</td>

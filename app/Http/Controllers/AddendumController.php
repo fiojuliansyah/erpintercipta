@@ -46,8 +46,9 @@ class AddendumController extends Controller
     public function store(Request $request)
     {
         $addendum = new Addendum;
+        $addendum->responsible = $request->responsible;
         $addendum->addendum = $request->addendum;
-        $addendum->skk = $request->skk;
+        $addendum->attachment = $request->attachment;
         $addendum->reference_number = $request->reference_number;
         $addendum->company_id = $request->company_id;
         $addendum->date = $request->date;

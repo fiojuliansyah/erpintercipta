@@ -158,6 +158,7 @@ class ProfileController extends Controller
                 'card_ktp' => $path2,
                 'nik_number' => $request->nik_number,
                 'card_family' => $path11,
+                'family_number' => $request->family_number,
                 'card_ijazah' => $path3,
                 'card_skck' => $path4,
                 'active_date' => $request->active_date,

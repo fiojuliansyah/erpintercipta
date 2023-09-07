@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Career;
 use App\Models\Company;
 use App\Models\Applicant;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,8 +52,9 @@ class DashboardController extends Controller
 
     public function pkwt(Pkwt $pkwt)
     {
-        return view('tanda-tangan',compact('pkwt'));
+        return view('tanda-tangan', compact('pkwt'));
     }
+
 
     public function MyResume(Applicant $applicant)
     {

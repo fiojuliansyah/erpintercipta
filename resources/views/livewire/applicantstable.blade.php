@@ -34,7 +34,7 @@
               <th>No</th>
               <th>Perusahaan</th>
               <th>Nama Lengkap</th>
-              <th>Nama Panggilan</th>
+              <th>Melamar</th>
               <th>Alamat</th>
               {{-- <th>TTL</th>
               <th>Agama</th>
@@ -64,7 +64,7 @@
                 <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                 <td>{{ $applicant->career?->company['company'] }}</td>
                 <td>{{ $applicant->user['name'] }}</td>
-                <td>{{ $applicant->user?->profile['nickname'] }}</td>
+                <td>{{ $applicant->career['jobname'] }}</td>
                 <td>{{ $applicant->user?->profile['address'] }}</td>
                 {{-- <td>{{ $applicant->user?->profile['birth_place'] }}, {{ $applicant->user?->profile['birth_date'] }}</td>
                 <td>{{ $applicant->user?->profile['religion'] }}</td>

@@ -64,7 +64,9 @@
           <div class="card">
             <!-- .card-body -->
             <div class="card-body">
-                {!! Auth::user()->pkwt?->addendum['addendum'] !!}
+                <span id="addendum">
+                  {!! Auth::user()->pkwt?->addendum['addendum'] !!}
+                </span>
                 <br>
                 <div class="row">
                     <div class="col-md-6 mb-4 text-center">
@@ -94,7 +96,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                {!! html_entity_decode(Auth::user()->pkwt?->addendum['skk']) !!}
+                {!! html_entity_decode(Auth::user()->pkwt?->addendum['attachment']) !!}
                 <br>
                 <div class="row">
                     <div class="col-md-6 mb-4 text-center">
@@ -214,7 +216,36 @@
   @endif
 @endsection
 
+@if ( Auth::user()->pkwt == null )
+@else
 @push('js')
+<script>
+  // Ambil elemen yang mengandung teks yang akan diganti
+  var element = document.getElementById('addendum');
+  
+  // Ganti teks dalam elemen tersebut
+  if (element) {
+      element.innerHTML = element.innerHTML
+          .replace('{REFERENCE_NUMBER}', '{{ Auth::user()->pkwt?->addendum['reference_number'] }}')
+          .replace('{RESPONSIBLE}', '{{ Auth::user()->pkwt?->addendum['responsible'] }}')
+          .replace('{USER_NAME}', '{{ Auth::user()->name }}')
+          .replace('{USER_GENDER}', '{{ Auth::user()->profile['gender'] }}')
+          .replace('{USER_BIRTH}', '{{ Auth::user()->profile['birth_place'] }}, {{ Auth::user()->profile['birth_date'] }}')
+          .replace('{USER_NIK}', '{{ Auth::user()->profile['nik_number'] }}')
+          .replace('{USER_ADDRESS}', '{{ Auth::user()->profile['address'] }}')
+          .replace('{DATE_ABJAD}', '{{ Auth::user()->pkwt?->addendum['date_abjad'] }}')
+          .replace('{MONTH_ABJAD}', '{{ Auth::user()->pkwt?->addendum['month_abjad'] }}')
+          .replace('{YEAR_ABJAD}', '{{ Auth::user()->pkwt?->addendum['year_abjad'] }}')
+          .replace('{CAREER}', '{{ Auth::user()->applicant?->career['jobname'] }}')
+          .replace('{PROJECT}', '{{ Auth::user()->pkwt?->addendum['project'] }}')
+          .replace('{AREA}', '{{ Auth::user()->pkwt?->addendum['area'] }}')
+          .replace('{SALARY}', '{{ Auth::user()->pkwt?->addendum['salary'] }}')
+          .replace('{ALLOWANCE}', '{{ Auth::user()->pkwt?->addendum['allowance'] }}')
+          .replace('{DATE}', '{{ Auth::user()->pkwt?->addendum['created_at'] }}')
+          .replace('{PLACE}', '{{ Auth::user()->pkwt?->addendum['place'] }}');
+  }
+</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       var canvas = document.getElementById('signatureCanvas');
@@ -258,3 +289,4 @@
   });
 </script>
 @endpush
+@endif

@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('card_ktp')->nullable();
             $table->string('nik_number')->nullable();
             $table->string('card_family')->nullable();
+            $table->string('family_number')->nullable();
             $table->string('card_ijazah')->nullable();
             $table->string('card_skck')->nullable();
             $table->string('active_date')->nullable();

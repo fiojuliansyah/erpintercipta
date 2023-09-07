@@ -313,15 +313,23 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-4">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="card_ijazah" id="card_ijazah" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_ijazah">Upload SCAN Ijazah Terakhir</label>
-                                </div>
-                                </div>
-                                <div class="form-group mb-4">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="card_family" id="card_family" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_family">Upload SCAN kartu Keluarga</label>
+                                        <input type="file" class="custom-file-input" name="card_ijazah" id="card_ijazah" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_ijazah">Upload SCAN Ijazah Terakhir</label>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="card_family" id="card_family" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_family">Upload SCAN kartu Keluarga</label>
+                                        </div>
                                     </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-label-group">
+                                        <input type="text" id="family_number" name="family_number" class="form-control" autocomplete="off" data-parsley-group="fieldset02" required=""> <label for="family_number">No KK</label>
+                                        </div>
+                                        <div class="invalid-feedback"> Wajib Diisi! </div>
+                                    </div>
+                                </div>
                                 <!-- .form-group -->
                                 <legend>Dokumen <small style="color: gold"><strong>(opsional)</strong></small></legend>
                                 <div class="row">
