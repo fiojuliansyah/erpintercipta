@@ -10,37 +10,6 @@
       <div class="page has-sidebar has-sidebar-expand-xl">
         <!-- .page-inner -->
         <div class="page-inner">
-          <!-- .page-title-bar -->
-          <header class="page-title-bar">
-            <div class="d-md-flex">
-              <h1 class="page-title"> {{ $pkwt->addendum['reference_number'] }} </h1>
-            </div>
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
-              <!-- .modal-dialog -->
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <!-- .modal-content -->
-                <div class="modal-content">
-                  <!-- .modal-header -->
-                  <div class="modal-header">
-                    <h5 id="exampleModalCenterLabel" class="modal-title"> Tanda Tangan </h5>
-                  </div><!-- /.modal-header -->
-                  <!-- .modal-body -->
-                  <form action="{{ url('signatures') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <canvas id="signatureCanvas" width="500" height="200"></canvas>           
-                    </div><!-- /.modal-body -->
-                    <!-- .modal-footer -->
-                    <div class="modal-footer">
-                        <button id="clearButton" class="btn btn-warning">Hapus TTD</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
-                        <button id="saveButton" class="btn btn-primary">Simpan</button>
-                    </div><!-- /.modal-footer -->
-                </form>
-                </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-            </div>
-          </header><!-- /.page-title-bar -->
           <!-- .page-section -->
           <div class="card">
             <!-- .card-body -->
@@ -54,7 +23,7 @@
                         <p>PIHAK PERTAMA</p>
                         <br>
                         <br>
-                        <br>
+                        <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
                         <br>
                         <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
                         <p>Human Resource Development</p>
@@ -84,7 +53,7 @@
                         <p>PIHAK PERTAMA</p>
                         <strong>{{ $pkwt->addendum?->company['company'] }}</strong>
                         <br>
-                        <br>
+                        <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
                         <br>
                         <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
                         <p>Human Resource Development</p>
@@ -105,15 +74,9 @@
                 </div>
             </div>
         </div>
-        <div class="d-md-flex">
-          @if ($pkwt->user?->signature == null)   
-          <div class="ml-auto">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tanda Tangan</button>
-          </div>
-          @else   
-          @endif
+        <div class="d-md-flex">  
+           
         </div>
-        </div><!-- /.page-inner -->
         <!-- .page-sidebar -->
         <div class="page-sidebar">
           <!-- .card -->
@@ -222,48 +185,5 @@
           .replace('{DATE}', '{{ $pkwt->addendum['created_at'] }}')
           .replace('{PLACE}', '{{ $pkwt->addendum['place'] }}');
   }
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var canvas = document.getElementById('signatureCanvas');
-      var signaturePad = new SignaturePad(canvas);
-      var saveButton = document.getElementById('saveButton');
-      var clearButton = document.getElementById('clearButton');
-
-      saveButton.addEventListener('click', function() {
-          if (signaturePad.isEmpty()) {
-              alert('Tanda tangan kosong, silahkan tanda tangan');
-          } else {
-              var signatureDataUrl = signaturePad.toDataURL();
-              saveSignature(signatureDataUrl);
-          }
-      });
-
-      clearButton.addEventListener('click', function() {
-          signaturePad.clear();
-      });
-
-      function saveSignature(signatureDataUrl) {
-          fetch('{{ url('signatures') }}', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'X-CSRF-TOKEN': '{{ csrf_token() }}'
-              },
-              body: JSON.stringify({
-                  signatureDataUrl: signatureDataUrl
-              })
-          })
-          .then(response => response.json())
-          .then(data => {
-              alert(data.message);
-              signaturePad.clear();
-          })
-          .catch(error => {
-              console.error('Error:', error);
-          });
-      }
-  });
 </script>
 @endpush

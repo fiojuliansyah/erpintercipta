@@ -40,27 +40,20 @@ class SignatureController extends Controller
     public function store(Request $request)
     {
         $dataUrl = $request->input('signatureDataUrl');
-        $user = Auth::user(); // Get the authenticated user
+        $user = Auth::user();
 
         if ($user) {
-            // Decode Data URL
             $data = substr($dataUrl, strpos($dataUrl, ',') + 1);
             $decodedData = base64_decode($data);
-
-            $fileName = 'signature_' . uniqid() . '.png'; // Generate a unique file name
-            $filePath = 'public/signatures/' . $fileName; // Path within storage/app
-
-            // Store the signature in the storage
+            $fileName = 'signature_' . uniqid() . '.png';
+            $filePath = 'public/signatures/' . $fileName;
             \Storage::put($filePath, $decodedData);
-
-            // Save the file path and user ID to your database
-            // Assuming you have a 'signatures' table with 'user_id' and 'file_path' columns
             Signature::create([
                 'user_id' => $user->id,
                 'signatureDataUrl' => 'signatures/' . $fileName,
             ]);
 
-            return Redirect::to('/dashboard'); // Redirect to the dashboard page
+            return Redirect::to('/dashboard');
         } else {
             return response()->json(['message' => 'User not authenticated'], 401);
         }

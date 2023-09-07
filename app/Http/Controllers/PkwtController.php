@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pkwt;
+use App\Models\Signature;
 use App\Imports\ImportPkwts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorePkwtRequest;
 use App\Http\Requests\UpdatePkwtRequest;
@@ -84,7 +86,7 @@ class PkwtController extends Controller
      * @param  \App\Models\Pkwt  $pkwt
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePkwtRequest $request, Pkwt $pkwt)
+    public function update(Request $request, Pkwt $pkwt)
     {
         //
     }
@@ -105,4 +107,5 @@ class PkwtController extends Controller
         Excel::import(new ImportPkwts, $request->file('file')->store('files'));
         return redirect()->back();
     }
+
 }
