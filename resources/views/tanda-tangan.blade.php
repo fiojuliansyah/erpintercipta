@@ -75,7 +75,7 @@
                         <br>
                         <br>
                         <br>
-                        <p>( <u>{{ Auth::user()->name }}</u> )</p>
+                        <p>( <u>{{ Auth::user()->pkwt?->addendum['responsible'] }}</u> )</p>
                         <p>Human Resource Development</p>
                     </div>
                     <div class="col-md-6 mb-4 text-center">
@@ -105,7 +105,7 @@
                         <br>
                         <br>
                         <br>
-                        <p>( <u>{{ Auth::user()->name }}</u> )</p>
+                        <p>( <u>{{ Auth::user()->pkwt?->addendum['responsible'] }}</u> )</p>
                         <p>Human Resource Development</p>
                     </div>
                     <div class="col-md-6 mb-4 text-center">
