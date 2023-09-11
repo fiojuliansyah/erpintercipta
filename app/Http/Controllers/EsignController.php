@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Storage;
-use App\Models\Signature;
+use App\Models\Esign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreEsignRequest;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\StoreSignatureRequest;
-use App\Http\Requests\UpdateSignatureRequest;
+use App\Http\Requests\UpdateEsignRequest;
 
-class SignatureController extends Controller
+class EsignController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class SignatureController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSignatureRequest  $request
+     * @param  \App\Http\Requests\StoreEsignRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,26 +46,27 @@ class SignatureController extends Controller
         if ($user) {
             $data = substr($dataUrl, strpos($dataUrl, ',') + 1);
             $decodedData = base64_decode($data);
-            $fileName = 'signature_' . uniqid() . '.png';
-            $filePath = 'public/signatures/' . $fileName;
+            $fileName = 'esign_' . uniqid() . '.png';
+            $filePath = 'public/esign/' . $fileName;
             Storage::put($filePath, $decodedData);
-            Signature::create([
+            Esign::create([
                 'user_id' => $user->id,
-                'signatureDataUrl' => 'signatures/' . $fileName,
+                'signatureDataUrl' => 'esign/' . $fileName,
             ]);
 
-            return Redirect::to('/dashboard');
+            return redirect()->route('pkwts.index');
         } else {
             return response()->json(['message' => 'User not authenticated'], 401);
         }
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Signature  $signature
+     * @param  \App\Models\Esign  $esign
      * @return \Illuminate\Http\Response
      */
-    public function show(Signature $signature)
+    public function show(Esign $esign)
     {
         //
     }
@@ -73,10 +74,10 @@ class SignatureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Signature  $signature
+     * @param  \App\Models\Esign  $esign
      * @return \Illuminate\Http\Response
      */
-    public function edit(Signature $signature)
+    public function edit(Esign $esign)
     {
         //
     }
@@ -84,11 +85,11 @@ class SignatureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSignatureRequest  $request
-     * @param  \App\Models\Signature  $signature
+     * @param  \App\Http\Requests\UpdateEsignRequest  $request
+     * @param  \App\Models\Esign  $esign
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSignatureRequest $request, Signature $signature)
+    public function update(UpdateEsignRequest $request, Esign $esign)
     {
         //
     }
@@ -96,10 +97,10 @@ class SignatureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Signature  $signature
+     * @param  \App\Models\Esign  $esign
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Signature $signature)
+    public function destroy(Esign $esign)
     {
         //
     }

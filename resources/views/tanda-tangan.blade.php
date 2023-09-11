@@ -32,7 +32,7 @@
           <!-- .page-section -->
           <div class="card">
             <!-- .card-body -->
-            <div class="card-body">
+            <div class="card-body" style="background-color: white; color: black">
                 <span id="addendum">
                   {!! Auth::user()->pkwt?->addendum['addendum'] !!}
                 </span>
@@ -64,7 +64,7 @@
             </div><!-- /.card-body -->
         </div>
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="background-color: white; color: black">
                 {!! html_entity_decode(Auth::user()->pkwt?->addendum['attachment']) !!}
                 <br>
                 <div class="row">
@@ -84,7 +84,7 @@
                         <br>   
                         @else                         
                         <img src="{{ Storage::url(Auth::user()->signature['signatureDataUrl']) }}" width="300" alt="">
-                        @endif
+                      @endif
                       <br>
                       <p>( <u>{{ Auth::user()->pkwt?->user['name'] }}</u> )</p>
                       <p>Karyawan</p>
@@ -117,7 +117,7 @@
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
                       <button id="saveButton" class="btn btn-primary">Simpan</button>
                   </div><!-- /.modal-footer -->
-              </form>
+                </form>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div>
@@ -241,7 +241,6 @@
       var canvas = document.getElementById('signatureCanvas');
       var signaturePad = new SignaturePad(canvas);
       var saveButton = document.getElementById('saveButton');
-      var clearButton = document.getElementById('clearButton');
 
       saveButton.addEventListener('click', function() {
           if (signaturePad.isEmpty()) {
@@ -250,10 +249,6 @@
               var signatureDataUrl = signaturePad.toDataURL();
               saveSignature(signatureDataUrl);
           }
-      });
-
-      clearButton.addEventListener('click', function() {
-          signaturePad.clear();
       });
 
       function saveSignature(signatureDataUrl) {
@@ -278,5 +273,6 @@
       }
   });
 </script>
+
 @endpush
 @endif

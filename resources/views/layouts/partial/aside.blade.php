@@ -86,12 +86,14 @@
                 <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
                   <a href="{{ route('pkwts.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Generate PKWT</span></a>
                 </li>
+                @endcan
+                @can('addendum-menu') 
                 <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
                   <a href="{{ route('addendums.index') }}" class="menu-link"><span class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Create Addendum</span></a>
                 </li>
+                @endcan
               </ul><!-- /child menu -->
             </li>
-            @endcan
 
             <!-- .menu-header -->
             @can('admin-only')

@@ -7,6 +7,7 @@ use App\Http\Controllers\PkwtController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EsignController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CompanyController;
@@ -36,6 +37,7 @@ use App\Http\Controllers\ChartofaccountController;
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 Route::get('/karir', [DashboardController::class, 'karir'])->name('karir');
+Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('karir-detail');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -71,6 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('pkwts', PkwtController::class);
     Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
     Route::resource('signatures', SignatureController::class);
+    Route::resource('esigns', EsignController::class);
     Route::resource('addendums', AddendumController::class);
 
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pkwt;
+use App\Models\Esign;
 use App\Models\Signature;
 use App\Imports\ImportPkwts;
 use Illuminate\Http\Request;
@@ -86,10 +87,27 @@ class PkwtController extends Controller
      * @param  \App\Models\Pkwt  $pkwt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pkwt $pkwt)
+    public function update(Request $request, $id)
     {
-        //
+        $hrApprove = Auth::user()->name;
+        $userId = Auth::user()->id;
+        $signature = Esign::where('user_id', $userId)->first();
+
+        if ($signature) {
+            $hrSignature = $signature->signatureDataUrl;
+        } else {
+            $hrSignature = null;
+        }
+
+        $pkwt = Pkwt::find($id);
+        $pkwt->user_hrd = $hrApprove;
+        $pkwt->signature_hrd = $hrSignature;
+        $pkwt->save();
+
+        return redirect()->route('pkwts.index')
+                        ->with('success', 'Pkwt updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -99,7 +117,10 @@ class PkwtController extends Controller
      */
     public function destroy(Pkwt $pkwt)
     {
-        //
+        $pkwt->delete();
+
+        return redirect()->route('pkwts.index')
+                        ->with('success','Product deleted successfully');
     }
 
     public function import(Request $request)

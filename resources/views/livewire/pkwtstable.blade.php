@@ -3,6 +3,38 @@
       <h1 class="page-title mr-sm-auto"> Pkwt List </h1><!-- .btn-toolbar -->
       <div class="btn-toolbar">
         <div class="dropdown">
+          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#esign"><i class="oi oi-key"></i> <span>Buat Tanda Tangan Digital</span></button>
+        </div>
+        <div class="modal fade" id="esign" tabindex="-1" role="dialog" aria-labelledby="esignLabel" aria-hidden="true">
+          <!-- .modal-dialog -->
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <!-- .modal-content -->
+            <div class="modal-content">
+              <!-- .modal-header -->
+                <div class="modal-header">
+                  <h5 id="esignLabel" class="modal-title"> Buat Tanda Tangan </h5>
+                </div><!-- /.modal-header -->
+                <!-- .modal-body -->
+                <div class="modal-body">
+                  <form action="{{ url('esigns') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <canvas id="signatureCanvas" width="500" height="200"></canvas>           
+                    </div><!-- /.modal-body -->
+                    <!-- .modal-footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
+                        <button id="saveButton" class="btn btn-primary">Simpan</button>
+                    </div><!-- /.modal-footer -->
+                  </form>
+                </div><!-- /.modal-body -->
+              <!-- .modal-footer -->
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div>
+      </div>
+      <div class="btn-toolbar">
+        <div class="dropdown">
           <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalScrollable"><i class="oi oi-data-transfer-upload"></i> <span>Upload</span></button>
         </div>
         <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
@@ -58,6 +90,7 @@
                 <th>Nama</th>
                 <th>TTD Pelamar</th>
                 <th>TTD HRD</th>
+                <th>Approve PKWT</th>
                 <th width="100px"></th>
             </tr>
           </thead>
@@ -81,7 +114,20 @@
                     <span class="badge badge-success">Sudah Tertanda Tangan</span>
                     @endif
                   </td>
-                  <td><span class="badge badge-danger">Belum Tertanda Tangan</span></td>
+                  <td>
+                    @if ($pkwt->signature_hrd == null) 
+                    <span class="badge badge-danger">Belum Tertanda Tangan</span>
+                    @else
+                    <span class="badge badge-success">Sudah Tertanda Tangan</span>
+                    @endif
+                  </td>
+                  <td>
+                    <form action="{{ route('pkwts.update',$pkwt->id) }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      @method('PUT')
+                      <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                    </form>
+                  </td>
                   <td class="align-middle text-right">
                   <form action="{{ route('pkwts.destroy',$pkwt->id) }}" method="POST">
                     <a href="{{ route('pkwts.show',$pkwt->id) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> <span class="sr-only">Show</span></a>
@@ -101,3 +147,43 @@
         {{ $data->links() }}
       </ul>
 </div>
+
+@push('js')
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var canvas = document.getElementById('signatureCanvas');
+      var signaturePad = new SignaturePad(canvas);
+      var saveButton = document.getElementById('saveButton');
+
+      saveButton.addEventListener('click', function() {
+          if (signaturePad.isEmpty()) {
+              alert('Tanda tangan kosong, silahkan tanda tangan');
+          } else {
+              var signatureDataUrl = signaturePad.toDataURL();
+              saveSignature(signatureDataUrl);
+          }
+      });
+
+      function saveSignature(signatureDataUrl) {
+          fetch('{{ url('esigns') }}', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'X-CSRF-TOKEN': '{{ csrf_token() }}'
+              },
+              body: JSON.stringify({
+                  signatureDataUrl: signatureDataUrl
+              })
+          })
+          .then(response => response.json())
+          .then(data => {
+              alert(data.message);
+              signaturePad.clear();
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      }
+  });
+</script>
+@endpush

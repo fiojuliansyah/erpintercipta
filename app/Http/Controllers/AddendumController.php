@@ -13,6 +13,7 @@ class AddendumController extends Controller
     function __construct()
     {
          $this->middleware('permission:addendum-list|addendum-create|addendum-edit|addendum-delete', ['only' => ['index','show']]);
+         $this->middleware('permission:addendum-create', ['only' => ['create','store']]);
          $this->middleware('permission:addendum-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:addendum-delete', ['only' => ['destroy']]);
     }
@@ -110,6 +111,9 @@ class AddendumController extends Controller
      */
     public function destroy(Addendum $addendum)
     {
-        //
+        $addendum->delete();
+
+        return redirect()->route('addendums.index')
+                        ->with('success','Product deleted successfully');
     }
 }

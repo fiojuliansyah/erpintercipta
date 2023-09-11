@@ -3,6 +3,7 @@
 namespace App\Models;
   
 use App\Models\Pkwt;
+use App\Models\Esign;
 use App\Models\Profile;
 use App\Models\Signature;
 use Laravel\Sanctum\HasApiTokens;
@@ -61,6 +62,11 @@ class User extends Authenticatable
     public function signature()
     {
         return $this->hasOne(Signature::class, 'user_id', 'id');
+    }
+
+    public function esign()
+    {
+        return $this->hasOne(Esign::class, 'user_id', 'id');
     }
 
     public function applicant()
