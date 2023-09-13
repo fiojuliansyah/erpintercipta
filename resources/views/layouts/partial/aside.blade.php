@@ -44,6 +44,9 @@
               <a href="{{ route('pkwt-show') }}" class="menu-link"><span class="menu-icon 	fas fa-file-alt"></span> <span class="menu-text">Tanda Tangan</span></a>
             </li>  
             @endif
+            <li class="menu-item {{ Request::path() == 'my-resume' ? 'has-active' : '' }}">
+              <a href="{{ route('my-resume') }}" class="menu-link" target="_blank"><span class="menu-icon 	fas fa-file-alt"></span> <span class="menu-text">Resume Saya</span></a>
+            </li>  
             <!-- .menu-item -->
             @can('project-menu')
             <li class="menu-header">Project Management</li>

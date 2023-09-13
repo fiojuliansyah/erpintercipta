@@ -38,7 +38,6 @@ return new class extends Migration
             $table->string('reference_relation')->nullable();
             $table->text('reference_address')->nullable();
             $table->string('card_ktp')->nullable();
-            $table->string('nik_number')->nullable();
             $table->string('card_family')->nullable();
             $table->string('family_number')->nullable();
             $table->string('card_ijazah')->nullable();

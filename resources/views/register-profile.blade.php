@@ -306,15 +306,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
-                                        <div class="form-label-group">
-                                        <input type="text" id="nik_number" name="nik_number" class="form-control" autocomplete="off" data-parsley-group="fieldset02" required=""> <label for="nik_number">No NIK KTP</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="card_ijazah" id="card_ijazah" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_ijazah">Upload SCAN Ijazah Terakhir</label>
                                         </div>
-                                        <div class="invalid-feedback"> Wajib Diisi! </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="card_ijazah" id="card_ijazah" autocomplete="off" data-parsley-group="fieldset02" multiple="" required=""> <label class="custom-file-label" for="card_ijazah">Upload SCAN Ijazah Terakhir</label>
                                     </div>
                                 </div>
                                 <div class="row">

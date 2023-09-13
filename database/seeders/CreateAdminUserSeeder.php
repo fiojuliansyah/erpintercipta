@@ -20,6 +20,7 @@ class CreateAdminUserSeeder extends Seeder
     {
         //Admin Seeder
         $user = User::create([
+            'nik_number' => '3216212807990003',
             'name' => 'Super Admin', 
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password')

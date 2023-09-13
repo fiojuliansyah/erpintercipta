@@ -10,6 +10,7 @@
           <thead>
             <tr>
                 <th>No</th>
+                <th>Addindum ID</th>
                 <th>Perusahaan</th>
                 <th>Proyek</th>
                 <th>Area</th>
@@ -24,6 +25,7 @@
             @foreach ($data as $key => $addendum)
               <tr>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
+                  <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
                   <td>{{ $addendum->company['company'] }}</td>
                   <td>{{ $addendum->project }}</td>
                   <td>{{ $addendum->area }}</td>

@@ -22,6 +22,13 @@
     <form class="auth-form" method="POST" action="{{ route('register') }}">
         @csrf
         <!-- .form-group -->
+        <div class="form-group">
+          <div class="form-label-group">
+              <input id="nik_number" class="form-control" type="text" name="nik_number" :value="old('nik_number')" required autofocus autocomplete="name" >
+              <label for="name">NIK (sesuai KTP) </label>
+              <x-input-error :messages="$errors->get('nik_number')" class="mt-2" />
+          </div>
+        </div>
       <div class="form-group">
             <div class="form-label-group">
                 <input id="name" class="form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" >

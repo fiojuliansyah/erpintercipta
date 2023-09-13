@@ -156,7 +156,6 @@ class ProfileController extends Controller
                 'reference_relation' => $request->reference_relation,
                 'reference_address' => $request->reference_address,
                 'card_ktp' => $path2,
-                'nik_number' => $request->nik_number,
                 'card_family' => $path11,
                 'family_number' => $request->family_number,
                 'card_ijazah' => $path3,

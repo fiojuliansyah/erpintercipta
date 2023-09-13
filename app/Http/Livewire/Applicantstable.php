@@ -53,7 +53,7 @@ class Applicantstable extends Component
                     'reference_job' => $applicant->user->profile['reference_job'],
                     'reference_relation' => $applicant->user->profile['reference_relation'],
                     'reference_address' => $applicant->user->profile['reference_address'],
-                    'nik_number' => $applicant->user->profile['nik_number'],
+                    'nik_number' => $applicant->user->nik_number,
                     'family_number' => $applicant->user->profile['family_number'],
                     'npwp_number' => $applicant->user->profile['npwp_number'],
                     'active_date' => $applicant->user->profile['active_date'],

@@ -153,7 +153,7 @@
                             <strong>SCAN KTP</strong>
                             <br>
                             <br>
-                            <p>{{ $applicant->user?->profile['nik_number'] }}</p>
+                            <p>{{ $applicant->user->nik_number }}</p>
                             <img src="{{ Storage::url($applicant->user?->profile['card_ktp']) }}" width="300" alt="">
                         </div>
                         <div class="col-md-3 mb-4">
