@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- Mirrored from uselooper.com/landing-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 May 2023 06:39:56 GMT -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- End Required meta tags -->
     <!-- Begin SEO tag -->
-    <title> Karir | PT Intercipta Corporation </title>
-    <meta property="og:title" content="Simple &amp; Beautiful Admin Theme">
+    <title> Cipta Karir | PT Intercipta Corporation </title>
+    <meta property="og:title" content="Cipta Karir | PT Intercipta Corporation">
     <meta name="author" content="Beni Arisandi">
     <meta property="og:locale" content="en_US">
-    <meta name="description" content="Responsive admin theme build on top of Bootstrap 4">
-    <meta property="og:description" content="Responsive admin theme build on top of Bootstrap 4">
-    <link rel="canonical" href="index-2.html">
-    <meta property="og:url" content="index-2.html">
-    <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
+    <meta name="description" content="Peluang kerja melalui Cipta Karir by Intercipta">
+    <meta property="og:description" content="Peluang kerja melalui Cipta Karir by Intercipta">
+    <link rel="canonical" href="/">
+    <meta property="og:url" content="/">
+    <meta property="og:site_name" content="Cipta Karir | PT Intercipta Corporation">
     <script type="application/ld+json">
       {
-        "name": "Looper - Bootstrap 4 Admin Theme",
-        "description": "Responsive admin theme build on top of Bootstrap 4",
+        "name": "Cipta Karir | PT Intercipta Corporation",
+        "description": "Peluang kerja melalui Cipta Karir by Intercipta",
         "author":
         {
           "@type": "Person",
-          "name": "Beni Arisandi"
+          "name": "Fio Juliansyah"
         },
         "@type": "WebSite",
         "url": "",
-        "headline": "Simple & Beautiful Admin Theme",
-        "@context": "http://schema.org"
+        "headline": "Peluang kerja melalui Cipta Karir by Intercipta",
+        "@context": "http://karir.interciptacorp.com"
       }
     </script><!-- End SEO tag -->
     <!-- FAVICONS -->
@@ -511,6 +509,4 @@
       gtag('config', 'UA-116692175-1');
     </script>
   </body>
-
-<!-- Mirrored from uselooper.com/landing-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 May 2023 06:40:04 GMT -->
 </html>
