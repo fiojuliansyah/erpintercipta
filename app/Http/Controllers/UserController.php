@@ -6,9 +6,11 @@ use DB;
 use Hash;
 use App\Models\User;
 use Illuminate\Support\Arr;
+use App\Imports\ImportUsers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
     
 class UserController extends Controller
@@ -152,5 +154,11 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new ImportUsers, $request->file('file')->store('files'));
+        return redirect()->back();
     }
 }

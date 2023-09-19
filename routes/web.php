@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
+    Route::post('/import-user',[UserController::class,'import'])->name('import-user');
     Route::resource('profiles', ProfileController::class);
     Route::post ('profiles',[ProfileController::class, 'updateUserDetail']);
     Route::get ('accountsettings',[ProfileController::class, 'indexAccountSettings']);
