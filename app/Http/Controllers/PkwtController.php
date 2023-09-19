@@ -51,6 +51,7 @@ class PkwtController extends Controller
     {
         $pkwt = new Pkwt;
         $pkwt->addendum_id = $request->addendum_id;
+        $pkwt->pkwt_number = $request->pkwt_number;
         $pkwt->user_id = $request->user_id;
         $pkwt->save();
         // Pkwt::create($request->all());

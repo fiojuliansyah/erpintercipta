@@ -15,15 +15,24 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        $companies = [
-            'PT. CIPTA MANDIRI AGUNG JAYA',
-            'PT. INTERCIPTA JASA INDONESIA',
-            'PT. GANA SAKTI INDONESIA',
-            'PT. SARANA ADI NUSAPARKA',
-        ];
-       
-        foreach ($companies as $company) {
-            Company::create(['company' => $company]);
-        }
+        Company::create([
+            'company' => 'PT. INTERCIPTA JASA INDONESIA',
+            'cmpy' => 'IJI'
+        ]);
+
+        Company::create([
+            'company' => 'PT. CIPTA MANDIRI AGUNG JAYA',
+            'cmpy' => 'CMAJ'
+        ]);
+
+        Company::create([
+            'company' => 'PT. GANA SAKTI INDONESIA',
+            'cmpy' => 'GSI'
+        ]);
+
+        Company::create([
+            'company' => 'PT. SARANA ADI NUSAPARKA',
+            'cmpy' => 'SAN'
+        ]);
     }
 }

@@ -47,22 +47,17 @@ class AddendumController extends Controller
     public function store(Request $request)
     {
         $addendum = new Addendum;
-        $addendum->responsible = $request->responsible;
-        $addendum->addendum = $request->addendum;
-        $addendum->attachment = $request->attachment;
-        $addendum->reference_number = $request->reference_number;
         $addendum->company_id = $request->company_id;
-        $addendum->date = $request->date;
-        $addendum->date_abjad = $request->date_abjad;
-        $addendum->month = $request->month;
-        $addendum->month_abjad = $request->month_abjad;
-        $addendum->year = $request->year;
-        $addendum->year_abjad = $request->year_abjad;
+        $addendum->addendum = $request->addendum;
+        $addendum->responsible = $request->responsible;
+        $addendum->attachment_1 = $request->attachment_1;
+        $addendum->attachment_2 = $request->attachment_2;
         $addendum->project = $request->project;
         $addendum->area = $request->area;
-        $addendum->salary = $request->salary;
-        $addendum->allowance = $request->allowance;
         $addendum->place = $request->place;
+        $addendum->year = $request->year;
+        $addendum->romawi = $request->romawi;
+        $addendum->title = $request->title;
         $addendum->save();
 
         return redirect()->route('addendums.index')

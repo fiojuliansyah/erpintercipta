@@ -6,20 +6,21 @@ namespace App\Imports;
 
 use App\Models\Pkwt;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\withStartRow;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
 
 class ImportPkwts implements ToModel, WithStartRow // Implement the WithStartRow interface
 {
     public function model(array $row)
     {
-        if ($row[0] === 'addendum_id' && $row[1] === 'user_id') {
+        if ($row[0] === 'addendum_id' && $row[1] === 'pkwt_number') {
             return null; // Skip the header row
         }
         // Map the Excel columns to the database columns
         return new Pkwt([
             'addendum_id' => $row[0],
-            'user_id' => $row[1]
+            'pkwt_number' => $row[1],
+            'user_id' => $row[2]
             // Add more mappings as needed
         ]);
     }

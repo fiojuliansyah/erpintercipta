@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('company')->nullable();
             $table->string('cmpy')->nullable();
+            $table->string('AR')->nullable();
+            $table->string('AP')->nullable();
             $table->timestamps();
         });
     }

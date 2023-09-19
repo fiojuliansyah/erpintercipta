@@ -31,7 +31,7 @@
                 </li>
               </ol>
             </nav>
-            <h1 class="page-title"> Add Addendum </h1>
+            <h1 class="page-title"> Buat Addendum </h1>
           </header><!-- /.page-title-bar -->
           <!-- .page-section -->
           <div class="page-section">
@@ -52,11 +52,20 @@
                 <form action="{{ route('addendums.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                   <!-- .fieldset -->
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label for="title">Judul</label>
+                        <input type="text" name="title" class="form-control" placeholder="Tulis Disini">
+                        @error('title')
+                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                  </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
-                          <label for="customername">Company</label>
+                          <label for="customername">Perusahaan</label>
                           <select id="company_id" class="custom-select custom-select-lg d-block w-100" name="company_id" required="">
-                          <option value=""> Choose Company </option>
+                          <option value=""> Pilih Perusahaan </option>
                           @foreach ($companies as $company)
                           <option value="{{ $company->id }}"> {{ $company->company }} </option>
                           @endforeach
@@ -64,74 +73,25 @@
                       </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <label for="reference_number">No Surat</label>
-                            <input type="text" name="reference_number" class="form-control" placeholder="Tulis Disini">
-                            @error('reference_number')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                      <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6">
                           <label for="responsible">Penanggung Jawab</label>
                           <input type="text" name="responsible" class="form-control" placeholder="Tulis Disini">
                           @error('responsible')
                               <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                           @enderror
-                      </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                      <div class="row">
+                        </div>
                         <div class="col-md-3">
-                            <label for="date">Tanggal</label>
-                            <input type="text" name="date" class="form-control" placeholder="Tulis Disini">
-                            @error('date')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
+                          <label for="year">Tanggal Romawi</label>
+                          <input type="text" name="romawi" class="form-control" placeholder="Tulis Disini">
+                          @error('romawi')
+                              <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                          @enderror
                         </div>
-                        <div class="col-md-9">
-                            <label for="date_abjad">Tanggal Abjad</label>
-                            <input type="text" name="date_abjad" class="form-control" placeholder="Tulis Disini">
-                            @error('date_abjad')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                      <div class="row">
-                        <div class="col-md-3">
-                            <label for="month">Bulan</label>
-                            <input type="text" name="month" class="form-control" placeholder="Tulis Disini">
-                            @error('month')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-md-9">
-                            <label for="month_abjad">Bulan Abjad</label>
-                            <input type="text" name="month_abjad" class="form-control" placeholder="Tulis Disini">
-                            @error('month_abjad')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                      <div class="row">
                         <div class="col-md-3">
                             <label for="year">Tahun</label>
                             <input type="text" name="year" class="form-control" placeholder="Tulis Disini">
                             @error('year')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-md-9">
-                            <label for="year_abjad">Tahun Abjad</label>
-                            <input type="text" name="year_abjad" class="form-control" placeholder="Tulis Disini">
-                            @error('year_abjad')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                             @enderror
                         </div>
@@ -157,25 +117,6 @@
                       </div>
                     </div>
                     <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                      <div class="row">
-                        <div class="col-md-6">
-                            <label for="salary">Gaji</label>
-                            <input type="text" name="salary" class="form-control" placeholder="Tulis Disini">
-                            @error('salary')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6">
-                            <label for="allowance">Tunjangan</label>
-                            <input type="text" name="allowance" class="form-control" placeholder="Tulis Disini">
-                            @error('allowance')
-                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                            @enderror
-                        </div>
-                      </div>
-                    </div>
-                    <br>
                     <a href="{{asset('/admin/format_import/format_draft_pkwt.doc')}}" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" width="20" alt="">&nbsp;&nbsp;Download Format ADDENDUM</a>
                     <div class="col-xs-20 col-sm-20 col-md-12">
                         <div class="section-block">
@@ -190,15 +131,26 @@
                     </div>
                     <div class="col-xs-20 col-sm-20 col-md-12">
                         <div class="section-block">
-                            <label for="skk">LAMPIRAN TAMBAHAN</label>
+                            <label for="skk">LAMPIRAN TAMBAHAN 1</label>
                             <p class="text-muted"> Buat lampiran Tambahan dengan kesepakatan proyek atau area </p>
                         </div><!-- /.section-block -->
                         <!-- .card -->
                         <div class="card card-fluid">
                             <!-- #summernote-basic -->
-                            <textarea name="attachment" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
+                            <textarea name="attachment_1" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
                         </div>
                     </div>
+                    <div class="col-xs-20 col-sm-20 col-md-12">
+                      <div class="section-block">
+                          <label for="skk">LAMPIRAN TAMBAHAN 2</label>
+                          <p class="text-muted"> Buat lampiran Tambahan dengan kesepakatan proyek atau area </p>
+                      </div><!-- /.section-block -->
+                      <!-- .card -->
+                      <div class="card card-fluid">
+                          <!-- #summernote-basic -->
+                          <textarea name="attachment_2" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
+                      </div>
+                  </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form><!-- /.form -->
               </div><!-- /.card-body -->

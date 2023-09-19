@@ -85,7 +85,7 @@
                 <th width="50px"></th>
                 <th>No</th>
                 <th>Perusahaan</th>
-                <th>No Surat</th>
+                <th>Addendum</th>
                 <th>ID Pelamar</th>
                 <th>Nama</th>
                 <th>TTD Pelamar</th>
@@ -103,8 +103,8 @@
                     <input type="checkbox" wire:model="selectedIds" value="{{ $pkwt->id }}">
                   </td>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
-                  <td>{{ $pkwt->addendum?->company['company'] }}</td>
-                  <td>{{ $pkwt->addendum?->reference_number }}</td>
+                  <td>{{ $pkwt->addendum?->company['cmpy'] }}</td>
+                  <td>{{ $pkwt->addendum?->title }}</td>
                   <td>APPLICANT - {{ str_pad($pkwt->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
                   <td>{{ $pkwt->user['name'] }}</td>
                   <td>

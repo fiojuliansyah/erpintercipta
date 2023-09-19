@@ -12,8 +12,8 @@
                 <th>No</th>
                 <th>Addindum ID</th>
                 <th>Perusahaan</th>
-                <th>Proyek</th>
-                <th>Area</th>
+                <th>judul</th>
+                <th>Project</th>
                 <th>Addendum</th>
                 <th>Lampiran</th>
                 <th width="100px"></th>
@@ -27,8 +27,8 @@
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                   <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
                   <td>{{ $addendum->company['company'] }}</td>
+                  <td>{{ $addendum->title }}</td>
                   <td>{{ $addendum->project }}</td>
-                  <td>{{ $addendum->area }}</td>
                   <td><button type="button" class="btn btn-success ml-auto" data-toggle="modal" data-target="#addendum">View Addendum</button></td>
                   <div class="modal fade" id="addendum" tabindex="-1" role="dialog" aria-labelledby="addendum" aria-hidden="true">
                     <!-- .modal-dialog -->

@@ -45,6 +45,10 @@
                   <fieldset>
                     <legend>Add User</legend>
                     <div class="form-group">
+                      <label for="nik_number">No NIK</label> 
+                      {!! Form::text('nik_number', null, ['placeholder' => 'No NIK', 'class' => 'form-control']) !!}
+                    </div>
+                    <div class="form-group">
                         <label for="name">Name</label> 
                         {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
                     </div>
