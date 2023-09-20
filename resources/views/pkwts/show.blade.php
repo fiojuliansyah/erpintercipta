@@ -201,13 +201,13 @@
   // Ganti teks dalam elemen tersebut
   if (element) {
       element.innerHTML = element.innerHTML
-          .replace('{NO_SURAT}', '<b>No. {{ Auth::user()->pkwt['pkwt_number'] }}/{{ Auth::user()->pkwt->addendum?->company['cmpy'] }}/HR-{{ Auth::user()->pkwt->addendum?->area }}/{{ Auth::user()->pkwt->addendum->romawi }}/{{ Auth::user()->pkwt->addendum?->year }}</b>')
-          .replace('{PENANGGUNG_JAWAB}', '{{ Auth::user()->pkwt?->addendum['responsible'] }}')
-          .replace('{PELAMAR}', '{{ Auth::user()->name }}')
-          .replace('{JENIS_KELAMIN}', '{{ Auth::user()->profile['gender'] }}')
-          .replace('{TTL}', '{{ Auth::user()->profile['birth_place'] }}, {{ Auth::user()->profile['birth_date'] }}')
-          .replace('{NIK}', '{{ Auth::user()->nik_number }}')
-          .replace('{ALAMAT}', '{{ Auth::user()->profile['address'] }}')
+          .replace('{NO_SURAT}', '<b>No. {{ $pkwt->pkwt_number }}/{{ $pkwt->addendum?->company['cmpy'] }}/HR-{{ $pkwt->addendum['area'] }}/{{ $pkwt->addendum['romawi'] }}/{{ $pkwt->addendum['year'] }}</b>')
+          .replace('{PENANGGUNG_JAWAB}', '{{ $pkwt->addendum['responsible'] }}')
+          .replace('{PELAMAR}', '{{ $pkwt->user['name'] }}')
+          .replace('{JENIS_KELAMIN}', '{{ $pkwt->user?->profile['gender'] }}')
+          .replace('{TTL}', '{{ $pkwt->user?->profile['birth_place'] }}, {{ $pkwt->user?->profile['birth_date'] }}')
+          .replace('{NIK}', '{{ $pkwt->user['nik_number'] }}')
+          .replace('{ALAMAT}', '{{ $pkwt->user?->profile['address'] }}')
   }
 </script>
 
