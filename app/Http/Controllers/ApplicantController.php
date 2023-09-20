@@ -14,7 +14,6 @@ class ApplicantController extends Controller
     function __construct()
     {
          $this->middleware('permission:applicant-list|applicant-create|applicant-edit|applicant-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:applicant-create', ['only' => ['create','store']]);
          $this->middleware('permission:applicant-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:applicant-delete', ['only' => ['destroy']]);
     }
