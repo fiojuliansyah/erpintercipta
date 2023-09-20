@@ -65,15 +65,7 @@
           <!-- .hamburger -->
           <button class="hamburger hamburger-squeeze hamburger-light d-flex d-lg-none" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button> <!-- /.hamburger -->
           <!-- .navbar-brand -->
-          <a class="navbar-brand ml-auto mr-0" href="#"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="28" viewbox="0 0 351 100">
-              <defs>
-                <path id="a" d="M156.538 45.644v1.04a6.347 6.347 0 0 1-1.847 3.98L127.708 77.67a6.338 6.338 0 0 1-3.862 1.839h-1.272a6.34 6.34 0 0 1-3.862-1.839L91.728 50.664a6.353 6.353 0 0 1 0-9l9.11-9.117-2.136-2.138a3.171 3.171 0 0 0-4.498 0L80.711 43.913a3.177 3.177 0 0 0-.043 4.453l-.002.003.048.047 24.733 24.754-4.497 4.5a6.339 6.339 0 0 1-3.863 1.84h-1.27a6.337 6.337 0 0 1-3.863-1.84L64.971 50.665a6.353 6.353 0 0 1 0-9l26.983-27.008a6.336 6.336 0 0 1 4.498-1.869c1.626 0 3.252.622 4.498 1.87l26.986 27.006a6.353 6.353 0 0 1 0 9l-9.11 9.117 2.136 2.138a3.171 3.171 0 0 0 4.498 0l13.49-13.504a3.177 3.177 0 0 0 .046-4.453l.002-.002-.047-.048-24.737-24.754 4.498-4.5a6.344 6.344 0 0 1 8.996 0l26.983 27.006a6.347 6.347 0 0 1 1.847 3.98zm-46.707-4.095l-2.362 2.364a3.178 3.178 0 0 0 0 4.501l2.362 2.364 2.361-2.364a3.178 3.178 0 0 0 0-4.501l-2.361-2.364z"></path>
-              </defs>
-              <g fill="none" fill-rule="evenodd">
-                <path fill="currentColor" fill-rule="nonzero" d="M39.252 80.385c-13.817 0-21.06-8.915-21.06-22.955V13.862H.81V.936h33.762V58.1c0 6.797 4.346 9.026 9.026 9.026 2.563 0 5.237-.446 8.58-1.783l3.677 12.034c-5.794 1.894-9.694 3.009-16.603 3.009zM164.213 99.55V23.78h13.372l1.225 5.571h.335c4.457-4.011 10.585-6.908 16.491-6.908 13.817 0 22.174 11.031 22.174 28.08 0 18.943-11.588 29.863-23.957 29.863-4.903 0-9.694-2.117-13.594-6.017h-.446l.78 9.025V99.55h-16.38zm25.852-32.537c6.128 0 10.92-4.903 10.92-16.268 0-9.917-3.232-14.932-10.14-14.932-3.566 0-6.797 1.56-10.252 5.126v22.397c3.12 2.674 6.686 3.677 9.472 3.677zm69.643 13.372c-17.272 0-30.643-10.586-30.643-28.972 0-18.163 13.928-28.971 28.748-28.971 17.049 0 26.075 11.477 26.075 26.52 0 3.008-.558 6.017-.78 7.354h-37.663c1.56 8.023 7.465 11.589 16.491 11.589 5.014 0 9.36-1.337 14.263-3.9l5.46 9.917c-6.351 4.011-14.597 6.463-21.951 6.463zm-1.338-45.463c-6.462 0-11.031 3.454-12.702 10.363h23.622c-.78-6.797-4.568-10.363-10.92-10.363zm44.238 44.126V23.779h13.371l1.337 12.034h.334c5.46-9.025 13.595-13.371 22.398-13.371 4.902 0 7.465.78 10.697 2.228l-3.343 13.706c-3.454-1.003-5.683-1.56-9.806-1.56-6.797 0-13.928 3.566-18.608 13.483v28.749h-16.38z"></path>
-                <use class="fill-primary" xlink:href="#a"></use>
-              </g>
-            </svg></a> <!-- /.navbar-brand -->
+          <img src="{{asset('/admin/images/cipta-karir.png')}}" width="180" alt="">  <!-- /.navbar-brand -->
           <a class="navbar-btn btn btn-subtle-primary ml-auto order-lg-2" href="{{ route('jobportal') }}" target="_blank">Cari Lowongan!</a> <!-- .navbar-collapse -->
           <div class="navbar-collapse collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav mx-auto">
@@ -115,8 +107,8 @@
           <div class="row">
             <!-- .col -->
             <div class="col-12 col-md-8 offset-md-2 text-center">
-              <h2> With You From the Ground Up </h2>
-              <p class="lead text-muted"> Architected as an extension of Bootstrap, built to reach your goals. </p>
+              <h2> Lowongan Pekerjaan Terbaru </h2>
+              <p class="lead text-muted"> Informasi tentang lowongan pekerjaan dari berbagai perusahaan yang bekerja sama dengan Ciptakerja. </p>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container -->
@@ -133,29 +125,12 @@
             </div><!-- /.col-md-6 -->
             <!-- .col-md-6 -->
             <div class="col-12 col-md-6 text-center text-sm-left">
-              <h3 class="mb-4"> Increase your productivity </h3>
-              <p class="text-muted font-size-lg mb-4"> Create stunning UI with tons of our components. Our build system allows you to save a lot of time as well. </p><a href="#" class="btn btn-subtle-primary">Browse all components</a>
+              <h3 class="mb-4"> Platform pencarian kerja yang inovatif </h3>
+              <p class="text-muted font-size-lg mb-4"> Peluang Anda dalam mencari pekerjaan, termasuk jaringan sosial dan platform online. </p><a href="{{ route('karir') }}" class="btn btn-subtle-primary">Cari Lowongan</a>
             </div><!-- /.col-md-6 -->
           </div><!-- /.row -->
         </div><!-- /.container -->
       </section>
-      <section class="pt-5">
-        <!-- .container -->
-        <div class="container">
-          <!-- .row -->
-          <div class="row align-items-center">
-            <!-- .col-md-6 -->
-            <div class="col-12 col-md-6 order-md-2" data-aos="fade-left">
-              <img class="img-fluid mb-4 mb-md-0" src="{{ asset('') }}admin/images/illustration/testimony.svg" alt="">
-            </div><!-- /.col-md-6 -->
-            <!-- .col-md-6 -->
-            <div class="col-12 col-md-6 order-md-1 text-center text-sm-left">
-              <h3 class="mb-4"> Grow your business </h3>
-              <p class="text-muted font-size-lg mb-4"> With a user-friendly, simple and responsive design, you can easily attract your prospective clients. Don't worry! our team will always be behind you if needed. </p><a href="#" class="btn btn-subtle-primary">Explore details</a>
-            </div><!-- /.col-md-6 -->
-          </div><!-- /.row -->
-        </div><!-- /.container -->
-      </section><!-- /feature -->
       <!-- divider -->
       <section class="position-relative">
         <!-- wave2.svg -->
@@ -277,8 +252,8 @@
         </div><!-- /.sticker -->
         <!-- .container -->
         <div class="container position-relative mb-5">
-          <h2 class="text-center"> You are in a good company </h2>
-          <p class="text-center text-muted font-size-lg mb-5"> We are nothing without you! Thanks to all of you who have contributed in every update. </p><!-- .row -->
+          <h2 class="text-center"> Berbagai industri dan sektor pekerjaan </h2>
+          <p class="text-center text-muted font-size-lg mb-5"> Beberapa Perusahaan yang bekerjasama dengan CiptaKarir by InterCipta Corporation </p><!-- .row -->
           <div class="row mb-6">
             <!-- .col -->
             <div class="col-12 col-md-8 offset-md-2 py-3">
@@ -317,30 +292,6 @@
               </div><!-- /.row -->
             </div><!-- /.col -->
           </div><!-- /.row -->
-          <!-- .row -->
-          <div class="row">
-            <!-- .col -->
-            <div class="col-12 col-md-6 col-lg-4 offset-lg-1 mr-md-0">
-              <!-- .card -->
-              <div class="card shadow-none rounded-lg mb-0 mr-md-n5 mt-md-n5 scale-125" data-aos="fade-in">
-                <img class="img-fluid rounded-lg" src="{{ asset('') }}admin/images/dummy/happy-client.jpg" alt="">
-              </div><!-- /.card -->
-            </div><!-- /.col -->
-            <!-- .col -->
-            <div class="col-12 col-md-6 col-lg-5 ml-md-0">
-              <!-- .card -->
-              <div class="card shadow-lg rounded-lg p-4 ml-md-n5 mt-md-5" data-aos="fade-up">
-                <blockquote class="blockquote text-center border-0 p-3 p-md-4">
-                  <figure>
-                    <img class="mr-2" src="{{ asset('') }}admin/images/decoration/quote.svg" alt="" height="32">
-                  </figure>
-                  <p> I am a Looper enthusiast in many ways. First, the design is modern and essential, yet very pleasant and rich of refined graphics. Plus, it has some serious gems like rich-text editor, timeline activity, autocompletes and many other components that literally boost your creativity and the features you can put in a website. On top of all that, the creator offers excellent support on a few hours response time! </p>
-                  <footer class="blockquote-footer"> Marco, through <cite title="Bootstrap Themes">Bootstrap Themes</cite>
-                  </footer>
-                </blockquote>
-              </div><!-- /.card -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
         </div><!-- /.container -->
       </section><!-- /testimonials -->
       <!-- call to action -->
@@ -366,7 +317,7 @@
             </div><!-- /.sticker -->
             <!-- .card-body -->
             <div class="card-body d-md-flex justify-content-between align-items-center text-center position-relative">
-              <h3 class="font-weight-normal mb-3 mb-md-0 mr-md-3"> Got a question about Looper? </h3><a class="btn btn-lg btn-primary shadow" href="https://goo.gl/forms/2jb1vgCKkg8sdqld2">Contact us <i class="fa fa-angle-right ml-2"></i></a>
+              <h3 class="font-weight-normal mb-3 mb-md-0 mr-md-3"> Ada pertanyaan tentang lowongan pekerjaan? </h3><a class="btn btn-lg btn-primary shadow" href="#">hubungi kami <i class="fa fa-angle-right ml-2"></i></a>
             </div><!-- /.card-body -->
           </div><!-- /.card -->
         </div><!-- /.container -->
@@ -380,15 +331,7 @@
             <!-- .col -->
             <div class="col-12 col-md-4 col-lg-3">
               <!-- Brand -->
-              <svg class="mb-3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="28" viewbox="0 0 351 100">
-                <defs>
-                  <path id="a" d="M156.538 45.644v1.04a6.347 6.347 0 0 1-1.847 3.98L127.708 77.67a6.338 6.338 0 0 1-3.862 1.839h-1.272a6.34 6.34 0 0 1-3.862-1.839L91.728 50.664a6.353 6.353 0 0 1 0-9l9.11-9.117-2.136-2.138a3.171 3.171 0 0 0-4.498 0L80.711 43.913a3.177 3.177 0 0 0-.043 4.453l-.002.003.048.047 24.733 24.754-4.497 4.5a6.339 6.339 0 0 1-3.863 1.84h-1.27a6.337 6.337 0 0 1-3.863-1.84L64.971 50.665a6.353 6.353 0 0 1 0-9l26.983-27.008a6.336 6.336 0 0 1 4.498-1.869c1.626 0 3.252.622 4.498 1.87l26.986 27.006a6.353 6.353 0 0 1 0 9l-9.11 9.117 2.136 2.138a3.171 3.171 0 0 0 4.498 0l13.49-13.504a3.177 3.177 0 0 0 .046-4.453l.002-.002-.047-.048-24.737-24.754 4.498-4.5a6.344 6.344 0 0 1 8.996 0l26.983 27.006a6.347 6.347 0 0 1 1.847 3.98zm-46.707-4.095l-2.362 2.364a3.178 3.178 0 0 0 0 4.501l2.362 2.364 2.361-2.364a3.178 3.178 0 0 0 0-4.501l-2.361-2.364z"></path>
-                </defs>
-                <g fill="none" fill-rule="evenodd">
-                  <path fill="currentColor" fill-rule="nonzero" d="M39.252 80.385c-13.817 0-21.06-8.915-21.06-22.955V13.862H.81V.936h33.762V58.1c0 6.797 4.346 9.026 9.026 9.026 2.563 0 5.237-.446 8.58-1.783l3.677 12.034c-5.794 1.894-9.694 3.009-16.603 3.009zM164.213 99.55V23.78h13.372l1.225 5.571h.335c4.457-4.011 10.585-6.908 16.491-6.908 13.817 0 22.174 11.031 22.174 28.08 0 18.943-11.588 29.863-23.957 29.863-4.903 0-9.694-2.117-13.594-6.017h-.446l.78 9.025V99.55h-16.38zm25.852-32.537c6.128 0 10.92-4.903 10.92-16.268 0-9.917-3.232-14.932-10.14-14.932-3.566 0-6.797 1.56-10.252 5.126v22.397c3.12 2.674 6.686 3.677 9.472 3.677zm69.643 13.372c-17.272 0-30.643-10.586-30.643-28.972 0-18.163 13.928-28.971 28.748-28.971 17.049 0 26.075 11.477 26.075 26.52 0 3.008-.558 6.017-.78 7.354h-37.663c1.56 8.023 7.465 11.589 16.491 11.589 5.014 0 9.36-1.337 14.263-3.9l5.46 9.917c-6.351 4.011-14.597 6.463-21.951 6.463zm-1.338-45.463c-6.462 0-11.031 3.454-12.702 10.363h23.622c-.78-6.797-4.568-10.363-10.92-10.363zm44.238 44.126V23.779h13.371l1.337 12.034h.334c5.46-9.025 13.595-13.371 22.398-13.371 4.902 0 7.465.78 10.697 2.228l-3.343 13.706c-3.454-1.003-5.683-1.56-9.806-1.56-6.797 0-13.928 3.566-18.608 13.483v28.749h-16.38z"></path>
-                  <use class="fill-primary" xlink:href="#a"></use>
-                </g>
-              </svg> <!-- Description -->
+              <img src="{{asset('/admin/images/cipta-karir.png')}}" width="180" alt=""> <!-- Description -->
               <p class="text-muted mb-2"> The theme for your project. </p>
               <address class="text-muted">
                 <abbr title="US phone code">+1</abbr> (234) 567-8910 </address><!-- Social -->
@@ -410,81 +353,24 @@
             <!-- .col -->
             <div class="col-6 col-md-4 col-lg-2 mb-3 mb-md-0">
               <!-- Heading -->
-              <h6 class="mb-4"> Company </h6><!-- links -->
+              <h6 class="mb-4"> Perusahaan </h6><!-- links -->
               <ul class="list-unstyled">
                 <li class="mb-3">
-                  <a href="#" class="text-muted">About Us</a>
+                  <a href="#" class="text-muted">Karir</a>
                 </li>
                 <li class="mb-3">
-                  <a href="#" class="text-muted">Blog</a>
+                  <a href="#" class="text-muted">Login</a>
                 </li>
                 <li class="mb-3">
-                  <a href="#" class="text-muted">Knowledge Base</a>
+                  <a href="#" class="text-muted">Daftar</a>
                 </li>
                 <li class="mb-3">
-                  <a href="#" class="text-muted">Press</a>
-                </li>
-              </ul>
-            </div><!-- /.col -->
-            <!-- .col -->
-            <div class="col-6 col-md-4 col-lg-2 mb-3 mb-md-0">
-              <!-- Heading -->
-              <h6 class="mb-4"> Product </h6><!-- links -->
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <a href="#" class="text-muted">SaaS</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">Project Management</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">eCommerce</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">CRM</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">CMS</a>
-                </li>
-              </ul>
-            </div><!-- /.col -->
-            <!-- .col -->
-            <div class="col-6 col-md-4 col-lg-2 mb-3 mb-md-0">
-              <!-- Heading -->
-              <h6 class="mb-4"> Help </h6><!-- links -->
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <a href="#" class="text-muted">Help Center</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">Documentation</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">Technical Support</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">FAQ</a>
-                </li>
-              </ul>
-            </div><!-- /.col -->
-            <!-- .col -->
-            <div class="col-6 col-md-4 col-lg-2 mb-3 mb-md-0">
-              <!-- Heading -->
-              <h6 class="mb-4"> Legal </h6><!-- links -->
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <a href="#" class="text-muted">Privacy Policy</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">Terms of Service</a>
-                </li>
-                <li class="mb-3">
-                  <a href="#" class="text-muted">Cookies Policy</a>
+                  <a href="#" class="text-muted">hubungi</a>
                 </li>
               </ul>
             </div><!-- /.col -->
           </div><!-- /.row -->
-          <p class="text-muted text-center mt-5"> © 2020 Looper, Inc. All rights reserved. </p>
+          <p class="text-muted text-center mt-5"> © 2023 Cipta Karir, Intercipta Corporation All rights reserved. </p>
         </div><!-- /.container -->
       </section><!-- /footer -->
     </main><!-- /.app -->

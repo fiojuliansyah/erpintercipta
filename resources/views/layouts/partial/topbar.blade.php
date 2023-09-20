@@ -5,7 +5,7 @@
       <div class="top-bar-brand">
         <!-- toggle aside menu -->
         <button class="hamburger hamburger-squeeze mr-2" type="button" data-toggle="aside-menu" aria-label="toggle aside menu"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button> <!-- /toggle aside menu -->
-        <img src="https://production.interciptacorp.com/company-page/images/logo.png" width="140" alt="">
+        <img src="{{asset('/admin/images/cipta-karir.png')}}" width="140" alt="">
           {{-- <img src="https://production.interciptacorp.com/company-page/images/logo.png" alt=""> --}}
       </div><!-- /.top-bar-brand -->
       <!-- .top-bar-list -->
