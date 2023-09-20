@@ -44,6 +44,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
 
 Route::middleware('auth')->group(function () {
     Route::resource('dashboard', DashboardController::class);
+    Route::get('/dashboard-employee', [DashboardController::class, 'dashboardEmployee']);
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
 
 

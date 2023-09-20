@@ -33,20 +33,8 @@
           <ul class="menu">
             <!-- .menu-item -->
             <li class="menu-item {{ Request::path() == 'dashboard' ? 'has-active' : '' }}">
-              <a href="{{ url('/dashboard') }}" class="menu-link"><span class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
+              <a href="{{ url('/dashboard-employee') }}" class="menu-link"><span class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
             </li><!-- /.menu-item -->
-            <li class="menu-item {{ Request::path() == 'jobportal' ? 'has-active' : '' }}">
-              <a href="{{ route('jobportal') }}" class="menu-link"><span class="menu-icon 	fas fa-briefcase"></span> <span class="menu-text">Job Portal</span></a>
-            </li>
-            @if (Auth::user()->signature != null)   
-            @else
-            <li class="menu-item {{ Request::path() == 'pkwt-show' ? 'has-active' : '' }}">
-              <a href="{{ route('pkwt-show') }}" class="menu-link"><span class="menu-icon 	fas fa-file-alt"></span> <span class="menu-text">Tanda Tangan</span></a>
-            </li>  
-            @endif
-            <li class="menu-item {{ Request::path() == 'my-resume' ? 'has-active' : '' }}">
-              <a href="{{ route('my-resume') }}" class="menu-link" target="_blank"><span class="menu-icon 	fas fa-file-alt"></span> <span class="menu-text">Resume Saya</span></a>
-            </li>  
             <!-- .menu-item -->
             @can('project-menu')
             <li class="menu-header">Project Management</li>

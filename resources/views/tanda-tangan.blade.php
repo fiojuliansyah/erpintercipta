@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.main')
 
 @section('title', 'PKWT & SKK Detail | InterCipta ERP Management')
 

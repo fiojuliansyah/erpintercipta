@@ -43,6 +43,10 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
 
+        if ($user->hasRole('employee')) {
+            return redirect('/dashboard-employee');
+        }
+
         $existingAvatar = $user->profile->avatar ?? null;
         $existingCardKTP = $user->profile->card_ktp ?? null;
         $existingCardIjazah = $user->profile->card_ijazah ?? null;

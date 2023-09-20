@@ -70,6 +70,12 @@ class DashboardController extends Controller
         return view('my-resume',compact('applicant'));
     }
 
+    public function dashboardEmployee()
+    {
+        $user = Auth::user();
+        return view('dashboard-employee' ,compact('user'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

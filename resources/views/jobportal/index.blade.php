@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.main')
 
 @section('title', 'Job Portal | InterCipta ERP Management')
 
@@ -34,7 +34,7 @@
                     @if($user->profile?->avatar != null)
                     <img src="{{ Storage::url($user ? $user->profile?->avatar : '') }}" alt="">     
                     @else
-                    <img src="{{asset('/storage/avatars/default.png')}}"  alt="">      
+                    <img src="{{asset('/admin/images/avatars/team4.jpg')}}"  alt="">      
                     @endif
                   </a>
                   <span class="tile tile-circle tile-xs" data-toggle="tooltip" title="Public">
