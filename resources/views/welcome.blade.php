@@ -31,7 +31,7 @@
     </script><!-- End SEO tag -->
     <!-- FAVICONS -->
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('') }}admin/apple-touch-icon.png">
-    <link rel="shortcut icon" href="{{ asset('') }}admin/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('') }}admin/apple-touch-icon.png">
     <meta name="theme-color" content="#3063A0"><!-- End FAVICONS -->
     <!-- GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600" rel="stylesheet"><!-- End GOOGLE FONT -->
