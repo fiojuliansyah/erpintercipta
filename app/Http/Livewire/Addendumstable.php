@@ -22,7 +22,7 @@ class Addendumstable extends Component
     {
         if ($this->search != '') {
             $data = Addendum::where('addendum', 'like', '%' . $this->search . '%')
-                ->orWhere('skk', 'like', '%' . $this->search . '%')
+                ->orWhereRelation('company', 'company', 'like', '%' . $this->search . '%')
                 ->paginate(10);
         } else {
             $data = Addendum::paginate(10);
