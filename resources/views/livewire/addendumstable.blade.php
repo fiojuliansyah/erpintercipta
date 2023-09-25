@@ -67,7 +67,7 @@
                   </div>
                   <td class="align-middle text-right">
                   <form action="{{ route('addendums.destroy',$addendum->id) }}" method="POST">
-                    <a href="{{ route('addendums.show',$addendum->id) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> <span class="sr-only">Show</span></a>
+                    <a href="{{ route('addendums.edit',$addendum->id) }}" class="btn btn-sm btn-info"><i class="fas fa-pencil-alt"></i> <span class="sr-only">Show</span></a>
                     @csrf
                     @method('DELETE')
                     @can('addendum-delete')

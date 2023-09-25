@@ -83,7 +83,8 @@ class AddendumController extends Controller
      */
     public function edit(Addendum $addendum)
     {
-        //
+        $companies = Company::all();
+        return view('addendums.edit', compact('companies','addendum'));
     }
 
     /**
@@ -93,9 +94,24 @@ class AddendumController extends Controller
      * @param  \App\Models\Addendum  $addendum
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAddendumRequest $request, Addendum $addendum)
+    public function update(Request $request, $id)
     {
-        //
+        $addendum = Addendum::find($id);
+        $addendum->company_id = $request->company_id;
+        $addendum->addendum = $request->addendum;
+        $addendum->responsible = $request->responsible;
+        $addendum->attachment_1 = $request->attachment_1;
+        $addendum->attachment_2 = $request->attachment_2;
+        $addendum->project = $request->project;
+        $addendum->area = $request->area;
+        $addendum->place = $request->place;
+        $addendum->year = $request->year;
+        $addendum->romawi = $request->romawi;
+        $addendum->title = $request->title;
+        $addendum->save();
+        // $crud->update($request->all());
+        return redirect()->route('addendums.index')
+                        ->with('success','Addendum updated successfully');
     }
 
     /**
