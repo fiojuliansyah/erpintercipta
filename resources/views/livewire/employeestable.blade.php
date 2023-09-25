@@ -12,7 +12,7 @@
               <th>No</th>
               <th class="text-left"> Name </th>
               <th class="text-left"> Email </th>
-              <th style="width:100px; min-width:100px;"> &nbsp; </th>
+              <th> &nbsp; </th>
             </tr>
           </thead>
           <!-- /thead -->
@@ -24,7 +24,8 @@
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
                   <td class="align-middle text-right">
-                  <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                  <form action="{{ route('employee.destroy',$user->id) }}" method="POST">
+                    <a href="{{ route('users.edit',$user->id) }}" class="btn btn-sm btn-secondary"><i class="fa fa-user"></i> <span class="sr-only">Edit</span></a>
                     <a href="{{ route('users.edit',$user->id) }}" class="btn btn-sm btn-info"><i class="fa fa-pencil-alt"></i> <span class="sr-only">Edit</span></a>
                     @csrf
                     @method('DELETE')

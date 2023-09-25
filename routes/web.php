@@ -48,7 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('dashboard', DashboardController::class);
     Route::get('/admin/dashboard', [DashboardController::class, 'dashboardEmployee']);
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
-    Route::get('/employee/list', [EmployeeController::class, 'index'])->name('employee-list');
+    Route::get('/employee/list', [EmployeeController::class, 'index'])->name('employee.index');
+    Route::delete('employee/list/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
     Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
     Route::get('/pkwt', [DashboardController::class, 'pkwt'])->name('pkwt-show');
