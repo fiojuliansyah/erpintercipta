@@ -101,7 +101,8 @@ class PermissionSeeder extends Seeder
             'addendum-list',
             'addendum-create',
             'addendum-edit',
-            'addendum-delete'
+            'addendum-delete',
+            'employee-list'
         ];
        
         foreach ($permissions as $permission) {

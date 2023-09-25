@@ -85,9 +85,11 @@
                 @endcan
               </ul><!-- /child menu -->
             </li>
+            @can('employee-list') 
             <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
               <a href="{{ route('employee-list') }}" class="menu-link"><span class="menu-icon fas fa-user-friends"></span> <span class="menu-text">Employee List</span></a>
             </li>
+            @endcan
 
             <!-- .menu-header -->
             @can('admin-only')
