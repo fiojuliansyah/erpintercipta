@@ -25,8 +25,8 @@
                   <td>{{ $user->email }}</td>
                   <td class="align-middle text-right">
                   <form action="{{ route('employee.destroy',$user->id) }}" method="POST">
-                    <a href="{{ route('users.edit',$user->id) }}" class="btn btn-sm btn-secondary"><i class="fa fa-user"></i> <span class="sr-only">Edit</span></a>
-                    <a href="{{ route('users.edit',$user->id) }}" class="btn btn-sm btn-info"><i class="fa fa-pencil-alt"></i> <span class="sr-only">Edit</span></a>
+                    <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-user"></i> <span class="sr-only">Edit</span></a>
+                    <a href="#" class="btn btn-sm btn-info"><i class="fa fa-pencil-alt"></i> <span class="sr-only">Edit</span></a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> <span class="sr-only">Remove</span></button>
