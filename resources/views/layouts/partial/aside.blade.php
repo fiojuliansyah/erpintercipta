@@ -121,6 +121,9 @@
             <li class="menu-item">
               <a href="{{ url('/roles') }}" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Roles</span></a>
             </li>
+            <li class="menu-item">
+              <a href="{{ url('/permissions') }}" class="menu-link"><span class="menu-icon oi oi-wrench"></span> <span class="menu-text">Permissions</span></a>
+            </li>
             @endcan
           </ul><!-- /.menu -->
         </nav><!-- /.stacked-menu -->

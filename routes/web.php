@@ -20,6 +20,7 @@ use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AccounttypeController;
 use App\Http\Controllers\TaxcategoryController;
 use App\Http\Controllers\ChartofaccountController;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/my-resume', [DashboardController::class, 'MyResume'])->name('my-resume');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
     Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
     Route::resource('users', UserController::class);
     Route::post('/import-user',[UserController::class,'import'])->name('import-user');
     Route::resource('profiles', ProfileController::class);
