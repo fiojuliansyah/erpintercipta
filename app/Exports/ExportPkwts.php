@@ -30,14 +30,10 @@ class ExportPkwts implements FromCollection, WithHeadings
             'No Surat',
             'Pelamar',
             'Perusahaan',
-            'Tanggal',
             'Bulan',
             'Tahun',
             'Proyek',
             'Area',
-            'Gaji',
-            'Insentif',
-            'Ditanda Tangan Di',
             // Add more headings as needed
         ];
     }

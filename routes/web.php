@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SignatureController;
@@ -44,9 +45,9 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
 
 Route::middleware('auth')->group(function () {
     Route::resource('dashboard', DashboardController::class);
-    Route::get('/dashboard-employee', [DashboardController::class, 'dashboardEmployee']);
+    Route::get('/admin/dashboard', [DashboardController::class, 'dashboardEmployee']);
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
-
+    Route::get('/employee/list', [EmployeeController::class, 'index'])->name('employee-list');
 
     Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
     Route::get('/pkwt', [DashboardController::class, 'pkwt'])->name('pkwt-show');

@@ -34,17 +34,13 @@ class Pkwtstable extends Component
             $modifiedData = $selectedData->map(function ($pkwt) {
                 return [
                     'addendum_id' => $pkwt->addendum_id,
-                    'user_id' => $pkwt->user['name'],
-                    'reference_number' => $pkwt->reference_number,
-                    'company_id' => $pkwt->company['company'],
-                    'date' => $pkwt->date,
-                    'month' => $pkwt->month,
-                    'year' => $pkwt->year,
-                    'project' => $pkwt->project,
-                    'area' => $pkwt->area,
-                    'salary' => $pkwt->salary,
-                    'allowance' => $pkwt->allowance,
-                    'place' => $pkwt->place,
+                    'reference_number' => 'No. ' . $pkwt->pkwt_number . '/' . ($pkwt->addendum ? $pkwt->addendum->company['cmpy'] : '') . '/HR-' . ($pkwt->addendum ? $pkwt->addendum['area'] : '') . '/' . ($pkwt->addendum ? $pkwt->addendum['romawi'] : '') . '/' . ($pkwt->addendum ? $pkwt->addendum['year'] : ''),
+                    'user_id' => isset($pkwt->user['name']) ? $pkwt->user['name'] : null,
+                    'company_id' => isset($pkwt->addendum?->company['company']) ? $pkwt->addendum?->company['company'] : null,
+                    'month' => $pkwt->addendum['romawi'],
+                    'year' => $pkwt->addendum['year'],
+                    'project' => $pkwt->addendum['project'],
+                    'area' => $pkwt->addendum['area'],
                 ];
             });
     

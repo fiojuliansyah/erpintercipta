@@ -33,7 +33,7 @@
           <ul class="menu">
             <!-- .menu-item -->
             <li class="menu-item {{ Request::path() == 'dashboard' ? 'has-active' : '' }}">
-              <a href="{{ url('/dashboard-employee') }}" class="menu-link"><span class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
+              <a href="{{ url('/admin/dashboard') }}" class="menu-link"><span class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
             </li><!-- /.menu-item -->
             <!-- .menu-item -->
             @can('project-menu')
@@ -42,7 +42,7 @@
               <a href="{{ route('projects.create') }}" class="menu-link"><span class="menu-icon fas fa-city"></span> <span class="menu-text">Project Stepper</span></a>
             </li>
             <li class="menu-item has-child">
-              <a href="#" class="menu-link"><span class="menu-icon fas fa-database"></span> <span class="menu-text">Data Master</span></a> <!-- child menu -->
+              <a href="#" class="menu-link  {{ Request::path() == '#' ? 'has-active' : '' }}"><span class="menu-icon fas fa-database"></span> <span class="menu-text">Data Master</span></a> <!-- child menu -->
               <ul class="menu">
                 <li class="menu-item {{ Request::path() == 'customers' ? 'has-active' : '' }}">
                   <a href="{{ url('/customers') }}" class="menu-link">Customers</a>
@@ -84,6 +84,9 @@
                 </li>
                 @endcan
               </ul><!-- /child menu -->
+            </li>
+            <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+              <a href="{{ route('employee-list') }}" class="menu-link"><span class="menu-icon fas fa-user-friends"></span> <span class="menu-text">Employee List</span></a>
             </li>
 
             <!-- .menu-header -->
