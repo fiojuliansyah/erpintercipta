@@ -15,20 +15,34 @@ class ImportUsers implements ToModel, WithStartRow
             return null; // Skip the header row
         }
 
-        // Buat atau temukan pengguna berdasarkan email
-        $user = User::firstOrNew(['email' => $row[1]], [
-            'nik_number' => $row[0],
-            'name' => $row[2],
-            'phone' => $row[3],
-            'password' => bcrypt($row[4]),
-        ]);
+        // Cari pengguna berdasarkan alamat email
+        $user = User::where('email', $row[1])->first();
 
-        // Simpan pengguna ke database
-        $user->save();
+        if (!$user) {
+            // Buat pengguna baru jika tidak ada yang ditemukan
+            $user = new User([
+                'nik_number' => $row[0],
+                'email' => $row[1],
+                'name' => $row[2],
+                'phone' => $row[3],
+                'password' => bcrypt($row[4]),
+            ]);
+
+            // Simpan pengguna ke database
+            $user->save();
+        } else {
+            // Perbarui data pengguna jika sudah ada
+            $user->nik_number = $row[0];
+            $user->name = $row[2];
+            $user->phone = $row[3];
+            $user->password = bcrypt($row[4]);
+            $user->save();
+        }
 
         // Buat profil yang terkait dengan pengguna
-        $profile = new Profile([
-            'user_id' => $user->id, // Menggunakan ID pengguna yang baru dibuat
+        $profile = Profile::updateOrCreate(
+            ['user_id' => $user->id],
+            [
             'department' => $row[5],
             'project' => $row[6],
             'area' => $row[7],
@@ -56,10 +70,7 @@ class ImportUsers implements ToModel, WithStartRow
             'npwp_number' => $row[29],
             // Tambahkan lebih banyak kolom profil jika diperlukan
         ]);
-
-        // Simpan profil ke database
-        $profile->save();
-
+        
         return $user; // Kembalikan model User jika perlu
     }
 
