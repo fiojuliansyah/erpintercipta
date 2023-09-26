@@ -108,7 +108,7 @@
                                 <legend>Yuk isi dulu data diri Anda dengan jelas dan lengkap!</legend> <!-- .form-group -->
                                 <div class="form-group mb-4">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="avatar" id="avatar" autocomplete="off" data-parsley-group="fieldset01" multiple=""> <label class="custom-file-label" for="avatar">Masukan Foto Diri</label>
+                                    <input type="file" class="custom-file-input" name="avatar" id="avatar" autocomplete="off" data-parsley-group="fieldset01" multiple="" required=""> <label class="custom-file-label" for="avatar">Masukan Foto Diri</label>
                                     <small>*hanya bisa jpg, jpeg, png</small>
                                 </div>
                                 </div>
