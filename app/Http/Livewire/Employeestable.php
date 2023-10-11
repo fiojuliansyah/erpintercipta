@@ -49,17 +49,29 @@ class Employeestable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = User::where('name', 'like', '%' . $this->search . '%')
-                ->orWhere('email', 'like', '%' . $this->search . '%')
-                ->orWhere('created_at', 'like', '%' . $this->search . '%')
-                ->whereDoesntHave('roles') // Menyaring pengguna yang tidak memiliki peran
-                ->paginate(10);
+            $data = User::where(function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%')
+                    ->orWhere('created_at', 'like', '%' . $this->search . '%');
+            })
+            ->whereDoesntHave('roles')
+            ->whereHas('profile', function ($query) {
+                $query->whereNotNull('department');
+            })
+            ->paginate(10);
         } else {
-            $data = User::whereDoesntHave('roles') // Menyaring pengguna yang tidak memiliki peran
+            $data = User::whereDoesntHave('roles')
+                ->whereHas('profile', function ($query) {
+                    $query->whereNotNull('department');
+                })
                 ->paginate(10);
         }
 
         return view('livewire.employeestable', compact('data'));
-    }
+}
+
+
+
+
 
 }

@@ -1,60 +1,62 @@
 <div>
     <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
+            <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
         </div><input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
-  </div>
+    </div>
     <div class="table-responsive">
         <table id="roletable" class="table">
-          <!-- thead -->
-          <thead>
-            <tr>
-                <th>No</th>
-                <th>Status</th>
-                <th>Company</th>
-                <th>Job Name</th>
-                <th>Department</th>
-                <th>Location</th>
-                <th>Request By</th>
-                <th width="100px"></th>
-            </tr>
-          </thead>
-          <!-- /thead -->
-          <!-- tbody -->
-          <tbody>
-            @foreach ($data as $key => $career)
-              <tr>
-                  <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
-                  <td>
-                    @if ($career->status == '1')
-                        <span class="badge badge-success">Approve</span>
-                    @elseif ($career->status == '2')
-                      <span class="badge badge-danger">Rejected</span>
-                    @elseif ($career->status == '0')
-                      <span class="badge badge-warning">Pending</span>
-                    @endif
-                  </td>
-                  <td>{{ $career->company['company'] }}</td>
-                  <td>{{ $career->jobname }}</td>
-                  <td>{{ $career->department }}</td>
-                  <td>{{ $career->location }}</td>
-                  <td>{{ $career->user_id }}</td>
-                  <td class="align-middle text-right">
-                  <form action="{{ route('careers.destroy',$career->id) }}" method="POST">
-                    <a href="{{ route('careers.show',$career->id) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> <span class="sr-only">Show</span></a>
-                    @csrf
-                    @method('DELETE')
-                    @can('career-delete')
-                    <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> <span class="sr-only">Remove</span></button>
-                    @endcan
-                  </form>  
-                </td>
-              </tr><!-- /tr -->
-            @endforeach
-          </tbody><!-- /tbody -->
+            <!-- thead -->
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Status</th>
+                    <th>Company</th>
+                    <th>Job Name</th>
+                    <th>Department</th>
+                    <th>Location</th>
+                    <th>Request By</th>
+                    <th width="100px"></th>
+                </tr>
+            </thead>
+            <!-- /thead -->
+            <!-- tbody -->
+            <tbody>
+                @foreach ($data as $key => $career)
+                    <tr>
+                        <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
+                        <td>
+                            @if ($career->status == '0')
+                                <span class="badge badge-success">Tampil</span>
+                            @elseif ($career->status == '2')
+                                <span class="badge badge-danger">Rejected</span>
+                            @elseif ($career->status == '1')
+                                <span class="badge badge-warning">Tidak Tampil</span>
+                            @endif
+                        </td>
+                        <td>{{ $career->company['company'] }}</td>
+                        <td>{{ $career->jobname }}</td>
+                        <td>{{ $career->department }}</td>
+                        <td>{{ $career->location }}</td>
+                        <td>{{ $career->user_id }}</td>
+                        <td class="align-middle text-right">
+                            <form action="{{ route('careers.destroy', $career->id) }}" method="POST">
+                                <a href="{{ route('careers.show', $career->id) }}" class="btn btn-sm btn-info"><i
+                                        class="fa fa-eye"></i> <span class="sr-only">Show</span></a>
+                                @csrf
+                                @method('DELETE')
+                                @can('career-delete')
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i>
+                                        <span class="sr-only">Remove</span></button>
+                                @endcan
+                            </form>
+                        </td>
+                    </tr><!-- /tr -->
+                @endforeach
+            </tbody><!-- /tbody -->
         </table>
-      </div>
-      <ul class="pagination justify-content-center mt-4">
+    </div>
+    <ul class="pagination justify-content-center mt-4">
         {{ $data->links() }}
-      </ul>
+    </ul>
 </div>
