@@ -1,6 +1,6 @@
 <div>
     <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto"> User List </h1><!-- .btn-toolbar -->
+        <h1 class="page-title mr-sm-auto"> Employee List </h1><!-- .btn-toolbar -->
         <div class="btn-toolbar">
             <div class="dropdown">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalScrollable"><i
@@ -100,17 +100,28 @@
                         <td>{{ $user->profile['department'] ?? '' }}</td>
                         <td>{{ $user->profile['project'] ?? '' }}</td>
                         <td>{{ $user->profile['area'] ?? '' }}</td>
-                        <td class="align-middle text-right">
-                            <form action="{{ route('employee.destroy', $user->id) }}" method="POST">
-                                <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-user"></i> <span
-                                        class="sr-only">Edit</span></a>
-                                <a href="#" class="btn btn-sm btn-info"><i class="fa fa-pencil-alt"></i> <span
-                                        class="sr-only">Edit</span></a>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i>
-                                    <span class="sr-only">Remove</span></button>
-                            </form>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <a href="https://google.com">
+                                    <button type="button" class="btn btn-primary">Menu</button>
+                                </a>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <div class="dropdown-arrow"></div>
+                                        <form action="{{ route('employee.destroy', $user->id) }}" method="POST">
+                                            <a class="dropdown-item"
+                                                href="{{ route('employees.edit', $user->id) }}">Edit
+                                                User</a>
+                                            <a class="dropdown-item" href="#">Lihat Profil</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="dropdown-item">Hapus</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr><!-- /tr -->
                 @endforeach

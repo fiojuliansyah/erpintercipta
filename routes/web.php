@@ -81,6 +81,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('signatures', SignatureController::class);
     Route::resource('esigns', EsignController::class);
     Route::resource('addendums', AddendumController::class);
+    Route::resource('employees', EmployeeController::class);
 
 });
 

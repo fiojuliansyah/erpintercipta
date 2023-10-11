@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'User Edit | InterCipta ERP Management')
+@section('title', 'Employee Edit | InterCipta ERP Management')
 
 @section('content')
     <main class="app-main">
@@ -42,7 +42,7 @@
                                     </div>
                                 @endif
                                 <!-- .form -->
-                                {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->id]]) !!}
+                                {!! Form::model($user, ['method' => 'PATCH', 'route' => ['employees.update', $user->id]]) !!}
                                 <!-- .fieldset -->
                                 <fieldset>
                                     <legend>Add User</legend>
@@ -72,10 +72,10 @@
                                             <label for="role">Role</label>
                                             {!! Form::select('roles[]', $roles, $userRole, ['class' => 'form-control', 'multiple']) !!}
                                         </div>
-                                        <div class="text-end mt-4">
-                                            <button type="submit" class="btn btn-primary">Edit User</button>
-                                        </div>
                                     @endcan
+                                    <div class="text-end mt-4">
+                                        <button type="submit" class="btn btn-primary">Edit User</button>
+                                    </div>
                                 </fieldset><!-- /.fieldset -->
                                 {!! Form::close() !!}<!-- /.form -->
                             </div><!-- /.card-body -->
