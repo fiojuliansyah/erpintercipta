@@ -72,8 +72,9 @@
                     @can('career-menu')
                         <li class="menu-header">Recruitment</li>
                         <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
-                            <a href="{{ route('applicants.index') }}" class="menu-link"><span
-                                    class="menu-icon fas fa-user-friends"></span> <span class="menu-text">Pelamar</span></a>
+                            <a href="{{ route('candidates.index') }}" class="menu-link"><span
+                                    class="menu-icon fas fa-user-friends"></span> <span
+                                    class="menu-text">Kandidat</span></a>
                         </li>
                         <li class="menu-item {{ Request::path() == 'careers' ? 'has-active' : '' }}">
                             <a href="{{ route('careers.index') }}" class="menu-link"><span
@@ -84,8 +85,8 @@
                     @can('applicant-menu')
                         <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
                             <a href="{{ route('applicants.index') }}" class="menu-link"><span
-                                    class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Applicant
-                                    Data</span></a>
+                                    class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Data
+                                    Pelamar</span></a>
                         </li>
                         <li class="menu-item has-child">
                             <a href="#" class="menu-link"><span class="menu-icon fas fa-database"></span> <span

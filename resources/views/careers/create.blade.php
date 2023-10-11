@@ -64,10 +64,10 @@
                                         @endcan
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="customername">Company</label>
+                                                <label for="customername">Perusahaan</label>
                                                 <select id="company_id" class="custom-select custom-select-lg d-block w-100"
                                                     name="company_id" required="">
-                                                    <option value=""> Choose Company </option>
+                                                    <option value=""> pilih Perusahaan </option>
                                                     @foreach ($companies as $company)
                                                         <option value="{{ $company->id }}"> {{ $company->company }}
                                                         </option>
@@ -77,7 +77,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Job Name</label>
+                                                <label for="name">nama Pekerjaan</label>
                                                 <input type="text" name="jobname" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('jobname')
@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Description</label>
+                                                <label for="name">Detail Pekerjaan</label>
                                                 <textarea type="text" name="description" class="form-control" id="body"></textarea>
                                                 @error('jobname')
                                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Department</label>
+                                                <label for="name">Departmen</label>
                                                 <input type="text" name="department" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('department')
@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Location</label>
+                                                <label for="name">Lokasi</label>
                                                 <input type="text" name="location" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('location')
@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Work Function</label>
+                                                <label for="name">Fungsi Kerja</label>
                                                 <input type="text" name="workfunction" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('workfunction')
@@ -126,7 +126,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Experinece</label>
+                                                <label for="name">Pengalaman Minimal</label>
                                                 <input type="text" name="experience" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('experience')
@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Major</label>
+                                                <label for="name">Jurusan</label>
                                                 <input type="text" name="major" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('major')
@@ -146,7 +146,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Graduate</label>
+                                                <label for="name">Lulusan</label>
                                                 <input type="text" name="graduate" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('graduate')
@@ -156,9 +156,9 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="name">Salary</label>
+                                                <label for="name">Gaji</label>
                                                 <input type="text" name="salary" class="form-control"
-                                                    placeholder="Tulis Disini">
+                                                    value="Competitive">
                                                 @error('salary')
                                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                                 @enderror
@@ -166,7 +166,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="applicant">Applicant</label>
+                                                <label for="applicant">membutuhkan Berapa</label>
                                                 <input type="text" name="applicant" class="form-control"
                                                     placeholder="Tulis Disini">
                                                 @error('applicant')

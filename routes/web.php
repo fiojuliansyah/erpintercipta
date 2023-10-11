@@ -17,6 +17,7 @@ use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\DepartmentController;
@@ -82,6 +83,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('esigns', EsignController::class);
     Route::resource('addendums', AddendumController::class);
     Route::resource('employees', EmployeeController::class);
+    Route::resource('candidates', CandidateController::class);
 
 });
 
