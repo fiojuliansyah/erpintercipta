@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
     
 class UserController extends Controller
@@ -66,6 +67,14 @@ class UserController extends Controller
         $user->id;
         $user->assignRole($request->input('roles'));
 
+        // Buat tautan untuk tampilan data pelamar dengan ID yang baru saja dibuat
+        $qrLink = route('profiles.show', ['profile' => $user->id]);
+
+        // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
+        $qrCode = QrCode::size(200)->generate($qrLink);
+
+        $user->qr_link = $qrCode;
+
         // Notification::create ([
         //     'user_id' => 1,
         //     'title' => 'Add User',
@@ -81,6 +90,31 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
                         ->with('success','User created successfully');
+    }
+
+    public function QRUpdate(Request $request, $id)
+    {   
+        // Cari data pelamar berdasarkan ID
+        $user = User::find($id);
+
+        // Pastikan data pelamar ditemukan sebelum melanjutkan
+        if (!$user) {
+            return redirect()->route('users.index')
+                            ->with('error', 'user not found');
+        }
+
+        // Buat tautan untuk tampilan data pelamar dengan ID yang ditemukan
+        $qrLink = route('profiles.show', ['profile' => $user->id]);
+
+        // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
+        $qrCode = QrCode::size(200)->generate($qrLink);
+
+        // Simpan tautan QR code ke dalam basis data
+        $user->qr_link = $qrCode;
+        $user->save();
+
+        return redirect()->route('candidates.index')
+                        ->with('success', 'Applicant updated successfully');
     }
     
     /**

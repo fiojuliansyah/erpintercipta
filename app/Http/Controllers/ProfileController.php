@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Career;
 use App\Models\Profile;
 use App\Models\Jobhistory;
 use Illuminate\Http\Request;
@@ -197,4 +198,11 @@ class ProfileController extends Controller
 
         return Redirect::to('/dashboard');
     }
+
+    public function show(Profile $profile)
+    {
+        $careers = Career::all();
+        return view('profiles.show', compact('profile','careers'));
+    }
+
 }

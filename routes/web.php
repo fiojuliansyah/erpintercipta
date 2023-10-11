@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('careers', CareerController::class);
     Route::resource('applicants', ApplicantController::class);
     Route::put('/update-qrcode/{id}',[ApplicantController::class,'QRUpdate'])->name('update-qrcode');
+    Route::put('/update-qrcode-user/{id}',[userController::class,'QRUpdate'])->name('update-qrcode-user');
     Route::resource('pkwts', PkwtController::class);
     Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
     Route::resource('signatures', SignatureController::class);

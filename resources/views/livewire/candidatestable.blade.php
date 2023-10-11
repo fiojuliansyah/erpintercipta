@@ -79,6 +79,7 @@
                     <th>ID User</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>QR Code</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -94,6 +95,8 @@
                         <td>USER - {{ str_pad($user->id, 5, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModalCenter">Show</button></td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <a href="https://google.com">
@@ -119,6 +122,36 @@
                             </div>
                         </td>
                     </tr><!-- /tr -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+                        <!-- .modal-dialog -->
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <!-- .modal-content -->
+                            <div class="modal-content">
+                                <!-- .modal-header -->
+                                <div class="modal-header">
+                                    <h5 id="exampleModalCenterLabel" class="modal-title"> QR Code </h5>
+                                </div><!-- /.modal-header -->
+                                <!-- .modal-body -->
+                                <div class="modal-body">
+                                    <div style="text-align: center">
+                                        {!! html_entity_decode($user->qr_link) !!}
+                                    </div>
+                                </div><!-- /.modal-body -->
+                                <!-- .modal-footer -->
+                                <div class="modal-footer">
+                                    <form action="{{ route('update-qrcode-user', ['id' => $user->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-sm btn-warning">Update QR Code</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </form>
+                                </div><!-- /.modal-footer -->
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>
                 @endforeach
             </tbody><!-- /tbody -->
         </table>

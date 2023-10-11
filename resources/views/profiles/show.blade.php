@@ -14,7 +14,7 @@
                     <header class="page-title-bar">
                         <!-- page title stuff goes here -->
                         <div class="container-fluid py-3">
-                            <img src="{{ Storage::url($candidate->profile['avatar']) }}" width="350" alt="">
+                            <img src="{{ Storage::url($profile->avatar) }}" width="350" alt="">
                         </div>
                     </header><!-- /.page-title-bar -->
                     <!-- .page-section -->
@@ -37,74 +37,74 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama Lengkap</strong>
-                                                    <p>{{ $candidate->name }}</p>
+                                                    <p>{{ $profile->user['name'] }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama Panggilan</strong>
-                                                    <p>{{ $candidate->profile['nickname'] }}</p>
+                                                    <p>{{ $profile->nickname }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tempat Tanggal Lahir</strong>
-                                                    <p>{{ $candidate->profile['birth_place'] }},
-                                                        {{ $candidate->profile['birth_date'] }}</p>
+                                                    <p>{{ $profile->birth_place }},
+                                                        {{ $profile->birth_date }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Alamat sesuai KTP</strong>
-                                                    <p>{{ $candidate->profile['address'] }}</p>
+                                                    <p>{{ $profile->address }}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Berat Badan</strong>
-                                                    <p>{{ $candidate->profile['weight'] }}</p>
+                                                    <p>{{ $profile->weight }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tinggi Badan</strong>
-                                                    <p>{{ $candidate->profile['height'] }}</p>
+                                                    <p>{{ $profile->height }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>No Telepon</strong>
-                                                    <p>{{ $candidate->phone }}</p>
+                                                    <p>{{ $profile->user['phone'] }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Email</strong>
-                                                    <p>{{ $candidate->email }}</p>
+                                                    <p>{{ $profile->user['email'] }}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Status</strong>
-                                                    <p>{{ $candidate->profile['person_status'] }}</p>
+                                                    <p>{{ $profile->person_status }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tinggal Bersama</strong>
-                                                    <p>{{ $candidate->profile['stay_in'] }}</p>
+                                                    <p>{{ $profile->stay_in }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tinggal Bersama</strong>
-                                                    <p>{{ $candidate->profile['family_name'] }}</p>
+                                                    <p>{{ $profile->family_name }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Alamat (Tempat Tinggal)</strong>
-                                                    <p>{{ $candidate->profile['family_address'] }}</p>
+                                                    <p>{{ $profile->family_address }}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>No Rekening</strong>
-                                                    <p>{{ $candidate->profile['bank_account'] }}</p>
+                                                    <p>{{ $profile->bank_account }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama BANK</strong>
-                                                    <p>{{ $candidate->profile['bank_name'] }}</p>
+                                                    <p>{{ $profile->bank_name }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Hobi & Kegiatan di waktu luang</strong>
-                                                    <p>{{ $candidate->profile['hobby'] }}</p>
+                                                    <p>{{ $profile->hobby }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Agama</strong>
-                                                    <p>{{ $candidate->profile['religion'] }}</p>
+                                                    <p>{{ $profile->religion }}</p>
                                                 </div>
                                             </div>
 
@@ -121,19 +121,19 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama</strong>
-                                                    <p>{{ $candidate->profile['reference'] }}</p>
+                                                    <p>{{ $profile->reference }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Pekerjaan / Jabatan</strong>
-                                                    <p>{{ $candidate->profile['reference_job'] }}</p>
+                                                    <p>{{ $profile->reference_job }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Alamat</strong>
-                                                    <p>{{ $candidate->profile['reference_address'] }}</p>
+                                                    <p>{{ $profile->reference_address }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Hubungan</strong>
-                                                    <p>{{ $candidate->profile['reference_relation'] }}</p>
+                                                    <p>{{ $profile->reference_relation }}</p>
                                                 </div>
                                             </div>
                                         </div><!-- /.card-body -->
@@ -151,32 +151,32 @@
                                                     <strong>SCAN KTP</strong>
                                                     <br>
                                                     <br>
-                                                    <p>{{ $candidate->nik_number }}</p>
-                                                    <img src="{{ Storage::url($candidate->profile['card_ktp']) }}"
-                                                        width="300" alt="">
+                                                    <p>{{ $profile->user['nik_number'] }}</p>
+                                                    <img src="{{ Storage::url($profile->card_ktp) }}" width="300"
+                                                        alt="">
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>SCAN KARTU KELUARGA</strong>
                                                     <br>
                                                     <br>
-                                                    <p>{{ $candidate->profile['family_number'] }}</p>
-                                                    <img src="{{ Storage::url($candidate->profile['card_family']) }}"
-                                                        width="300" alt="">
+                                                    <p>{{ $profile->family_number }}</p>
+                                                    <img src="{{ Storage::url($profile->card_family) }}" width="300"
+                                                        alt="">
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>SCAN IJAZAH</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['card_ijazah']) }}"
-                                                        width="300" alt="">
+                                                    <img src="{{ Storage::url($profile->card_ijazah) }}" width="300"
+                                                        alt="">
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>SCAN SKCK <span
-                                                            class="badge badge-danger">{{ $candidate->profile['active_date'] }}</span></strong>
+                                                            class="badge badge-danger">{{ $profile->active_date }}</span></strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['card_skck']) }}"
-                                                        width="300" alt="">
+                                                    <img src="{{ Storage::url($profile->card_skck) }}" width="300"
+                                                        alt="">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -184,48 +184,48 @@
                                                     <strong>SCAN SERITIFKAT</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['card_certificate']) }}"
+                                                    <img src="{{ Storage::url($profile->card_certificate) }}"
                                                         width="350" alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN NPWP</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['card_npwp']) }}"
-                                                        width="350" alt="">
+                                                    <img src="{{ Storage::url($profile->card_npwp) }}" width="350"
+                                                        alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN SIM</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['card_sim']) }}"
-                                                        width="350" alt="">
+                                                    <img src="{{ Storage::url($profile->card_sim) }}" width="350"
+                                                        alt="">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN
-                                                        {{ $candidate->profile['add_name_document_a'] }}</strong>
+                                                        {{ $profile->add_name_document_a }}</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['add_document_a']) }}"
-                                                        width="350" alt="">
+                                                    <img src="{{ Storage::url($profile->add_document_a) }}" width="350"
+                                                        alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN
-                                                        {{ $candidate->profile['add_name_document_b'] }}</strong>
+                                                        {{ $profile->add_name_document_b }}</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['add_document_b']) }}"
-                                                        width="350" alt="">
+                                                    <img src="{{ Storage::url($profile->add_document_b) }}" width="350"
+                                                        alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN
-                                                        {{ $candidate->profile['add_name_document_c'] }}</strong>
+                                                        {{ $profile->add_name_document_c }}</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->profile['add_document_c']) }}"
-                                                        width="350" alt="">
+                                                    <img src="{{ Storage::url($profile->add_document_c) }}" width="350"
+                                                        alt="">
                                                 </div>
                                             </div>
 
@@ -244,31 +244,31 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama Perusahaan</strong>
-                                                    <p>{{ $candidate->profile['company_name_a'] }}</p>
-                                                    <p>{{ $candidate->profile['company_name_b'] }}</p>
-                                                    <p>{{ $candidate->profile['company_name_c'] }}</p>
-                                                    <p>{{ $candidate->profile['company_name_d'] }}</p>
+                                                    <p>{{ $profile->company_name_a }}</p>
+                                                    <p>{{ $profile->company_name_b }}</p>
+                                                    <p>{{ $profile->company_name_c }}</p>
+                                                    <p>{{ $profile->company_name_d }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Periode</strong>
-                                                    <p>{{ $candidate->profile['period_a'] }}</p>
-                                                    <p>{{ $candidate->profile['period_b'] }}</p>
-                                                    <p>{{ $candidate->profile['period_c'] }}</p>
-                                                    <p>{{ $candidate->profile['period_d'] }}</p>
+                                                    <p>{{ $profile->period_a }}</p>
+                                                    <p>{{ $profile->period_b }}</p>
+                                                    <p>{{ $profile->period_c }}</p>
+                                                    <p>{{ $profile->period_d }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Posisi / Jabatan</strong>
-                                                    <p>{{ $candidate->profile['position_a'] }}</p>
-                                                    <p>{{ $candidate->profile['position_b'] }}</p>
-                                                    <p>{{ $candidate->profile['position_c'] }}</p>
-                                                    <p>{{ $candidate->profile['position_d'] }}</p>
+                                                    <p>{{ $profile->position_a }}</p>
+                                                    <p>{{ $profile->position_b }}</p>
+                                                    <p>{{ $profile->position_c }}</p>
+                                                    <p>{{ $profile->position_d }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Gaji yang diterima</strong>
-                                                    <p>{{ $candidate->profile['salary_a'] }}</p>
-                                                    <p>{{ $candidate->profile['salary_b'] }}</p>
-                                                    <p>{{ $candidate->profile['salary_c'] }}</p>
-                                                    <p>{{ $candidate->profile['salary_d'] }}</p>
+                                                    <p>{{ $profile->salary_a }}</p>
+                                                    <p>{{ $profile->salary_b }}</p>
+                                                    <p>{{ $profile->salary_c }}</p>
+                                                    <p>{{ $profile->salary_d }}</p>
                                                 </div>
                                             </div>
 
@@ -303,7 +303,7 @@
                                             <form action="{{ route('candidates.store') }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @csrf
-                                                <input type="hidden" name="user_id" value="{{ $candidate->id }}">
+                                                <input type="hidden" name="user_id" value="{{ $profile->user['id'] }}">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label for="customername">Perusahaan</label>
