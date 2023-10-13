@@ -66,15 +66,6 @@ class UserController extends Controller
         $user = User::create($input);
         $user->id;
         $user->assignRole($request->input('roles'));
-
-        // Buat tautan untuk tampilan data pelamar dengan ID yang baru saja dibuat
-        $qrLink = route('profiles.show', ['profile' => $user->id]);
-
-        // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
-        $qrCode = QrCode::size(200)->generate($qrLink);
-
-        $user->qr_link = $qrCode;
-
         // Notification::create ([
         //     'user_id' => 1,
         //     'title' => 'Add User',
