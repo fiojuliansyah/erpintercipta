@@ -148,6 +148,9 @@ class ApplicantController extends Controller
      */
     public function destroy(Applicant $applicant)
     {
-        //
+        $applicant->delete();
+
+        return redirect()->route('applicants.index')
+                        ->with('success','Applicant deleted successfully');
     }
 }
