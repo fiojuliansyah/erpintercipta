@@ -18,32 +18,16 @@ class ApplicantController extends Controller
          $this->middleware('permission:applicant-delete', ['only' => ['destroy']]);
     }
     
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('applicants.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreApplicantRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $applicant = new Applicant;
@@ -92,35 +76,16 @@ class ApplicantController extends Controller
 
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Applicant  $applicant
-     * @return \Illuminate\Http\Response
-     */
     public function show(Applicant $applicant)
     {
         return view('applicants.show', compact('applicant'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Applicant  $applicant
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Applicant $applicant)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateApplicantRequest  $request
-     * @param  \App\Models\Applicant  $applicant
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -140,12 +105,6 @@ class ApplicantController extends Controller
                         ->with('success','Applicant updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Applicant  $applicant
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Applicant $applicant)
     {
         $applicant->delete();

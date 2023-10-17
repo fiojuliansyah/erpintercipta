@@ -95,7 +95,7 @@ class UserController extends Controller
         }
 
         // Buat tautan untuk tampilan data pelamar dengan ID yang ditemukan
-        $qrLink = route('profiles.show', ['profile' => $user->id]);
+        $qrLink = route('candidates.show', ['candidate' => $user->id]);
 
         // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
         $qrCode = QrCode::size(200)->generate($qrLink);
