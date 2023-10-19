@@ -21,12 +21,22 @@
                             <form action="{{ url('esigns') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
-                                    <canvas id="signatureCanvas" width="500" height="200"></canvas>
+                                    @if (Auth::user()->esign == null)
+                                        <canvas id="signatureCanvas" width="500" height="200"></canvas>
+                                    @else
+                                        <img src="{{ Storage::url(Auth::user()->esign['signatureDataUrl']) }}"
+                                            width="300" alt="">
+                                    @endif
                                 </div><!-- /.modal-body -->
                                 <!-- .modal-footer -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
-                                    <button id="saveButton" class="btn btn-primary">Simpan</button>
+                                    @if (Auth::user()->esign == null)
+                                        <button type="button" class="btn btn-danger"
+                                            data-dismiss="modal">Keluar</button>
+                                        <button id="saveButton" class="btn btn-primary">Simpan</button>
+                                    @else
+                                        <span class="badge badge-success">Anda Sudah Punya Tanda Tangan</span>
+                                    @endif
                                 </div><!-- /.modal-footer -->
                             </form>
                         </div><!-- /.modal-body -->
@@ -84,6 +94,9 @@
                     <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export Excel</button>
+                    <div class="dropdown-arrow"></div><button wire:click="exportPdf" class="dropdown-item"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
+                            width="20" alt="">&nbsp;&nbsp;Export PDF</button>
                 </div>
             </div>
         </div><!-- /.btn-toolbar -->
@@ -91,7 +104,8 @@
     <div class="input-group">
         <div class="input-group-prepend">
             <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
-        </div><input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
+        </div><input type="text" class="form-control" name="keyword" placeholder="Search..."
+            wire:model="search">
     </div>
     <div class="table-responsive">
         <table id="roletable" class="table">
@@ -106,8 +120,7 @@
                     <th>Nama</th>
                     <th>TTD Pelamar</th>
                     <th>TTD HRD</th>
-                    <th>Approve PKWT</th>
-                    <th width="100px"></th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <!-- /thead -->
@@ -138,24 +151,30 @@
                             @endif
                         </td>
                         <td>
-                            <form action="{{ route('pkwts.update', $pkwt->id) }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="btn btn-sm btn-success">Approve</button>
-                            </form>
-                        </td>
-                        <td class="align-middle text-right">
-                            <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
-                                <a href="{{ route('pkwts.show', $pkwt->id) }}" class="btn btn-sm btn-info"><i
-                                        class="fa fa-eye"></i> <span class="sr-only">Show</span></a>
-                                @csrf
-                                @method('DELETE')
-                                @can('pkwt-delete')
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i>
-                                        <span class="sr-only">Remove</span></button>
-                                @endcan
-                            </form>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <form action="{{ route('pkwts.update', $pkwt->id) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-primary">Approve</button>
+                                </form>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <div class="dropdown-arrow"></div>
+                                        <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
+                                            <a class="dropdown-item"
+                                                href="{{ route('pkwts.show', $pkwt->id) }}">Lihat Pkwt</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('pkwt-delete')
+                                                <button type="submit" class="dropdown-item">Hapus</button>
+                                            @endcan
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr><!-- /tr -->
                 @endforeach

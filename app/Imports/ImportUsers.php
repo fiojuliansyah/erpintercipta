@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Carbon\Carbon;
 
 class ImportUsers implements ToModel, WithStartRow
 {
@@ -43,34 +44,34 @@ class ImportUsers implements ToModel, WithStartRow
         $profile = Profile::updateOrCreate(
             ['user_id' => $user->id],
             [
-            'department' => $row[5],
-            'project' => $row[6],
-            'area' => $row[7],
-            'address' => $row[8],
-            'birth_place' => $row[9],
-            'birth_date' => $row[10],
-            'religion' => $row[11],
-            'person_status' => $row[12],
-            'stay_in' => $row[13],
-            'mother_name' => $row[14],
-            'family_name' => $row[15],
-            'family_address' => $row[16],
-            'gender' => $row[17],
-            'weight' => $row[18],
-            'height' => $row[19],
-            'hobby' => $row[20],
-            'bank_name' => $row[21],
-            'bank_account' => $row[22],
-            'reference' => $row[23],
-            'reference_job' => $row[24],
-            'reference_relation' => $row[25],
-            'reference_address' => $row[26],
-            'active_date' => $row[27],
-            'family_number' => $row[28],
-            'npwp_number' => $row[29],
-            // Tambahkan lebih banyak kolom profil jika diperlukan
-        ]);
-        
+                'department' => $row[5],
+                'project' => $row[6],
+                'area' => $row[7],
+                'address' => $row[8],
+                'birth_place' => $row[9],
+                'birth_date' => Carbon::createFromFormat('Y-m-d', $row[10])->format('Y-m-d'),
+                'religion' => $row[11],
+                'person_status' => $row[12],
+                'stay_in' => $row[13],
+                'mother_name' => $row[14],
+                'family_name' => $row[15],
+                'family_address' => $row[16],
+                'gender' => $row[17],
+                'weight' => $row[18],
+                'height' => $row[19],
+                'hobby' => $row[20],
+                'bank_name' => $row[21],
+                'bank_account' => $row[22],
+                'reference' => $row[23],
+                'reference_job' => $row[24],
+                'reference_relation' => $row[25],
+                'reference_address' => $row[26],
+                'active_date' => $row[27],
+                'family_number' => $row[28],
+                'npwp_number' => $row[29],
+                // Tambahkan lebih banyak kolom profil jika diperlukan
+            ]);
+
         return $user; // Kembalikan model User jika perlu
     }
 
@@ -79,4 +80,3 @@ class ImportUsers implements ToModel, WithStartRow
         return 2; // Mulai dari baris ke-2 (lewatkan baris header)
     }
 }
-
