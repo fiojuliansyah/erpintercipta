@@ -2,11 +2,12 @@
 
 namespace App\Imports;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Profile;
 use Maatwebsite\Excel\Concerns\ToModel;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\WithStartRow;
-use Carbon\Carbon;
 
 class ImportUsers implements ToModel, WithStartRow
 {
@@ -49,7 +50,7 @@ class ImportUsers implements ToModel, WithStartRow
                 'area' => $row[7],
                 'address' => $row[8],
                 'birth_place' => $row[9],
-                'birth_date' => Carbon::createFromFormat('Y-m-d', $row[10])->format('Y-m-d'),
+                'birth_date' => Date::excelToDateTimeObject($row[10])->format('Y-m-d'), // Ubah format sesuai kebutuhan Anda
                 'religion' => $row[11],
                 'person_status' => $row[12],
                 'stay_in' => $row[13],
