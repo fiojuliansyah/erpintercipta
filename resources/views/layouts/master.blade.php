@@ -98,6 +98,7 @@
     <script src="{{ asset('') }}admin/javascript/theme.min.js"></script> <!-- END THEME JS -->
     <!-- BEGIN PAGE LEVEL JS -->
     @yield('js')
+    @stack('js')
     <script src="{{ asset('') }}admin/javascript/pages/dashboard-demo.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116692175-1"></script>
