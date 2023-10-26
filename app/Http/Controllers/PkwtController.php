@@ -140,7 +140,7 @@ class PkwtController extends Controller
             return abort(404); // Handle not found PKWT
         }
 
-        $pdf = PDF::loadView('pkwts.export', compact('pkwt'));
+        $pdf = PDF::loadView('pkwts.export', ['pkwt' => $pkwt])->setOptions(['defaultFont' => 'sans-serif']);
 
         return $pdf->download('pkwt_' . $pkwt->id . '.pdf');
     }
