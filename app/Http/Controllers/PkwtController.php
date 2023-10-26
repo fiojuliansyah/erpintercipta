@@ -132,17 +132,18 @@ class PkwtController extends Controller
         return redirect()->back();
     }
 
-    public function exportPdf($id)
+    public function exportPdf(Pkwt $pkwt)
     {
-        $pkwt = Pkwt::find($id);
+        // $pkwt = Pkwt::find($id);
 
-        if (!$pkwt) {
-            return abort(404); // Handle not found PKWT
-        }
+        // if (!$pkwt) {
+        //     return abort(404); // Handle not found PKWT
+        // }
 
-        $pdf = PDF::loadView('pkwts.export', ['pkwt' => $pkwt])->setOptions(['defaultFont' => 'sans-serif']);
+        // $pdf = PDF::loadView('pkwts.export', ['pkwt' => $pkwt])->setOptions(['defaultFont' => 'sans-serif']);
 
-        return $pdf->download('pkwt_' . $pkwt->id . '.pdf');
+        // return $pdf->download('pkwt_' . $pkwt->id . '.pdf');
+        return view('pkwts.show', compact('pkwt'));
     }
 
 }

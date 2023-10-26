@@ -164,7 +164,7 @@
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <div class="dropdown-arrow"></div>
                                         <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
-                                            <a class="dropdown-item"
+                                            <a class="dropdown-item" target="blank" onClick=\"window.print();return false\"
                                                 href="{{ route('export-pkwt', $pkwt->id) }}">Download Pkwt</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('pkwts.show', $pkwt->id) }}">Lihat Pkwt</a>
