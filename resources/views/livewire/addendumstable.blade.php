@@ -14,8 +14,6 @@
                 <th>Perusahaan</th>
                 <th>judul</th>
                 <th>Project</th>
-                <th>Addendum</th>
-                <th>Lampiran</th>
                 <th width="100px"></th>
             </tr>
           </thead>
@@ -29,51 +27,26 @@
                   <td>{{ $addendum->company['company'] }}</td>
                   <td>{{ $addendum->title }}</td>
                   <td>{{ $addendum->project }}</td>
-                  <td><button type="button" class="btn btn-success ml-auto" data-toggle="modal" data-target="#addendum">View Addendum</button></td>
-                  <div class="modal fade" id="addendum" tabindex="-1" role="dialog" aria-labelledby="addendum" aria-hidden="true">
-                    <!-- .modal-dialog -->
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                      <!-- .modal-content -->
-                      <div class="modal-content">
-                        <!-- .modal-header -->
-                        <div class="modal-header">
-                          
-                        </div><!-- /.modal-header -->
-                        <!-- .modal-body -->
-                        <div class="modal-body">
-                          {!! ($addendum->addendum) !!}
-                        </div><!-- /.modal-body -->
-                        <!-- .modal-footer -->
-                      </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                  </div>
-                  <td><button type="button" class="btn btn-success ml-auto" data-toggle="modal" data-target="#skk">View Lampiran</button></td>
-                  <div class="modal fade" id="skk" tabindex="-1" role="dialog" aria-labelledby="skk" aria-hidden="true">
-                    <!-- .modal-dialog -->
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                      <!-- .modal-content -->
-                      <div class="modal-content">
-                        <!-- .modal-header -->
-                        <div class="modal-header">
-                          
-                        </div><!-- /.modal-header -->
-                        <!-- .modal-body -->
-                        <div class="modal-body">
-                          {!! ($addendum->attachment) !!}
-                        </div><!-- /.modal-body -->
-                        <!-- .modal-footer -->
-                      </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                  </div>
-                  <td class="align-middle text-right">
-                  <form action="{{ route('addendums.destroy',$addendum->id) }}" method="POST">
-                    <a href="{{ route('addendums.edit',$addendum->id) }}" class="btn btn-sm btn-info"><i class="fas fa-pencil-alt"></i> <span class="sr-only">Show</span></a>
-                    @csrf
-                    @method('DELETE')
-                    @can('addendum-delete')
-                    <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i> <span class="sr-only">Remove</span></button>
-                    @endcan
-                  </form>  
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <button type="submit" class="btn btn-primary">Menu</button>
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <div class="dropdown-arrow"></div>
+                                <form action="{{ route('addendums.destroy', $addendum->id) }}" method="POST">
+                                    <a class="dropdown-item"
+                                        href="{{ route('addendums.show', $addendum->id) }}">Lihat Addendum</a>
+                                    @csrf
+                                    @method('DELETE')
+                                    @can('addendum-delete')
+                                        <button type="submit" class="dropdown-item">Hapus</button>
+                                    @endcan
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </td>
               </tr><!-- /tr -->
             @endforeach

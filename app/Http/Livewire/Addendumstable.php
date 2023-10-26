@@ -21,11 +21,11 @@ class Addendumstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Addendum::where('addendum', 'like', '%' . $this->search . '%')
+            $data = Addendum::where('project', 'like', '%' . $this->search . '%')
                 ->orWhereRelation('company', 'company', 'like', '%' . $this->search . '%')
-                ->paginate(100);
+                ->paginate(10);
         } else {
-            $data = Addendum::paginate(100);
+            $data = Addendum::paginate(10);
         }
 
         return view('livewire.addendumstable', compact('data'));
