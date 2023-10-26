@@ -54,24 +54,29 @@ class Pkwtstable extends Component
     public function exportPdf()
     {
         if (count($this->selectedIds) > 0) {
-            // Fetch the data based on selected IDs
-            $data = Pkwt::whereIn('id', $this->selectedIds)->get();
-
             // Initialize an instance of the PDF class
             $pdf = app('dompdf.wrapper');
-
-            // Generate a PDF with the data
-            $pdf->loadView('pkwts.export', compact('data'));
-
-            // Define a unique filename for the PDF
-            $filename = 'selected_data_' . now()->format('Y-m-d_H-i-s') . '.pdf';
-
-            // Generate and return the PDF as a downloadable response
-            return $pdf->stream($filename);
+    
+            foreach ($this->selectedIds as $id) {
+                // Fetch data for the current ID
+                $data = Pkwt::find($id);
+    
+                // Check if data was found for the current ID
+                if ($data) {
+                    // Generate a PDF with the data for the current ID
+                    $pdf->loadView('pkwts.export', compact('data'));
+    
+                    // Define a unique filename for the PDF based on the current ID
+                    $filename = 'pkwt_' . $data->id . '_export_' . now()->format('Y-m-d_H-i-s') . '.pdf';
+    
+                    // Generate and return the PDF as a downloadable response
+                    $pdf->stream($filename);
+                }
+            }
         } else {
             session()->flash('error', 'No data selected for export.');
         }
-    }
+    }    
 
 
     public function render()
