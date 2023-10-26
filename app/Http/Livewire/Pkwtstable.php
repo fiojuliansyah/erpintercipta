@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\Pkwt;
 use Livewire\Component;
-use Barryvdh\DomPDF\PDF;
 use App\Exports\ExportPkwts;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
@@ -41,33 +40,6 @@ class Pkwtstable extends Component
             });
 
             return Excel::download(new ExportPkwts($modifiedData), 'selected_pkwt_data.xlsx');
-        } else {
-            session()->flash('error', 'No data selected for export.');
-        }
-    }
-
-    public function exportPdf()
-    {
-        if (count($this->selectedIds) > 0) {
-            // Initialize an instance of the PDF class
-            $pdf = app('dompdf.wrapper');
-
-            foreach ($this->selectedIds as $id) {
-                // Fetch data for the current ID
-                $data = Pkwt::find($id);
-
-                // Check if data was found for the current ID
-                if ($data) {
-                    // Generate a PDF with the data for the current ID
-                    $pdf->loadView('pkwts.export', compact('data'));
-
-                    // Define a unique filename for the PDF based on the current ID
-                    $filename = 'pkwt_' . $data->id . '_export_' . now()->format('Y-m-d_H-i-s') . '.pdf';
-
-                    // Generate and return the PDF as a downloadable response
-                    return $pdf->stream($filename);
-                }
-            }
         } else {
             session()->flash('error', 'No data selected for export.');
         }

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorePkwtRequest;
 use App\Http\Requests\UpdatePkwtRequest;
+use PDF;
+use Illuminate\Support\Facades\View;
 
 class PkwtController extends Controller
 {
@@ -128,6 +130,19 @@ class PkwtController extends Controller
     {
         Excel::import(new ImportPkwts, $request->file('file')->store('files'));
         return redirect()->back();
+    }
+
+    public function exportPdf($id)
+    {
+        $pkwt = Pkwt::find($id);
+
+        if (!$pkwt) {
+            return abort(404); // Handle not found PKWT
+        }
+
+        $pdf = PDF::loadView('pkwts.export', compact('pkwt'));
+
+        return $pdf->download('pkwt_' . $pkwt->id . '.pdf');
     }
 
 }

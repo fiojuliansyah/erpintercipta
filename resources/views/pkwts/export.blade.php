@@ -1,3 +1,7 @@
+@extends('layouts.master')
+
+@section('title', 'PKWT & SKK Detail | InterCipta ERP Management')
+
 @section('content')
   <main class="app-main">
     <!-- .wrapper -->
@@ -11,32 +15,32 @@
             <!-- .card-body -->
             <div class="card-body" style="background-color: white; color: black">
                 <span id="addendum">
-                  {!! $data->addendum['addendum'] !!}
+                  {!! $pkwt->addendum['addendum'] !!}
                 </span>
                 <br>
                 <div class="row">
                     <div class="col-md-6 mb-4 text-center">
                         <p>PIHAK PERTAMA</p>
                         <br>
-                        @if ($data->user?->signature == null) 
+                        @if ($pkwt->user?->signature == null) 
                           <br>   
                           @else                         
-                          <img src="{{ Storage::url($data->signature_hrd) }}" width="300" alt="">
+                          <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
                         @endif
                         <br>
-                        <p>( <u>{{ $data->addendum['responsible'] }}</u> )</p>
+                        <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
                         <p>Human Resource Development</p>
                     </div>
                     <div class="col-md-6 mb-4 text-center">
                         <p>PIHAK KEDUA</p>
                         <br>
-                        @if ($data->user?->signature == null) 
+                        @if ($pkwt->user?->signature == null) 
                         <br>   
                         @else                         
-                        <img src="{{ Storage::url($data->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+                        <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
                         @endif
                         <br>
-                        <p>( <u>{{ $data->user['name'] }}</u> )</p>
+                        <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
                         <p>Karyawan</p>
                     </div>
                     <br>
@@ -45,32 +49,32 @@
         </div>
         <div class="card">
             <div class="card-body" style="background-color: white; color: black">
-                {!! ($data->addendum['attachment']) !!}
+                {!! ($pkwt->addendum['attachment']) !!}
                 <br>
                 <div class="row">
                     <div class="col-md-6 mb-4 text-center">
                         <p>PIHAK PERTAMA</p>
-                        <strong>{{ $data->addendum?->company['company'] }}</strong>
+                        <strong>{{ $pkwt->addendum?->company['company'] }}</strong>
                         <br>
-                        @if ($data->user?->signature == null) 
+                        @if ($pkwt->user?->signature == null) 
                           <br>   
                           @else                         
-                          <img src="{{ Storage::url($data->signature_hrd) }}" width="300" alt="">
+                          <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
                         @endif
                         <br>
-                        <p>( <u>{{ $data->addendum['responsible'] }}</u> )</p>
+                        <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
                         <p>Human Resource Development</p>
                     </div>
                     <div class="col-md-6 mb-4 text-center">
                       <p>PIHAK KEDUA</p>
                       <br>
-                      @if ($data->user?->signature == null) 
+                      @if ($pkwt->user?->signature == null) 
                         <br>   
                         @else                         
-                        <img src="{{ Storage::url($data->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+                        <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
                       @endif
                       <br>
-                      <p>( <u>{{ $data->user['name'] }}</u> )</p>
+                      <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
                       <p>Karyawan</p>
                     </div>
                     <br>
@@ -93,7 +97,7 @@
                 <!-- .modal-body -->
                 <form action="{{ url('esigns') }}" method="POST" enctype="multipart/form-data">
                   @csrf
-                  <input type="hidden" name="pkwt_id" value="{{ $data->id }}">
+                  <input type="hidden" name="pkwt_id" value="{{ $pkwt->id }}">
                   <div class="modal-body">
                       <canvas id="signatureCanvas" width="500" height="200"></canvas>           
                   </div><!-- /.modal-body -->
@@ -114,7 +118,7 @@
             <div class="card-body">
               <h4 class="card-title"> Status Proses </h4>
               <div class="progress progress-sm rounded-0 mb-1">
-                @if ($data->user?->signature == null) 
+                @if ($pkwt->user?->signature == null) 
                 <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>                    
                 @else
                 <div class="progress-bar bg-success w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
@@ -169,7 +173,7 @@
                 <li class="timeline-item">
                   <!-- .timeline-figure -->
                   <div class="timeline-figure">
-                    @if ($data->user?->signature == null)  
+                    @if ($pkwt->user?->signature == null)  
                       <span class="tile tile-circle tile-xs"><i class="fa fa-check d-none"></i></span>
                     @else
                       <span class="tile tile-circle tile-xs bg-success"><i class="fa fa-check"></i></span>
@@ -197,13 +201,13 @@
   // Ganti teks dalam elemen tersebut
   if (element) {
       element.innerHTML = element.innerHTML
-          .replace('{NO_SURAT}', '<b>No. {{ $data->pkwt_number }}/{{ $data->addendum?->company['cmpy'] }}/HR-{{ $data->addendum['area'] }}/{{ $data->addendum['romawi'] }}/{{ $data->addendum['year'] }}</b>')
-          .replace('{PENANGGUNG_JAWAB}', '{{ $data->addendum['responsible'] }}')
-          .replace('{PELAMAR}', '{{ $data->user['name'] }}')
-          .replace('{JENIS_KELAMIN}', '{{ $data->user?->profile['gender'] }}')
-          .replace('{TTL}', '{{ $data->user?->profile['birth_place'] }}, {{ $data->user?->profile['birth_date'] }}')
-          .replace('{NIK}', '{{ $data->user['nik_number'] }}')
-          .replace('{ALAMAT}', '{{ $data->user?->profile['address'] }}')
+          .replace('{NO_SURAT}', '<b>No. {{ $pkwt->pkwt_number }}/{{ $pkwt->addendum?->company['cmpy'] }}/HR-{{ $pkwt->addendum['area'] }}/{{ $pkwt->addendum['romawi'] }}/{{ $pkwt->addendum['year'] }}</b>')
+          .replace('{PENANGGUNG_JAWAB}', '{{ $pkwt->addendum['responsible'] }}')
+          .replace('{PELAMAR}', '{{ $pkwt->user['name'] }}')
+          .replace('{JENIS_KELAMIN}', '{{ $pkwt->user?->profile['gender'] }}')
+          .replace('{TTL}', '{{ $pkwt->user?->profile['birth_place'] }}, {{ $pkwt->user?->profile['birth_date'] }}')
+          .replace('{NIK}', '{{ $pkwt->user['nik_number'] }}')
+          .replace('{ALAMAT}', '{{ $pkwt->user?->profile['address'] }}')
   }
 </script>
 

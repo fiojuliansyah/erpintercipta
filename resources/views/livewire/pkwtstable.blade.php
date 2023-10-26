@@ -165,6 +165,8 @@
                                         <div class="dropdown-arrow"></div>
                                         <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
                                             <a class="dropdown-item"
+                                                href="{{ route('export-pkwt', $pkwt->id) }}">Download Pkwt</a>
+                                            <a class="dropdown-item"
                                                 href="{{ route('pkwts.show', $pkwt->id) }}">Lihat Pkwt</a>
                                             @csrf
                                             @method('DELETE')
