@@ -23,9 +23,9 @@ class Addendumstable extends Component
         if ($this->search != '') {
             $data = Addendum::where('addendum', 'like', '%' . $this->search . '%')
                 ->orWhereRelation('company', 'company', 'like', '%' . $this->search . '%')
-                ->paginate(10);
+                ->paginate(100);
         } else {
-            $data = Addendum::paginate(10);
+            $data = Addendum::paginate(100);
         }
 
         return view('livewire.addendumstable', compact('data'));
