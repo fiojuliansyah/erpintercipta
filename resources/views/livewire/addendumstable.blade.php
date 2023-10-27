@@ -37,7 +37,7 @@
                                 <div class="dropdown-arrow"></div>
                                 <form action="{{ route('addendums.destroy', $addendum->id) }}" method="POST">
                                     <a class="dropdown-item"
-                                        href="{{ route('addendums.show', $addendum->id) }}">Lihat Addendum</a>
+                                        href="{{ route('addendums.edit', $addendum->id) }}">Lihat Addendum</a>
                                     @csrf
                                     @method('DELETE')
                                     @can('addendum-delete')

@@ -143,7 +143,7 @@ class PkwtController extends Controller
         // $pdf = PDF::loadView('pkwts.export', ['pkwt' => $pkwt])->setOptions(['defaultFont' => 'sans-serif']);
 
         // return $pdf->download('pkwt_' . $pkwt->id . '.pdf');
-        return view('pkwts.show', compact('pkwt'));
+        return view('pkwts.export', compact('pkwt'));
     }
 
 }
