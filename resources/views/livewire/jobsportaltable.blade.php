@@ -54,7 +54,7 @@
                                     <div class="my-3">
                                         <p class="card-subtitle text-muted"> <i class="fas fa-map-marker-alt"></i>
                                             {{ $career->location }} </p>
-                                        <span class="badge badge-success">Need {{ $career->applicant }} Applicant</span>
+                                        <span class="badge badge-success">Need {{ $career->candidate }} Candidate</span>
                                     </div><!-- /.my-3 -->
                                     <!-- grid row -->
                                     <div class="row">
@@ -134,8 +134,8 @@
                                     <div class="my-3">
                                         <p class="card-subtitle text-muted"> <i class="fas fa-map-marker-alt"></i>
                                             {{ $career->location }} </p>
-                                        <span class="badge badge-success">Need {{ $career->applicant }}
-                                            Applicant</span>
+                                        <span class="badge badge-success">Need {{ $career->candidate }}
+                                            Candidate</span>
                                     </div><!-- /.my-3 -->
                                     <!-- grid row -->
                                     <div class="row">

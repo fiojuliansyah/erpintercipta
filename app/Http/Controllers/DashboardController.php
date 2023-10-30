@@ -6,7 +6,7 @@ use App\Models\Pkwt;
 use App\Models\User;
 use App\Models\Career;
 use App\Models\Company;
-use App\Models\Applicant;
+use App\Models\Candidate;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,9 +65,9 @@ class DashboardController extends Controller
     }
 
 
-    public function MyResume(Applicant $applicant)
+    public function MyResume(Candidate $candidate)
     {
-        return view('my-resume',compact('applicant'));
+        return view('my-resume',compact('candidate'));
     }
 
     public function dashboardEmployee()

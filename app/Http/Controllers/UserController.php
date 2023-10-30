@@ -78,6 +78,13 @@ class UserController extends Controller
         //     'title' => 'Add User',
         //     'desc' => 'Add User Success'
         // ]);
+        // Buat tautan untuk tampilan data pelamar dengan ID yang baru saja dibuat
+        $qrLink = route('applicants.show', ['applicant' => $user->id]);
+
+        // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
+        $qrCode = QrCode::size(200)->generate($qrLink);
+
+        $user->qr_link = $qrCode;
 
         return redirect()->route('users.index')
                         ->with('success','User created successfully');
@@ -95,7 +102,7 @@ class UserController extends Controller
         }
 
         // Buat tautan untuk tampilan data pelamar dengan ID yang ditemukan
-        $qrLink = route('candidates.show', ['candidate' => $user->id]);
+        $qrLink = route('applicants.show', ['applicant' => $user->id]);
 
         // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
         $qrCode = QrCode::size(200)->generate($qrLink);
@@ -104,8 +111,8 @@ class UserController extends Controller
         $user->qr_link = $qrCode;
         $user->save();
 
-        return redirect()->route('candidates.index')
-                        ->with('success', 'Applicant updated successfully');
+        return redirect()->route('applicants.index')
+                        ->with('success', 'Candidate updated successfully');
     }
     
     /**

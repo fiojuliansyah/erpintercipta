@@ -162,7 +162,7 @@
                             </div>
                           </div><!-- /.modal-body -->
                           <!-- .modal-footer -->
-                          <form action="{{ route('applicants.store') }}" method="POST" enctype="multipart/form-data">
+                          <form action="{{ route('candidates.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="status" value="0">
                             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">

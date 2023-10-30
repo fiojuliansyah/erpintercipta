@@ -68,7 +68,7 @@ class CareerController extends Controller
         $career->major = $request->major;
         $career->graduate = $request->graduate;
         $career->salary = $request->salary;
-        $career->applicant = $request->applicant;
+        $career->candidate = $request->candidate;
         $career->user_id = $user;
         $career->save();
 

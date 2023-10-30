@@ -164,7 +164,7 @@
                   <div class="flex-fill">
                     <a href="{{ route('jobportal-show',$career->id) }}"><h5 class="mt-0">{{ $career->jobname }}</h5></a>
                     <p class="card-subtitle text-muted"> {{ $career->company['company'] }} </p>
-                    <span class="badge badge-success">Need {{ $career->applicant }} Applicant</span>
+                    <span class="badge badge-success">Need {{ $career->candidate }} Candidate</span>
                     <div class="row">
                       <!-- grid column -->
                       <div class="col">

@@ -2,114 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Applicant;
+use App\Models\User;
+use App\Models\Career;
+use App\Models\Candidate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use App\Http\Requests\StoreApplicantRequest;
-use App\Http\Requests\UpdateApplicantRequest;
 
 class ApplicantController extends Controller
 {
-    function __construct()
-    {
-         $this->middleware('permission:applicant-list|applicant-create|applicant-edit|applicant-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:applicant-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:applicant-delete', ['only' => ['destroy']]);
-    }
-    
     public function index()
     {
-        return view('applicants.index');
+        $pelamar = User::whereDoesntHave('career')->count();
+        return view('applicants.index', compact('pelamar'));
     }
 
-    public function create()
+    public function show(User $applicant)
     {
-        //
+        $careers = Career::all();
+        return view('applicants.show', compact('applicant','careers'));
     }
 
     public function store(Request $request)
     {
-        $applicant = new Applicant;
-        $applicant->status = $request->status;
-        $applicant->user_id = $request->user_id;
-        $applicant->career_id = $request->career_id;
-        $applicant->save();
+        $candidate = new Candidate;
+        $candidate->status = $request->status;
+        $candidate->user_id = $request->user_id;
+        $candidate->career_id = $request->career_id;
+        $candidate->save();
 
         // Buat tautan untuk tampilan data pelamar dengan ID yang baru saja dibuat
-        $qrLink = route('applicants.show', ['applicant' => $applicant->id]);
+        $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
 
         // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
         $qrCode = QrCode::size(200)->generate($qrLink);
 
-        $applicant->qr_link = $qrCode;
-        $applicant->save();
+        $candidate->qr_link = $qrCode;
+        $candidate->save();
 
-        return redirect()->route('jobportal')
+        return redirect()->route('applicants.index')
                         ->with('success','Berhasil Melamar Pekerjaan');
-    }
-
-    public function QRUpdate(Request $request, $id)
-    {   
-        // Cari data pelamar berdasarkan ID
-        $applicant = Applicant::find($id);
-
-        // Pastikan data pelamar ditemukan sebelum melanjutkan
-        if (!$applicant) {
-            return redirect()->route('applicants.index')
-                            ->with('error', 'Applicant not found');
-        }
-
-        // Buat tautan untuk tampilan data pelamar dengan ID yang ditemukan
-        $qrLink = route('applicants.show', ['applicant' => $applicant->id]);
-
-        // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
-        $qrCode = QrCode::size(200)->generate($qrLink);
-
-        // Simpan tautan QR code ke dalam basis data
-        $applicant->qr_link = $qrCode;
-        $applicant->save();
-
-        return redirect()->route('applicants.index')
-                        ->with('success', 'Applicant updated successfully');
-    }
-
-
-
-    public function show(Applicant $applicant)
-    {
-        return view('applicants.show', compact('applicant'));
-    }
-
-    public function edit(Applicant $applicant)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'status' => 'required',
-            'user_id' => 'required',
-            'career_id' => 'required',
-        ]);
-        
-        $applicant = Applicant::find($id);
-        $applicant->status = $request->status;
-        $applicant->user_id = $request->user_id;
-        $applicant->career_id = $request->career_id;
-        
-        $applicant->save();
-        // $crud->update($request->all());
-        return redirect()->route('applicants.index')
-                        ->with('success','Applicant updated successfully');
-    }
-
-    public function destroy(Applicant $applicant)
-    {
-        $applicant->delete();
-
-        return redirect()->route('applicants.index')
-                        ->with('success','Applicant deleted successfully');
     }
 }

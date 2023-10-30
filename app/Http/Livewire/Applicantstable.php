@@ -2,16 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Livewire\Component;
-use App\Models\Applicant;
 use Livewire\WithPagination;
-use App\Exports\ExportApplicants;
+use App\Exports\ExportEmployees;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Applicantstable extends Component
 {
-    use WithPagination;
-
+    use withPagination;
+    
     protected $paginationTheme = 'bootstrap';
     public $exportToExcel = false;
     public $search = '';
@@ -25,42 +25,22 @@ class Applicantstable extends Component
     public function exportSelected()
     {
         if (count($this->selectedIds) > 0) {
-            $selectedData = Applicant::whereIn('id', $this->selectedIds)
-                ->with(['career', 'user' ])
+            $selectedData = User::whereIn('id', $this->selectedIds)
                 ->get();
     
-            $modifiedData = $selectedData->map(function ($applicant) {
+            $modifiedData = $selectedData->map(function ($user) {
                 return [
-                    'company' => $applicant->career->company['company'],
-                    'company_id' => $applicant->career->company['id'],
-                    'user' => $applicant->user->name,
-                    'user_id' => $applicant->user->id,
-                    'nickname' => $applicant->user->profile['nickname'],
-                    'address' => $applicant->user->profile['address'],
-                    'birth_place' => $applicant->user->profile['birth_place'],
-                    'birth_date' => $applicant->user->profile['birth_date'],
-                    'religion' => $applicant->user->profile['religion'],
-                    'person_status' => $applicant->user->profile['person_status'],
-                    'mother_name' => $applicant->user->profile['mother_name'],
-                    'family_name' => $applicant->user->profile['family_name'],
-                    'family_address' => $applicant->user->profile['family_address'],
-                    'weight' => $applicant->user->profile['weight'],
-                    'height' => $applicant->user->profile['height'],
-                    'hobby' => $applicant->user->profile['hobby'],
-                    'bank_account' => $applicant->user->profile['bank_account'],
-                    'bank_name' => $applicant->user->profile['bank_name'],
-                    'reference' => $applicant->user->profile['reference'],
-                    'reference_job' => $applicant->user->profile['reference_job'],
-                    'reference_relation' => $applicant->user->profile['reference_relation'],
-                    'reference_address' => $applicant->user->profile['reference_address'],
-                    'nik_number' => $applicant->user->nik_number,
-                    'family_number' => $applicant->user->profile['family_number'],
-                    'npwp_number' => $applicant->user->profile['npwp_number'],
-                    'active_date' => $applicant->user->profile['active_date'],
+                    'addendum_id' => null,
+                    'no_pkwt' => null,
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'department' => $user->profile['department'],
+                    'project' => $user->profile['project'],
+                    'area' => $user->profile['area'],
                 ];
             });
     
-            return Excel::download(new ExportApplicants($modifiedData), 'selected_applicant_data.xlsx');
+            return Excel::download(new ExportApplicants($modifiedData), 'untuk_import_pkwt.xlsx');
         } else {
             session()->flash('error', 'No data selected for export.');
         }
@@ -69,14 +49,27 @@ class Applicantstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Applicant::whereRelation('user', 'name', 'like', '%' . $this->search . '%')
-                ->orWhereRelation('career', 'jobname', 'like', '%' . $this->search . '%')
-                ->orWhere('created_at', 'like', '%' . $this->search . '%')
-                ->paginate(10);
+            $data = User::where(function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%')
+                    ->orWhere('created_at', 'like', '%' . $this->search . '%');
+            })
+            ->whereDoesntHave('roles')
+            ->whereHas('profile', function ($query) {
+                $query->where('department', null);
+            })
+            ->whereDoesntHave('candidate') // Memeriksa apakah pengguna adalah kandidat
+            ->paginate(10);
         } else {
-            $data = Applicant::paginate(10);
+            $data = User::whereDoesntHave('roles')
+                ->whereHas('profile', function ($query) {
+                    $query->where('department', null);
+                })
+                ->whereDoesntHave('candidate') // Memeriksa apakah pengguna adalah kandidat
+                ->paginate(10);
         }
-
+    
         return view('livewire.applicantstable', compact('data'));
-    }
+    }     
+
 }

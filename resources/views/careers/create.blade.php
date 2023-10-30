@@ -166,10 +166,10 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <label for="applicant">membutuhkan Berapa</label>
-                                                <input type="text" name="applicant" class="form-control"
+                                                <label for="candidate">membutuhkan Berapa</label>
+                                                <input type="text" name="candidate" class="form-control"
                                                     placeholder="Tulis Disini">
-                                                @error('applicant')
+                                                @error('candidate')
                                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                                 @enderror
                                             </div>

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'candidate Detail | InterCipta ERP Management')
+@section('title', 'applicant Detail | InterCipta ERP Management')
 
 @section('content')
     <main class="app-main">
@@ -300,7 +300,7 @@
                                         </div><!-- /.modal-header -->
                                         <!-- .modal-body -->
                                         <div class="modal-body">
-                                            <form action="{{ route('candidates.store') }}" method="POST"
+                                            <form action="{{ route('applicants.store') }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="user_id" value="{{ $profile->user['id'] }}">

@@ -18,6 +18,6 @@ class Career extends Model
 
     public function user()
     {
-        return $this->hasMany(Applicant::class);
+        return $this->hasMany(Candidate::class);
     }
 }

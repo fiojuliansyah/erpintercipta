@@ -16,8 +16,8 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\DepartmentController;
@@ -75,8 +75,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('chartofaccounts', ChartofaccountController::class);
     Route::resource('vendors', VendorController::class);
     Route::resource('careers', CareerController::class);
-    Route::resource('applicants', ApplicantController::class);
-    Route::put('/update-qrcode/{id}',[ApplicantController::class,'QRUpdate'])->name('update-qrcode');
+    Route::resource('candidates', CandidateController::class);
+    Route::put('/update-qrcode/{id}',[CandidateController::class,'QRUpdate'])->name('update-qrcode');
     Route::put('/update-qrcode-user/{id}',[userController::class,'QRUpdate'])->name('update-qrcode-user');
     Route::resource('pkwts', PkwtController::class);
     Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
@@ -85,7 +85,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('esigns', EsignController::class);
     Route::resource('addendums', AddendumController::class);
     Route::resource('employees', EmployeeController::class);
-    Route::resource('candidates', CandidateController::class);
+    Route::resource('applicants', ApplicantController::class);
 
 });
 

@@ -70,13 +70,18 @@ class User extends Authenticatable
         return $this->hasOne(Esign::class, 'user_id', 'id');
     }
 
+    public function candidate()
+    {
+        return $this->hasOne(Candidate::class, 'user_id', 'id');
+    }
+
     public function applicant()
     {
         return $this->hasOne(Applicant::class, 'user_id', 'id');
     }
 
-    public function candidate()
+    public function career()
     {
-        return $this->hasOne(Candidate::class, 'user_id', 'id');
+        return $this->hasOne(Career::class, 'user_id', 'id');
     }
 }

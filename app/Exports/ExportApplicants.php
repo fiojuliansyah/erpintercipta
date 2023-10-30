@@ -2,11 +2,11 @@
 
 namespace App\Exports;
 
-use App\Models\Applicant;
+use App\Models\Candidate;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ExportApplicants implements FromCollection, WithHeadings
+class ExportCandidates implements FromCollection, WithHeadings
 {
     protected $data;
 

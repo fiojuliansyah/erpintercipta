@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('major')->nullable();
             $table->string('graduate')->nullable();
             $table->string('salary')->nullable();
-            $table->string('applicant')->nullable();
+            $table->string('candidate')->nullable();
             $table->string('user_id')->nullable();
             $table->timestamps();
         });
