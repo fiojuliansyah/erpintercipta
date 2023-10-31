@@ -90,6 +90,7 @@
     <script src="{{ asset('') }}admin/vendor/stacked-menu/js/stacked-menu.min.js"></script>
     <script src="{{ asset('') }}admin/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{ asset('') }}admin/vendor/flatpickr/flatpickr.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('') }}admin/vendor/bootstrap-select/css/bootstrap-select.min.css">
     <script src="{{ asset('') }}admin/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
     <script src="{{ asset('') }}admin/vendor/chart.js/Chart.min.js"></script>
     <!-- END PLUGINS JS -->

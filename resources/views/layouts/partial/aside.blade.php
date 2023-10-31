@@ -71,23 +71,48 @@
                     @endcan
                     @can('career-menu')
                         <li class="menu-header">Recruitment</li>
-                        <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
-                            <a href="{{ route('applicants.index') }}" class="menu-link"><span
-                                    class="menu-icon fas fa-user-friends"></span> <span
-                                    class="menu-text">Pelamar</span><span class="badge badge-success">0 Butuh Review</span></a>
+                        <li class="menu-item has-child">
+                            <a href="#" class="menu-link"><span class="menu-icon fas fa-database"></span> <span
+                                    class="menu-text">Database Pelamar</span></a> <!-- child menu -->
+                            <ul class="menu">
+                                <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+                                    <a href="{{ route('applicants.index') }}" class="menu-link"><span
+                                            class="menu-icon fas fa-user-friends"></span> <span
+                                            class="menu-text">Pelamar</span><span class="badge badge-success">10</span></a>
+                                </li>
+                                <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+                                    <a href="{{ route('candidates.index') }}" class="menu-link"><span
+                                            class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Data
+                                            Kandidat</span></a>
+                                </li>
+                                <li class="menu-item has-child">
+                                    <a href="#" class="menu-link"><span
+                                        class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Orientasi</span></a> <!-- grand child menu -->
+                                    <ul class="menu">
+                                      <li class="menu-item">
+                                        <a href="#" class="menu-link">NCC/GNC<span class="badge badge-warning">soon</span></a>
+                                      </li>
+                                      <li class="menu-item">
+                                        <a href="#" class="menu-link">PKL<span class="badge badge-warning">soon</span></a>
+                                      </li>
+                                    </ul><!-- /grand child menu -->
+                                  </li>
+                                @can('employee-list')
+                                    <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+                                        <a href="{{ route('employee.index') }}" class="menu-link"><span
+                                                class="menu-icon fas fa-user-friends"></span> <span class="menu-text">Data Pegawai
+                                            </span></a>
+                                    </li>
+                                @endcan
+                            </ul><!-- /child menu -->
                         </li>
+                    @endcan
+                    @can('candidate-menu')
                         <li class="menu-item {{ Request::path() == 'careers' ? 'has-active' : '' }}">
                             <a href="{{ route('careers.index') }}" class="menu-link"><span
                                     class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Buat
                                     Lowongan</span></a>
-                        </li>
-                    @endcan
-                    @can('candidate-menu')
-                        <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
-                            <a href="{{ route('candidates.index') }}" class="menu-link"><span
-                                    class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Data
-                                    Kandidat</span></a>
-                        </li>
+                        </li> 
                         <li class="menu-item has-child">
                             <a href="#" class="menu-link"><span class="menu-icon fas fa-database"></span> <span
                                     class="menu-text">PKWT</span></a> <!-- child menu -->
@@ -105,16 +130,8 @@
                                             Addendum</span></a>
                                 </li>
                             @endcan
-                        </ul><!-- /child menu -->
-                    </li>
-                    @can('employee-list')
-                        <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
-                            <a href="{{ route('employee.index') }}" class="menu-link"><span
-                                    class="menu-icon fas fa-user-friends"></span> <span class="menu-text">Data Pegawai
-                                </span></a>
+                            </ul><!-- /child menu -->
                         </li>
-                    @endcan
-
                     <!-- .menu-header -->
                     @can('admin-only')
                         <li class="menu-header">Server Side <span class="badge badge-danger">Admin Only</span></li>

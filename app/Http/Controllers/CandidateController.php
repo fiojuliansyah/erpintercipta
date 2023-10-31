@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Addendum;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,6 @@ class CandidateController extends Controller
 
     public function create()
     {
-        //
     }
 
     public function store(Request $request)
@@ -78,7 +78,8 @@ class CandidateController extends Controller
 
     public function show(Candidate $candidate)
     {
-        return view('candidates.show', compact('candidate'));
+        $addendums = Addendum::all();
+        return view('candidates.show', compact('candidate','addendums'));
     }
 
     public function edit(Candidate $candidate)

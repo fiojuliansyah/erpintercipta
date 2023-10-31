@@ -306,19 +306,19 @@
                                                 <input type="hidden" name="user_id" value="{{ $applicant->id }}">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
-                                                        <label for="customername">Perusahaan</label>
-                                                        <select id="career_id"
-                                                            class="custom-select custom-select-lg d-block w-100"
-                                                            name="career_id" required="">
-                                                            <option value=""> pilih Lowongan </option>
-                                                            @foreach ($careers as $career)
-                                                                <option value="{{ $career->id }}">
-                                                                    {{ $career->jobname }} || {{ $career->location }}
-                                                                </option>
-                                                            @endforeach
+                                                        <label class="control-label" for="bss3">Pilih Penempatan</label>
+                                                        <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="career_id">
+                                                        <option value="">Pilih</option>
+                                                        @foreach ($careers as $career)
+                                                        <option value="{{ $career->id }}">
+                                                            {{ $career->jobname }} || {{ $career->location }}
+                                                        </option>
+                                                        @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <br>
+                                                <br>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light"
                                                         data-dismiss="modal">CLose</button>
@@ -339,3 +339,25 @@
         </div><!-- /.wrapper -->
     </main>
 @endsection
+
+@push('js')
+<script>
+    document.getElementById("searchCareer").addEventListener("input", function () {
+        var input, filter, select, option, i;
+        input = this;
+        filter = input.value.toUpperCase();
+        select = document.getElementById("career_id");
+        option = select.getElementsByTagName("option");
+
+        for (i = 0; i < option.length; i++) {
+            txtValue = option[i].textContent || option[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                option[i].style.display = "";
+            } else {
+                option[i].style.display = "none";
+            }
+        }
+    });
+</script>
+<script src="{{ asset('') }}admin/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+@endpush

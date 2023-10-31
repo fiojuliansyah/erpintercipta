@@ -104,6 +104,7 @@
               <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi oi-grid-three-up"></span></a> <!-- .dropdown-menu -->
               <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
                 <div class="dropdown-arrow"></div><!-- .dropdown-sheets -->
+                @can('employee')    
                 <div class="dropdown-sheets">
                   <!-- .dropdown-sheet-item -->
                   <div class="dropdown-sheet-item">
@@ -126,6 +127,7 @@
                     <a href="{{ url('/chartofaccounts') }}" class="tile-wrapper"><span class="tile tile-lg bg-cyan"><i class="oi oi-document"></i></span> <span class="tile-peek">COAS</span></a>
                   </div><!-- /.dropdown-sheet-item -->
                 </div><!-- .dropdown-sheets -->
+                @endcan
               </div><!-- .dropdown-menu -->
             </li><!-- /.nav-item -->
           </ul><!-- /.nav -->

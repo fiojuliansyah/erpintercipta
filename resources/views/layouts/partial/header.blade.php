@@ -119,6 +119,7 @@
                         <!-- .dropdown-menu -->
                         <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
                             <div class="dropdown-arrow"></div><!-- .dropdown-sheets -->
+                            @can('employee') 
                             <div class="dropdown-sheets">
                                 <!-- .dropdown-sheet-item -->
                                 <div class="dropdown-sheet-item">
@@ -151,6 +152,7 @@
                                             class="tile-peek">COAS</span></a>
                                 </div><!-- /.dropdown-sheet-item -->
                             </div><!-- .dropdown-sheets -->
+                            @endcan
                         </div><!-- .dropdown-menu -->
                     </li><!-- /.nav-item -->
                 </ul><!-- /.nav -->

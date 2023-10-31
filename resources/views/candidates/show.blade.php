@@ -267,32 +267,8 @@
                           <h2 id="client-billing-contact-tab" class="card-title"> update Status </h2>
                         </div>
                         <div class="col-md-4 mb-4">
-                            <strong>Bukti Transfer</strong>
-                            <br>
-                            <br>
-                            <img src="{{ Storage::url($candidate->user?->profile['transfer']) }}" width="350" alt="">
-                        </div>
-                        <form action="{{ route('candidates.update',$candidate->id) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="user_id" value="{{ $candidate->user['id'] }}">
-                            <input type="hidden" name="career_id" value="{{ $candidate->career['id'] }}">
-                            <div class="form-group">
-                                <label for="status">Data Status</label>
-                                <select id="status" class="custom-select custom-select-lg d-block w-100" name="status" required="">
-                                <option value="{{ $candidate->status }}"></option>
-                                <option value="0"> Cek Berkas </option>
-                                <option value="1"> Interview </option>
-                                <option value="2"> Training </option>
-                                <option value="3"> PKWT </option>
-                                </select>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-light" data-dismiss="modal">Keluar</button>
-                              <button type="submit" class="btn btn-success">Submit</button>
-                            </div><!-- /.modal-footer -->
-                        </form>
-                          <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalScrollable">Buat PKWT</a>
+                          <a type="button" class="btn btn-warning" data-toggle="modal"
+                          data-target="#exampleModalScrollable">Update Lowongan</a>
                         </div>
                       </div><!-- /.card-body -->
                     </div>
@@ -303,140 +279,61 @@
                         <div class="modal-content">
                           <!-- .modal-header -->
                           <div class="modal-header">
-                            <h5 id="exampleModalScrollableLabel" class="modal-title"> Generate SKK/PKWT </h5>
+                            <h5 id="exampleModalScrollableLabel" class="modal-title"> Data Screening </h5>
                           </div><!-- /.modal-header -->
                           <!-- .modal-body -->
                           <div class="modal-body">
-                            <form action="{{ route('pkwts.store') }}" method="POST" enctype="multipart/form-data">
-                              @csrf
-                              <input type="hidden" name="user_id" value="{{ $candidate->user['id'] }}">
-                              <input type="hidden" name="company_id" value="{{ $candidate->career?->company['id'] }}">
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" name="reference_number" required=""> <label for="reference_number">No SURAT</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" value="{{ $candidate->career?->company['company'] }}" readonly> <label for="name">Perusahaan</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" value="{{ $candidate->user['name'] }}" readonly> <label for="name">Nama Lengkap (sesuai KTP/Ijazah)</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" value="{{ $candidate->user?->profile['gender'] }}" readonly> <label for="name">Jenis Kelamin</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                              </div>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" value="{{ $candidate->user?->profile['birth_place'] }}, {{ $candidate->user?->profile['birth_date'] }}" readonly> <label for="name">Tempat Tanggal Lahir</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" value="{{ $candidate->user?->profile['nik_number'] }}" readonly> <label for="name">No NIK</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" value="{{ $candidate->user?->profile['address'] }}" readonly> <label for="name">Alamat</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <p> Masukan Tanggal </p>
-                              <div class="row">
-                                <div class="col-md-3 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" name="date"> <label for="name">Tanggal</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                                <div class="col-md-9 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" name="date_abjad"> <label for="name">Abjad</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-3 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" name="month"> <label for="name">Bulan</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                                <div class="col-md-9 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" name="month_abjad"> <label for="name">Abjad</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-md-3 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" name="year"> <label for="name">Tahun</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                                <div class="col-md-9 mb-4">
-                                    <div class="form-label-group">
-                                    <input type="text" class="form-control" name="year_abjad"> <label for="name">Abjad</label>
-                                    </div>
-                                    <div class="invalid-feedback"> Wajib Diisi! </div>
-                                </div>
-                              </div>
-                              <p> Penempatan </p>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" name="project" required=""> <label for="name">Proyek</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" name="area" required=""> <label for="name">Area</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <p> Gaji & Tunjangan </p>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" name="salary" required=""> <label for="name">Gaji</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" name="allowance" required=""> <label for="name">Tunjangan</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <br>
-                              <br>
-                              <div class="form-group mb-4">
-                                <div class="form-label-group">
-                                <input type="text" class="form-control" name="place" required=""> <label for="palce">Tempat Tanda Terima</label>
-                                </div>
-                                <div class="invalid-feedback"> Wajib Diisi! </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">CLose</button>
-                                <button type="submit" class="btn btn-warning">Submit</button>
-                              </div><!-- /.modal-footer -->
-                            </form>
+                            <div class="card card-fluid">
+                              <!-- .card-header -->
+                              <div class="card-header">
+                                <!-- .nav-tabs -->
+                                <ul class="nav nav-tabs card-header-tabs">
+                                  <li class="nav-item">
+                                    <a class="nav-link active show" data-toggle="tab" href="#orientasi">Orientasi</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#penempatan">Penempatan</a>
+                                  </li>
+                                </ul><!-- /.nav-tabs -->
+                              </div><!-- /.card-header -->
+                              <!-- .card-body -->
+                              <div class="card-body">
+                                <!-- .tab-content -->
+                                <div id="myTabContent" class="tab-content">
+                                  <div class="tab-pane fade active show" id="orientasi">
+                                    <p> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui. </p>
+                                  </div>
+                                  <div class="tab-pane fade" id="penempatan">
+                                    <small style="color: red">*Pastikan Addendum sudah dibuat</small>
+                                    <form action="{{ route('applicants.store') }}" method="POST"
+                                      enctype="multipart/form-data">
+                                      @csrf
+                                      <input type="hidden" name="user_id" value="{{ $candidate->user['id'] }}">
+                                      <div class="col-xs-12 col-sm-12 col-md-12">
+                                          <div class="form-group">
+                                              <label class="control-label" for="bss3">Pilih Addendum</label>
+                                              <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="career_id">
+                                              <option value="">Pilih</option>
+                                              @foreach ($addendums as $addendum)
+                                              <option value="{{ $addendum->id }}">
+                                                  {{ $addendum->title }} || {{ $addendum->project }}
+                                              </option>
+                                              @endforeach
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <br>
+                                      <br>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-light"
+                                              data-dismiss="modal">CLose</button>
+                                          <button type="submit" class="btn btn-warning">Submit</button>
+                                      </div><!-- /.modal-footer -->
+                                  </form>
+                                  </div>
+                                </div><!-- /.tab-content -->
+                              </div><!-- /.card-body -->
+                            </div>
                           </div><!-- /.modal-body -->
                           <!-- .modal-footer -->
                         </div><!-- /.modal-content -->
@@ -451,3 +348,24 @@
   </div><!-- /.wrapper -->
 </main>
 @endsection
+@push('js')
+<script>
+    document.getElementById("searchCareer").addEventListener("input", function () {
+        var input, filter, select, option, i;
+        input = this;
+        filter = input.value.toUpperCase();
+        select = document.getElementById("career_id");
+        option = select.getElementsByTagName("option");
+
+        for (i = 0; i < option.length; i++) {
+            txtValue = option[i].textContent || option[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                option[i].style.display = "";
+            } else {
+                option[i].style.display = "none";
+            }
+        }
+    });
+</script>
+<script src="{{ asset('') }}admin/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+@endpush
