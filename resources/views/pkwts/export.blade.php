@@ -194,8 +194,65 @@
     <br>
     <br>
     <p class="c0"><span class="c1">
-        {!! $pkwt->addendum['attachment'] !!}
+        {!! $pkwt->addendum['attachment_1'] !!}
     </span></p>
+    <div class="row">
+        <div class="col-md-6 mb-4 text-center">
+            <p>PIHAK PERTAMA</p>
+            <br>
+            @if ($pkwt->user?->signature == null) 
+              <br>   
+              @else                         
+              <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
+            @endif
+            <br>
+            <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+            <p>Human Resource Development</p>
+        </div>
+        <div class="col-md-6 mb-4 text-center">
+            <p>PIHAK KEDUA</p>
+            <br>
+            @if ($pkwt->user?->signature == null) 
+            <br>   
+            @else                         
+            <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+            @endif
+            <br>
+            {{-- <p>( <u>{{ $pkwt->user['name'] }}</u> )</p> --}}
+            <p>Karyawan</p>
+        </div>
+        <br>
+    </div>
+    <p class="c0"><span class="c1">
+        {!! $pkwt->addendum['attachment_2'] !!}
+    </span></p>
+    <div class="row">
+        <div class="col-md-6 mb-4 text-center">
+            <p>PIHAK PERTAMA</p>
+            <br>
+            @if ($pkwt->user?->signature == null) 
+              <br>   
+              @else                         
+              <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
+            @endif
+            <br>
+            <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+            <p>Human Resource Development</p>
+        </div>
+        <div class="col-md-6 mb-4 text-center">
+            <p>PIHAK KEDUA</p>
+            <br>
+            @if ($pkwt->user?->signature == null) 
+            <br>   
+            @else                         
+            <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+            @endif
+            <br>
+            {{-- <p>( <u>{{ $pkwt->user['name'] }}</u> )</p> --}}
+            <p>Karyawan</p>
+        </div>
+        <br>
+    </div>
 </body>
 
 </html>
