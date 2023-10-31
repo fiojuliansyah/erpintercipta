@@ -98,8 +98,8 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->profile['department'] ?? '' }}</td>
-                        <td>{{ $user->addendum['project'] ?? '' }}</td>
-                        <td>{{ $user->addendum['area'] ?? '' }}</td>
+                        <td>{{ $user->pkwt?->addendum['project'] ?? '' }}</td>
+                        <td>{{ $user->pkwt?->addendum['area'] ?? '' }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <a href="https://google.com">

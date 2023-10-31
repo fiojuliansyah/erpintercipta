@@ -80,7 +80,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/update-qrcode-user/{id}',[userController::class,'QRUpdate'])->name('update-qrcode-user');
     Route::resource('pkwts', PkwtController::class);
     Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
-    Route::get('/export-pkwt/{pkwt}',[PkwtController::class,'exportPdf'])->name('export-pkwt');
     Route::resource('signatures', SignatureController::class);
     Route::resource('esigns', EsignController::class);
     Route::resource('addendums', AddendumController::class);

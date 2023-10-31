@@ -72,6 +72,11 @@ class PkwtController extends Controller
         return view('pkwts.show', compact('pkwt'));
     }
 
+    public function export(Pkwt $pkwt)
+    {
+        return view('pkwts.export', compact('pkwt'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -130,20 +135,6 @@ class PkwtController extends Controller
     {
         Excel::import(new ImportPkwts, $request->file('file')->store('files'));
         return redirect()->back();
-    }
-
-    public function exportPdf(Pkwt $pkwt)
-    {
-        // $pkwt = Pkwt::find($id);
-
-        // if (!$pkwt) {
-        //     return abort(404); // Handle not found PKWT
-        // }
-
-        // $pdf = PDF::loadView('pkwts.export', ['pkwt' => $pkwt])->setOptions(['defaultFont' => 'sans-serif']);
-
-        // return $pdf->download('pkwt_' . $pkwt->id . '.pdf');
-        return view('pkwts.export', compact('pkwt'));
     }
 
 }

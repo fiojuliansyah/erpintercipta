@@ -9,106 +9,112 @@
       <!-- .page -->
       <div class="page has-sidebar has-sidebar-expand-xl">
         <!-- .page-inner -->
-        <div class="page-inner">
-          <!-- .page-section -->
-          <div class="card">
-            <!-- .card-body -->
-            <div class="card-body" style="background-color: white; color: black">
-                <span id="addendum">
-                  {!! $pkwt->addendum['addendum'] !!}
-                </span>
-                <br>
-                <div class="row">
-                    <div class="col-md-6 mb-4 text-center">
-                        <p>PIHAK PERTAMA</p>
+        <div id="printable-content" class="wrapper">
+            <div class="page-inner">
+              <!-- .page-section -->
+            <div class="card">
+              <!-- .card-body -->
+                <div class="card-body" style="background-color: white; color: black">
+                    <span id="addendum">
+                      {!! $pkwt->addendum['addendum'] !!}
+                    </span>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 text-center">
+                            <p>PIHAK PERTAMA</p>
+                            <br>
+                            @if ($pkwt->user?->signature == null) 
+                              <br>   
+                              @else                         
+                              <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
+                            @endif
+                            <br>
+                            <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+                            <p>Human Resource Development</p>
+                        </div>
+                        <div class="col-md-6 mb-4 text-center">
+                            <p>PIHAK KEDUA</p>
+                            <br>
+                            @if ($pkwt->user?->signature == null) 
+                            <br>   
+                            @else                         
+                            <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+                            @endif
+                            <br>
+                            <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
+                            <p>Karyawan</p>
+                        </div>
+                        <br>
+                    </div>
+                </div><!-- /.card-body -->
+            </div>
+            <div class="card">
+                <div class="card-body" style="background-color: white; color: black">
+                    {!! ($pkwt->addendum['attachment_1']) !!}
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 text-center">
+                            <p>PIHAK PERTAMA</p>
+                            <strong>{{ $pkwt->addendum?->company['company'] }}</strong>
+                            <br>
+                            @if ($pkwt->user?->signature == null) 
+                              <br>   
+                              @else                         
+                              <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
+                            @endif
+                            <br>
+                            <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+                            <p>Human Resource Development</p>
+                        </div>
+                        <div class="col-md-6 mb-4 text-center">
+                          <p>PIHAK KEDUA</p>
+                          <br>
+                          @if ($pkwt->user?->signature == null) 
+                            <br>   
+                            @else                         
+                            <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+                          @endif
+                          <br>
+                          <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
+                          <p>Karyawan</p>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+              <div class="card-body" style="background-color: white; color: black">
+                  {!! ($pkwt->addendum['attachment_2']) !!}
+                  <br>
+                  <div class="row">
+                      <div class="col-md-6 mb-4 text-center">
+                          <p>PIHAK PERTAMA</p>
+                          <strong>{{ $pkwt->addendum?->company['company'] }}</strong>
+                          <br>
+                          @if ($pkwt->user?->signature == null) 
+                            <br>   
+                            @else                         
+                            <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
+                          @endif
+                          <br>
+                          <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+                          <p>Human Resource Development</p>
+                      </div>
+                      <div class="col-md-6 mb-4 text-center">
+                        <p>PIHAK KEDUA</p>
                         <br>
                         @if ($pkwt->user?->signature == null) 
                           <br>   
                           @else                         
-                          <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
-                        @endif
-                        <br>
-                        <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
-                        <p>Human Resource Development</p>
-                    </div>
-                    <div class="col-md-6 mb-4 text-center">
-                        <p>PIHAK KEDUA</p>
-                        <br>
-                        @if ($pkwt->user?->signature == null) 
-                        <br>   
-                        @else                         
-                        <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
+                          <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
                         @endif
                         <br>
                         <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
                         <p>Karyawan</p>
-                    </div>
-                    <br>
-                </div>
-            </div><!-- /.card-body -->
-        </div>
-        <div class="card">
-            <div class="card-body" style="background-color: white; color: black">
-                {!! ($pkwt->addendum['attachment']) !!}
-                <br>
-                <div class="row">
-                    <div class="col-md-6 mb-4 text-center">
-                        <p>PIHAK PERTAMA</p>
-                        <strong>{{ $pkwt->addendum?->company['company'] }}</strong>
-                        <br>
-                        @if ($pkwt->user?->signature == null) 
-                          <br>   
-                          @else                         
-                          <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
-                        @endif
-                        <br>
-                        <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
-                        <p>Human Resource Development</p>
-                    </div>
-                    <div class="col-md-6 mb-4 text-center">
-                      <p>PIHAK KEDUA</p>
+                      </div>
                       <br>
-                      @if ($pkwt->user?->signature == null) 
-                        <br>   
-                        @else                         
-                        <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}" width="300" alt="">
-                      @endif
-                      <br>
-                      <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
-                      <p>Karyawan</p>
-                    </div>
-                    <br>
-                </div>
-            </div>
-        </div>
-        <div class="d-md-flex">   
-          <div class="ml-auto">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Tanda Tangan</button>
-          </div>
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
-            <!-- .modal-dialog -->
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <!-- .modal-content -->
-              <div class="modal-content">
-                <!-- .modal-header -->
-                <div class="modal-header">
-                  <h5 id="exampleModalCenterLabel" class="modal-title"> Tanda Tangan </h5>
-                </div><!-- /.modal-header -->
-                <!-- .modal-body -->
-                <form action="{{ url('esigns') }}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  <input type="hidden" name="pkwt_id" value="{{ $pkwt->id }}">
-                  <div class="modal-body">
-                      <canvas id="signatureCanvas" width="500" height="200"></canvas>           
-                  </div><!-- /.modal-body -->
-                  <!-- .modal-footer -->
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
-                      <button id="saveButton" class="btn btn-primary">Simpan</button>
-                  </div><!-- /.modal-footer -->
-              </form>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
+                  </div>
+              </div>
           </div>
         </div>
         <!-- .page-sidebar -->
@@ -119,12 +125,13 @@
               <h4 class="card-title"> Status Proses </h4>
               <div class="progress progress-sm rounded-0 mb-1">
                 @if ($pkwt->user?->signature == null) 
-                <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>                    
-                @else
                 <div class="progress-bar bg-success w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                @else
+                <div class="progress-bar bg-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>                    
                 @endif
               </div>
               <p class="text-muted text-weight-bolder small"> Tanda Tangan PKWT </p>
+              <button  class="btn btn-primary" onclick="printContent('printable-content')">Print PKWT</button>
             </div><!-- .card-body -->
             <div class="card-body border-top">
               <h4 class="card-title"> History </h4><!-- .timeline -->
@@ -191,6 +198,29 @@
       </div><!-- /.page -->
     </div><!-- /.wrapper -->
   </main>
+  @section('print-styles')
+  <style>
+    /* Define print styles */
+    @media print {
+      body {
+        font-size: 14pt; /* Adjust the font size for printing */
+      }
+
+      .wrapper {
+        width: 210mm; /* Set the width of the printable area to fit A4 paper */
+        margin: 0 auto; /* Center the content on the page */
+        padding: 50px; /* Add padding to the content for better readability */
+      }
+
+      .card {
+        page-break-after: always; /* Add a page break after each card (section) */
+        background-color: white; /* Set a white background for cards */
+        color: black; /* Set text color to black for cards */
+        margin-bottom: 10px; /* Add space between cards */
+      }
+    }
+  </style>
+  @endsection
 @endsection
 
 @push('js')
@@ -249,4 +279,16 @@
   });
 </script>
 
+<script>
+  function printContent(elementId) {
+      var originalContents = document.body.innerHTML;
+      var printContents = document.getElementById(elementId).innerHTML;
+
+      document.body.innerHTML = printContents;
+
+      window.print();
+
+      document.body.innerHTML = originalContents;
+  }
+</script>
 @endpush

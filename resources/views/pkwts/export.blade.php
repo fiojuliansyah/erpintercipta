@@ -253,6 +253,22 @@
         </div>
         <br>
     </div>
+    <script>
+    // Ambil elemen yang mengandung teks yang akan diganti
+    var element = document.getElementById('addendum');
+    
+    // Ganti teks dalam elemen tersebut
+    if (element) {
+        element.innerHTML = element.innerHTML
+            .replace('{NO_SURAT}', '<b>No. {{ $pkwt->pkwt_number }}/{{ $pkwt->addendum?->company['cmpy'] }}/HR-{{ $pkwt->addendum['area'] }}/{{ $pkwt->addendum['romawi'] }}/{{ $pkwt->addendum['year'] }}</b>')
+            .replace('{PENANGGUNG_JAWAB}', '{{ $pkwt->addendum['responsible'] }}')
+            .replace('{PELAMAR}', '{{ $pkwt->user['name'] }}')
+            .replace('{JENIS_KELAMIN}', '{{ $pkwt->user?->profile['gender'] }}')
+            .replace('{TTL}', '{{ $pkwt->user?->profile['birth_place'] }}, {{ $pkwt->user?->profile['birth_date'] }}')
+            .replace('{NIK}', '{{ $pkwt->user['nik_number'] }}')
+            .replace('{ALAMAT}', '{{ $pkwt->user?->profile['address'] }}')
+    }
+    </script>
 </body>
 
 </html>

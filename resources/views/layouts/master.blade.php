@@ -51,7 +51,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
-
+    @yield('print-styles')
     @yield('css')
     <script>
         var skin = localStorage.getItem('skin') || 'default';
