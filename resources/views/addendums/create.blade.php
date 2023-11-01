@@ -52,27 +52,30 @@
                 <form action="{{ route('addendums.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                   <!-- .fieldset -->
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <label for="title">Judul</label>
-                        <input type="text" name="title" class="form-control" placeholder="Tulis Disini">
-                        @error('title')
-                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                  </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                      <div class="form-group">
-                          <label for="customername">Perusahaan</label>
-                          <select id="company_id" class="custom-select custom-select-lg d-block w-100" name="company_id" required="">
-                          <option value=""> Pilih Perusahaan </option>
-                          @foreach ($companies as $company)
-                          <option value="{{ $company->id }}"> {{ $company->company }} </option>
-                          @endforeach
-                          </select>
-                      </div>
+                        <div class="form-group">
+                            <label class="control-label" for="bss3">Type Addendum</label>
+                            <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="title">
+                            <option value="">Pilih</option>
+                            <option value="PKWT">PKWT</option>
+                            <option value="Perjanjian Kerja">Perjanjian Kerja</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="bss3">Pilih Project / Site</label>
+                            <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="site_id">
+                            <option value="">Pilih</option>
+                            @foreach ($sites as $site)
+                            <option value="{{ $site->id }}">
+                                {{ $site->name }}
+                            </option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="row">
                         <div class="col-md-6">
                           <label for="responsible">Penanggung Jawab</label>
@@ -96,9 +99,9 @@
                             @enderror
                         </div>
                       </div>
-                    </div>
+                    </div> --}}
                     <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="row">
                         <div class="col-md-6">
                             <label for="project">Proyek</label>
@@ -115,7 +118,7 @@
                             @enderror
                         </div>
                       </div>
-                    </div>
+                    </div> --}}
                     <br>
                     <a href="{{asset('/admin/format_import/format_draft_pkwt.doc')}}" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" width="20" alt="">&nbsp;&nbsp;Download Format ADDENDUM</a>
                     <div class="col-xs-20 col-sm-20 col-md-12">
@@ -182,6 +185,7 @@
 
 @push('js')
 <script src="{{ asset('') }}admin/vendor/summernote/summernote-bs4.min.js"></script>
+<script src="{{ asset('') }}admin/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 {{-- <script>
   ClassicEditor
   .create( document.querySelector( '#addendum' ) )

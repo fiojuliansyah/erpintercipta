@@ -10,23 +10,25 @@
           <thead>
             <tr>
                 <th>No</th>
-                <th>Addindum ID</th>
-                <th>Tipe Surat</th>
-                <th>Perusahaan</th>
-                <th>Site</th>
+                <th>No Perjanjian</th>
+                <th>Judul</th>
+                <th>Jabatan</th>
+                <th>Tipe</th>
+                <th>Project / Site</th>
                 <th width="100px"></th>
             </tr>
           </thead>
           <!-- /thead -->
           <!-- tbody -->
           <tbody>
-            @foreach ($data as $key => $addendum)
+            @foreach ($data as $key => $agreement)
               <tr>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
-                  <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
-                  <td>{{ $addendum->title ?? '' }}</td>
-                  <td>{{ $addendum->site?->company['company'] ?? '' }}</td>
-                  <td>{{ $addendum->site['name'] ?? '' }}</td>
+                  <td>AGREEMENT - {{ str_pad($agreement->id, 5, '0', STR_PAD_LEFT) }}</td>
+                  <td>{{ $agreement->title }}</td>
+                  <td>{{ $agreement->department }}</td>
+                  <td>{{ $agreement->addendum['title'] }}</td>
+                  <td>{{ $agreement->addendum?->site['name'] }}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                             <button type="submit" class="btn btn-primary">Menu</button>
@@ -35,12 +37,12 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <div class="dropdown-arrow"></div>
-                                <form action="{{ route('addendums.destroy', $addendum->id) }}" method="POST">
+                                <form action="{{ route('agreements.destroy', $agreement->id) }}" method="POST">
                                     <a class="dropdown-item"
-                                        href="{{ route('addendums.edit', $addendum->id) }}">Lihat Addendum</a>
+                                        href="{{ route('agreements.edit', $agreement->id) }}">Lihat Agreement</a>
                                     @csrf
                                     @method('DELETE')
-                                    @can('addendum-delete')
+                                    @can('agreement-delete')
                                         <button type="submit" class="dropdown-item">Hapus</button>
                                     @endcan
                                 </form>

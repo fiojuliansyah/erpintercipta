@@ -349,7 +349,7 @@
 </main>
 @endsection
 @push('js')
-<script>
+{{-- <script>
     document.getElementById("searchCareer").addEventListener("input", function () {
         var input, filter, select, option, i;
         input = this;
@@ -366,6 +366,6 @@
             }
         }
     });
-</script>
+</script> --}}
 <script src="{{ asset('') }}admin/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
 @endpush

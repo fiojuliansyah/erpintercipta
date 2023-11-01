@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use App\Models\Company;
 use App\Models\Addendum;
 use Illuminate\Http\Request;
@@ -35,7 +36,8 @@ class AddendumController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('addendums.create', compact('companies'));
+        $sites = Site::all();
+        return view('addendums.create', compact('companies','sites'));
     }
 
     /**
@@ -49,14 +51,9 @@ class AddendumController extends Controller
         $addendum = new Addendum;
         $addendum->company_id = $request->company_id;
         $addendum->addendum = $request->addendum;
-        $addendum->responsible = $request->responsible;
         $addendum->attachment_1 = $request->attachment_1;
         $addendum->attachment_2 = $request->attachment_2;
-        $addendum->project = $request->project;
-        $addendum->area = $request->area;
-        $addendum->place = $request->place;
-        $addendum->year = $request->year;
-        $addendum->romawi = $request->romawi;
+        $addendum->site_id = $request->site_id;
         $addendum->title = $request->title;
         $addendum->save();
 
@@ -84,7 +81,8 @@ class AddendumController extends Controller
     public function edit(Addendum $addendum)
     {
         $companies = Company::all();
-        return view('addendums.edit', compact('companies','addendum'));
+        $sites = Site::all();
+        return view('addendums.edit', compact('companies','addendum','sites'));
     }
 
     /**
@@ -99,14 +97,9 @@ class AddendumController extends Controller
         $addendum = Addendum::find($id);
         $addendum->company_id = $request->company_id;
         $addendum->addendum = $request->addendum;
-        $addendum->responsible = $request->responsible;
         $addendum->attachment_1 = $request->attachment_1;
         $addendum->attachment_2 = $request->attachment_2;
-        $addendum->project = $request->project;
-        $addendum->area = $request->area;
-        $addendum->place = $request->place;
-        $addendum->year = $request->year;
-        $addendum->romawi = $request->romawi;
+        $addendum->site_id = $request->site_id;
         $addendum->title = $request->title;
         $addendum->save();
         // $crud->update($request->all());

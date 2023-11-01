@@ -126,8 +126,11 @@
                             @can('addendum-menu')
                                 <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
                                     <a href="{{ route('addendums.index') }}" class="menu-link"><span
-                                            class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Create
-                                            Addendum</span></a>
+                                            class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Addendum</span></a>
+                                </li>
+                                <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
+                                    <a href="{{ route('agreements.index') }}" class="menu-link"><span
+                                            class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Agreement</span></a>
                                 </li>
                             @endcan
                             </ul><!-- /child menu -->
@@ -152,6 +155,9 @@
                                 </li>
                                 <li class="menu-item">
                                     <a href="{{ url('/terms') }}" class="menu-link">Terms</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ url('/sites') }}" class="menu-link">Sites</a>
                                 </li>
                             </ul><!-- /child menu -->
                         </li>

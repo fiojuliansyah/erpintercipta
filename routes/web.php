@@ -5,6 +5,7 @@ use App\Http\Controllers\CrudController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PkwtController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TermController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EsignController;
@@ -16,8 +17,9 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\AgreementController;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\DepartmentController;
@@ -85,6 +87,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('addendums', AddendumController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('applicants', ApplicantController::class);
+    Route::resource('sites', SiteController::class);
+    Route::resource('agreements', AgreementController::class);
 
 });
 

@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\Company;
+use App\Models\Project;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Exports\ExportEmployees;
@@ -10,12 +12,13 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class Employeestable extends Component
 {
-    use withPagination;
+    use WithPagination;
     
     protected $paginationTheme = 'bootstrap';
     public $exportToExcel = false;
     public $search = '';
     public $selectedIds = [];
+    public $selectedCompany = null;
 
     public function updatingSearch()
     {
@@ -25,8 +28,7 @@ class Employeestable extends Component
     public function exportSelected()
     {
         if (count($this->selectedIds) > 0) {
-            $selectedData = User::whereIn('id', $this->selectedIds)
-                ->get();
+            $selectedData = User::whereIn('id', $this->selectedIds)->get();
     
             $modifiedData = $selectedData->map(function ($user) {
                 return [
@@ -48,30 +50,24 @@ class Employeestable extends Component
 
     public function render()
     {
-        if ($this->search != '') {
-            $data = User::where(function ($query) {
-                $query->where('name', 'like', '%' . $this->search . '%')
-                    ->orWhere('email', 'like', '%' . $this->search . '%')
-                    ->orWhere('created_at', 'like', '%' . $this->search . '%');
-            })
+        $companies = Company::all();
+    
+        $data = User::query()
             ->whereDoesntHave('roles')
             ->whereHas('profile', function ($query) {
                 $query->whereNotNull('department');
-            })
-            ->paginate(10);
-        } else {
-            $data = User::whereDoesntHave('roles')
-                ->whereHas('profile', function ($query) {
-                    $query->whereNotNull('department');
-                })
-                ->paginate(10);
+            });
+    
+        if ($this->selectedCompany) {
+            $data->whereHas('pkwt.addendum', function ($query) {
+                $query->where('company_id', $this->selectedCompany);
+            });
         }
-
-        return view('livewire.employeestable', compact('data'));
-}
-
-
-
-
-
+    
+        $data = $data->paginate(10);
+    
+        return view('livewire.employeestable', compact('data', 'companies'));
+    }
+    
+    
 }

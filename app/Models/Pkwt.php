@@ -25,4 +25,9 @@ class Pkwt extends Model
     {
         return $this->belongsTo(Addendum::class);
     }
+
+    public function agreement()
+    {
+        return $this->belongsTo(Agreement::class);
+    }
 }

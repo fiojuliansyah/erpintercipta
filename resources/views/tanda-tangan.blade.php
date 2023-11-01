@@ -23,7 +23,7 @@
                 </div><!-- /.empty-state -->
             </div><!-- /.wrapper -->
         </main>
-    @elseif (Auth::user()->signature)
+    {{-- @elseif (Auth::user()->signature)
     <main class="app-main">
         <!-- .wrapper -->
         <div class="wrapper">
@@ -41,7 +41,7 @@
                 </div><!-- /.empty-state-container -->
             </div><!-- /.empty-state -->
         </div><!-- /.wrapper -->
-    </main>
+    </main> --}}
     @else
     <main class="app-main">
         <!-- .wrapper -->
@@ -55,7 +55,7 @@
                         <!-- .card-body -->
                         <div class="card-body" style="background-color: white; color: black">
                             <span id="addendum">
-                                {!! Auth::user()->pkwt?->addendum['addendum'] !!}
+                                {!! Auth::user()->pkwt->agreement->addendum['addendum'] !!}
                             </span>
                             <br>
                             <div class="row">
@@ -65,7 +65,7 @@
                                     <br>
                                     <br>
                                     <br>
-                                    <p>( <u>{{ Auth::user()->pkwt?->addendum['responsible'] }}</u> )</p>
+                                    <p>( <u>{{ Auth::user()->pkwt?->agreement['responsible'] }}</u> )</p>
                                     <p>Human Resource Development</p>
                                 </div>
                                 <div class="col-md-6 mb-4 text-center">
@@ -87,16 +87,16 @@
                     </div>
                     <div class="card">
                         <div class="card-body" style="background-color: white; color: black">
-                            {!! html_entity_decode(Auth::user()->pkwt?->addendum['attachment_1']) !!}
+                            {!! html_entity_decode(Auth::user()->pkwt->agreement->addendum['attachment_1']) !!}
                             <br>
                             <div class="row">
                                 <div class="col-md-6 mb-4 text-center">
                                     <p>PIHAK PERTAMA</p>
-                                    <strong>{{ Auth::user()->pkwt->addendum?->company['company'] }}</strong>
+                                    <strong>{{ Auth::user()->pkwt->agreement->addendum->site->company['company'] }}</strong>
                                     <br>
                                     <br>
                                     <br>
-                                    <p>( <u>{{ Auth::user()->pkwt?->addendum['responsible'] }}</u> )</p>
+                                    <p>( <u>{{ Auth::user()->pkwt?->agreement['responsible'] }}</u> )</p>
                                     <p>Human Resource Development</p>
                                 </div>
                                 <div class="col-md-6 mb-4 text-center">
@@ -118,16 +118,16 @@
                     </div>
                     <div class="card">
                       <div class="card-body" style="background-color: white; color: black">
-                          {!! html_entity_decode(Auth::user()->pkwt?->addendum['attachment_2']) !!}
+                          {!! html_entity_decode(Auth::user()->pkwt->agreement->addendum['attachment_2']) !!}
                           <br>
                           <div class="row">
                               <div class="col-md-6 mb-4 text-center">
                                   <p>PIHAK PERTAMA</p>
-                                  <strong>{{ Auth::user()->pkwt->addendum?->company['company'] }}</strong>
+                                  <strong>{{ Auth::user()->pkwt->agreement->addendum->site->company['company'] }}</strong>
                                   <br>
                                   <br>
                                   <br>
-                                  <p>( <u>{{ Auth::user()->pkwt?->addendum['responsible'] }}</u> )</p>
+                                  <p>( <u>{{ Auth::user()->pkwt?->agreement['responsible'] }}</u> )</p>
                                   <p>Human Resource Development</p>
                               </div>
                               <div class="col-md-6 mb-4 text-center">
@@ -277,14 +277,31 @@
         <script>
             // Ambil elemen yang mengandung teks yang akan diganti
             var element = document.getElementById('addendum');
-
+        
             // Ganti teks dalam elemen tersebut
             if (element) {
                 element.innerHTML = element.innerHTML
                     .replace('{NO_SURAT}',
-                        '<b>No. {{ Auth::user()->pkwt['pkwt_number'] }}/{{ Auth::user()->pkwt->addendum?->company['cmpy'] }}/HR-{{ Auth::user()->pkwt->addendum?->area }}/{{ Auth::user()->pkwt->addendum->romawi }}/{{ Auth::user()->pkwt->addendum?->year }}</b>'
+                        '<b>No. {{ Auth::user()->pkwt?->pkwt_number }}/{{ Auth::user()->pkwt?->agreement->addendum->site->company['cmpy'] }}/HR-{{ Auth::user()->pkwt?->agreement['area'] }}/{{ Auth::user()->pkwt?->agreement['romawi'] }}/{{ Auth::user()->pkwt?->agreement['year'] }}</b>'
                         )
-                    .replace('{PENANGGUNG_JAWAB}', '{{ Auth::user()->pkwt?->addendum['responsible'] }}')
+                    .replace('{PENANGGUNG_JAWAB}', '{{ Auth::user()->pkwt?->agreement['responsible'] }}')
+                    .replace('{TANGGAL_MULAI}', '{{ Auth::user()->pkwt?->agreement['start_date'] }}')
+                    .replace('{TANGGAL_MULAI}', '{{ Auth::user()->pkwt?->agreement['start_date'] }}')
+                    .replace('{TANGGAL_MULAI}', '{{ Auth::user()->pkwt?->agreement['start_date'] }}')
+                    .replace('{TANGGAL_BERAKHIR}', '{{ Auth::user()->pkwt?->agreement['end_date'] }}')
+                    .replace('{JABATAN}', '{{ Auth::user()->pkwt?->agreement['department'] }}')
+                    .replace('{GAJI}', '{{ Auth::user()->pkwt?->agreement['salary'] }}')
+                    .replace('{PROJECT}', '{{ Auth::user()->pkwt?->agreement->addendum->site['description'] }}')
+                    .replace('{AREA}', '{{ Auth::user()->pkwt?->agreement['area'] }}')
+                    .replace('{TUNJANGAN_JABATAN}', '{{ Auth::user()->pkwt?->agreement['department_allowance'] }}')
+                    .replace('{TUNJANGAN_KEHADIRAN}', '{{ Auth::user()->pkwt?->agreement['attendance_allowance'] }}')
+                    .replace('{TUNJANGAN_KOMUNIKASI}', '{{ Auth::user()->pkwt?->agreement['comunication_allowance'] }}')
+                    .replace('{TUNJANGAN_KECANTIKAN}', '{{ Auth::user()->pkwt?->agreement['beauty_allowance'] }}')
+                    .replace('{TUNJANGAN_MAKAN}', '{{ Auth::user()->pkwt?->agreement['food_allowance'] }}')
+                    .replace('{TUNJANGAN_TRANSPORT}', '{{ Auth::user()->pkwt?->agreement['transport_allowance'] }}')
+                    .replace('{TUNJANGAN_LOKASI}', '{{ Auth::user()->pkwt?->agreement['location_allowance'] }}')
+                    .replace('{OTHER_NON_FIX}', '{{ Auth::user()->pkwt?->agreement['other_non_fix_allowance'] }}')
+                    .replace('{TEMPAT}', '{{ Auth::user()->pkwt?->agreement['place'] }}')
                     .replace('{PELAMAR}', '{{ Auth::user()->name }}')
                     .replace('{JENIS_KELAMIN}', '{{ Auth::user()->profile['gender'] }}')
                     .replace('{TTL}', '{{ Auth::user()->profile['birth_place'] }}, {{ Auth::user()->profile['birth_date'] }}')

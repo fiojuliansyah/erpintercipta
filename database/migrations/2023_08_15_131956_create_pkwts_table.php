@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pkwts', function (Blueprint $table) {
             $table->id();
-            $table->string('addendum_id')->nullable();
+            $table->string('agreement_id')->nullable();
             $table->string('pkwt_number')->nullable();
             $table->string('user_id')->nullable();
             $table->string('user_hrd')->nullable();

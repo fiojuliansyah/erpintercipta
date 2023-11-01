@@ -63,9 +63,14 @@
                 <input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
-                <input type="date" class="form-control" wire:model="search">
+                <select class="custom-select" wire:model="selectedCompany" name="company">
+                    <option value="">Select Company</option>
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->id }}">{{ $company->company }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
     </div>
