@@ -264,7 +264,7 @@
             .replace('{JABATAN}', '{{ $pkwt->agreement['department'] }}')
             .replace('{GAJI}', '{{ $pkwt->agreement['salary'] }}')
             .replace('{PROJECT}', '{{ $pkwt->agreement->addendum->site['description'] }}')
-                    .replace('{AREA}', '{{ $pkwt->agreement['area'] }}')
+            .replace('{AREA}', '{{ $pkwt->agreement['area'] }}')
             .replace('{TUNJANGAN_JABATAN}', '{{ $pkwt->agreement['department_allowance'] }}')
             .replace('{TUNJANGAN_KEHADIRAN}', '{{ $pkwt->agreement['attendance_allowance'] }}')
             .replace('{TUNJANGAN_KOMUNIKASI}', '{{ $pkwt->agreement['comunication_allowance'] }}')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Site;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Project;
@@ -19,6 +20,7 @@ class Employeestable extends Component
     public $search = '';
     public $selectedIds = [];
     public $selectedCompany = null;
+    public $selectedProject = null;
 
     public function updatingSearch()
     {
@@ -51,6 +53,7 @@ class Employeestable extends Component
     public function render()
     {
         $companies = Company::all();
+        $projects = Site::all();
     
         $data = User::query()
             ->whereDoesntHave('roles')
@@ -59,15 +62,21 @@ class Employeestable extends Component
             });
     
         if ($this->selectedCompany) {
-            $data->whereHas('pkwt.addendum', function ($query) {
+            $data->whereHas('pkwt.agreement.addendum.site', function ($query) {
                 $query->where('company_id', $this->selectedCompany);
+            });
+        }
+    
+        if ($this->selectedProject) {
+            $data->whereHas('pkwt.agreement.addendum.site', function ($query) {
+                $query->where('id', $this->selectedProject);
             });
         }
     
         $data = $data->paginate(10);
     
-        return view('livewire.employeestable', compact('data', 'companies'));
-    }
+        return view('livewire.employeestable', compact('data', 'companies', 'projects'));
+    }    
     
     
 }

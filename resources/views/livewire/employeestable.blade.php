@@ -65,6 +65,16 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
+                <select class="custom-select" wire:model="selectedProject" name="project">
+                    <option value="">Select Project</option>
+                    @foreach ($projects as $project)
+                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
                 <select class="custom-select" wire:model="selectedCompany" name="company">
                     <option value="">Select Company</option>
                     @foreach ($companies as $company)
@@ -72,7 +82,7 @@
                     @endforeach
                 </select>
             </div>
-        </div>
+        </div>        
     </div>
     <div class="table-responsive">
         <table id="usertable" class="table">
@@ -102,9 +112,9 @@
                         <td>USER - {{ str_pad($user->id, 5, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->profile['department'] ?? '' }}</td>
-                        <td>{{ $user->pkwt?->addendum['project'] ?? '' }}</td>
-                        <td>{{ $user->pkwt?->addendum['area'] ?? '' }}</td>
+                        <td>{{ $user->pkwt?->agreement['department'] }}</td>
+                        <td>{{ $user->pkwt?->agreement->addendum->site['name'] ?? '' }}</td>
+                        <td>{{ $user->pkwt?->agreement['area'] }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <a href="https://google.com">

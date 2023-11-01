@@ -26,7 +26,7 @@ class ExportPkwts implements FromCollection, WithHeadings
     {
         // Define the column headings for the Excel file
         return [
-            'ID Addendum',
+            'ID Agreement',
             'No Surat',
             'Pelamar',
             'Perusahaan',

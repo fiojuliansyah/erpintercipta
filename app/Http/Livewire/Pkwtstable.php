@@ -28,14 +28,14 @@ class Pkwtstable extends Component
 
             $modifiedData = $selectedData->map(function ($pkwt) {
                 return [
-                    'addendum_id' => $pkwt->addendum_id,
+                    'agreement_id' => $pkwt->agreement_id,
                     'reference_number' => 'No. ' . $pkwt->pkwt_number . '/' . ($pkwt->addendum ? $pkwt->addendum->company['cmpy'] : '') . '/HR-' . ($pkwt->addendum ? $pkwt->addendum['area'] : '') . '/' . ($pkwt->addendum ? $pkwt->addendum['romawi'] : '') . '/' . ($pkwt->addendum ? $pkwt->addendum['year'] : ''),
                     'user_id' => isset($pkwt->user['name']) ? $pkwt->user['name'] : null,
                     'company_id' => isset($pkwt->addendum?->company['company']) ? $pkwt->addendum?->company['company'] : null,
-                    'month' => $pkwt->addendum['romawi'],
-                    'year' => $pkwt->addendum['year'],
-                    'project' => $pkwt->addendum['project'],
-                    'area' => $pkwt->addendum['area'],
+                    'month' => $pkwt->agreement['romawi'],
+                    'year' => $pkwt->agreement['year'],
+                    'project' => $pkwt->agreement->addendum->site['name'],
+                    'area' => $pkwt->agreement['area'],
                 ];
             });
 
