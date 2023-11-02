@@ -97,7 +97,8 @@ class CareerController extends Controller
      */
     public function edit(Career $career)
     {
-        //
+        $companies = Company::all();
+        return view('careers.edit',compact('companies','career'));
     }
 
     /**
@@ -107,9 +108,35 @@ class CareerController extends Controller
      * @param  \App\Models\Career  $career
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCareerRequest $request, Career $career)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'jobname' => 'required',
+            'description' => 'required',
+            'department' => 'required',
+        ]);
+        $user = Auth::user()->name;
+
+        $career = Career::find($id);
+        $career->status = $request->status;
+        $career->company_id = $request->company_id;
+        $career->jobname = $request->jobname;
+        $career->description = $request->description;
+        $career->department = $request->department;
+        $career->location = $request->location;
+        $career->latitude = $request->latitude;
+        $career->longitude = $request->longitude;
+        $career->workfunction = $request->workfunction;
+        $career->experience = $request->experience;
+        $career->major = $request->major;
+        $career->graduate = $request->graduate;
+        $career->salary = $request->salary;
+        $career->candidate = $request->candidate;
+        $career->user_id = $user;
+        $career->save();
+
+        return redirect()->route('careers.index')
+                        ->with('success','Career updated successfully.');
     }
 
     /**

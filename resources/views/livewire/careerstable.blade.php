@@ -39,17 +39,32 @@
                         <td>{{ $career->department }}</td>
                         <td>{{ $career->location }}</td>
                         <td>{{ $career->user_id }}</td>
-                        <td class="align-middle text-right">
-                            <form action="{{ route('careers.destroy', $career->id) }}" method="POST">
-                                <a href="{{ route('careers.show', $career->id) }}" class="btn btn-sm btn-info"><i
-                                        class="fa fa-eye"></i> <span class="sr-only">Show</span></a>
-                                @csrf
-                                @method('DELETE')
-                                @can('career-delete')
-                                    <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i>
-                                        <span class="sr-only">Remove</span></button>
-                                @endcan
-                            </form>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <a href="#">
+                                    <button type="button" class="btn btn-primary">Menu</button>
+                                </a>
+                                <div class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <div class="dropdown-arrow"></div>
+                                        <form action="{{ route('careers.destroy', $career->id) }}"
+                                            method="POST">
+                                            <a class="dropdown-item"
+                                                href="{{ route('careers.edit', $career->id) }}">Edit
+                                                Lowongan</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('careers.show', $career->id) }}">Lihat Lowongan</a>
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('career-delete')
+                                                <button type="submit" class="dropdown-item">Hapus</button>
+                                            @endcan
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr><!-- /tr -->
                 @endforeach
