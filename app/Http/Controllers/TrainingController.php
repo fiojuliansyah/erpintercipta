@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Training;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreTrainingRequest;
 use App\Http\Requests\UpdateTrainingRequest;
 
@@ -34,9 +35,16 @@ class TrainingController extends Controller
      * @param  \App\Http\Requests\StoreTrainingRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTrainingRequest $request)
+    public function store(Request $request)
     {
-        //
+        $training = new Training;
+        $training->status = $request->status;
+        $training->description = $request->description;
+        $training->is_recommended = $request->is_recommended;
+        $training->save();
+
+        return redirect()->route('taxcategories.index')
+                        ->with('success','Product updated successfully');
     }
 
     /**

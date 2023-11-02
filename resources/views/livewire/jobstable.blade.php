@@ -64,6 +64,9 @@
           <!-- grid column -->
         </div><!-- /grid row -->
       </div><!-- /.section-block -->
+      <ul class="pagination justify-content-center mt-4">
+        {{ $data->links() }}
+      </ul>
     </div>
 </div>
 @else

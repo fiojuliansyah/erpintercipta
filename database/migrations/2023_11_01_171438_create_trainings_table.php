@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id')->nullable();
+            $table->enum('status', ['0', '1', '2', '3'])->nullable();
+            $table->string('description')->nullable();
+            $table->enum('is_recommended', ['0', '1', '2'])->nullable();
+            $table->string('site_id')->nullable();
             $table->timestamps();
         });
     }
