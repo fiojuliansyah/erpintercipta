@@ -56,10 +56,7 @@ class Employeestable extends Component
         $projects = Site::all();
     
         $data = User::query()
-            ->whereDoesntHave('roles')
-            ->whereHas('profile', function ($query) {
-                $query->whereNotNull('department');
-            });
+                ->whereDoesntHave('roles');
 
 
 
