@@ -56,15 +56,10 @@ class Employeestable extends Component
         $projects = Site::all();
     
         $data = User::query()
-                ->whereDoesntHave('roles');
-
-
-
-        if ($this->search != '') {
-            $data ->where('name', 'like', '%' . $this->search . '%')
-                ->orWhere('email', 'like', '%' . $this->search . '%')
-                ->paginate(10);
-        }
+            ->whereDoesntHave('roles')
+            ->whereHas('profile', function ($query) {
+                $query->whereNotNull('department');
+            });
     
         if ($this->selectedCompany) {
             $data->whereHas('pkwt.agreement.addendum.site', function ($query) {
