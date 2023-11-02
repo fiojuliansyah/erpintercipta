@@ -60,6 +60,14 @@ class Employeestable extends Component
             ->whereHas('profile', function ($query) {
                 $query->whereNotNull('department');
             });
+
+
+
+        if ($this->search != '') {
+            $data ->where('name', 'like', '%' . $this->search . '%')
+                ->orWhere('email', 'like', '%' . $this->search . '%')
+                ->paginate(10);
+        }
     
         if ($this->selectedCompany) {
             $data->whereHas('pkwt.agreement.addendum.site', function ($query) {

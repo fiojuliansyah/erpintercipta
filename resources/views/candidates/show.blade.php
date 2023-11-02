@@ -327,7 +327,7 @@
                                                         <!-- .tab-content -->
                                                         <div id="myTabContent" class="tab-content">
                                                             <div class="tab-pane fade active show" id="orientasi">
-                                                                <form action="{{ route('applicants.store') }}"
+                                                                <form action="{{ route('trainings.store') }}"
                                                                     method="POST" enctype="multipart/form-data">
                                                                     @csrf
                                                                     <input type="hidden" name="user_id"
@@ -357,17 +357,18 @@
                                                                     </div>
                                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                                         <div class="form-group">
-                                                                            <label class="control-label">Apakah
-                                                                                Rekomendasi?</label>
+                                                                            <label class="control-label"
+                                                                                for="bss3">Pilih Site / Project</label>
                                                                             <select id="bss3"
                                                                                 data-toggle="selectpicker"
                                                                                 data-live-search="true" data-width="100%"
-                                                                                name="is_recommended">
+                                                                                name="site_id">
                                                                                 <option value="">Pilih</option>
-                                                                                <option value="0">PENDING</option>
-                                                                                <option value="1">Rekomendasi</option>
-                                                                                <option value="2">Menunggu Penempatan
-                                                                                    Lain</option>
+                                                                                @foreach ($sites as $site)
+                                                                                    <option value="{{ $site->id }}">
+                                                                                      {{ $site->company['cmpy'] }} - {{ $site->name }}
+                                                                                    </option>
+                                                                                @endforeach
                                                                             </select>
                                                                         </div>
                                                                     </div>

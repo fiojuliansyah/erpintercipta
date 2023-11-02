@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Candidate;
+use App\Models\Training;
 use Livewire\WithPagination;
 use App\Exports\ExportCandidates;
 use Maatwebsite\Excel\Facades\Excel;
@@ -22,13 +23,19 @@ class Candidatestable extends Component
         $this->resetPage();
     }
 
+    public function getHiddenUserIds()
+    {
+        return Training::pluck('user_id')->toArray();
+    }
+
     public function exportSelected()
     {
         if (count($this->selectedIds) > 0) {
             $selectedData = Candidate::whereIn('id', $this->selectedIds)
-                ->with(['career', 'user' ])
+                ->with(['career', 'user'])
+                ->whereNotIn('user_id', $this->getHiddenUserIds()) // Menyembunyikan data dengan user_id yang ada di trainings
                 ->get();
-    
+
             $modifiedData = $selectedData->map(function ($candidate) {
                 return [
                     'company' => $candidate->career->company['company'],
@@ -59,7 +66,7 @@ class Candidatestable extends Component
                     'active_date' => $candidate->user->profile['active_date'],
                 ];
             });
-    
+
             return Excel::download(new ExportCandidates($modifiedData), 'selected_candidate_data.xlsx');
         } else {
             session()->flash('error', 'No data selected for export.');
@@ -68,13 +75,17 @@ class Candidatestable extends Component
 
     public function render()
     {
+        $hiddenUserIds = $this->getHiddenUserIds();
+
         if ($this->search != '') {
             $data = Candidate::whereRelation('user', 'name', 'like', '%' . $this->search . '%')
                 ->orWhereRelation('career', 'jobname', 'like', '%' . $this->search . '%')
                 ->orWhere('created_at', 'like', '%' . $this->search . '%')
+                ->whereNotIn('user_id', $hiddenUserIds) // Menyembunyikan data dengan user_id yang ada di trainings
                 ->paginate(10);
         } else {
-            $data = Candidate::paginate(10);
+            $data = Candidate::whereNotIn('user_id', $hiddenUserIds) // Menyembunyikan data dengan user_id yang ada di trainings
+                ->paginate(10);
         }
 
         return view('livewire.candidatestable', compact('data'));

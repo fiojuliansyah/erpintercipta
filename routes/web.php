@@ -17,6 +17,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\AgreementController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\CandidateController;
@@ -89,6 +90,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('applicants', ApplicantController::class);
     Route::resource('sites', SiteController::class);
     Route::resource('agreements', AgreementController::class);
+    Route::resource('trainings', TrainingController::class);
+    Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
+    Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');
 
 });
 

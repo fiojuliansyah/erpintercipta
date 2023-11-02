@@ -1,8 +1,13 @@
 <div>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
-        </div><input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
+                </div>
+                <input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
+            </div>
+        </div>        
     </div>
     <div class="table-responsive">
         <table id="roletable" class="table">

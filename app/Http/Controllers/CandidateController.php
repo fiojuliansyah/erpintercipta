@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
 use App\Models\Addendum;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
@@ -78,8 +79,9 @@ class CandidateController extends Controller
 
     public function show(Candidate $candidate)
     {
+        $sites = Site::all();
         $addendums = Addendum::all();
-        return view('candidates.show', compact('candidate','addendums'));
+        return view('candidates.show', compact('candidate','addendums', 'sites'));
     }
 
     public function edit(Candidate $candidate)

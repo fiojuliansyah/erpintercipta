@@ -16,7 +16,17 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        return view('trainings.index');
+    }
+
+    public function indexGNC()
+    {
+        return view('trainings.gnc');
+    }
+
+    public function indexNCC()
+    {
+        return view('trainings.ncc');
     }
 
     /**
@@ -38,13 +48,14 @@ class TrainingController extends Controller
     public function store(Request $request)
     {
         $training = new Training;
+        $training->user_id = $request->user_id;
         $training->status = $request->status;
         $training->description = $request->description;
-        $training->is_recommended = $request->is_recommended;
+        $training->site_id = $request->site_id;
         $training->save();
 
-        return redirect()->route('taxcategories.index')
-                        ->with('success','Product updated successfully');
+        return redirect()->route('candidates.index')
+                        ->with('success','Updated successfully');
     }
 
     /**
