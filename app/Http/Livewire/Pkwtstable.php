@@ -48,16 +48,8 @@ class Pkwtstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Pkwt::where(function ($query) {
-                $query->whereHas('user', function ($subquery) {
-                    $subquery->where('name', 'like', '%' . $this->search . '%');
-                })->orWhereHas('addendum', function ($subquery) {
-                    $subquery->where('title', 'like', '%' . $this->search . '%')
-                        ->orWhereHas('company', function ($subsubquery) {
-                            $subsubquery->where('cmpy', 'like', '%' . $this->search . '%');
-                        });
-                });
-            })->paginate(10);
+            $data = Pkwt::whereRelation('user', 'name', 'like', '%' . $this->search . '%')
+                ->paginate(10);
         } else {
             $data = Pkwt::paginate(10);
         }

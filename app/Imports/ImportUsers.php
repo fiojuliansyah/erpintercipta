@@ -18,7 +18,7 @@ class ImportUsers implements ToModel, WithStartRow
         }
 
         // Cari pengguna berdasarkan alamat email
-        $user = User::where('email', $row[1])->first();
+        $user = User::where('nik_number', $row[0])->first();
 
         if (!$user) {
             // Buat pengguna baru jika tidak ada yang ditemukan
