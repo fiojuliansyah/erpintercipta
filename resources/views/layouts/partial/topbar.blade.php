@@ -1,4 +1,4 @@
-<header class="app-header">
+<header class="app-header" style="background-color: #3E6CFF;">
     <!-- .top-bar -->
     <div class="top-bar">
       <!-- .top-bar-brand -->
@@ -17,7 +17,6 @@
         </div><!-- /.top-bar-item -->
         <!-- .top-bar-item -->
         <div class="top-bar-item top-bar-item-full">
-          <span class="badge badge-lg badge-success"><span class="oi oi-media-record pulse mr-1"></span>Masih dalam proses ujicoba!</span>
         </div><!-- /.top-bar-item -->
         <!-- .top-bar-item -->
         <div class="top-bar-item top-bar-item-right px-0 d-none d-sm-flex">
@@ -100,7 +99,7 @@
               </div><!-- /.dropdown-menu -->
             </li><!-- /.nav-item -->
             <!-- .nav-item -->
-            <li class="nav-item dropdown header-nav-dropdown">
+            {{-- <li class="nav-item dropdown header-nav-dropdown">
               <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="oi oi-grid-three-up"></span></a> <!-- .dropdown-menu -->
               <div class="dropdown-menu dropdown-menu-rich dropdown-menu-right">
                 <div class="dropdown-arrow"></div><!-- .dropdown-sheets -->
@@ -129,7 +128,7 @@
                 </div><!-- .dropdown-sheets -->
                 @endcan
               </div><!-- .dropdown-menu -->
-            </li><!-- /.nav-item -->
+            </li><!-- /.nav-item --> --}}
           </ul><!-- /.nav -->
           <!-- .btn-account -->
           <div class="dropdown d-none d-md-flex">
