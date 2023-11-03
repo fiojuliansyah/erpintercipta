@@ -288,7 +288,7 @@
                     .replace('{TANGGAL_MULAI}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['start_date']->format('d-m-Y') }}')
                     .replace('{TANGGAL_MULAI}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['start_date']->format('d-m-Y') }}')
                     .replace('{TANGGAL_MULAI}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['start_date']->format('d-m-Y') }}')
-                    .replace('{TANGGAL_MULAI}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['start_date']->format('d-m-Y') }}')
+                    .replace('{TANGGAL_MULAI}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['start_date']->format('d F Y') }}')
                     .replace('{TANGGAL_MULAI}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['start_date']->format('d-m-Y') }}')
                     .replace('{TANGGAL_BERAKHIR}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['end_date']->format('d-m-Y') }}')
                     .replace('{TANGGAL_BERAKHIR}', '{{ Carbon\Carbon::parse(Auth::user()->pkwt?->agreement['end_date']->format('d-m-Y') }}')
