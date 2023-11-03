@@ -344,8 +344,7 @@
                                                                                 <option value="0">PENDING</option>
                                                                                 <option value="1">NCC</option>
                                                                                 <option value="2">GNC</option>
-                                                                                <option value="3">TRAINING</option>
-                                                                                <option value="4">PKL</option>
+                                                                                <option value="3">PKL</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>

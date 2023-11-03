@@ -29,6 +29,11 @@ class TrainingController extends Controller
         return view('trainings.ncc');
     }
 
+    public function indexPKL()
+    {
+        return view('trainings.pkl');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

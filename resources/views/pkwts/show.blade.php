@@ -14,7 +14,7 @@
                         <div class="card">
                             <!-- .card-body -->
                             <div class="card-body" style="background-color: white; color: black">
-                                <span id="addendum">
+                                <span id="addendum" class="printable-text">
                                     {!! $pkwt->agreement?->addendum['addendum'] !!}
                                 </span>
                                 <br>
@@ -51,7 +51,9 @@
                         </div>
                         <div class="card">
                             <div class="card-body" style="background-color: white; color: black">
-                                {!! $pkwt->agreement?->addendum['attachment_1'] !!}
+                                <span id="addendum" class="printable-text">
+                                    {!! $pkwt->agreement?->addendum['attachment_1'] !!}
+                                </span>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6 mb-4 text-center">
@@ -87,25 +89,12 @@
                         </div>
                         <div class="card">
                           <div class="card-body" style="background-color: white; color: black">
-                              {!! $pkwt->agreement?->addendum['attachment_2'] !!}
+                            <span id="addendum" class="printable-text">
+                                {!! $pkwt->agreement?->addendum['attachment_2'] !!}
+                            </span>
                               <br>
                               <div class="row">
                                   <div class="col-md-6 mb-4 text-center">
-                                      <p>PIHAK PERTAMA</p>
-                                      <strong>{{ $pkwt->agreement->addendum->site->company['company'] }}</strong>
-                                      <br>
-                                      @if ($pkwt->user?->signature == null)
-                                          <br>
-                                      @else
-                                          <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300"
-                                              alt="">
-                                      @endif
-                                      <br>
-                                      <p>( <u>{{ $pkwt->agreement['responsible'] }}</u> )</p>
-                                      <p>Human Resource Development</p>
-                                  </div>
-                                  <div class="col-md-6 mb-4 text-center">
-                                      <p>PIHAK KEDUA</p>
                                       <br>
                                       @if ($pkwt->user?->signature == null)
                                           <br>
@@ -217,28 +206,26 @@
         /* Define print styles */
         @media print {
             body {
-                font-size: 14pt;
-                /* Adjust the font size for printing */
+                /* You can adjust the font size for the entire page here */
+                font-size: 16pt;
             }
 
             .wrapper {
                 width: 210mm;
-                /* Set the width of the printable area to fit A4 paper */
                 margin: 0 auto;
-                /* Center the content on the page */
                 padding: 50px;
-                /* Add padding to the content for better readability */
             }
 
             .card {
                 page-break-after: always;
-                /* Add a page break after each card (section) */
                 background-color: white;
-                /* Set a white background for cards */
                 color: black;
-                /* Set text color to black for cards */
                 margin-bottom: 10px;
-                /* Add space between cards */
+            }
+
+            /* Change font size for specific elements when printing */
+            .printable-text {
+                font-size: 50pt; /* Adjust the font size for the specific elements */
             }
         }
     </style>

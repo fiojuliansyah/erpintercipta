@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('trainings', TrainingController::class);
     Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
     Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');
+    Route::get ('training/pkl',[TrainingController::class, 'indexPKL'])->name('index-pkl');
 
 });
 

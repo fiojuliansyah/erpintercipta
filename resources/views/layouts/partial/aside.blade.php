@@ -90,13 +90,13 @@
                                         class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Orientasi</span></a> <!-- grand child menu -->
                                     <ul class="menu">
                                       <li class="menu-item">
-                                        <a href="{{ route('index-ncc') }}" class="menu-link">NCC<span class="badge badge-warning">soon</span></a>
+                                        <a href="{{ route('index-ncc') }}" class="menu-link">NCC</a>
                                       </li>
                                       <li class="menu-item">
-                                        <a href="{{ route('index-gnc') }}" class="menu-link">GNC<span class="badge badge-warning">soon</span></a>
+                                        <a href="{{ route('index-gnc') }}" class="menu-link">GNC</a>
                                       </li>
                                       <li class="menu-item">
-                                        <a href="" class="menu-link">PKL<span class="badge badge-warning">soon</span></a>
+                                        <a href="{{ route('index-pkl') }}" class="menu-link">PKL</a>
                                       </li>
                                     </ul><!-- /grand child menu -->
                                   </li>
