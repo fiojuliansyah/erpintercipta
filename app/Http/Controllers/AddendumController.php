@@ -49,7 +49,6 @@ class AddendumController extends Controller
     public function store(Request $request)
     {
         $addendum = new Addendum;
-        $addendum->company_id = $request->company_id;
         $addendum->addendum = $request->addendum;
         $addendum->attachment_1 = $request->attachment_1;
         $addendum->attachment_2 = $request->attachment_2;
@@ -95,7 +94,6 @@ class AddendumController extends Controller
     public function update(Request $request, $id)
     {
         $addendum = Addendum::find($id);
-        $addendum->company_id = $request->company_id;
         $addendum->addendum = $request->addendum;
         $addendum->attachment_1 = $request->attachment_1;
         $addendum->attachment_2 = $request->attachment_2;
