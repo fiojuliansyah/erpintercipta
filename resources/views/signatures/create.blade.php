@@ -36,7 +36,7 @@
                             <form action="{{ route('signatures.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
-                                    <canvas id="signatureCanvas" width="500" height="500"></canvas>
+                                    <canvas id="signatureCanvas" width="500" height="500" width="200"></canvas>
                                     <button id="saveButton" class="btn btn-primary">Simpan</button>
                                 </div><!-- /.modal-body -->
                             </form>
