@@ -42,18 +42,25 @@ class EsignController extends Controller
     {
         $dataUrl = $request->input('signatureDataUrl');
         $user = Auth::user();
-
+    
         if ($user) {
+            // Cek apakah pengguna sudah memiliki tanda tangan
+            $existingEsign = Esign::where('user_id', $user->id)->first();
+    
+            if ($existingEsign) {
+                return Redirect::to('/pkwts');
+            }
+    
             $data = substr($dataUrl, strpos($dataUrl, ',') + 1);
             $decodedData = base64_decode($data);
             $fileName = 'esign_' . uniqid() . '.png';
-            $filePath = 'public/esign/' . $fileName;
+            $filePath = 'public/esigns/' . $fileName;
             Storage::put($filePath, $decodedData);
             Esign::create([
                 'user_id' => $user->id,
-                'signatureDataUrl' => 'esign/' . $fileName,
+                'signatureDataUrl' => 'esigns/' . $fileName,
             ]);
-
+    
             return redirect()->route('pkwts.index');
         } else {
             return response()->json(['message' => 'User not authenticated'], 401);

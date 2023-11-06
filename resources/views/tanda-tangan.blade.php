@@ -163,7 +163,7 @@
                                         <h5 id="exampleModalCenterLabel" class="modal-title"> Tanda Tangan </h5>
                                     </div><!-- /.modal-header -->
                                     <!-- .modal-body -->
-                                    <form action="{{ url('signatures') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('signatures.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="modal-body">
                                             <canvas id="signatureCanvas" width="500" height="200"></canvas>
@@ -313,41 +313,48 @@
                     .replace('{ALAMAT}', '{{ Auth::user()->profile['address'] }}')
             }
         </script>
-
+        <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0/signature_pad.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 var canvas = document.getElementById('signatureCanvas');
                 var signaturePad = new SignaturePad(canvas);
                 var saveButton = document.getElementById('saveButton');
-
+        
                 saveButton.addEventListener('click', function() {
                     if (signaturePad.isEmpty()) {
-                        alert('Tanda tangan kosong, silahkan tanda tangan');
+                        alert('Tanda tangan kosong, silakan tanda tangan');
                     } else {
-                        var signatureDataUrl = signaturePad.toDataURL();
-                        saveSignature(signatureDataUrl);
+                        if (!saveButton.disabled) {
+                            saveButton.disabled = false; // Menonaktifkan tombol
+                            var signatureDataUrl = signaturePad.toDataURL();
+                            saveSignature(signatureDataUrl);
+                        }
                     }
                 });
-
+        
                 function saveSignature(signatureDataUrl) {
                     fetch('{{ url('signatures') }}', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            },
-                            body: JSON.stringify({
-                                signatureDataUrl: signatureDataUrl
-                            })
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            signatureDataUrl: signatureDataUrl
                         })
-                        .then(response => response.json())
-                        .then(data => {
-                            alert(data.message);
-                            signaturePad.clear();
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        signaturePad.clear();
+                        // Mengarahkan ke dasbor jika tanda tangan berhasil disimpan
+                        if (data.success) {
+                            window.location.href = '{{ url('/dashboard') }}';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
                 }
             });
         </script>

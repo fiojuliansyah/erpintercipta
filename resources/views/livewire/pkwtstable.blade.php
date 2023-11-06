@@ -137,11 +137,12 @@
                         <td>APPLICANT - {{ str_pad($pkwt->user['id'] ?? '', 5, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $pkwt->user['name'] ?? '' }}</td>
                         <td>
-                            @if ($pkwt->user?->signature == null)
+                            {{-- @if ($pkwt->user?->signature == null)
                                 <span class="badge badge-danger">Belum Tertanda Tangan</span>
                             @else
                                 <span class="badge badge-success">Sudah Tertanda Tangan</span>
-                            @endif
+                            @endif --}}
+                            <span class="badge badge-success">Sudah Tertanda Tangan</span>
                         </td>
                         <td>
                             @if ($pkwt->signature_hrd == null)
@@ -187,40 +188,48 @@
 </div>
 
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0/signature_pad.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var canvas = document.getElementById('signatureCanvas');
             var signaturePad = new SignaturePad(canvas);
             var saveButton = document.getElementById('saveButton');
-
+    
             saveButton.addEventListener('click', function() {
                 if (signaturePad.isEmpty()) {
-                    alert('Tanda tangan kosong, silahkan tanda tangan');
+                    alert('Tanda tangan kosong, silakan tanda tangan');
                 } else {
-                    var signatureDataUrl = signaturePad.toDataURL();
-                    saveSignature(signatureDataUrl);
+                    if (!saveButton.disabled) {
+                        saveButton.disabled = false; // Menonaktifkan tombol
+                        var signatureDataUrl = signaturePad.toDataURL();
+                        saveSignature(signatureDataUrl);
+                    }
                 }
             });
-
+    
             function saveSignature(signatureDataUrl) {
                 fetch('{{ url('esigns') }}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify({
-                            signatureDataUrl: signatureDataUrl
-                        })
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        signatureDataUrl: signatureDataUrl
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert(data.message);
-                        signaturePad.clear();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    signaturePad.clear();
+                    // Mengarahkan ke dasbor jika tanda tangan berhasil disimpan
+                    if (data.success) {
+                        window.location.href = '{{ url('/pkwts') }}';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             }
         });
     </script>

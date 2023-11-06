@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Storage;
 use App\Models\Signature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreSignatureRequest;
 use App\Http\Requests\UpdateSignatureRequest;
@@ -29,7 +29,7 @@ class SignatureController extends Controller
      */
     public function create()
     {
-        //
+        return view('signatures.create');
     }
 
     /**
@@ -42,8 +42,15 @@ class SignatureController extends Controller
     {
         $dataUrl = $request->input('signatureDataUrl');
         $user = Auth::user();
-
+    
         if ($user) {
+            // Cek apakah pengguna sudah memiliki tanda tangan
+            $existingSignature = Signature::where('user_id', $user->id)->first();
+    
+            if ($existingSignature) {
+                return Redirect::to('/dashboard');
+            }
+    
             $data = substr($dataUrl, strpos($dataUrl, ',') + 1);
             $decodedData = base64_decode($data);
             $fileName = 'signature_' . uniqid() . '.png';
@@ -53,12 +60,13 @@ class SignatureController extends Controller
                 'user_id' => $user->id,
                 'signatureDataUrl' => 'signatures/' . $fileName,
             ]);
-
+    
             return Redirect::to('/dashboard');
         } else {
             return response()->json(['message' => 'User not authenticated'], 401);
         }
     }
+    
     /**
      * Display the specified resource.
      *
@@ -102,7 +110,7 @@ class SignatureController extends Controller
     public function destroy(Signature $signature)
     {
         $signature->delete();
-        \Storage::delete($signature->SignatureDataUrl);
+        \Storage::delete($signature->signatureDataUrl);
 
         return redirect()->route('signatures.index')
                         ->with('success','Deleted successfully');
