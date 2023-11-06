@@ -30,8 +30,9 @@
                     <th></th>
                     <th>No</th>
                     {{-- <th>ID User</th> --}}
-                    <th>Name</th>
+                    <th>Nama</th>
                     <th>Site / Project</th>
+                    <th>Berkas</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -47,7 +48,9 @@
                         {{-- <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td> --}}
                         <td>USER - {{ str_pad($training->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $training->user['name'] }}</td>
-                        <td>{{ $training->site['name'] }}</td>                        {{-- <td>
+                        <td>{{ $training->site['name'] }}</td>         
+                        <td><a class="btn btn-primary" href="{{ route('trainings.show', $training->id) }}">Print</a></td>               
+                        <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <a href="https://google.com">
                                     <button type="button" class="btn btn-primary">Menu</button>
@@ -57,11 +60,10 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <div class="dropdown-arrow"></div>
-                                        <form action="{{ route('employee.destroy', $training->id) }}" method="POST">
+                                        <form action="{{ route('trainings.destroy', $training->id) }}" method="POST">
                                             <a class="dropdown-item"
-                                                href="{{ route('employees.edit', $training->id) }}">Edit
-                                                User</a>
-                                            <a class="dropdown-item" href="#">Lihat Profil</a>
+                                                href="{{ route('trainings.edit', $training->id) }}">Edit
+                                                Status</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="dropdown-item">Hapus</button>
@@ -69,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </td> --}}
+                        </td>
                     </tr><!-- /tr -->
                 @endif
                 @endforeach

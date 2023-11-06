@@ -19,7 +19,7 @@ class SignatureController extends Controller
      */
     public function index()
     {
-        //
+        return view('signatures.index');
     }
 
     /**
@@ -101,6 +101,10 @@ class SignatureController extends Controller
      */
     public function destroy(Signature $signature)
     {
-        //
+        $signature->delete();
+        \Storage::delete($signature->SignatureDataUrl);
+
+        return redirect()->route('signatures.index')
+                        ->with('success','Deleted successfully');
     }
 }

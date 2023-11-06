@@ -69,9 +69,10 @@ class TrainingController extends Controller
      * @param  \App\Models\Training  $training
      * @return \Illuminate\Http\Response
      */
-    public function show(Training $training)
+    public function show($id)
     {
-        //
+        $training = Training::find($id);
+        return view('trainings.show',compact('training'));
     }
 
     /**
@@ -105,6 +106,9 @@ class TrainingController extends Controller
      */
     public function destroy(Training $training)
     {
-        //
+        $training->delete();
+
+        return redirect()->route('trainings.index')
+                        ->with('success','Deleted successfully');
     }
 }
