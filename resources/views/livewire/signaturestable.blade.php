@@ -21,7 +21,7 @@
             @foreach ($data as $key => $signature)
               <tr>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
-                  <td><img src="{{ $signature->signatureDataUrl }}" alt=""></td>
+                  <td><img src="{{ Storage::url($signature->signatureDataUrl) }}" alt=""></td>
                   <td>{{ $signature->user['name'] ?? '' }}</td>
                   <td class="align-middle text-right">
                   <form action="{{ route('signatures.destroy',$signature->id) }}" method="POST">
