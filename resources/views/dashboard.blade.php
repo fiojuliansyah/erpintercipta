@@ -59,8 +59,7 @@
                                         <!-- grid column -->
                                         <div class="col-auto">
                                             <p>
-                                                <a href="{{ url('/register-profile') }}" class="btn btn-primary circle">View
-                                                    Profile <i class="fa fa-arrow-right ml-2"></i></a>
+                                                <a href="{{ route('signatures.create') }}" class="btn btn-warning circle">Buat Tanda Tangan Digital <i class="fa fa-arrow-right ml-2"></i></a>
                                             </p>
                                         </div><!-- /grid column -->
                                     </div><!-- /grid row -->
