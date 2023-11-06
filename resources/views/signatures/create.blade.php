@@ -16,9 +16,6 @@
                 </header><!-- /.page-title-bar -->
                 <!-- .page-section -->
                 <div class="page-section">
-                    <div class="d-xl-none">
-                        <button class="btn btn-danger btn-floated" type="button" data-toggle="sidebar"><i class="fa fa-th-list"></i></button>
-                    </div><!-- .card -->
                     <div id="base-style" class="card">
                         <!-- .card-body -->
                         <div class="card-body">
