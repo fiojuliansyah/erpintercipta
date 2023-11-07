@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Signature;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,6 +70,29 @@ class SignatureController extends Controller
         } else {
             return response()->json(['message' => 'User not authenticated'], 401);
         }
+    }
+
+    public function upload(Request $request)
+    {
+        // Validasi request untuk memastikan bahwa file yang diunggah adalah gambar.
+        $request->validate([
+            'signatureDataUrl' => 'required|image|mimes:png|max:2048'
+        ]);
+    
+        // Mendapatkan file gambar yang diunggah dari request.
+        $image = $request->file('signatureDataUrl');
+    
+        // Menyimpan gambar ke direktori yang ditentukan.
+        $fileName = 'signature_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('public/signatures', $fileName);
+    
+        // Menyimpan data gambar ke database.
+        Signature::create([
+            'user_id' => $request->user_id,
+            'signatureDataUrl' => 'signatures/' . $fileName,
+        ]);
+    
+        return redirect('/signatures')->with('success', 'Gambar berhasil diunggah!');
     }
     
     /**

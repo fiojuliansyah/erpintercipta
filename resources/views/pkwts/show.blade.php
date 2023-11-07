@@ -201,35 +201,35 @@
                 </div><!-- /.page -->
             </div><!-- /.wrapper -->
     </main>
-@section('print-styles')
+    @section('print-styles')
     <style>
         /* Define print styles */
         @media print {
             body {
-                /* You can adjust the font size for the entire page here */
-                font-size: 16pt;
+                font-family: 'Times New Roman', Times, serif; /* Mengatur font ke Times New Roman */
+                font-size: 20px; /* Mengatur ukuran font ke 16px */
             }
-
+    
             .wrapper {
                 width: 210mm;
                 margin: 0 auto;
                 padding: 50px;
             }
-
+    
             .card {
                 page-break-after: always;
                 background-color: white;
                 color: black;
                 margin-bottom: 10px;
             }
-
+    
             /* Change font size for specific elements when printing */
             .printable-text {
-                font-size: 50pt; /* Adjust the font size for the specific elements */
+                font-size: 20pt; /* Adjust the font size for the specific elements */
             }
         }
     </style>
-@endsection
+    @endsection    
 @endsection
 
 @push('js')

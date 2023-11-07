@@ -84,6 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('pkwts', PkwtController::class);
     Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
     Route::resource('signatures', SignatureController::class);
+    Route::post ('signature/upload',[SignatureController::class, 'upload'])->name('upload-signature');
     Route::resource('esigns', EsignController::class);
     Route::resource('addendums', AddendumController::class);
     Route::resource('employees', EmployeeController::class);

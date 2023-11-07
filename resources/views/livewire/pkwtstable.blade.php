@@ -137,12 +137,11 @@
                         <td>APPLICANT - {{ str_pad($pkwt->user['id'] ?? '', 5, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $pkwt->user['name'] ?? '' }}</td>
                         <td>
-                            {{-- @if ($pkwt->user?->signature == null)
+                            @if ($pkwt->user?->signature == null)
                                 <span class="badge badge-danger">Belum Tertanda Tangan</span>
                             @else
                                 <span class="badge badge-success">Sudah Tertanda Tangan</span>
-                            @endif --}}
-                            <span class="badge badge-success">Sudah Tertanda Tangan</span>
+                            @endif
                         </td>
                         <td>
                             @if ($pkwt->signature_hrd == null)
