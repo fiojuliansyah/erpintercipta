@@ -78,25 +78,24 @@
                                 <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
                                     <a href="{{ route('applicants.index') }}" class="menu-link"><span
                                             class="menu-icon fas fa-user-friends"></span> <span
-                                            class="menu-text">Pelamar</span><span class="badge badge-success">10</span></a>
+                                            class="menu-text">Pelamar</span><span class="badge badge-info">{{ $countPelamar }}</span></a>
                                 </li>
                                 <li class="menu-item {{ Request::path() == '#' ? 'has-active' : '' }}">
                                     <a href="{{ route('candidates.index') }}" class="menu-link"><span
-                                            class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Data
-                                            Kandidat</span></a>
+                                            class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Kandidat</span><span class="badge badge-danger">{{ $countKandidat }}</span></a>
                                 </li>
                                 <li class="menu-item has-child">
                                     <a href="#" class="menu-link"><span
                                         class="menu-icon fas fa-file-alt"></span> <span class="menu-text">Orientasi</span></a> <!-- grand child menu -->
                                     <ul class="menu">
                                       <li class="menu-item">
-                                        <a href="{{ route('index-ncc') }}" class="menu-link">NCC</a>
+                                        <a href="{{ route('index-ncc') }}" class="menu-link">NCC<span class="badge badge-warning">{{ $countNCC }}</span></a>
                                       </li>
                                       <li class="menu-item">
-                                        <a href="{{ route('index-gnc') }}" class="menu-link">GNC</a>
+                                        <a href="{{ route('index-gnc') }}" class="menu-link">GNC<span class="badge badge-warning">{{ $countGNC }}</span></a>
                                       </li>
                                       <li class="menu-item">
-                                        <a href="{{ route('index-pkl') }}" class="menu-link">PKL</a>
+                                        <a href="{{ route('index-pkl') }}" class="menu-link">PKL<span class="badge badge-warning">{{ $countPKL }}</span></a>
                                       </li>
                                     </ul><!-- /grand child menu -->
                                   </li>

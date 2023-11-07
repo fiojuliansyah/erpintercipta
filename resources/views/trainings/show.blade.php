@@ -155,7 +155,7 @@
         .c12 {
             background-color: #ffffff;
             max-width: 468pt;
-            padding: 72pt 72pt 72pt 72pt
+            padding: 20pt 20pt 20pt 20pt
         }
 
         .c1 {
@@ -312,19 +312,22 @@
 
 <body class="c12 doc-content">
     <p class="c18 title" id="h.fav6scqmwu85"><span class="c13 c19">{{ $training->user['name'] }}</span></p>
-    <p class="c9 subtitle" id="h.iadp9bnpgodm"><span>lowongan</span></p>
+    <p class="c9 subtitle" id="h.iadp9bnpgodm"><span>{{ $training->user->candidate->career['jobname'] }}</span></p>
     <p class="c3"><span
             style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 277.00px; height: 330.50px;"><img
                 alt="pet_resume.jpg" src="images/image1.jpg"
                 style="width: 334.67px; height: 384.94px; margin-left: -5.17px; margin-top: -54.44px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="Your best friend"></span></p>
-    <p class="c16"><span class="c1">Jenis Kelamin</span><span class="c1">:</span><span>&nbsp;4
-            years<br></span><span class="c1">Tinggi:</span><span
-            class="c7">&nbsp;</span><span>Male<br></span><span class="c1">Berat:</span><span>&nbsp;33
-            pounds<br></span><span class="c1">Tanggal Lahir:</span><span>&nbsp;</span><span>Mutt</span>
+    <p class="c16"><span class="c1">Jenis Kelamin</span><span
+            class="c1">:</span><span>&nbsp;{{ $training->user->profile['gender'] }}<br></span><span
+            class="c1">Tinggi:</span><span
+            class="c7">&nbsp;</span><span>{{ $training->user->profile['height'] }} Cm<br></span><span
+            class="c1">Berat:</span><span>&nbsp;{{ $training->user->profile['weight'] }} Kg<br></span><span
+            class="c1">Tanggal Lahir:</span><span>&nbsp;</span><span>{{ $training->user->profile['birth_place'] }},
+            {{ Carbon\Carbon::parse($training->user->profile['birth_date'])->format('d F Y') }}</span>
         <hr style="page-break-before:always;display:none;"><span
             style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 131.50px; height: 172.39px;"><img
-                alt="" src="images/image3.png"
+                alt="" src="{{ Storage::url($training->user->profile['avatar']) }}"
                 style="width: 131.50px; height: 172.39px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title=""></span>
     </p>
@@ -334,29 +337,26 @@
                 style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="Divider Line"></span></p>
     <h1 class="c6" id="h.qr10fqrs1aoo"><span class="c13">DATA DIRI</span></h1>
-    <p class="c0"><span class="c2">No Handphone : </span></p>
-    <p class="c0"><span class="c2">Email : </span></p>
-    <p class="c0"><span class="c2">Agama : </span></p>
-    <p class="c0"><span class="c2">No KTP : </span></p>
+    <p class="c0"><span class="c2">No Handphone : +62{{ $training->user['phone'] }}</span></p>
+    <p class="c0"><span class="c2">Email : {{ $training->user['email'] }}</span></p>
+    <p class="c0"><span class="c2">Agama : {{ $training->user->profile['religion'] }}</span></p>
+    <p class="c0"><span class="c2">No KTP : {{ $training->user['nik_number'] }}</span></p>
     <p class="c0"><span class="c2">Alamat KTP : </span></p>
-    <p class="c4"><span>jLDALSDALSDKALSDLASDKALD</span></p>
+    <p class="c4"><span>{{ $training->user->profile['address'] }}</span></p>
     <p class="c5"><span
             style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 44.00px; height: 3.00px;"><img
                 alt="A small green rectangle to divide sections of the document" src="images/image2.png"
                 style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="Divider Line"></span></p>
     <h1 class="c6" id="h.r6vn5d4tsbql"><span class="c13">QR CODE KANDIDAT</span></h1>
-    <p class="c4"><span class="c2">. </span></p>
+    <p class="c4"><span class="c2">{!! html_entity_decode($training->user->candidate['qr_link']) !!}</span></p>
     <p class="c5"><span
             style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 44.00px; height: 3.00px;"><img
                 alt="A small green rectangle to divide sections of the document" src="images/image2.png"
                 style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="Divider Line"></span></p>
     <h1 class="c6" id="h.2m4qlrodd59l"><span class="c13">NOTE :</span></h1>
-    <p class="c4"><span class="c14 c15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed dolore eiusmod tempor incididunt ut aliqua labore et dolore magna aliqua.
-        </span></p>
+    <p class="c4"><span class="c14 c15">{{ $training->description }}</span></p>
     <div>
         <p class="c21"><span class="c2"></span></p>
     </div>
