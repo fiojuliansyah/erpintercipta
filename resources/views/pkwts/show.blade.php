@@ -291,9 +291,9 @@
         printWindow.document.open();
         printWindow.document.write('<html><head><title>Cetak PKWT</title>');
 
-        // Gaya CSS untuk mengatur ukuran font cetakan
+        // Gaya CSS untuk mengatur font cetakan
         printWindow.document.write('<style type="text/css">');
-        printWindow.document.write('.printable-text { font-size: 16px; }'); // Ganti ukuran font sesuai yang Anda inginkan
+        printWindow.document.write('.printable-text { font-family: "Times New Roman", Times, serif; font-size: 16px; }'); // Ganti ukuran font dan font-family sesuai dengan preferensi Anda
         printWindow.document.write('</style>');
 
         printWindow.document.write('</head><body>');
@@ -316,6 +316,7 @@
         printWindow.close();
     }
 </script>
+
 
 
 
