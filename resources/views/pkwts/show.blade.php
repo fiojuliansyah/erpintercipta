@@ -16,62 +16,84 @@
                             <div class="card-body" style="background-color: white; color: black">
                                 <span id="addendum" class="printable-text">
                                     {!! $pkwt->agreement?->addendum['addendum'] !!}
-                                </span>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 text-center">
-                                        <p>PIHAK PERTAMA</p>
-                                        <br>
-                                        @if ($pkwt->user?->signature == null)
-                                            <br>
-                                        @else
-                                            <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300"
-                                                alt="">
-                                        @endif
-                                        <br>
-                                        <p>( <u>{{ $pkwt->agreement['responsible'] }}</u> )</p>
-                                        <p>Human Resource Development</p>
-                                    </div>
-                                    <div class="col-md-6 mb-4 text-center">
-                                        <p>PIHAK KEDUA</p>
-                                        <br>
-                                        @if ($pkwt->user?->signature == null)
-                                            <br>
-                                        @else
-                                            <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}"
-                                                width="300" alt="">
-                                        @endif
-                                        <br>
-                                        <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
-                                        <p>Karyawan</p>
-                                    </div>
                                     <br>
-                                </div>
+                                    <div class="row" style="display: flex; justify-content: center; align-items: center;">
+                                        <div class="col-md-6 mb-4 text-center">
+                                            <p>PIHAK PERTAMA</p>
+                                            <br>
+                                            @if ($pkwt->user?->signature == null)
+                                                <br>
+                                            @else
+                                                <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300"
+                                                    alt="">
+                                            @endif
+                                            <br>
+                                            <p>( <u>{{ $pkwt->agreement['responsible'] }}</u> )</p>
+                                            <p>Human Resource Development</p>
+                                        </div>
+                                        <div class="col-md-6 mb-4 text-center">
+                                            <p>PIHAK KEDUA</p>
+                                            <br>
+                                            @if ($pkwt->user?->signature == null)
+                                                <br>
+                                            @else
+                                                <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}"
+                                                    width="300" alt="">
+                                            @endif
+                                            <br>
+                                            <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
+                                            <p>Karyawan</p>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </span>
                             </div><!-- /.card-body -->
                         </div>
                         <div class="card">
                             <div class="card-body" style="background-color: white; color: black">
                                 <span id="addendum" class="printable-text">
                                     {!! $pkwt->agreement?->addendum['attachment_1'] !!}
-                                </span>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 text-center">
-                                        <p>PIHAK PERTAMA</p>
-                                        <strong>{{ $pkwt->agreement->addendum->site->company['company'] }}</strong>
-                                        <br>
-                                        @if ($pkwt->user?->signature == null)
+                                    <br>
+                                    <div class="row" style="display: flex; justify-content: center; align-items: center;">
+                                        <div class="col-md-6 mb-4 text-center">
+                                            <p>PIHAK PERTAMA</p>
+                                            <strong>{{ $pkwt->agreement->addendum->site->company['company'] }}</strong>
                                             <br>
-                                        @else
-                                            <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300"
-                                                alt="">
-                                        @endif
+                                            @if ($pkwt->user?->signature == null)
+                                                <br>
+                                            @else
+                                                <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300"
+                                                    alt="">
+                                            @endif
+                                            <br>
+                                            <p>( <u>{{ $pkwt->agreement['responsible'] }}</u> )</p>
+                                            <p>Human Resource Development</p>
+                                        </div>
+                                        <div class="col-md-6 mb-4 text-center">
+                                            <p>PIHAK KEDUA</p>
+                                            <br>
+                                            @if ($pkwt->user?->signature == null)
+                                                <br>
+                                            @else
+                                                <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}"
+                                                    width="300" alt="">
+                                            @endif
+                                            <br>
+                                            <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
+                                            <p>Karyawan</p>
+                                        </div>
                                         <br>
-                                        <p>( <u>{{ $pkwt->agreement['responsible'] }}</u> )</p>
-                                        <p>Human Resource Development</p>
                                     </div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-body" style="background-color: white; color: black">
+                            <span id="addendum" class="printable-text">
+                                {!! $pkwt->agreement?->addendum['attachment_2'] !!}
+                                <br>
+                                <div class="row" style="display: flex; justify-content: center; align-items: center;">
                                     <div class="col-md-6 mb-4 text-center">
-                                        <p>PIHAK KEDUA</p>
                                         <br>
                                         @if ($pkwt->user?->signature == null)
                                             <br>
@@ -85,29 +107,7 @@
                                     </div>
                                     <br>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                          <div class="card-body" style="background-color: white; color: black">
-                            <span id="addendum" class="printable-text">
-                                {!! $pkwt->agreement?->addendum['attachment_2'] !!}
                             </span>
-                              <br>
-                              <div class="row">
-                                  <div class="col-md-6 mb-4 text-center">
-                                      <br>
-                                      @if ($pkwt->user?->signature == null)
-                                          <br>
-                                      @else
-                                          <img src="{{ Storage::url($pkwt->user?->signature['signatureDataUrl']) }}"
-                                              width="300" alt="">
-                                      @endif
-                                      <br>
-                                      <p>( <u>{{ $pkwt->user['name'] }}</u> )</p>
-                                      <p>Karyawan</p>
-                                  </div>
-                                  <br>
-                              </div>
                           </div>
                       </div>
                     </div>
@@ -200,36 +200,7 @@
                     </div><!-- /.page-sidebar -->
                 </div><!-- /.page -->
             </div><!-- /.wrapper -->
-    </main>
-    @section('print-styles')
-    <style>
-        /* Define print styles */
-        @media print {
-            body {
-                font-family: 'Times New Roman', Times, serif; /* Mengatur font ke Times New Roman */
-                font-size: 20px; /* Mengatur ukuran font ke 16px */
-            }
-    
-            .wrapper {
-                width: 210mm;
-                margin: 0 auto;
-                padding: 50px;
-            }
-    
-            .card {
-                page-break-after: always;
-                background-color: white;
-                color: black;
-                margin-bottom: 10px;
-            }
-    
-            /* Change font size for specific elements when printing */
-            .printable-text {
-                font-size: 20pt; /* Adjust the font size for the specific elements */
-            }
-        }
-    </style>
-    @endsection    
+    </main>   
 @endsection
 
 @push('js')
@@ -312,15 +283,40 @@
 </script>
 
 <script>
-    function printContent(elementId) {
-        var originalContents = document.body.innerHTML;
-        var printContents = document.getElementById(elementId).innerHTML;
+    function printContent() {
+        var printWindow = window.open('', '', 'width=800, height=1000'); // Setel ukuran kertas A4
 
-        document.body.innerHTML = printContents;
+        var printableElements = document.getElementsByClassName('printable-text');
+        
+        printWindow.document.open();
+        printWindow.document.write('<html><head><title>Cetak PKWT</title>');
 
-        window.print();
+        // Gaya CSS untuk mengatur ukuran font cetakan
+        printWindow.document.write('<style type="text/css">');
+        printWindow.document.write('.printable-text { font-size: 16px; }'); // Ganti ukuran font sesuai yang Anda inginkan
+        printWindow.document.write('</style>');
 
-        document.body.innerHTML = originalContents;
+        printWindow.document.write('</head><body>');
+
+        for (var i = 0; i < printableElements.length; i++) {
+            var element = printableElements[i];
+            element.style.border = 'none'; // Hapus border
+            printWindow.document.write(element.innerHTML);
+
+            // Pisah halaman setelah setiap elemen dengan kelas "printable-text"
+            if (i < printableElements.length - 1) {
+                printWindow.document.write('<div style="page-break-after: always;"></div>');
+            }
+        }
+
+        printWindow.document.write('</body></html>');
+
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
     }
 </script>
+
+
+
 @endpush
