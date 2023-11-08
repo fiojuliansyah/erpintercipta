@@ -17,7 +17,7 @@
         }
 
         .c8 {
-            color: #353744;
+            color: #000000;
             font-weight: 400;
             text-decoration: none;
             vertical-align: baseline;
@@ -67,7 +67,7 @@
         }
 
         .c2 {
-            color: #353744;
+            color: #000000;
             font-weight: 400;
             text-decoration: none;
             vertical-align: baseline;
@@ -166,7 +166,7 @@
 
         .c15 {
             font-family: "Proxima Nova";
-            color: #353744
+            color: #000000
         }
 
         .c19 {
@@ -201,8 +201,8 @@
 
         .subtitle {
             padding-top: 0pt;
-            color: #353744;
-            font-size: 24pt;
+            color: #000000;
+            font-size: 15pt;
             padding-bottom: 16pt;
             font-family: "Proxima Nova";
             line-height: 1.15;
@@ -213,14 +213,14 @@
         }
 
         li {
-            color: #353744;
+            color: #000000;
             font-size: 11pt;
             font-family: "Proxima Nova"
         }
 
         p {
             margin: 0;
-            color: #353744;
+            color: #000000;
             font-size: 11pt;
             font-family: "Proxima Nova"
         }
@@ -241,7 +241,7 @@
 
         h2 {
             padding-top: 16pt;
-            color: #353744;
+            color: #000000;
             font-weight: 700;
             font-size: 13pt;
             padding-bottom: 0pt;
@@ -255,7 +255,7 @@
 
         h3 {
             padding-top: 10pt;
-            color: #353744;
+            color: #000000;
             font-size: 13pt;
             padding-bottom: 0pt;
             font-family: "Proxima Nova";
@@ -349,26 +349,26 @@
                     {{ Carbon\Carbon::parse($training->user->profile['birth_date'])->format('d F Y') }}</span>
                 <hr style="page-break-before:always;display:none;">
                 @if ($training->status == '1')
-                <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 131.50px; height: 172.39px;">
-                    <img alt="" src="https://interciptacorp.com/interclean/wp-content/uploads/sites/5/2019/10/logo_interclean_cmaj_sm.png" style="width: 131.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+                <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 150px;">
+                    <img alt="" src="https://interciptacorp.com/interclean/wp-content/uploads/sites/5/2019/10/logo_interclean_cmaj_sm.png" style="width: 150px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
                 </span>
                 @elseif ($training->status == '2')
-                <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 131.50px; height: 172.39px;">
-                    <img alt="" src="https://interciptacorp.com/ganasakti/wp-content/uploads/sites/6/2019/11/logo_gana.png" style="width: 131.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+                <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 150px;">
+                    <img alt="" src="https://interciptacorp.com/ganasakti/wp-content/uploads/sites/6/2019/11/logo_gana.png" style="width: 150px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
                 </span>
                 @elseif ($training->status == '3')
-                <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 131.50px; height: 172.39px;">
-                    <img alt="" src="https://interciptacorp.com/wp-content/uploads/2019/09/logo_intercipta.png" style="width: 131.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+                <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 150px;">
+                    <img alt="" src="https://interciptacorp.com/wp-content/uploads/2019/09/logo_intercipta.png" style="width: 150px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
                 </span>
                 @endif
             </p>
-            <p class="c5"><span
-                    style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 44.00px; height: 3.00px;"><img
-                        alt="A small green rectangle to divide sections of the document" src="https://t4.ftcdn.net/jpg/03/29/19/15/360_F_329191596_tRQiV7LZjTZtuPM09QyOS09HV1D9VimE.jpg"
-                        style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                        title="Divider Line"></span></p>
-            </div>
-            <div class="column">
+        </div>
+        <div class="column">
+                <p class="c5"><span
+                        style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 44.00px; height: 3.00px;"><img
+                            alt="A small green rectangle to divide sections of the document" src="https://t4.ftcdn.net/jpg/03/29/19/15/360_F_329191596_tRQiV7LZjTZtuPM09QyOS09HV1D9VimE.jpg"
+                            style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                            title="Divider Line"></span></p>
                 <h1 class="c6" id="h.qr10fqrs1aoo"><span class="c13">DATA DIRI</span></h1>
                 <p class="c0"><span class="c2">No Handphone : +62{{ $training->user['phone'] }}</span></p>
                 <p class="c0"><span class="c2">Email : {{ $training->user['email'] }}</span></p>
