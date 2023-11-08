@@ -32,6 +32,7 @@
                     {{-- <th>ID User</th> --}}
                     <th>Name</th>
                     <th>Site / Project</th>
+                    <th>Berkas</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -47,7 +48,9 @@
                         {{-- <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td> --}}
                         <td>USER - {{ str_pad($training->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $training->user['name'] }}</td>
-                        <td>{{ $training->site['name'] }}</td>                        {{-- <td>
+                        <td>{{ $training->site['name'] }}</td>
+                        <td><a class="btn btn-primary" href="{{ route('trainings.show', $training->id) }}">Print</a></td>               
+                        {{-- <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <a href="https://google.com">
                                     <button type="button" class="btn btn-primary">Menu</button>

@@ -364,7 +364,7 @@
             </p>
             <p class="c5"><span
                     style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 44.00px; height: 3.00px;"><img
-                        alt="A small green rectangle to divide sections of the document" src="images/image2.png"
+                        alt="A small green rectangle to divide sections of the document" src="https://t4.ftcdn.net/jpg/03/29/19/15/360_F_329191596_tRQiV7LZjTZtuPM09QyOS09HV1D9VimE.jpg"
                         style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                         title="Divider Line"></span></p>
             </div>
@@ -379,16 +379,16 @@
                 <p class="c5">
                     <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 44.00px; height: 3.00px;">
                         <img
-                            alt="A small green rectangle to divide sections of the document" src="images/image2.png"
+                            alt="A small green rectangle to divide sections of the document" src="https://t4.ftcdn.net/jpg/03/29/19/15/360_F_329191596_tRQiV7LZjTZtuPM09QyOS09HV1D9VimE.jpg"
                             style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                             title="Divider Line">
                     </span>
                 </p>
                 <h1 class="c6" id="h.r6vn5d4tsbql"><span class="c13">QR CODE KANDIDAT</span></h1>
-                <p class="c4"><span class="c2">{!! html_entity_decode($training->user->candidate['qr_link']) !!}</span></p>
+                <p class="c4"><span>{!! html_entity_decode($training->user->candidate['qr_link']) !!}</span></p>
                 <p class="c5"><span
                         style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 44.00px; height: 3.00px;"><img
-                            alt="A small green rectangle to divide sections of the document" src="images/image2.png"
+                            alt="A small green rectangle to divide sections of the document" src="https://t4.ftcdn.net/jpg/03/29/19/15/360_F_329191596_tRQiV7LZjTZtuPM09QyOS09HV1D9VimE.jpg"
                             style="width: 44.00px; height: 3.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                             title="Divider Line"></span></p>
                 <h1 class="c6" id="h.2m4qlrodd59l"><span class="c13">NOTE :</span></h1>
