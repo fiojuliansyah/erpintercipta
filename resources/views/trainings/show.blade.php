@@ -338,7 +338,7 @@
             <p class="c3"><span
                     style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 277.00px; height: 330.50px;"><img
                         alt="pet_resume.jpg" src="{{ Storage::url($training->user->profile['avatar']) }}"
-                        style="width: 334.67px; height: 384.94px; margin-left: -5.17px; margin-top: -54.44px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        style="width: 334.67px; margin-left: -5.17px; margin-top: -54.44px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                         title="Your best friend"></span></p>
             <p class="c16"><span class="c1">Jenis Kelamin</span><span
                     class="c1">:</span><span>&nbsp;{{ $training->user->profile['gender'] }}<br></span><span
@@ -350,15 +350,15 @@
                 <hr style="page-break-before:always;display:none;">
                 @if ($training->status == '1')
                 <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 131.50px; height: 172.39px;">
-                    <img alt="" src="https://interciptacorp.com/interclean/wp-content/uploads/sites/5/2019/10/logo_interclean_cmaj_sm.png" style="width: 131.50px; height: 172.39px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+                    <img alt="" src="https://interciptacorp.com/interclean/wp-content/uploads/sites/5/2019/10/logo_interclean_cmaj_sm.png" style="width: 131.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
                 </span>
                 @elseif ($training->status == '2')
                 <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 131.50px; height: 172.39px;">
-                    <img alt="" src="https://interciptacorp.com/ganasakti/wp-content/uploads/sites/6/2019/11/logo_gana.png" style="width: 131.50px; height: 172.39px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+                    <img alt="" src="https://interciptacorp.com/ganasakti/wp-content/uploads/sites/6/2019/11/logo_gana.png" style="width: 131.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
                 </span>
                 @elseif ($training->status == '3')
                 <span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 131.50px; height: 172.39px;">
-                    <img alt="" src="https://interciptacorp.com/wp-content/uploads/2019/09/logo_intercipta.png" style="width: 131.50px; height: 172.39px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
+                    <img alt="" src="https://interciptacorp.com/wp-content/uploads/2019/09/logo_intercipta.png" style="width: 131.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
                 </span>
                 @endif
             </p>
