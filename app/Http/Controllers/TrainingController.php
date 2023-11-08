@@ -108,7 +108,7 @@ class TrainingController extends Controller
     {
         $training->delete();
 
-        return redirect()->route('trainings.index')
+        return redirect()->route('candidates.index')
                         ->with('success','Deleted successfully');
     }
 }
