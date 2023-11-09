@@ -27,7 +27,7 @@ class ChartofaccountController extends Controller
      */
     public function index()
     {
-        return view('chartofaccounts.index');
+        return view('dekstop.chartofaccounts.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class ChartofaccountController extends Controller
     {
         $customers = Customer::all();
         $accounttypes = Accounttype::all();
-        return view('chartofaccounts.create', compact('customers','accounttypes'));
+        return view('dekstop.chartofaccounts.create', compact('customers','accounttypes'));
     }
 
     /**
@@ -65,7 +65,7 @@ class ChartofaccountController extends Controller
         $chartofaccount->user_id = $user;
         $chartofaccount->save();
         // Crud::create($request->all());
-        return redirect()->route('chartofaccounts.index')
+        return redirect()->route('dekstop.chartofaccounts.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -78,7 +78,7 @@ class ChartofaccountController extends Controller
     public function show($id)
     {
         $chartofaccount = Chartofaccount::find($id);
-        return view('chartofaccounts.show',compact('chartofaccount'));
+        return view('dekstop.chartofaccounts.show',compact('chartofaccount'));
     }
 
     /**
@@ -91,7 +91,7 @@ class ChartofaccountController extends Controller
     {
         $customers = Customer::all();
         $accounttypes = Accounttype::all();
-        return view('chartofaccounts.edit',compact('chartofaccount', 'customers', 'accounttypes'));
+        return view('dekstop.chartofaccounts.edit',compact('chartofaccount', 'customers', 'accounttypes'));
     }
 
     /**
@@ -112,7 +112,7 @@ class ChartofaccountController extends Controller
         
         $chartofaccount->save();
         // $crud->update($request->all());
-        return redirect()->route('chartofaccounts.index')
+        return redirect()->route('dekstop.chartofaccounts.index')
                         ->with('success','Product updated successfully');
     }
 

@@ -25,7 +25,7 @@ class CareerController extends Controller
      */
     public function index()
     {
-        return view('careers.index');
+        return view('dekstop.careers.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class CareerController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('careers.create',compact('companies'));
+        return view('dekstop.careers.create',compact('companies'));
     }
 
     /**
@@ -72,7 +72,7 @@ class CareerController extends Controller
         $career->user_id = $user;
         $career->save();
 
-        return redirect()->route('careers.index')
+        return redirect()->route('dekstop.careers.index')
                         ->with('success','Career created successfully.');
 
     }
@@ -98,7 +98,7 @@ class CareerController extends Controller
     public function edit(Career $career)
     {
         $companies = Company::all();
-        return view('careers.edit',compact('companies','career'));
+        return view('dekstop.careers.edit',compact('companies','career'));
     }
 
     /**
@@ -135,7 +135,7 @@ class CareerController extends Controller
         $career->user_id = $user;
         $career->save();
 
-        return redirect()->route('careers.index')
+        return redirect()->route('dekstop.careers.index')
                         ->with('success','Career updated successfully.');
     }
 
@@ -149,7 +149,7 @@ class CareerController extends Controller
     {
         $career->delete();
 
-        return redirect()->route('careers.index')
+        return redirect()->route('dekstop.careers.index')
                         ->with('success','Product deleted successfully');
     }
 }

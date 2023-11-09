@@ -1,0 +1,264 @@
+@extends('mobiles.layouts.master')
+
+@section('title','Beranda InterMo')
+
+@section('content')
+<div class="page-content">    
+    {{-- <div class="page-title page-title-large">
+        <h2 data-username="{{ Auth::user()->name ?? 'Guest' }}" class="greeting-text"></h2>
+        <a href="#" data-menu="menu-main" class="bg-fade-gray1-dark shadow-xl preload-img" data-src="{{ asset('') }}mobile/images/avatars/5s.png"></a>
+    </div> --}}
+    <div class="page-title page-title-small" style="margin-top: 50px">
+        <h3></a>INTERMO</h3>
+        <h6>Intercipta Corporation</h6>
+    </div>
+    {{-- <div class="page-title page-title-small">
+            <a href="index.html" class="header-title">INTERMO</a>
+            <a href="#" data-menu="menu-main" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-2 show-on-theme-dark"><i class="fas fa-sun"></i></a>
+            <a href="#" data-toggle-theme class="header-icon header-icon-2 show-on-theme-light"><i class="fas fa-moon"></i></a>
+            <a href="#" data-menu="menu-highlights" class="header-icon header-icon-3"><i class="fas fa-brush"></i></a>
+        </div>
+    </div> --}}
+    <div class="card card-style" style="margin-top: 50px">
+        <div class="d-flex content mb-1">
+            <!-- left side of profile -->
+            <div class="flex-grow-1">
+                <h1 class="font-700">{{ Auth::user()->name ?? 'Guest' }}</h1>
+                <p class="mb-2">
+                    {{ Auth::user()->email ?? 'Guest' }}
+                </p>
+                {{-- <p class="font-10">
+                    <strong class="color-theme pr-1">1k</strong>Followers
+                    <strong class="color-theme pl-3 pr-1">342</strong>Following 
+                </p> --}}
+            </div>
+            <!-- right side of profile. increase image width to increase column size-->
+            <img src="{{ asset('') }}mobile/images/empty.png" data-src="{{ asset('') }}mobile/images/avatars/4s.png" width="50" class="bg-highlight rounded-circle mt-3 shadow-xl preload-img">
+        </div>
+        <!-- follow buttons-->
+        <div class="content">
+            <div class="row mb-0">
+                <div class="col-12">
+                    <a href="#" class="btn btn-full btn-m rounded-s text-uppercase font-900 shadow-xl bg-highlight"><i class="fas fa-camera">&nbsp</i> IN / OUT</a>
+                </div>
+                {{-- <div class="col-6">
+                    <a href="#" class="btn btn-full btn-border btn-m rounded-s text-uppercase font-900 shadow-l border-highlight color-highlight">QR Code</a>
+                </div> --}}
+            </div>
+        </div>
+        <div class="content">
+            <p>
+                <h5 class="float-left font-16 font-600">Attendance</h5>&nbsp&nbsp&nbsp&nbsp<small><span class="badge badge-danger">coming soon</span></small>
+            </p>
+        </div>
+        <div class="user-list-slider owl-carousel mt-3 mb-n1">
+            <div class="icon-user">
+                <i class="fas fa-clock" style="font-size: 30px; color: #FD5307;"></i>
+                <p>Overtime</p>
+            </div>     
+            <div class="icon-user">
+                <i class="fas fa-calendar-alt" style="font-size: 30px; color: aqua;"></i>
+                <p>Kalender</p>
+            </div>  
+            <div class="icon-user">
+                <i class="fas fa-calendar-check" style="font-size: 30px; color: #8600AF;"></i>
+                <p>Log</p>
+            </div> 
+            <div class="icon-user">
+                <i class="fas fa-money-check" style="font-size: 30px; color: #0DD200;"></i>
+                <p>Payslip</p>
+            </div>
+            <div class="icon-user">
+                <i class="fas fa-calendar-minus" style="font-size: 30px; color: #FE2713;"></i>
+                <p>Time Off</p>
+            </div>   
+        </div>
+    </div>
+    <div class="card header-card shape-square" data-card-height="200">
+        <div class="card-overlay bg-highlight opacity-95"></div>
+        <div class="card-overlay dark-mode-tint"></div>
+        <div class="card-bg preload-img"></div>
+    </div>
+    <!-- Homepage Slider-->
+    <div class="content mb-2">
+        <h5 class="float-left font-16 font-500">Fitur</h5>
+        <a class="float-right font-12 color-highlight mt-n1" href="#">View All</a>
+        <div class="clearfix"></div>
+    </div>
+    <div class="double-slider text-center owl-carousel owl-no-dots">
+        <div class="item bg-theme rounded-m shadow-m">
+            <i class="mt-4 mb-4" data-feather="shield" data-feather-line="1" data-feather-size="45" data-feather-color="blue2-dark" data-feather-bg="blue2-fade-light"></i>
+            <h5 class="font-16">I-Form</h5>
+            <p class="line-height-s font-11">
+                Request Form<br>Untuk Kebutuhan
+            </p>
+        </div>
+        <div class="item bg-theme rounded-m shadow-m">
+            <i class="mt-4 mb-4" data-feather="smartphone" data-feather-line="1" data-feather-size="45" data-feather-color="brown1-dark" data-feather-bg="brown1-fade-light"></i>
+            <h5 class="font-16">I-SCM</h5>
+            <p class="line-height-s font-11">
+                Just add it to your <br>Home Screen
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="single-slider-boxed text-center owl-no-dots owl-carousel">
+        <div class="card rounded-l shadow-l" data-card-height="150">
+            <div class="card-bottom">
+                <h1 class="font-24 font-700">Meet InterMo</h1>
+                <p class="boxed-text-xl">
+                    InterMo brings beauty and colors to your Mobile device with a stunning user interface to match.
+                </p>
+            </div>
+            <div class="card-overlay bg-gradient-fade"></div>
+            <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/17m.jpg"></div>
+        </div>
+        <div class="card rounded-l shadow-l" data-card-height="150">
+            <div class="card-bottom">
+                <h1 class="font-24 font-700">Beyond Powerful</h1>
+                <p class="boxed-text-xl">
+                    InterMo is a Mobile Web App Kit, fully featured, supporting PWA and Native Dark Mode!
+                </p>
+            </div>
+            <div class="card-overlay bg-gradient-fade"></div>
+            <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/8m.jpg"></div>
+        </div>
+        <div class="card rounded-l shadow-l" data-card-height="150">
+            <div class="card-bottom">
+                <h1 class="font-24 font-700">A-Level Quality</h1>
+                <p class="boxed-text-xl">
+                    We build custom, premium products, that are easy to use and provide all features for you! 
+                </p>
+            </div>
+            <div class="card-overlay bg-gradient-fade"></div>
+            <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/14m.jpg"></div>
+        </div>
+    </div>
+    
+    <div class="card card-style">
+        <div class="content text-center">
+            <h2>Ready in 3 Steps</h2>
+            <p class="boxed-text-xl">
+                Our products are designed to simplify the way you code a page, with focus on easy, copy and paste.
+            </p>
+        </div>
+        <div class="divider divider-small mb-3 bg-highlight"></div>
+        
+        <div class="content">
+            <div class="d-flex mb-4 pb-3">
+                <div>
+                    <i class="far fa-star color-yellow1-dark fa-3x pt-3 icon-size"></i>
+                </div>
+                <div>
+                    <h5 class="font-16 font-600">Find your Style</h5>
+                    <p>
+                        We've included multiple styles you can choose to match your exact project needs.
+                    </p>
+                </div>
+            </div>            
+            <div class="d-flex mb-4 pb-3">
+                <div>
+                    <i class="fa fa-mobile-alt color-blue2-dark fa-3x pt-3 icon-size"></i>
+                </div>
+                <div>
+                    <h5 class="font-16 font-600">Paste your Blocks</h5>
+                    <p>
+                        Just choose the blocks you like, copy and past them, add your text and that's it!
+                    </p>
+                </div>
+            </div>            
+            <div class="d-flex mb-2">
+                <div>
+                    <i class="far fa-check-circle color-green1-dark fa-3x pt-3 icon-size"></i>
+                </div>
+                <div>
+                    <h5 class="font-16 font-600">Publish your Page</h5>
+                    <p>
+                        Done with copy pasting? Your mobile site is now ready! Publish it or create an app!
+                    </p>
+                </div>
+            </div>            
+        </div>
+    </div>
+    
+     <div class="card card-style preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg" data-card-height="350">
+        <div class="card-center text-center">
+            <p class="line-height-xl font-19 font-300 color-white pl-3 pr-3 mb-2">
+                This is a great product! Many components that we can use, and I really appreciate the support from Enabled. Very responsive and provides great solutions.
+            </p>
+            <p class="opacity-50 color-white">Envato Customer</p>
+            <a href="#" class="btn btn-m rounded-s btn-border color-white border-white text-uppercase font-900">View Testimonials</a>
+        </div>
+        <div class="card-overlay bg-highlight opacity-95"></div>
+    </div>
+    
+    <div class="content mb-3">
+        <h5 class="float-left font-16 font-500">Products we Love</h5>
+            <a class="float-right font-12 color-highlight mt-n1" href="#">View All</a>
+        <div class="clearfix"></div>
+    </div>
+    
+    <div class="double-slider owl-carousel owl-no-dots text-center">
+        <div class="item bg-theme pb-3 rounded-m shadow-l">
+            <div data-card-height="200" class="card mb-2 bg-29">
+                <h5 class="card-bottom color-white mb-2">Sticky Mobile</h5>
+                <div class="card-overlay bg-gradient opacity-70"></div>
+            </div>  
+            <p class="mb-3 pl-2 pr-2 pt-2 font-12">
+                Classic, elegant and powerful. A best seller.
+            </p>
+            <a href="#" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">View</a>
+        </div>
+        <div class="item bg-theme pb-3 rounded-m shadow-l">
+            <div data-card-height="200" class="card mb-2 bg-18">
+                <h5 class="card-bottom color-white mb-2">Eazy Mobile</h5>
+                <div class="card-overlay bg-gradient opacity-70"></div>
+            </div>  
+            <p class="mb-3 pl-2 pr-2 pt-2 font-12">
+                A best seller, elegant multi use design.
+            </p>
+            <a href="#" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">View</a>
+        </div>
+        <div class="item bg-theme pb-3 rounded-m shadow-l">
+            <div data-card-height="200" class="card mb-2 bg-11">
+                <h5 class="card-bottom color-white mb-2">Bars Mobile</h5>
+                <div class="card-overlay bg-gradient opacity-70"></div>
+            </div>  
+            <p class="mb-3 pl-2 pr-2 pt-2 font-12">
+                Modern sidebars and a very intuitive interface.
+            </p>
+            <a href="#" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">View</a>
+        </div>
+    </div>
+    
+    <div class="card card-style mt-4 shadow-l" data-card-height="150">
+        <div class="card-center pl-3 pr-3">
+            <h4 class="color-white">Did you know?</h4>     
+            <p class="color-white mb-0 opacity-60">
+                We're the top selling Mobile Author on Envato. We value the quality of products and efficiency of our support!
+            </p>
+        </div>
+        <div class="card-overlay bg-highlight opacity-90"></div>
+    </div>
+    
+    <div class="card card-style text-center">
+        <div class="content pb-2">
+            <h1>
+                <i data-feather="gift" 
+                   data-feather-line="1" 
+                   data-feather-size="55" 
+                   data-feather-color="red2-dark" 
+                   data-feather-bg="red2-fade-dark">
+                </i>
+            </h1>
+            <h3 class="font-700 mt-2">Purchase Today</h3>
+            <p class="font-12 mt-n1 color-highlight mb-3">Quality and Premium Features for You</p>
+            <p class="boxed-text-xl">
+                Fast, easy to use and filled with features. Give your site the Mobile Feeling it deserves.
+            </p>
+            <a href="#" class="btn btn-center-xl btn-m text-uppercase font-900 bg-highlight rounded-sm shadow-l">Buy now - $25</a>
+        </div>
+    </div>
+</div>
+@endsection

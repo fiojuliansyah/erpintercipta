@@ -37,7 +37,7 @@ class ProjectController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('projects.index',compact('user'));
+        return view('dekstop.projects.index',compact('user'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $accounttypes = Accounttype::all();
         $terms = Term::all();
         
-        return view('projects.create', compact('companies','taxcategories','accounttypes','terms'));
+        return view('dekstop.projects.create', compact('companies','taxcategories','accounttypes','terms'));
     }
 
     /**
@@ -152,7 +152,7 @@ class ProjectController extends Controller
         $project->delete();
         \Storage::delete($project->tax_image);
 
-        return redirect()->route('projects.index')
+        return redirect()->route('dekstop.projects.index')
                         ->with('success','Product deleted successfully');
     }
 }

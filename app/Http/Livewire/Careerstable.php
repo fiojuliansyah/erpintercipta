@@ -29,6 +29,6 @@ class Careerstable extends Component
             $data = Career::paginate(10);
         }
 
-        return view('livewire.careerstable', compact('data'));
+        return view('dekstop.livewire.careerstable', compact('data'));
     }
 }

@@ -18,7 +18,7 @@ class ImportUsers implements ToModel, WithStartRow
         }
 
         // Cari pengguna berdasarkan alamat email
-        $user = User::where('name', $row[2])->first();
+        $user = User::where('nik_number', $row[0])->first();
 
         if (!$user) {
             // Buat pengguna baru jika tidak ada yang ditemukan
@@ -45,28 +45,29 @@ class ImportUsers implements ToModel, WithStartRow
         $profile = Profile::updateOrCreate(
             ['user_id' => $user->id],
             [
-                'address' => $row[5],
-                'birth_place' => $row[6],
-                'birth_date' => Date::excelToDateTimeObject($row[7])->format('Y-m-d'), // Ubah format sesuai kebutuhan Anda
-                'religion' => $row[8],
-                'person_status' => $row[9],
-                'stay_in' => $row[10],
-                'mother_name' => $row[11],
-                'family_name' => $row[12],
-                'family_address' => $row[13],
-                'gender' => $row[14],
-                'weight' => $row[15],
-                'height' => $row[16],
-                'hobby' => $row[17],
-                'bank_name' => $row[18],
-                'bank_account' => $row[19],
-                'reference' => $row[20],
-                'reference_job' => $row[21],
-                'reference_relation' => $row[22],
-                'reference_address' => $row[23],
-                'active_date' => $row[24],
-                'family_number' => $row[25],
-                'npwp_number' => $row[26],
+                'department' => $row[5],
+                'address' => $row[6],
+                'birth_place' => $row[7],
+                'birth_date' => Date::excelToDateTimeObject($row[8])->format('Y-m-d'), // Ubah format sesuai kebutuhan Anda
+                'religion' => $row[9],
+                'person_status' => $row[10],
+                'stay_in' => $row[11],
+                'mother_name' => $row[12],
+                'family_name' => $row[13],
+                'family_address' => $row[14],
+                'gender' => $row[15],
+                'weight' => $row[16],
+                'height' => $row[17],
+                'hobby' => $row[18],
+                'bank_name' => $row[19],
+                'bank_account' => $row[20],
+                'reference' => $row[21],
+                'reference_job' => $row[22],
+                'reference_relation' => $row[23],
+                'reference_address' => $row[24],
+                'active_date' => $row[25],
+                'family_number' => $row[26],
+                'npwp_number' => $row[27],
                 // Tambahkan lebih banyak kolom profil jika diperlukan
             ]);
 

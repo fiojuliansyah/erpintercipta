@@ -27,7 +27,7 @@ class TermController extends Controller
      */
     public function index()
     {
-        return view('terms.index');
+        return view('dekstop.terms.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class TermController extends Controller
      */
     public function create()
     {
-        return view('terms.create');
+        return view('dekstop.terms.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class TermController extends Controller
         $term->term = $request->term;
         $term->save();
         // Crud::create($request->all());
-        return redirect()->route('terms.index')
+        return redirect()->route('dekstop.terms.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -68,7 +68,7 @@ class TermController extends Controller
      */
     public function show(Term $term)
     {
-        return view('terms.show',compact('term'));
+        return view('dekstop.terms.show',compact('term'));
     }
 
     /**
@@ -79,7 +79,7 @@ class TermController extends Controller
      */
     public function edit(Term $term)
     {
-        return view('terms.edit',compact('term'));
+        return view('dekstop.terms.edit',compact('term'));
     }
 
     /**
@@ -100,7 +100,7 @@ class TermController extends Controller
         
         $term->save();
         // $crud->update($request->all());
-        return redirect()->route('terms.index')
+        return redirect()->route('dekstop.terms.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -114,7 +114,7 @@ class TermController extends Controller
     {
         $term->delete();
 
-        return redirect()->route('terms.index')
+        return redirect()->route('dekstop.terms.index')
                         ->with('success','Product deleted successfully');
     }
 }

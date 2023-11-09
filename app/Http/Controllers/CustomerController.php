@@ -27,7 +27,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('customers.index');
+        return view('dekstop.customers.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class CustomerController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('customers.create', compact('companies','taxcategories','terms'));
+        return view('dekstop.customers.create', compact('companies','taxcategories','terms'));
     }
 
     /**
@@ -75,7 +75,7 @@ class CustomerController extends Controller
         $customer->user_id = $user;
         $customer->save();
 
-        return redirect()->route('customers.index')
+        return redirect()->route('dekstop.customers.index')
                          ->with('success','Product created successfully.');
     }
 
@@ -88,7 +88,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id);
-        return view('customers.show',compact('customer'));
+        return view('dekstop.customers.show',compact('customer'));
     }
 
     /**
@@ -102,7 +102,7 @@ class CustomerController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('customers.edit',compact('customer','companies','taxcategories','terms'));
+        return view('dekstop.customers.edit',compact('customer','companies','taxcategories','terms'));
     }
 
     /**
@@ -138,7 +138,7 @@ class CustomerController extends Controller
         
         $customer->save();
         // $crud->update($request->all());
-        return redirect()->route('customers.index')
+        return redirect()->route('dekstop.customers.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -153,7 +153,7 @@ class CustomerController extends Controller
         $customer->delete();
         \Storage::delete($customer->tax_image);
 
-        return redirect()->route('customers.index')
+        return redirect()->route('dekstop.customers.index')
                         ->with('success','Product deleted successfully');
     }
 }

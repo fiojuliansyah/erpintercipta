@@ -10,6 +10,6 @@ class LayoutController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('dashboard' ,compact('user'));
+        return view('dekstop.dashboard' ,compact('user'));
     }
 }

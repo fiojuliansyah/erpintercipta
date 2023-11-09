@@ -22,7 +22,7 @@ class CandidateController extends Controller
     
     public function index()
     {
-        return view('candidates.index');
+        return view('dekstop.candidates.index');
     }
 
     public function create()
@@ -38,7 +38,7 @@ class CandidateController extends Controller
         $candidate->save();
 
         // Buat tautan untuk tampilan data pelamar dengan ID yang baru saja dibuat
-        $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
+        $qrLink = route('dekstop.candidates.show', ['candidate' => $candidate->id]);
 
         // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
         $qrCode = QrCode::size(200)->generate($qrLink);
@@ -57,12 +57,12 @@ class CandidateController extends Controller
 
         // Pastikan data pelamar ditemukan sebelum melanjutkan
         if (!$candidate) {
-            return redirect()->route('candidates.index')
+            return redirect()->route('dekstop.candidates.index')
                             ->with('error', 'Candidate not found');
         }
 
         // Buat tautan untuk tampilan data pelamar dengan ID yang ditemukan
-        $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
+        $qrLink = route('dekstop.candidates.show', ['candidate' => $candidate->id]);
 
         // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
         $qrCode = QrCode::size(200)->generate($qrLink);
@@ -71,7 +71,7 @@ class CandidateController extends Controller
         $candidate->qr_link = $qrCode;
         $candidate->save();
 
-        return redirect()->route('candidates.index')
+        return redirect()->route('dekstop.candidates.index')
                         ->with('success', 'Candidate updated successfully');
     }
 
@@ -81,7 +81,7 @@ class CandidateController extends Controller
     {
         $sites = Site::all();
         $addendums = Addendum::all();
-        return view('candidates.show', compact('candidate','addendums', 'sites'));
+        return view('dekstop.candidates.show', compact('candidate','addendums', 'sites'));
     }
 
     public function edit(Candidate $candidate)
@@ -104,7 +104,7 @@ class CandidateController extends Controller
         
         $candidate->save();
         // $crud->update($request->all());
-        return redirect()->route('candidates.index')
+        return redirect()->route('dekstop.candidates.index')
                         ->with('success','Candidate updated successfully');
     }
 
@@ -112,7 +112,7 @@ class CandidateController extends Controller
     {
         $candidate->delete();
 
-        return redirect()->route('candidates.index')
+        return redirect()->route('dekstop.candidates.index')
                         ->with('success','Candidate deleted successfully');
     }
 }

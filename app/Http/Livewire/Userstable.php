@@ -28,6 +28,6 @@ class Userstable extends Component
             $data = User::paginate(10);
         }
 
-        return view('livewire.userstable', compact('data'));
+        return view('dekstop.livewire.userstable', compact('data'));
     }
 }

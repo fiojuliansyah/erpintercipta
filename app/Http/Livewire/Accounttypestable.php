@@ -26,6 +26,6 @@ class Accounttypestable extends Component
         } else {
             $data = Accounttype::paginate(10);
         }
-        return view('livewire.accounttypestable', compact('data'));
+        return view('dekstop.livewire.accounttypestable', compact('data'));
     }
 }

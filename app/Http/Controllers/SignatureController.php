@@ -24,7 +24,7 @@ class SignatureController extends Controller
      */
     public function index()
     {
-        return view('signatures.index');
+        return view('dekstop.signatures.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class SignatureController extends Controller
      */
     public function create()
     {
-        return view('signatures.create');
+        return view('dekstop.signatures.create');
     }
 
     /**
@@ -140,7 +140,7 @@ class SignatureController extends Controller
         $signature->delete();
         \Storage::delete($signature->signatureDataUrl);
 
-        return redirect()->route('signatures.index')
+        return redirect()->route('dekstop.signatures.index')
                         ->with('success','Deleted successfully');
     }
 }

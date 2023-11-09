@@ -61,7 +61,7 @@ class EsignController extends Controller
                 'signatureDataUrl' => 'esigns/' . $fileName,
             ]);
     
-            return redirect()->route('pkwts.index');
+            return redirect()->route('dekstop.pkwts.index');
         } else {
             return response()->json(['message' => 'User not authenticated'], 401);
         }

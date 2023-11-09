@@ -32,6 +32,6 @@ class Jobstable extends Component
             $data = Career::paginate(10);
         }
 
-        return view('livewire.jobstable', compact('data'));
+        return view('dekstop.livewire.jobstable', compact('data'));
     }
 }

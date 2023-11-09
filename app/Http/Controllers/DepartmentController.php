@@ -25,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('departments.index');
+        return view('dekstop.departments.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class DepartmentController extends Controller
     public function create()
     {
         $customers = Customer::all();
-        return view('departments.create', compact('customers'));
+        return view('dekstop.departments.create', compact('customers'));
     }
 
     /**
@@ -60,7 +60,7 @@ class DepartmentController extends Controller
         $department->user_id = $user;
         $department->save();
         // Crud::create($request->all());
-        return redirect()->route('departments.index')
+        return redirect()->route('dekstop.departments.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -73,7 +73,7 @@ class DepartmentController extends Controller
     public function show($id)
     {
         $department = Department::find($id);
-        return view('departments.show',compact('department'));
+        return view('dekstop.departments.show',compact('department'));
     }
 
     /**
@@ -85,7 +85,7 @@ class DepartmentController extends Controller
     public function edit(Department $department)
     {
         $customers = Customer::all();
-        return view('departments.edit',compact('department', 'customers'));
+        return view('dekstop.departments.edit',compact('department', 'customers'));
     }
 
     /**
@@ -105,7 +105,7 @@ class DepartmentController extends Controller
         
         $department->save();
         // $crud->update($request->all());
-        return redirect()->route('departments.index')
+        return redirect()->route('dekstop.departments.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -119,7 +119,7 @@ class DepartmentController extends Controller
     {
         $department->delete();
 
-        return redirect()->route('departments.index')
+        return redirect()->route('dekstop.departments.index')
                         ->with('success','Product deleted successfully');
     }
 }

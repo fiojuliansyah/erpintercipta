@@ -35,7 +35,7 @@ class Jobsportaltable extends Component
             $data = Career::where('status', 1)->paginate(10);
         }
 
-        return view('livewire.jobsportaltable', compact('data'));
+        return view('dekstop.livewire.jobsportaltable', compact('data'));
     }
 
 

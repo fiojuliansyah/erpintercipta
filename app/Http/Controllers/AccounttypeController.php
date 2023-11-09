@@ -27,7 +27,7 @@ class AccounttypeController extends Controller
      */
     public function index()
     {
-        return view('accounttypes.index');
+        return view('dekstop.accounttypes.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class AccounttypeController extends Controller
      */
     public function create()
     {
-        return view('accounttypes.create');
+        return view('dekstop.accounttypes.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class AccounttypeController extends Controller
         $accounttype->accounttype = $request->accounttype;
         $accounttype->save();
         // Crud::create($request->all());
-        return redirect()->route('accounttypes.index')
+        return redirect()->route('dekstop.accounttypes.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -68,7 +68,7 @@ class AccounttypeController extends Controller
      */
     public function show(Accounttype $accounttype)
     {
-        return view('accounttypes.show',compact('accounttype'));
+        return view('dekstop.accounttypes.show',compact('accounttype'));
     }
 
     /**
@@ -79,7 +79,7 @@ class AccounttypeController extends Controller
      */
     public function edit(Accounttype $accounttype)
     {
-        return view('accounttypes.edit',compact('accounttype'));
+        return view('dekstop.accounttypes.edit',compact('accounttype'));
     }
 
     /**
@@ -100,7 +100,7 @@ class AccounttypeController extends Controller
         
         $accounttype->save();
         // $crud->update($request->all());
-        return redirect()->route('accounttypes.index')
+        return redirect()->route('dekstop.accounttypes.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -114,7 +114,7 @@ class AccounttypeController extends Controller
     {
         $accounttype->delete();
 
-        return redirect()->route('accounttype.index')
+        return redirect()->route('dekstop.accounttype.index')
                         ->with('success','Product deleted successfully');
     }
 }

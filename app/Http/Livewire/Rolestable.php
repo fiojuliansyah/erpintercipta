@@ -28,6 +28,6 @@ class Rolestable extends Component
             $data = Role::paginate(10);
         }
 
-        return view('livewire.rolestable', compact('data'));
+        return view('dekstop.livewire.rolestable', compact('data'));
     }
 }

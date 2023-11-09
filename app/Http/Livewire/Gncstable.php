@@ -42,7 +42,7 @@ class Gncstable extends Component
     
         $data = $dataQuery->paginate(10);
     
-        return view('livewire.gncstable', compact('data', 'projects'));
+        return view('dekstop.livewire.gncstable', compact('data', 'projects'));
     }
     
 }

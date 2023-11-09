@@ -13,4 +13,14 @@ class HomeController extends Controller
         $allcareer = Career::count();
         return view('welcome' ,compact('careers','allcareer'));
     }
+
+    public function welcomeMobile()
+    {
+        return view('mobiles.welcome');
+    }
+
+    public function homeMobile()
+    {
+        return view('mobiles.home');
+    }
 }

@@ -54,6 +54,6 @@ class Pkwtstable extends Component
             $data = Pkwt::paginate(10);
         }
 
-        return view('livewire.pkwtstable', compact('data'));
+        return view('dekstop.livewire.pkwtstable', compact('data'));
     }
 }

@@ -31,6 +31,6 @@ class Departmentstable extends Component
             $data = Department::paginate(10);
         }
 
-        return view('livewire.departmentstable', compact('data'));
+        return view('dekstop.livewire.departmentstable', compact('data'));
     }
 }

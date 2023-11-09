@@ -13,13 +13,13 @@ class ApplicantController extends Controller
     public function index()
     {
         $pelamar = User::whereDoesntHave('career')->count();
-        return view('applicants.index', compact('pelamar'));
+        return view('dekstop.applicants.index', compact('pelamar'));
     }
 
     public function show(User $applicant)
     {
         $careers = Career::all();
-        return view('applicants.show', compact('applicant','careers'));
+        return view('dekstop.applicants.show', compact('applicant','careers'));
     }
 
     public function store(Request $request)
@@ -39,7 +39,7 @@ class ApplicantController extends Controller
         $candidate->qr_link = $qrCode;
         $candidate->save();
 
-        return redirect()->route('applicants.index')
+        return redirect()->route('dekstop.applicants.index')
                         ->with('success','Berhasil Melamar Pekerjaan');
     }
 }

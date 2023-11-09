@@ -88,6 +88,6 @@ class Candidatestable extends Component
                 ->paginate(10);
         }
 
-        return view('livewire.candidatestable', compact('data'));
+        return view('dekstop.livewire.candidatestable', compact('data'));
     }
 }

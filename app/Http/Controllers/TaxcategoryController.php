@@ -27,7 +27,7 @@ class TaxcategoryController extends Controller
      */
     public function index()
     {
-        return view('taxcategories.index');
+        return view('dekstop.taxcategories.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class TaxcategoryController extends Controller
      */
     public function create()
     {
-        return view('taxcategories.create');
+        return view('dekstop.taxcategories.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class TaxcategoryController extends Controller
         $taxcategory->taxcategory = $request->taxcategory;
         $taxcategory->save();
         // Crud::create($request->all());
-        return redirect()->route('taxcategories.index')
+        return redirect()->route('dekstop.taxcategories.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -68,7 +68,7 @@ class TaxcategoryController extends Controller
      */
     public function show(Taxcategory $taxcategory)
     {
-        return view('taxcategories.show',compact('taxcategory'));
+        return view('dekstop.taxcategories.show',compact('taxcategory'));
     }
 
     /**
@@ -79,7 +79,7 @@ class TaxcategoryController extends Controller
      */
     public function edit(Taxcategory $taxcategory)
     {
-        return view('taxcategories.edit',compact('taxcategory'));
+        return view('dekstop.taxcategories.edit',compact('taxcategory'));
     }
 
     /**
@@ -100,7 +100,7 @@ class TaxcategoryController extends Controller
         
         $taxcategory->save();
         // $crud->update($request->all());
-        return redirect()->route('taxcategories.index')
+        return redirect()->route('dekstop.taxcategories.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -114,7 +114,7 @@ class TaxcategoryController extends Controller
     {
         $taxcategory->delete();
 
-        return redirect()->route('taxcategories.index')
+        return redirect()->route('dekstop.taxcategories.index')
                         ->with('success','Product deleted successfully');
     }
 }

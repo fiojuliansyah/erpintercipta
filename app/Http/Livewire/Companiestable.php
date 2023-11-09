@@ -28,6 +28,6 @@ class Companiestable extends Component
             $data = Company::paginate(10);
         }
 
-        return view('livewire.companiestable', compact('data'));
+        return view('dekstop.livewire.companiestable', compact('data'));
     }
 }

@@ -41,14 +41,16 @@ use App\Http\Controllers\ChartofaccountController;
 */
 
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/mobiles', [HomeController::class, 'welcomeMobile']);
 
 Route::get('/karir', [DashboardController::class, 'karir'])->name('karir');
 Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('karir-detail');
 // Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
+    //     return view('dashboard');
+    // })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    Route::middleware('auth')->group(function () {
+    Route::get('/mobiles/home', [HomeController::class, 'homeMobile']);
     Route::resource('dashboard', DashboardController::class);
     Route::get('/admin/dashboard', [DashboardController::class, 'dashboardEmployee']);
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);

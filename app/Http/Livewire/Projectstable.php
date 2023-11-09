@@ -29,6 +29,6 @@ class Projectstable extends Component
             $data = Project::paginate(10);
         }
 
-        return view('livewire.projectstable', compact('data'));
+        return view('dekstop.livewire.projectstable', compact('data'));
     }
 }

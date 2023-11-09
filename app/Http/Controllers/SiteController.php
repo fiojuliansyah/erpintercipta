@@ -25,7 +25,7 @@ class SiteController extends Controller
     
      public function index()
     {
-        return view('sites.index');
+        return view('dekstop.sites.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class SiteController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('sites.create', compact('companies'));
+        return view('dekstop.sites.create', compact('companies'));
     }
 
     /**
@@ -59,7 +59,7 @@ class SiteController extends Controller
         $site->long = $request->long;
         $site->save();
         // Crud::create($request->all());
-        return redirect()->route('sites.index')
+        return redirect()->route('dekstop.sites.index')
                         ->with('success','site created successfully.');
     }
 
@@ -83,7 +83,7 @@ class SiteController extends Controller
     public function edit(Site $site)
     {
         $companies = Company::all();
-        return view('sites.edit', compact('companies','site'));
+        return view('dekstop.sites.edit', compact('companies','site'));
     }
 
     /**
@@ -103,7 +103,7 @@ class SiteController extends Controller
         $site->save();
 
         // $crud->update($request->all());
-        return redirect()->route('sites.index')
+        return redirect()->route('dekstop.sites.index')
                         ->with('success','Site updated successfully');
     }
 
@@ -117,7 +117,7 @@ class SiteController extends Controller
     {
         $site->delete();
 
-        return redirect()->route('sites.index')
+        return redirect()->route('dekstop.sites.index')
                         ->with('success','Site deleted successfully');
     }
 }

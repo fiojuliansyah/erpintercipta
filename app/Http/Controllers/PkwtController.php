@@ -30,7 +30,7 @@ class PkwtController extends Controller
      */
     public function index()
     {
-        return view('pkwts.index');
+        return view('dekstop.pkwts.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class PkwtController extends Controller
         $pkwt->user_id = $request->user_id;
         $pkwt->save();
         // Pkwt::create($request->all());
-        return redirect()->route('pkwts.index')
+        return redirect()->route('dekstop.pkwts.index')
                         ->with('success','Pkwt created successfully.');
     }
 
@@ -69,12 +69,12 @@ class PkwtController extends Controller
      */
     public function show(Pkwt $pkwt)
     {
-        return view('pkwts.show', compact('pkwt'));
+        return view('dekstop.pkwts.show', compact('pkwt'));
     }
 
     public function export(Pkwt $pkwt)
     {
-        return view('pkwts.export', compact('pkwt'));
+        return view('dekstop.pkwts.export', compact('pkwt'));
     }
 
     /**
@@ -112,7 +112,7 @@ class PkwtController extends Controller
         $pkwt->signature_hrd = $hrSignature;
         $pkwt->save();
 
-        return redirect()->route('pkwts.index')
+        return redirect()->route('dekstop.pkwts.index')
                         ->with('success', 'Pkwt updated successfully');
     }
 
@@ -127,7 +127,7 @@ class PkwtController extends Controller
     {
         $pkwt->delete();
 
-        return redirect()->route('pkwts.index')
+        return redirect()->route('dekstop.pkwts.index')
                         ->with('success','Product deleted successfully');
     }
 

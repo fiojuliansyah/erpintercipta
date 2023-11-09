@@ -28,6 +28,6 @@ class Addendumstable extends Component
             $data = Addendum::paginate(10);
         }
 
-        return view('livewire.addendumstable', compact('data'));
+        return view('dekstop.livewire.addendumstable', compact('data'));
     }
 }

@@ -24,19 +24,19 @@ class ProfileController extends Controller
     public function indexAccountSettings()
     {
         $user = Auth::user();
-        return view('profiles.account-settings',compact('user'));
+        return view('dekstop.profiles.account-settings',compact('user'));
     }
 
     public function index()
     {
         $user = Auth::user();
-        return view('profiles.profiles',compact('user'));
+        return view('dekstop.profiles.profiles',compact('user'));
     }
 
     public function registerProfile()
     {
         $user = Auth::user();
-        return view('register-profile',compact('user'));
+        return view('dekstop.register-profile',compact('user'));
     }
 
 
@@ -202,7 +202,7 @@ class ProfileController extends Controller
     public function show(Profile $profile)
     {
         $careers = Career::all();
-        return view('profiles.show', compact('profile','careers'));
+        return view('dekstop.profiles.show', compact('profile','careers'));
     }
 
 }

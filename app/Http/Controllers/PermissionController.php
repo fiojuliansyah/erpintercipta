@@ -21,7 +21,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view('permissions.index');
+        return view('dekstop.permissions.index');
     }
 
     /**
@@ -31,7 +31,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permissions.create');
+        return view('dekstop.permissions.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class PermissionController extends Controller
         $permission->guard_name = $request->guard_name;
         $permission->save();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('dekstop.permissions.index')
                         ->with('success','Permission created successfully.');
     }
 
@@ -100,7 +100,7 @@ class PermissionController extends Controller
     {
         $permission->delete();
 
-        return redirect()->route('permissions.index')
+        return redirect()->route('dekstop.permissions.index')
                         ->with('success','Product deleted successfully');
     }
     

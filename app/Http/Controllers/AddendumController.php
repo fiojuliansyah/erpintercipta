@@ -25,7 +25,7 @@ class AddendumController extends Controller
      */
     public function index()
     {
-        return view('addendums.index');
+        return view('dekstop.addendums.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class AddendumController extends Controller
     {
         $companies = Company::all();
         $sites = Site::all();
-        return view('addendums.create', compact('companies','sites'));
+        return view('dekstop.addendums.create', compact('companies','sites'));
     }
 
     /**
@@ -56,7 +56,7 @@ class AddendumController extends Controller
         $addendum->title = $request->title;
         $addendum->save();
 
-        return redirect()->route('addendums.index')
+        return redirect()->route('dekstop.addendums.index')
                         ->with('success','Addendum created successfully.');
     }
 
@@ -81,7 +81,7 @@ class AddendumController extends Controller
     {
         $companies = Company::all();
         $sites = Site::all();
-        return view('addendums.edit', compact('companies','addendum','sites'));
+        return view('dekstop.addendums.edit', compact('companies','addendum','sites'));
     }
 
     /**
@@ -101,7 +101,7 @@ class AddendumController extends Controller
         $addendum->title = $request->title;
         $addendum->save();
         // $crud->update($request->all());
-        return redirect()->route('addendums.index')
+        return redirect()->route('dekstop.addendums.index')
                         ->with('success','Addendum updated successfully');
     }
 
@@ -115,7 +115,7 @@ class AddendumController extends Controller
     {
         $addendum->delete();
 
-        return redirect()->route('addendums.index')
+        return redirect()->route('dekstop.addendums.index')
                         ->with('success','Product deleted successfully');
     }
 }

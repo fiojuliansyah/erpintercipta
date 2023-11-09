@@ -69,7 +69,7 @@ class Applicantstable extends Component
                 ->paginate(10);
         }
     
-        return view('livewire.applicantstable', compact('data'));
+        return view('dekstop.livewire.applicantstable', compact('data'));
     }     
 
 }

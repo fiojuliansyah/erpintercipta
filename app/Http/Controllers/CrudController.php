@@ -26,7 +26,7 @@ class CrudController extends Controller
      */
     public function index()
     {
-        return view('cruds.index');
+        return view('dekstop.cruds.index');
     }
     
     /**
@@ -36,7 +36,7 @@ class CrudController extends Controller
      */
     public function create()
     {
-        return view('cruds.create');
+        return view('dekstop.cruds.create');
     }
     
     /**
@@ -60,7 +60,7 @@ class CrudController extends Controller
         $crud->image = $path;
         $crud->save();
         // Crud::create($request->all());
-        return redirect()->route('cruds.index')
+        return redirect()->route('dekstop.cruds.index')
                         ->with('success','Product created successfully.');
     }
     
@@ -72,7 +72,7 @@ class CrudController extends Controller
      */
     public function show(Crud $crud)
     {
-        return view('cruds.show',compact('crud'));
+        return view('dekstop.cruds.show',compact('crud'));
     }
     
     /**
@@ -83,7 +83,7 @@ class CrudController extends Controller
      */
     public function edit(Crud $crud)
     {
-        return view('cruds.edit',compact('crud'));
+        return view('dekstop.cruds.edit',compact('crud'));
     }
     
     /**
@@ -114,7 +114,7 @@ class CrudController extends Controller
         
         $crud->save();
         // $crud->update($request->all());
-        return redirect()->route('cruds.index')
+        return redirect()->route('dekstop.cruds.index')
                         ->with('success','Product updated successfully');
     }
     
@@ -129,7 +129,7 @@ class CrudController extends Controller
         $crud->delete();
         \Storage::delete($crud->image);
 
-        return redirect()->route('cruds.index')
+        return redirect()->route('dekstop.cruds.index')
                         ->with('success','Product deleted successfully');
     }
 }

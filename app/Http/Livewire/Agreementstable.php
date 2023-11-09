@@ -28,6 +28,6 @@ class Agreementstable extends Component
             $data = Agreement::paginate(10);
         }
 
-        return view('livewire.agreementstable', compact('data'));
+        return view('dekstop.livewire.agreementstable', compact('data'));
     }
 }

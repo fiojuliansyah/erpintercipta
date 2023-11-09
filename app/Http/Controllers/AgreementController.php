@@ -27,7 +27,7 @@ class AgreementController extends Controller
 
      public function index()
     {
-        return view('agreements.index');
+        return view('dekstop.agreements.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class AgreementController extends Controller
     {
         $companies = Company::all();
         $addendums = Addendum::all();
-        return view('agreements.create', compact('companies','addendums'));
+        return view('dekstop.agreements.create', compact('companies','addendums'));
     }
 
     /**
@@ -72,7 +72,7 @@ class AgreementController extends Controller
         $agreement->addendum_id = $request->addendum_id;
         $agreement->save();
 
-        return redirect()->route('agreements.index')
+        return redirect()->route('dekstop.agreements.index')
                         ->with('success','Agreement created successfully.');
     }
 
@@ -98,7 +98,7 @@ class AgreementController extends Controller
         $companies = Company::all();
         $sites = Site::all();
         $addendums = Addendum::all();
-        return view('agreements.edit', compact('companies','sites','agreement','addendums'));
+        return view('dekstop.agreements.edit', compact('companies','sites','agreement','addendums'));
     }
 
     /**
@@ -128,11 +128,13 @@ class AgreementController extends Controller
         $agreement->year = $request->year;
         $agreement->romawi = $request->romawi;
         $agreement->title = $request->title;
+        $agreement->penalty = $request->penalty;
+        $agreement->length_of_work = $request->length_of_work;
         $agreement->responsible = $request->responsible;
         $agreement->addendum_id = $request->addendum_id;
         $agreement->save();
 
-        return redirect()->route('agreements.index')
+        return redirect()->route('dekstop.agreements.index')
                         ->with('success','Agreement updated successfully.');
     }
 
@@ -146,7 +148,7 @@ class AgreementController extends Controller
     {
         $agreement->delete();
 
-        return redirect()->route('agreements.index')
+        return redirect()->route('dekstop.agreements.index')
                         ->with('success','Agreement deleted successfully');
     }
 }

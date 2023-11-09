@@ -27,7 +27,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-        return view('vendors.index');
+        return view('dekstop.vendors.index');
     }
 
 
@@ -41,7 +41,7 @@ class VendorController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('vendors.create', compact('companies','taxcategories','terms'));
+        return view('dekstop.vendors.create', compact('companies','taxcategories','terms'));
     }
 
     /**
@@ -76,7 +76,7 @@ class VendorController extends Controller
         $vendor->user_id = $user;
         $vendor->save();
 
-        return redirect()->route('vendors.index')
+        return redirect()->route('dekstop.vendors.index')
                          ->with('success','Product created successfully.');
     }
 
@@ -89,7 +89,7 @@ class VendorController extends Controller
     public function show($id)
     {
         $vendor = Vendor::find($id);
-        return view('vendors.show',compact('vendor'));
+        return view('dekstop.vendors.show',compact('vendor'));
     }
 
     /**
@@ -103,7 +103,7 @@ class VendorController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('vendors.edit',compact('vendor','companies','taxcategories','terms'));
+        return view('dekstop.vendors.edit',compact('vendor','companies','taxcategories','terms'));
     }
 
     /**
@@ -139,7 +139,7 @@ class VendorController extends Controller
         
         $vendor->save();
         // $crud->update($request->all());
-        return redirect()->route('vendors.index')
+        return redirect()->route('dekstop.vendors.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -154,7 +154,7 @@ class VendorController extends Controller
         $vendor->delete();
         \Storage::delete($vendor->tax_image);
 
-        return redirect()->route('vendors.index')
+        return redirect()->route('dekstop.vendors.index')
                         ->with('success','Product deleted successfully');
     }
 }

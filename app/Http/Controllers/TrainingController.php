@@ -16,22 +16,22 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        return view('trainings.index');
+        return view('dekstop.trainings.index');
     }
 
     public function indexGNC()
     {
-        return view('trainings.gnc');
+        return view('dekstop.trainings.gnc');
     }
 
     public function indexNCC()
     {
-        return view('trainings.ncc');
+        return view('dekstop.trainings.ncc');
     }
 
     public function indexPKL()
     {
-        return view('trainings.pkl');
+        return view('dekstop.trainings.pkl');
     }
 
     /**
@@ -72,7 +72,7 @@ class TrainingController extends Controller
     public function show($id)
     {
         $training = Training::find($id);
-        return view('trainings.show',compact('training'));
+        return view('dekstop.trainings.show',compact('training'));
     }
 
     /**
