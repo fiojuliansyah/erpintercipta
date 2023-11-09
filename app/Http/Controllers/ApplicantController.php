@@ -39,7 +39,7 @@ class ApplicantController extends Controller
         $candidate->qr_link = $qrCode;
         $candidate->save();
 
-        return redirect()->route('dekstop.applicants.index')
+        return redirect()->route('applicants.index')
                         ->with('success','Berhasil Melamar Pekerjaan');
     }
 }

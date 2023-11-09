@@ -76,7 +76,7 @@ class VendorController extends Controller
         $vendor->user_id = $user;
         $vendor->save();
 
-        return redirect()->route('dekstop.vendors.index')
+        return redirect()->route('vendors.index')
                          ->with('success','Product created successfully.');
     }
 
@@ -139,7 +139,7 @@ class VendorController extends Controller
         
         $vendor->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.vendors.index')
+        return redirect()->route('vendors.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -154,7 +154,7 @@ class VendorController extends Controller
         $vendor->delete();
         \Storage::delete($vendor->tax_image);
 
-        return redirect()->route('dekstop.vendors.index')
+        return redirect()->route('vendors.index')
                         ->with('success','Product deleted successfully');
     }
 }

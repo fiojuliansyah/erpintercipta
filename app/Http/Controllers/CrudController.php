@@ -60,7 +60,7 @@ class CrudController extends Controller
         $crud->image = $path;
         $crud->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.cruds.index')
+        return redirect()->route('cruds.index')
                         ->with('success','Product created successfully.');
     }
     
@@ -114,7 +114,7 @@ class CrudController extends Controller
         
         $crud->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.cruds.index')
+        return redirect()->route('cruds.index')
                         ->with('success','Product updated successfully');
     }
     
@@ -129,7 +129,7 @@ class CrudController extends Controller
         $crud->delete();
         \Storage::delete($crud->image);
 
-        return redirect()->route('dekstop.cruds.index')
+        return redirect()->route('cruds.index')
                         ->with('success','Product deleted successfully');
     }
 }

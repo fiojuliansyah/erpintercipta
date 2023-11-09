@@ -72,7 +72,7 @@ class CareerController extends Controller
         $career->user_id = $user;
         $career->save();
 
-        return redirect()->route('dekstop.careers.index')
+        return redirect()->route('careers.index')
                         ->with('success','Career created successfully.');
 
     }
@@ -135,7 +135,7 @@ class CareerController extends Controller
         $career->user_id = $user;
         $career->save();
 
-        return redirect()->route('dekstop.careers.index')
+        return redirect()->route('careers.index')
                         ->with('success','Career updated successfully.');
     }
 
@@ -149,7 +149,7 @@ class CareerController extends Controller
     {
         $career->delete();
 
-        return redirect()->route('dekstop.careers.index')
+        return redirect()->route('careers.index')
                         ->with('success','Product deleted successfully');
     }
 }

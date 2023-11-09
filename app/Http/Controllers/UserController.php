@@ -86,7 +86,7 @@ class UserController extends Controller
 
         $user->qr_link = $qrCode;
 
-        return redirect()->route('dekstop.users.index')
+        return redirect()->route('users.index')
                         ->with('success','User created successfully');
     }
 
@@ -97,7 +97,7 @@ class UserController extends Controller
 
         // Pastikan data pelamar ditemukan sebelum melanjutkan
         if (!$user) {
-            return redirect()->route('dekstop.users.index')
+            return redirect()->route('users.index')
                             ->with('error', 'user not found');
         }
 
@@ -171,7 +171,7 @@ class UserController extends Controller
     
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('dekstop.users.index')
+        return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
     
@@ -184,7 +184,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('dekstop.users.index')
+        return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
     }
 

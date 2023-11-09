@@ -152,7 +152,7 @@ class ProjectController extends Controller
         $project->delete();
         \Storage::delete($project->tax_image);
 
-        return redirect()->route('dekstop.projects.index')
+        return redirect()->route('projects.index')
                         ->with('success','Product deleted successfully');
     }
 }

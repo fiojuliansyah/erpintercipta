@@ -61,7 +61,7 @@ class CompanyController extends Controller
         $company->image = $path;
         $company->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.companies.index')
+        return redirect()->route('companies.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -115,7 +115,7 @@ class CompanyController extends Controller
         
         $company->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.companies.index')
+        return redirect()->route('companies.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -130,7 +130,7 @@ class CompanyController extends Controller
         $company->delete();
         \Storage::delete($company->image);
 
-        return redirect()->route('dekstop.companies.index')
+        return redirect()->route('companies.index')
                         ->with('success','Product deleted successfully');
     }
 }

@@ -59,7 +59,7 @@ class SiteController extends Controller
         $site->long = $request->long;
         $site->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.sites.index')
+        return redirect()->route('sites.index')
                         ->with('success','site created successfully.');
     }
 
@@ -103,7 +103,7 @@ class SiteController extends Controller
         $site->save();
 
         // $crud->update($request->all());
-        return redirect()->route('dekstop.sites.index')
+        return redirect()->route('sites.index')
                         ->with('success','Site updated successfully');
     }
 
@@ -117,7 +117,7 @@ class SiteController extends Controller
     {
         $site->delete();
 
-        return redirect()->route('dekstop.sites.index')
+        return redirect()->route('sites.index')
                         ->with('success','Site deleted successfully');
     }
 }

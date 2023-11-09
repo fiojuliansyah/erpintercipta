@@ -140,7 +140,7 @@ class SignatureController extends Controller
         $signature->delete();
         \Storage::delete($signature->signatureDataUrl);
 
-        return redirect()->route('dekstop.signatures.index')
+        return redirect()->route('signatures.index')
                         ->with('success','Deleted successfully');
     }
 }

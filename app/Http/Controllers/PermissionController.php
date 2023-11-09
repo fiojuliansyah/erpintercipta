@@ -52,7 +52,7 @@ class PermissionController extends Controller
         $permission->guard_name = $request->guard_name;
         $permission->save();
 
-        return redirect()->route('dekstop.permissions.index')
+        return redirect()->route('permissions.index')
                         ->with('success','Permission created successfully.');
     }
 
@@ -100,7 +100,7 @@ class PermissionController extends Controller
     {
         $permission->delete();
 
-        return redirect()->route('dekstop.permissions.index')
+        return redirect()->route('permissions.index')
                         ->with('success','Product deleted successfully');
     }
     

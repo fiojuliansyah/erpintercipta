@@ -72,7 +72,7 @@ class AgreementController extends Controller
         $agreement->addendum_id = $request->addendum_id;
         $agreement->save();
 
-        return redirect()->route('dekstop.agreements.index')
+        return redirect()->route('agreements.index')
                         ->with('success','Agreement created successfully.');
     }
 
@@ -134,7 +134,7 @@ class AgreementController extends Controller
         $agreement->addendum_id = $request->addendum_id;
         $agreement->save();
 
-        return redirect()->route('dekstop.agreements.index')
+        return redirect()->route('agreements.index')
                         ->with('success','Agreement updated successfully.');
     }
 
@@ -148,7 +148,7 @@ class AgreementController extends Controller
     {
         $agreement->delete();
 
-        return redirect()->route('dekstop.agreements.index')
+        return redirect()->route('agreements.index')
                         ->with('success','Agreement deleted successfully');
     }
 }

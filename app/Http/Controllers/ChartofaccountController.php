@@ -65,7 +65,7 @@ class ChartofaccountController extends Controller
         $chartofaccount->user_id = $user;
         $chartofaccount->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.chartofaccounts.index')
+        return redirect()->route('chartofaccounts.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -112,7 +112,7 @@ class ChartofaccountController extends Controller
         
         $chartofaccount->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.chartofaccounts.index')
+        return redirect()->route('chartofaccounts.index')
                         ->with('success','Product updated successfully');
     }
 

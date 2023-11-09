@@ -56,7 +56,7 @@ class AccounttypeController extends Controller
         $accounttype->accounttype = $request->accounttype;
         $accounttype->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.accounttypes.index')
+        return redirect()->route('accounttypes.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -100,7 +100,7 @@ class AccounttypeController extends Controller
         
         $accounttype->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.accounttypes.index')
+        return redirect()->route('accounttypes.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -114,7 +114,7 @@ class AccounttypeController extends Controller
     {
         $accounttype->delete();
 
-        return redirect()->route('dekstop.accounttype.index')
+        return redirect()->route('accounttype.index')
                         ->with('success','Product deleted successfully');
     }
 }

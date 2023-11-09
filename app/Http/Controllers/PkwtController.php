@@ -57,7 +57,7 @@ class PkwtController extends Controller
         $pkwt->user_id = $request->user_id;
         $pkwt->save();
         // Pkwt::create($request->all());
-        return redirect()->route('dekstop.pkwts.index')
+        return redirect()->route('pkwts.index')
                         ->with('success','Pkwt created successfully.');
     }
 
@@ -112,7 +112,7 @@ class PkwtController extends Controller
         $pkwt->signature_hrd = $hrSignature;
         $pkwt->save();
 
-        return redirect()->route('dekstop.pkwts.index')
+        return redirect()->route('pkwts.index')
                         ->with('success', 'Pkwt updated successfully');
     }
 
@@ -127,7 +127,7 @@ class PkwtController extends Controller
     {
         $pkwt->delete();
 
-        return redirect()->route('dekstop.pkwts.index')
+        return redirect()->route('pkwts.index')
                         ->with('success','Product deleted successfully');
     }
 

@@ -56,7 +56,7 @@ class AddendumController extends Controller
         $addendum->title = $request->title;
         $addendum->save();
 
-        return redirect()->route('dekstop.addendums.index')
+        return redirect()->route('addendums.index')
                         ->with('success','Addendum created successfully.');
     }
 
@@ -101,7 +101,7 @@ class AddendumController extends Controller
         $addendum->title = $request->title;
         $addendum->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.addendums.index')
+        return redirect()->route('addendums.index')
                         ->with('success','Addendum updated successfully');
     }
 
@@ -115,7 +115,7 @@ class AddendumController extends Controller
     {
         $addendum->delete();
 
-        return redirect()->route('dekstop.addendums.index')
+        return redirect()->route('addendums.index')
                         ->with('success','Product deleted successfully');
     }
 }

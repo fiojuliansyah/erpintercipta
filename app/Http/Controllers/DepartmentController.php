@@ -60,7 +60,7 @@ class DepartmentController extends Controller
         $department->user_id = $user;
         $department->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.departments.index')
+        return redirect()->route('departments.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -105,7 +105,7 @@ class DepartmentController extends Controller
         
         $department->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.departments.index')
+        return redirect()->route('departments.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -119,7 +119,7 @@ class DepartmentController extends Controller
     {
         $department->delete();
 
-        return redirect()->route('dekstop.departments.index')
+        return redirect()->route('departments.index')
                         ->with('success','Product deleted successfully');
     }
 }

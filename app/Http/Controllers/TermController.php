@@ -56,7 +56,7 @@ class TermController extends Controller
         $term->term = $request->term;
         $term->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.terms.index')
+        return redirect()->route('terms.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -100,7 +100,7 @@ class TermController extends Controller
         
         $term->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.terms.index')
+        return redirect()->route('terms.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -114,7 +114,7 @@ class TermController extends Controller
     {
         $term->delete();
 
-        return redirect()->route('dekstop.terms.index')
+        return redirect()->route('terms.index')
                         ->with('success','Product deleted successfully');
     }
 }

@@ -75,7 +75,7 @@ class CustomerController extends Controller
         $customer->user_id = $user;
         $customer->save();
 
-        return redirect()->route('dekstop.customers.index')
+        return redirect()->route('customers.index')
                          ->with('success','Product created successfully.');
     }
 
@@ -138,7 +138,7 @@ class CustomerController extends Controller
         
         $customer->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.customers.index')
+        return redirect()->route('customers.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -153,7 +153,7 @@ class CustomerController extends Controller
         $customer->delete();
         \Storage::delete($customer->tax_image);
 
-        return redirect()->route('dekstop.customers.index')
+        return redirect()->route('customers.index')
                         ->with('success','Product deleted successfully');
     }
 }

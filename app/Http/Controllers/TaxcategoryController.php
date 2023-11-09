@@ -56,7 +56,7 @@ class TaxcategoryController extends Controller
         $taxcategory->taxcategory = $request->taxcategory;
         $taxcategory->save();
         // Crud::create($request->all());
-        return redirect()->route('dekstop.taxcategories.index')
+        return redirect()->route('taxcategories.index')
                         ->with('success','Product created successfully.');
     }
 
@@ -100,7 +100,7 @@ class TaxcategoryController extends Controller
         
         $taxcategory->save();
         // $crud->update($request->all());
-        return redirect()->route('dekstop.taxcategories.index')
+        return redirect()->route('taxcategories.index')
                         ->with('success','Product updated successfully');
     }
 
@@ -114,7 +114,7 @@ class TaxcategoryController extends Controller
     {
         $taxcategory->delete();
 
-        return redirect()->route('dekstop.taxcategories.index')
+        return redirect()->route('taxcategories.index')
                         ->with('success','Product deleted successfully');
     }
 }
