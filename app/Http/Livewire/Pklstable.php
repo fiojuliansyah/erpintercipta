@@ -42,7 +42,7 @@ class Pklstable extends Component
     
         $data = $dataQuery->paginate(10);
     
-        return view('dekstop.livewire.pklstable', compact('data', 'projects'));
+        return view('desktop.livewire.pklstable', compact('data', 'projects'));
     }
     
 }

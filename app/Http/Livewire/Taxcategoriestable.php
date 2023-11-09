@@ -26,6 +26,6 @@ class Taxcategoriestable extends Component
         } else {
             $data = Taxcategory::paginate(10);
         }
-        return view('dekstop.livewire.taxcategoriestable', compact('data'));
+        return view('desktop.livewire.taxcategoriestable', compact('data'));
     }
 }

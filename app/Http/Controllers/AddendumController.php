@@ -25,7 +25,7 @@ class AddendumController extends Controller
      */
     public function index()
     {
-        return view('dekstop.addendums.index');
+        return view('desktop.addendums.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class AddendumController extends Controller
     {
         $companies = Company::all();
         $sites = Site::all();
-        return view('dekstop.addendums.create', compact('companies','sites'));
+        return view('desktop.addendums.create', compact('companies','sites'));
     }
 
     /**
@@ -81,7 +81,7 @@ class AddendumController extends Controller
     {
         $companies = Company::all();
         $sites = Site::all();
-        return view('dekstop.addendums.edit', compact('companies','addendum','sites'));
+        return view('desktop.addendums.edit', compact('companies','addendum','sites'));
     }
 
     /**

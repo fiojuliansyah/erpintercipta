@@ -27,7 +27,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('dekstop.customers.index');
+        return view('desktop.customers.index');
     }
 
     /**
@@ -40,7 +40,7 @@ class CustomerController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('dekstop.customers.create', compact('companies','taxcategories','terms'));
+        return view('desktop.customers.create', compact('companies','taxcategories','terms'));
     }
 
     /**
@@ -88,7 +88,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id);
-        return view('dekstop.customers.show',compact('customer'));
+        return view('desktop.customers.show',compact('customer'));
     }
 
     /**
@@ -102,7 +102,7 @@ class CustomerController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('dekstop.customers.edit',compact('customer','companies','taxcategories','terms'));
+        return view('desktop.customers.edit',compact('customer','companies','taxcategories','terms'));
     }
 
     /**

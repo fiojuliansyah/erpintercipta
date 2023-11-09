@@ -30,7 +30,7 @@ class PkwtController extends Controller
      */
     public function index()
     {
-        return view('dekstop.pkwts.index');
+        return view('desktop.pkwts.index');
     }
 
     /**
@@ -69,12 +69,12 @@ class PkwtController extends Controller
      */
     public function show(Pkwt $pkwt)
     {
-        return view('dekstop.pkwts.show', compact('pkwt'));
+        return view('desktop.pkwts.show', compact('pkwt'));
     }
 
     public function export(Pkwt $pkwt)
     {
-        return view('dekstop.pkwts.export', compact('pkwt'));
+        return view('desktop.pkwts.export', compact('pkwt'));
     }
 
     /**

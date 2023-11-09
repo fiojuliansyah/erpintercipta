@@ -21,7 +21,7 @@ class DashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('dekstop.dashboard' ,compact('user'));
+        return view('desktop.dashboard' ,compact('user'));
     }
 
     public function karir()
@@ -31,7 +31,7 @@ class DashboardController extends Controller
         $allcareer = Career::count();
         $alluser = User::count();
         $companies = Company::all();
-        return view('dekstop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+        return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
     }
 
     public function karirDetail($id)
@@ -40,7 +40,7 @@ class DashboardController extends Controller
         $allcareer = Career::count();
         $alluser = User::count();
         $companies = Company::all();
-        return view('dekstop.job-detail',compact('career','allcareer','alluser','companies'));
+        return view('desktop.job-detail',compact('career','allcareer','alluser','companies'));
     }
 
     public function jobPortal()
@@ -50,30 +50,30 @@ class DashboardController extends Controller
         $allcareer = Career::count();
         $alluser = User::count();
         $companies = Company::all();
-        return view('dekstop.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
+        return view('desktop.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
     }
 
     public function jobDetail($id)
     {
         $career = Career::find($id);
-        return view('dekstop.jobportal.show',compact('career'));
+        return view('desktop.jobportal.show',compact('career'));
     }
 
     public function pkwt(Pkwt $pkwt)
     {
-        return view('dekstop.tanda-tangan', compact('pkwt'));
+        return view('desktop.tanda-tangan', compact('pkwt'));
     }
 
 
     public function MyResume(Candidate $candidate)
     {
-        return view('dekstop.my-resume',compact('candidate'));
+        return view('desktop.my-resume',compact('candidate'));
     }
 
     public function dashboardEmployee()
     {
         $user = Auth::user();
-        return view('dekstop.dashboard-employee' ,compact('user'));
+        return view('desktop.dashboard-employee' ,compact('user'));
     }
 
     /**

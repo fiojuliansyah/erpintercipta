@@ -27,7 +27,7 @@ class TermController extends Controller
      */
     public function index()
     {
-        return view('dekstop.terms.index');
+        return view('desktop.terms.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class TermController extends Controller
      */
     public function create()
     {
-        return view('dekstop.terms.create');
+        return view('desktop.terms.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class TermController extends Controller
      */
     public function show(Term $term)
     {
-        return view('dekstop.terms.show',compact('term'));
+        return view('desktop.terms.show',compact('term'));
     }
 
     /**
@@ -79,7 +79,7 @@ class TermController extends Controller
      */
     public function edit(Term $term)
     {
-        return view('dekstop.terms.edit',compact('term'));
+        return view('desktop.terms.edit',compact('term'));
     }
 
     /**

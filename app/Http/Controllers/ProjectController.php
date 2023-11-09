@@ -37,7 +37,7 @@ class ProjectController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('dekstop.projects.index',compact('user'));
+        return view('desktop.projects.index',compact('user'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $accounttypes = Accounttype::all();
         $terms = Term::all();
         
-        return view('dekstop.projects.create', compact('companies','taxcategories','accounttypes','terms'));
+        return view('desktop.projects.create', compact('companies','taxcategories','accounttypes','terms'));
     }
 
     /**

@@ -27,7 +27,7 @@ class AgreementController extends Controller
 
      public function index()
     {
-        return view('dekstop.agreements.index');
+        return view('desktop.agreements.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class AgreementController extends Controller
     {
         $companies = Company::all();
         $addendums = Addendum::all();
-        return view('dekstop.agreements.create', compact('companies','addendums'));
+        return view('desktop.agreements.create', compact('companies','addendums'));
     }
 
     /**
@@ -100,7 +100,7 @@ class AgreementController extends Controller
         $companies = Company::all();
         $sites = Site::all();
         $addendums = Addendum::all();
-        return view('dekstop.agreements.edit', compact('companies','sites','agreement','addendums'));
+        return view('desktop.agreements.edit', compact('companies','sites','agreement','addendums'));
     }
 
     /**

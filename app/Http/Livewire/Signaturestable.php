@@ -29,6 +29,6 @@ class Signaturestable extends Component
         } else {
             $data = Signature::paginate(10);
         }
-        return view('dekstop.livewire.signaturestable', compact('data','users'));
+        return view('desktop.livewire.signaturestable', compact('data','users'));
     }
 }

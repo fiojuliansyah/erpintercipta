@@ -31,7 +31,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         // $notification  
-        return view('dekstop.users.index');
+        return view('desktop.users.index');
     }
     
     /**
@@ -42,7 +42,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        return view('dekstop.users.create',compact('roles'));
+        return view('desktop.users.create',compact('roles'));
     }
     
     /**
@@ -124,7 +124,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('dekstop.users.show',compact('user'));
+        return view('desktop.users.show',compact('user'));
     }
     
     /**
@@ -139,7 +139,7 @@ class UserController extends Controller
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('dekstop.users.edit',compact('user','roles','userRole'));
+        return view('desktop.users.edit',compact('user','roles','userRole'));
     }
     
     /**

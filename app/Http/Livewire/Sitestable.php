@@ -26,6 +26,6 @@ class Sitestable extends Component
         } else {
             $data = Site::paginate(10);
         }
-        return view('dekstop.livewire.sitestable', compact('data'));
+        return view('desktop.livewire.sitestable', compact('data'));
     }
 }

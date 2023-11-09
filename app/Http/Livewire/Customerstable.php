@@ -30,6 +30,6 @@ class Customerstable extends Component
             $data = Customer::paginate(10);
         }
 
-        return view('dekstop.livewire.customerstable', compact('data'));
+        return view('desktop.livewire.customerstable', compact('data'));
     }
 }

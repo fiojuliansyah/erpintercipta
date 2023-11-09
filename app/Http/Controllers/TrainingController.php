@@ -16,22 +16,22 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        return view('dekstop.trainings.index');
+        return view('desktop.trainings.index');
     }
 
     public function indexGNC()
     {
-        return view('dekstop.trainings.gnc');
+        return view('desktop.trainings.gnc');
     }
 
     public function indexNCC()
     {
-        return view('dekstop.trainings.ncc');
+        return view('desktop.trainings.ncc');
     }
 
     public function indexPKL()
     {
-        return view('dekstop.trainings.pkl');
+        return view('desktop.trainings.pkl');
     }
 
     /**
@@ -72,7 +72,7 @@ class TrainingController extends Controller
     public function show($id)
     {
         $training = Training::find($id);
-        return view('dekstop.trainings.show',compact('training'));
+        return view('desktop.trainings.show',compact('training'));
     }
 
     /**

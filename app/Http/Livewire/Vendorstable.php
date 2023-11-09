@@ -28,6 +28,6 @@ class Vendorstable extends Component
             $data = Vendor::paginate(10);
         }
 
-        return view('dekstop.livewire.vendorstable', compact('data'));
+        return view('desktop.livewire.vendorstable', compact('data'));
     }
 }

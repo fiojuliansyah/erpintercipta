@@ -22,7 +22,7 @@ class CandidateController extends Controller
     
     public function index()
     {
-        return view('dekstop.candidates.index');
+        return view('desktop.candidates.index');
     }
 
     public function create()
@@ -81,7 +81,7 @@ class CandidateController extends Controller
     {
         $sites = Site::all();
         $addendums = Addendum::all();
-        return view('dekstop.candidates.show', compact('candidate','addendums', 'sites'));
+        return view('desktop.candidates.show', compact('candidate','addendums', 'sites'));
     }
 
     public function edit(Candidate $candidate)

@@ -13,13 +13,13 @@ class ApplicantController extends Controller
     public function index()
     {
         $pelamar = User::whereDoesntHave('career')->count();
-        return view('dekstop.applicants.index', compact('pelamar'));
+        return view('desktop.applicants.index', compact('pelamar'));
     }
 
     public function show(User $applicant)
     {
         $careers = Career::all();
-        return view('dekstop.applicants.show', compact('applicant','careers'));
+        return view('desktop.applicants.show', compact('applicant','careers'));
     }
 
     public function store(Request $request)

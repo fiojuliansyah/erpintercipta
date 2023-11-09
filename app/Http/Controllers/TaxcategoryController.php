@@ -27,7 +27,7 @@ class TaxcategoryController extends Controller
      */
     public function index()
     {
-        return view('dekstop.taxcategories.index');
+        return view('desktop.taxcategories.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class TaxcategoryController extends Controller
      */
     public function create()
     {
-        return view('dekstop.taxcategories.create');
+        return view('desktop.taxcategories.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class TaxcategoryController extends Controller
      */
     public function show(Taxcategory $taxcategory)
     {
-        return view('dekstop.taxcategories.show',compact('taxcategory'));
+        return view('desktop.taxcategories.show',compact('taxcategory'));
     }
 
     /**
@@ -79,7 +79,7 @@ class TaxcategoryController extends Controller
      */
     public function edit(Taxcategory $taxcategory)
     {
-        return view('dekstop.taxcategories.edit',compact('taxcategory'));
+        return view('desktop.taxcategories.edit',compact('taxcategory'));
     }
 
     /**

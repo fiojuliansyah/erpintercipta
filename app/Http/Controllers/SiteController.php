@@ -25,7 +25,7 @@ class SiteController extends Controller
     
      public function index()
     {
-        return view('dekstop.sites.index');
+        return view('desktop.sites.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class SiteController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('dekstop.sites.create', compact('companies'));
+        return view('desktop.sites.create', compact('companies'));
     }
 
     /**
@@ -83,7 +83,7 @@ class SiteController extends Controller
     public function edit(Site $site)
     {
         $companies = Company::all();
-        return view('dekstop.sites.edit', compact('companies','site'));
+        return view('desktop.sites.edit', compact('companies','site'));
     }
 
     /**

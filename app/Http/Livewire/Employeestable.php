@@ -79,7 +79,7 @@ class Employeestable extends Component
     
         $data = $data->paginate(10);
     
-        return view('dekstop.livewire.employeestable', compact('data', 'companies', 'projects'));
+        return view('desktop.livewire.employeestable', compact('data', 'companies', 'projects'));
     }    
     
     

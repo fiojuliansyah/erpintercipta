@@ -30,6 +30,6 @@ class Chartofaccountstable extends Component
             $data = Chartofaccount::paginate(10);
         }
 
-        return view('dekstop.livewire.chartofaccountstable', compact('data'));
+        return view('desktop.livewire.chartofaccountstable', compact('data'));
     }
 }

@@ -24,7 +24,7 @@ class SignatureController extends Controller
      */
     public function index()
     {
-        return view('dekstop.signatures.index');
+        return view('desktop.signatures.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class SignatureController extends Controller
      */
     public function create()
     {
-        return view('dekstop.signatures.create');
+        return view('desktop.signatures.create');
     }
 
     /**

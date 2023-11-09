@@ -26,6 +26,6 @@ class Termstable extends Component
         } else {
             $data = Term::paginate(10);
         }
-        return view('dekstop.livewire.termstable', compact('data'));
+        return view('desktop.livewire.termstable', compact('data'));
     }
 }

@@ -42,7 +42,7 @@ class Nccstable extends Component
     
         $data = $dataQuery->paginate(10);
     
-        return view('dekstop.livewire.nccstable', compact('data', 'projects'));
+        return view('desktop.livewire.nccstable', compact('data', 'projects'));
     }
     
 }

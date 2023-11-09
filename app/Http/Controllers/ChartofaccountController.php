@@ -27,7 +27,7 @@ class ChartofaccountController extends Controller
      */
     public function index()
     {
-        return view('dekstop.chartofaccounts.index');
+        return view('desktop.chartofaccounts.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class ChartofaccountController extends Controller
     {
         $customers = Customer::all();
         $accounttypes = Accounttype::all();
-        return view('dekstop.chartofaccounts.create', compact('customers','accounttypes'));
+        return view('desktop.chartofaccounts.create', compact('customers','accounttypes'));
     }
 
     /**
@@ -78,7 +78,7 @@ class ChartofaccountController extends Controller
     public function show($id)
     {
         $chartofaccount = Chartofaccount::find($id);
-        return view('dekstop.chartofaccounts.show',compact('chartofaccount'));
+        return view('desktop.chartofaccounts.show',compact('chartofaccount'));
     }
 
     /**
@@ -91,7 +91,7 @@ class ChartofaccountController extends Controller
     {
         $customers = Customer::all();
         $accounttypes = Accounttype::all();
-        return view('dekstop.chartofaccounts.edit',compact('chartofaccount', 'customers', 'accounttypes'));
+        return view('desktop.chartofaccounts.edit',compact('chartofaccount', 'customers', 'accounttypes'));
     }
 
     /**

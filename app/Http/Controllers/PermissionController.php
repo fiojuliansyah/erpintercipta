@@ -21,7 +21,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return view('dekstop.permissions.index');
+        return view('desktop.permissions.index');
     }
 
     /**
@@ -31,7 +31,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('dekstop.permissions.create');
+        return view('desktop.permissions.create');
     }
 
     /**

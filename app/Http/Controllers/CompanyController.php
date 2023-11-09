@@ -27,7 +27,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('dekstop.companies.index');
+        return view('desktop.companies.index');
     }
 
     /**
@@ -73,7 +73,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        return view('dekstop.companies.show',compact('company'));
+        return view('desktop.companies.show',compact('company'));
     }
 
     /**
@@ -84,7 +84,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('dekstop.companies.edit',compact('company'));
+        return view('desktop.companies.edit',compact('company'));
     }
 
     /**

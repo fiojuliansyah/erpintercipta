@@ -25,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('dekstop.departments.index');
+        return view('desktop.departments.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class DepartmentController extends Controller
     public function create()
     {
         $customers = Customer::all();
-        return view('dekstop.departments.create', compact('customers'));
+        return view('desktop.departments.create', compact('customers'));
     }
 
     /**
@@ -73,7 +73,7 @@ class DepartmentController extends Controller
     public function show($id)
     {
         $department = Department::find($id);
-        return view('dekstop.departments.show',compact('department'));
+        return view('desktop.departments.show',compact('department'));
     }
 
     /**
@@ -85,7 +85,7 @@ class DepartmentController extends Controller
     public function edit(Department $department)
     {
         $customers = Customer::all();
-        return view('dekstop.departments.edit',compact('department', 'customers'));
+        return view('desktop.departments.edit',compact('department', 'customers'));
     }
 
     /**

@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
         $careers = Career::paginate(2);
         $allcareer = Career::count();
-        return view('dekstop.welcome' ,compact('careers','allcareer'));
+        return view('desktop.welcome' ,compact('careers','allcareer'));
     }
 
     public function welcomeMobile()

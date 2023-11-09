@@ -26,7 +26,7 @@ class CrudController extends Controller
      */
     public function index()
     {
-        return view('dekstop.cruds.index');
+        return view('desktop.cruds.index');
     }
     
     /**
@@ -36,7 +36,7 @@ class CrudController extends Controller
      */
     public function create()
     {
-        return view('dekstop.cruds.create');
+        return view('desktop.cruds.create');
     }
     
     /**
@@ -72,7 +72,7 @@ class CrudController extends Controller
      */
     public function show(Crud $crud)
     {
-        return view('dekstop.cruds.show',compact('crud'));
+        return view('desktop.cruds.show',compact('crud'));
     }
     
     /**
@@ -83,7 +83,7 @@ class CrudController extends Controller
      */
     public function edit(Crud $crud)
     {
-        return view('dekstop.cruds.edit',compact('crud'));
+        return view('desktop.cruds.edit',compact('crud'));
     }
     
     /**

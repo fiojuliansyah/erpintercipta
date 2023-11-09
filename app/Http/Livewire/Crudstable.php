@@ -28,6 +28,6 @@ class Crudstable extends Component
             $data = Crud::paginate(10);
         }
 
-        return view('dekstop.livewire.crudstable', compact('data'));
+        return view('desktop.livewire.crudstable', compact('data'));
     }
 }

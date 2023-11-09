@@ -29,7 +29,7 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dekstop.roles.index');
+        return view('desktop.roles.index');
     }
     
     /**
@@ -40,7 +40,7 @@ class RoleController extends Controller
     public function create()
     {
         $permission = Permission::get();
-        return view('dekstop.roles.create',compact('permission'));
+        return view('desktop.roles.create',compact('permission'));
     }
     
     /**
@@ -75,7 +75,7 @@ class RoleController extends Controller
             ->where("role_has_permissions.role_id",$id)
             ->get();
     
-        return view('dekstop.roles.show',compact('role','rolePermissions'));
+        return view('desktop.roles.show',compact('role','rolePermissions'));
     }
     
     /**
@@ -92,7 +92,7 @@ class RoleController extends Controller
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
     
-        return view('dekstop.roles.edit',compact('role','permission','rolePermissions'));
+        return view('desktop.roles.edit',compact('role','permission','rolePermissions'));
     }
     
     /**

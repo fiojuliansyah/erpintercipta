@@ -27,7 +27,7 @@ class AccounttypeController extends Controller
      */
     public function index()
     {
-        return view('dekstop.accounttypes.index');
+        return view('desktop.accounttypes.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class AccounttypeController extends Controller
      */
     public function create()
     {
-        return view('dekstop.accounttypes.create');
+        return view('desktop.accounttypes.create');
     }
 
     /**
@@ -68,7 +68,7 @@ class AccounttypeController extends Controller
      */
     public function show(Accounttype $accounttype)
     {
-        return view('dekstop.accounttypes.show',compact('accounttype'));
+        return view('desktop.accounttypes.show',compact('accounttype'));
     }
 
     /**
@@ -79,7 +79,7 @@ class AccounttypeController extends Controller
      */
     public function edit(Accounttype $accounttype)
     {
-        return view('dekstop.accounttypes.edit',compact('accounttype'));
+        return view('desktop.accounttypes.edit',compact('accounttype'));
     }
 
     /**

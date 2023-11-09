@@ -27,7 +27,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-        return view('dekstop.vendors.index');
+        return view('desktop.vendors.index');
     }
 
 
@@ -41,7 +41,7 @@ class VendorController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('dekstop.vendors.create', compact('companies','taxcategories','terms'));
+        return view('desktop.vendors.create', compact('companies','taxcategories','terms'));
     }
 
     /**
@@ -89,7 +89,7 @@ class VendorController extends Controller
     public function show($id)
     {
         $vendor = Vendor::find($id);
-        return view('dekstop.vendors.show',compact('vendor'));
+        return view('desktop.vendors.show',compact('vendor'));
     }
 
     /**
@@ -103,7 +103,7 @@ class VendorController extends Controller
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
         $terms = Term::all();
-        return view('dekstop.vendors.edit',compact('vendor','companies','taxcategories','terms'));
+        return view('desktop.vendors.edit',compact('vendor','companies','taxcategories','terms'));
     }
 
     /**

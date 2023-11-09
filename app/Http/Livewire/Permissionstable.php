@@ -27,6 +27,6 @@ class Permissionstable extends Component
         } else {
             $data = Permission::paginate(10);
         }
-        return view('dekstop.livewire.permissionstable', compact('data'));
+        return view('desktop.livewire.permissionstable', compact('data'));
     }
 }

@@ -18,7 +18,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return view('dekstop.employees.index');
+        return view('desktop.employees.index');
     }
 
     /**
@@ -65,7 +65,7 @@ class EmployeeController extends Controller
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('dekstop.employees.edit',compact('user','roles','userRole'));
+        return view('desktop.employees.edit',compact('user','roles','userRole'));
     }
 
     /**

@@ -25,7 +25,7 @@ class CareerController extends Controller
      */
     public function index()
     {
-        return view('dekstop.careers.index');
+        return view('desktop.careers.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class CareerController extends Controller
     public function create()
     {
         $companies = Company::all();
-        return view('dekstop.careers.create',compact('companies'));
+        return view('desktop.careers.create',compact('companies'));
     }
 
     /**
@@ -98,7 +98,7 @@ class CareerController extends Controller
     public function edit(Career $career)
     {
         $companies = Company::all();
-        return view('dekstop.careers.edit',compact('companies','career'));
+        return view('desktop.careers.edit',compact('companies','career'));
     }
 
     /**
