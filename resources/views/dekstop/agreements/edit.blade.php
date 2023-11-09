@@ -105,16 +105,16 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="penalty">Penalty</label>
-                                                <input type="text" name="{{ $agreement->penalty }}" class="form-control"
-                                                    placeholder="Tulis Disini">
+                                                <input type="text" name="penalty" class="form-control"
+                                                    value="{{ $agreement->penalty }}">
                                                 @error('penalty')
                                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="length_of_work">Lama Bekerja</label>
-                                                <input type="text" name="{{ $agreement->length_of_work }}" class="form-control"
-                                                    placeholder="Tulis Disini">
+                                                <input type="text" name="length_of_work" class="form-control"
+                                                    value="{{ $agreement->length_of_work }}">
                                                 @error('length_of_work')
                                                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                                 @enderror

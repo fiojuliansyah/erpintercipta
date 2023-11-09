@@ -68,6 +68,8 @@ class AgreementController extends Controller
         $agreement->year = $request->year;
         $agreement->romawi = $request->romawi;
         $agreement->title = $request->title;
+        $agreement->penalty = $request->penalty;
+        $agreement->length_of_work = $request->length_of_work;
         $agreement->responsible = $request->responsible;
         $agreement->addendum_id = $request->addendum_id;
         $agreement->save();
