@@ -101,6 +101,27 @@
                                         </div>
                                     </div>
                                     <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="penalty">Penalty</label>
+                                                <input type="text" name="{{ $agreement->penalty }}" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('penalty')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="length_of_work">Lama Bekerja</label>
+                                                <input type="text" name="{{ $agreement->length_of_work }}" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('length_of_work')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
                                     <br>
                                     <small style="color: red">Jika kosong maka beri tanda(-)</small>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
