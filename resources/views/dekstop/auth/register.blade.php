@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('dekstop.layouts.guest')
 
 @section('title', 'Register | InterCipta ERP Management')
 
