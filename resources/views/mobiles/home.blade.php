@@ -1,6 +1,6 @@
 @extends('mobiles.layouts.master')
 
-@section('title','Beranda InterMo')
+@section('title','Beranda | Intercipta Mobile')
 
 @section('content')
 <div class="page-content">    
@@ -9,7 +9,7 @@
         <a href="#" data-menu="menu-main" class="bg-fade-gray1-dark shadow-xl preload-img" data-src="{{ asset('') }}mobile/images/avatars/5s.png"></a>
     </div> --}}
     <div class="page-title page-title-small" style="margin-top: 50px">
-        <h3></a>INTERMO</h3>
+        <h3>INTERMO</h3>
         <h6>Intercipta Corporation</h6>
     </div>
     {{-- <div class="page-title page-title-small">
@@ -34,16 +34,17 @@
                 </p> --}}
             </div>
             <!-- right side of profile. increase image width to increase column size-->
-            <img src="{{ asset('') }}mobile/images/empty.png" data-src="{{ asset('') }}mobile/images/avatars/4s.png" width="50" class="bg-highlight rounded-circle mt-3 shadow-xl preload-img">
+            <img src="{{ asset('') }}mobile/images/empty.png" data-src="{{ Storage::url($user ? $user->profile?->avatar : '') }}" width="70" height="70" class="bg-highlight rounded-circle shadow-xl preload-img">
         </div>
+        @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
         <!-- follow buttons-->
         <div class="content">
             <div class="row mb-0">
                 <div class="col-12">
                     <a href="#" class="btn btn-full btn-m rounded-s text-uppercase font-900 shadow-xl bg-highlight"><i class="fas fa-camera">&nbsp</i> IN / OUT</a>
                 </div>
-                {{-- <div class="col-6">
-                    <a href="#" class="btn btn-full btn-border btn-m rounded-s text-uppercase font-900 shadow-l border-highlight color-highlight">QR Code</a>
+                {{-- <div class="col-4">
+                    <a href="#" class="btn btn-full btn-border btn-m rounded-s text-uppercase font-900 shadow-l border-highlight color-highlight"><i class="fas fa-qrcode">&nbsp</i>QR</a>
                 </div> --}}
             </div>
         </div>
@@ -52,7 +53,7 @@
                 <h5 class="float-left font-16 font-600">Attendance</h5>&nbsp&nbsp&nbsp&nbsp<small><span class="badge badge-danger">coming soon</span></small>
             </p>
         </div>
-        <div class="user-list-slider owl-carousel mt-3 mb-n1">
+        <div class="user-list-slider owl-carousel mt-1 mb-n1">
             <div class="icon-user">
                 <i class="fas fa-clock" style="font-size: 30px; color: #FD5307;"></i>
                 <p>Overtime</p>
@@ -73,7 +74,33 @@
                 <i class="fas fa-calendar-minus" style="font-size: 30px; color: #FE2713;"></i>
                 <p>Time Off</p>
             </div>   
+        </div>  
+        @else
+        @if (Auth::user()->candidate == null)
+        <div class="content">
+            <div class="row mb-0">
+                <div class="col-8">
+                    <a href="#" class="btn btn-full btn-m rounded-s text-uppercase font-900 shadow-xl bg-highlight">Pelamar</a>
+                </div>
+                <div class="col-4">
+                    <a href="#"  data-menu="menu-share-thumbs" class="btn btn-full btn-border btn-m rounded-s text-uppercase font-900 shadow-l border-highlight color-highlight"><i class="fas fa-qrcode">&nbsp</i>QR</a>
+                </div>
+            </div>
         </div>
+        @else
+        <div class="content">
+            <div class="row mb-0">
+                <div class="col-8">
+                    <a href="#" class="btn btn-full btn-m rounded-s text-uppercase font-900 shadow-xl btn-primary">Kandidat</a>
+                </div>
+                <div class="col-4">
+                    <a href="#"  data-menu="menu-share-thumbs" class="btn btn-full btn-border btn-m rounded-s text-uppercase font-900 shadow-l border-highlight color-highlight"><i class="fas fa-qrcode">&nbsp</i>QR</a>
+                </div>
+            </div>
+        </div> 
+        @endif  
+        <br>
+        @endif
     </div>
     <div class="card header-card shape-square" data-card-height="200">
         <div class="card-overlay bg-highlight opacity-95"></div>
@@ -81,6 +108,7 @@
         <div class="card-bg preload-img"></div>
     </div>
     <!-- Homepage Slider-->
+    @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
     <div class="content mb-2">
         <h5 class="float-left font-16 font-500">Fitur</h5>
         <a class="float-right font-12 color-highlight mt-n1" href="#">View All</a>
@@ -259,6 +287,89 @@
             </p>
             <a href="#" class="btn btn-center-xl btn-m text-uppercase font-900 bg-highlight rounded-sm shadow-l">Buy now - $25</a>
         </div>
+    </div>    
+    @else
+    <br>
+    <div class="single-slider-boxed text-center owl-no-dots owl-carousel">
+        <div class="card rounded-l shadow-l" data-card-height="150">
+            <div class="card-bottom">
+                <h1 class="font-24 font-700">Meet InterMo</h1>
+                <p class="boxed-text-xl">
+                    InterMo brings beauty and colors to your Mobile device with a stunning user interface to match.
+                </p>
+            </div>
+            <div class="card-overlay bg-gradient-fade"></div>
+            <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/17m.jpg"></div>
+        </div>
+        <div class="card rounded-l shadow-l" data-card-height="150">
+            <div class="card-bottom">
+                <h1 class="font-24 font-700">Beyond Powerful</h1>
+                <p class="boxed-text-xl">
+                    InterMo is a Mobile Web App Kit, fully featured, supporting PWA and Native Dark Mode!
+                </p>
+            </div>
+            <div class="card-overlay bg-gradient-fade"></div>
+            <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/8m.jpg"></div>
+        </div>
+        <div class="card rounded-l shadow-l" data-card-height="150">
+            <div class="card-bottom">
+                <h1 class="font-24 font-700">A-Level Quality</h1>
+                <p class="boxed-text-xl">
+                    We build custom, premium products, that are easy to use and provide all features for you! 
+                </p>
+            </div>
+            <div class="card-overlay bg-gradient-fade"></div>
+            <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/14m.jpg"></div>
+        </div>
     </div>
+    <div class="content mb-3">
+        <h5 class="float-left font-16 font-500">Lowongan</h5>
+            <a class="float-right font-12 color-highlight mt-n1"  href="{{ route('jobportal') }}">Semua</a>
+        <div class="clearfix"></div>
+    </div>
+    
+    <div class="double-slider owl-carousel owl-no-dots text-center">
+        @foreach ($careers as $item)
+        <div class="item bg-theme pb-3 rounded-m shadow-l">
+            <div data-card-height="100" class="card">
+                <img src="https://karir-production.nos.jkt-1.neo.id/logos/72/3341172/download.png" alt="">
+                <h6 class="card-bottom color-white mb-2">{{ $item->jobname }}</h6>
+                <div class="card-overlay bg-gradient opacity-70"></div>
+            </div>  
+            <p>
+               <i class="fas fa-map-marker-alt"></i> {{ $item->location }}
+            </p>
+            <p>
+                <span class="badge badge-success">{{ $item->salary }}</span>
+             </p>
+            <a href="#" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">Lamar</a>
+        </div>
+        @endforeach
+    </div>
+    @endif
+</div>
+<div id="menu-share-thumbs" 
+     class="menu menu-box-modal menu-box-detached rounded-m" 
+     data-menu-height="420" 
+     data-menu-width="320">
+     @if (Auth::user()->candidate == null)
+     <h1 class="text-center font-700 mt-3 pt-2">APPLICANT - {{ str_pad(Auth::user()->id, 5, '0', STR_PAD_LEFT) }}</h1>
+     <p class="boxed-text-xl under-heading mb-0" style="color: #FE2713">
+         *Gunakan QR Code ini pada saat panggilan Interview dan Test
+     </p>
+     <div class="divider divider-margins"></div>
+     <div class="row justify-content-center mr-3 ml-3 mb-5">
+         {!! html_entity_decode(Auth::user()->qr_link ?? '') !!}
+     </div>  
+     @else
+     <h1 class="text-center font-700 mt-3 pt-2">CANDIDATE - {{ str_pad(Auth::user()->id, 5, '0', STR_PAD_LEFT) }}</h1>
+     <p class="boxed-text-xl under-heading mb-0" style="color: #FE2713">
+         *Gunakan QR Code ini pada saat panggilan Interview dan Test
+     </p>
+     <div class="divider divider-margins"></div>
+     <div class="row justify-content-center mr-3 ml-3 mb-5">
+         {!! html_entity_decode(Auth::user()->candidate['qr_link'] ?? '') !!}
+     </div> 
+     @endif
 </div>
 @endsection

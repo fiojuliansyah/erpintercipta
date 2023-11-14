@@ -12,11 +12,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('') }}mobile/fonts/css/fontawesome-all.min.css">    
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('') }}mobile/app/icons/icon-192x192.png">
+@livewireStyles
 </head>
     
 <body class="theme-light" data-highlight="yellow2">
     
-<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+{{-- <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div> --}}
     
 <div id="page">
     
@@ -67,4 +68,5 @@
 <script type="text/javascript" src="{{ asset('') }}mobile/scripts/jquery.js"></script>
 <script type="text/javascript" src="{{ asset('') }}mobile/scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ asset('') }}mobile/scripts/custom.js"></script>
+@livewireScripts
 </body>

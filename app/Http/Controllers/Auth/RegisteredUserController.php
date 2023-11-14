@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
+use App\Providers\RouteServiceProvider;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +22,16 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('desktop.auth.register');
+        $agent = new Agent;
+
+        if ($agent->isMobile()) {
+            return view('mobiles.auth.register');
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.auth.register');
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+            return view('desktop.auth.register');
+        }
     }
 
     /**
@@ -30,25 +41,31 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'nik_number' => ['required', 'string', 'max:255', 'unique:'.User::class],
+        $request->validate([ 
+            'nik_number' => ['required', 'string', 'max:255', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        $user = User::create([
-            'nik_number' => $request->nik_number,
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => Hash::make($request->password),
-        ]);
-
+    
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+    
+        // Create the user
+        $user = User::create($input);
+    
+        // Generate QR Code based on the user's ID
+        $qrLink = route('applicants.show', ['applicant' => $user->id]);
+        $qrCode = QrCode::size(200)->generate($qrLink);
+    
+        // Save the QR code link into the user record
+        $user->qr_link = $qrCode;
+        $user->save();
+    
         event(new Registered($user));
-
+    
         Auth::login($user);
-
+    
         return redirect(RouteServiceProvider::REGISTER);
-    }
+    }    
 }

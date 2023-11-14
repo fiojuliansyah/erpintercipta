@@ -1,4 +1,4 @@
-@extends('desktop.layouts.main')
+@extends('desktop.layouts.master')
 
 @section('title', 'Job Portal | InterCipta ERP Management')
 

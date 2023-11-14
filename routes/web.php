@@ -52,7 +52,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::middleware('auth')->group(function () {
     Route::get('/mobiles/home', [HomeController::class, 'homeMobile']);
     Route::resource('dashboard', DashboardController::class);
-    Route::get('/admin/dashboard', [DashboardController::class, 'dashboardEmployee']);
+    // Route::get('/admin/dashboard', [DashboardController::class, 'dashboardEmployee']);
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
     Route::get('/employee/list', [EmployeeController::class, 'index'])->name('employee.index');
     Route::delete('employee/list/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');

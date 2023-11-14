@@ -1,7 +1,17 @@
+@if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
 <div id="footer-bar" class="footer-bar-5">
-    <a href="#"><i data-feather="heart" data-feather-line="1" data-feather-size="21" data-feather-color="red2-dark" data-feather-bg="red2-fade-light"></i><span>Features</span></a>
-    <a href="#"><i data-feather="image" data-feather-line="1" data-feather-size="21" data-feather-color="green1-dark" data-feather-bg="green1-fade-light"></i><span>Media</span></a>
-    <a href="#" class="active-nav"><i data-feather="home" data-feather-line="1" data-feather-size="21" data-feather-color="blue2-dark" data-feather-bg="blue2-fade-light"></i><span>Home</span></a>
-    <a href="#"><i data-feather="file" data-feather-line="1" data-feather-size="21" data-feather-color="brown1-dark" data-feather-bg="brown1-fade-light"></i><span>Pages</span></a>
-    <a href="#"><i data-feather="settings" data-feather-line="1" data-feather-size="21" data-feather-color="gray2-dark" data-feather-bg="gray2-fade-light"></i><span>Settings</span></a>
-</div>
+    <a href="{{ url('dashboard') }}"><i class="fa fa-home"></i><span>Beranda</span></a>
+    <a href="index-pages.html" ><i class="fas fa-newspaper"></i><span>Workplace</span></a>
+    <a href="index-components.html"><i class="fa fa-envelope"></i><span>Inbox</span></a>
+    {{-- <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a> --}}
+    <a href="#"><i class="fa fa-user"></i><span>Profil</span></a>
+</div>  
+@else
+<div id="footer-bar" class="footer-bar-1">
+    <a href="#"><i class="fa fa-envelope"></i><span>Inbox</span></a>
+    <a href="{{ route('my-resume') }}" class="{{ request()->is('my-resume') ? 'active-nav' : '' }}"><i class="fas fa-file-contract"></i><span>My Resume</span></a>
+    <a href="{{ url('dashboard') }}" class="{{ request()->is('dashboard') ? 'active-nav' : '' }}"><i class="fa fa-home"></i><span>Beranda</span></a>
+    <a href="{{ route('jobportal') }}" class="{{ request()->is('jobportal') ? 'active-nav' : '' }}"><i class="fa fa-briefcase"></i><span>Lowongan</span></a>
+    <a href="#"><i class="fa fa-user"></i><span>Profil</span></a>
+</div>  
+@endif

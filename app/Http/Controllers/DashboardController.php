@@ -8,6 +8,7 @@ use App\Models\Career;
 use App\Models\Company;
 use App\Models\Candidate;
 use Illuminate\Support\Str;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,18 +21,37 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $agent = new Agent;
         $user = Auth::user();
-        return view('desktop.dashboard' ,compact('user'));
+        $careers = Career::paginate(5);
+
+        if ($agent->isMobile()) {
+            return view('mobiles.home', compact('user','careers'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.dashboard' ,compact('user','careers'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+            return view('desktop.dashboard' ,compact('user','careers'));
+        }
     }
 
     public function karir()
     {
+        $agent = new Agent;
         $user = Auth::user();
         $careers = Career::all();
         $allcareer = Career::count();
         $alluser = User::count();
         $companies = Company::all();
-        return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+
+        if ($agent->isMobile()) {
+            return view('mobiles.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+            return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+        }
     }
 
     public function karirDetail($id)
@@ -45,12 +65,23 @@ class DashboardController extends Controller
 
     public function jobPortal()
     {
+        $agent = new Agent;
+
         $user = Auth::user();
         $careers = Career::all();
         $allcareer = Career::count();
         $alluser = User::count();
         $companies = Company::all();
-        return view('desktop.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
+
+        if ($agent->isMobile()) {
+            return view('mobiles.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+            return view('desktop.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
+        }
+        
     }
 
     public function jobDetail($id)
@@ -67,7 +98,18 @@ class DashboardController extends Controller
 
     public function MyResume(Candidate $candidate)
     {
-        return view('desktop.my-resume',compact('candidate'));
+        $agent = new Agent;
+        
+        if ($agent->isMobile()) {
+            return view('mobiles.my-resume',compact('candidate'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.my-resume',compact('candidate'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+            return view('desktop.my-resume',compact('candidate'));
+        }
+        
+        
     }
 
     public function dashboardEmployee()

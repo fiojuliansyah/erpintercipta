@@ -1,6 +1,6 @@
-@extends('desktop.layouts.main')
+@extends('desktop.layouts.master')
 
-@section('title', 'PKWT & SKK Detail | InterCipta ERP Management')
+@section('title', 'Buat Tanda Tangan | InterCipta ERP Management')
 
 @section('content')
 <main class="app-main">

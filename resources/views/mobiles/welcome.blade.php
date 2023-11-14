@@ -34,7 +34,7 @@
             </div>
         
             <div class="card-bottom mb-5">
-                <a href="#" class="back-button btn btn-center-m btn-m bg-highlight rounded-sm font-900 text-uppercase scale-box">Mulai</a>
+                <a href="{{ route('login') }}" class="btn btn-center-m btn-m bg-highlight rounded-sm font-900 text-uppercase scale-box">Mulai</a>
             </div>
             
             <div class="card-overlay bg-theme opacity-95"></div>
