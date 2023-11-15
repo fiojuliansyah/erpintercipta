@@ -1,7 +1,7 @@
 //Loading the Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('_service-worker.js', {scope: ''});
+    navigator.serviceWorker.register('/_service-worker.js', {scope: '/'});
   });
 }
 
@@ -9,7 +9,7 @@ if ('serviceWorker' in navigator) {
 $(document).ready(function(){      
     'use strict'	
     
-    var pwaVersion = '2.1'; //must be identical to _manifest.json version. If not it will create update window loop
+    var pwaVersion = '3.0'; //must be identical to _manifest.json version. If not it will create update window loop
     var pwaCookie = true; // if set to false, the PWA prompt will appear even if the user selects "maybe later"
     var pwaNoCache = true; // always keep the cache clear to serve the freshest possible content
     
@@ -239,7 +239,7 @@ $(document).ready(function(){
     window.addEventListener('offline', updateOfflineStatus);
     
  
-    if(pwaNoCache == true){
+    if(pwaNoCache == false){
         caches.delete('workbox-runtime').then(function() { 
         });
         localStorage.clear();

@@ -1540,6 +1540,6 @@ $(document).ready(function(){
             location.appendChild(scriptTag);
         };
         function loadPWA(){}
-        loadJS('scripts/pwa.js', loadPWA, document.body);
+        loadJS('mobile/scripts/pwa.js', loadPWA, document.body);
     }    
 }); 

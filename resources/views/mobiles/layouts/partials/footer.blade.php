@@ -8,7 +8,7 @@
 </div>  
 @else
 <div id="footer-bar" class="footer-bar-1">
-    <a href="#"><i class="fa fa-envelope"></i><span>Inbox</span></a>
+    <a href="{{ route('history') }}" class="{{ request()->is('history') ? 'active-nav' : '' }}"><i class="fas fa-history"></i><span>Histori</span></a>
     <a href="{{ route('my-resume') }}" class="{{ request()->is('my-resume') ? 'active-nav' : '' }}"><i class="fas fa-file-contract"></i><span>My Resume</span></a>
     <a href="{{ url('dashboard') }}" class="{{ request()->is('dashboard') ? 'active-nav' : '' }}"><i class="fa fa-home"></i><span>Beranda</span></a>
     <a href="{{ route('jobportal') }}" class="{{ request()->is('jobportal') ? 'active-nav' : '' }}"><i class="fa fa-briefcase"></i><span>Lowongan</span></a>

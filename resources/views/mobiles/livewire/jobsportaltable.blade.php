@@ -27,7 +27,7 @@
                 <span class="badge badge-success">{{ $career->salary }}</span>
                 <span class="badge badge-danger">{{ $career->graduate }}</span>
             </p>
-            <a href="#" class="btn btn-full btn-m bg-yellow2-dark font-900 rounded-sm shadow-l text-uppercase">Lamar</a>
+            <a href="{{ route('jobportal-show', $career->id) }}" class="btn btn-full btn-m bg-yellow2-dark font-900 rounded-sm shadow-l text-uppercase">Lamar</a>
         </div>
     </div>
     @endforeach

@@ -61,6 +61,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::get('/pkwt', [DashboardController::class, 'pkwt'])->name('pkwt-show');
     Route::get('/my-resume', [DashboardController::class, 'MyResume'])->name('my-resume');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
+    Route::get('/history', [DashboardController::class, 'history'])->name('history');
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('users', UserController::class);

@@ -86,8 +86,34 @@ class DashboardController extends Controller
 
     public function jobDetail($id)
     {
+        $agent = new Agent;
+        $careers = Career::paginate(5);
         $career = Career::find($id);
-        return view('desktop.jobportal.show',compact('career'));
+
+        if ($agent->isMobile()) {
+            return view('mobiles.jobportal.show',compact('career', 'careers'));;
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.jobportal.show',compact('career', 'careers'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+            return view('desktop.jobportal.show',compact('career', 'careers'));
+        }
+        
+    }
+
+    public function history()
+    {
+        $agent = new Agent;
+        $userId = Auth::id();
+        $candidates = Candidate::where('user_id', $userId)->get();
+
+        if ($agent->isMobile()) {
+            return view('mobiles.history',compact('candidates'));;
+        } elseif ($agent->isDesktop()) {
+            return view('dekstop.history',compact('candidates'));
+        } else {
+            return view('dekstop.history',compact('candidates'));
+        }
     }
 
     public function pkwt(Pkwt $pkwt)

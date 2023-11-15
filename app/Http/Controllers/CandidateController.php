@@ -7,6 +7,7 @@ use App\Models\Addendum;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Requests\StoreCandidateRequest;
 use App\Http\Requests\UpdateCandidateRequest;
@@ -46,7 +47,7 @@ class CandidateController extends Controller
         $candidate->qr_link = $qrCode;
         $candidate->save();
 
-        return redirect()->route('jobportal')
+        return redirect('/dashboard')
                         ->with('success','Berhasil Melamar Pekerjaan');
     }
 
