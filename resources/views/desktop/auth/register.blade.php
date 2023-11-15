@@ -17,7 +17,7 @@
         <!-- .form-group -->
         <div class="form-group">
           <div class="form-label-group">
-              <input id="nik_number" class="form-control" type="text" name="nik_number" :value="old('nik_number')" required autofocus autocomplete="name" >
+              <input id="nik_number" class="form-control" type="text" name="nik_number" :value="old('nik_number')" required autofocus autocomplete="nik_number" >
               <label for="name">NIK (sesuai KTP) </label>
               <x-input-error :messages="$errors->get('nik_number')" class="mt-2" />
           </div>
@@ -32,7 +32,7 @@
       <!-- .form-group -->
       <div class="form-group">
             <div class="form-label-group">
-                <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username"> <label for="email">Email</label>
+                <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="email"> <label for="email">Email</label>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />  
             </div>
         </div><!-- /.form-group -->

@@ -8,8 +8,8 @@
 "short_name" : "InterMo",
 "description" : "",
 "orientation" : "portrait",
-"background_color": "#000000",
-"theme_color": "#000000",
+"background_color": "#ffd724",
+"theme_color": "#ffd724",
 "generated" : "true",
   "icons": [
     {

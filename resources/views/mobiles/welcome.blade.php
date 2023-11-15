@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('') }}mobile/app/icons/icon-192x192.png">
 </head>
     
-<body class="theme-light" data-highlight="blue2">
+<body class="theme-light" data-highlight="yellow2">
     
 <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
     

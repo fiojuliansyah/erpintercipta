@@ -40,13 +40,15 @@
                         <i class="input-icon fa fa-user color-theme"></i>
                         <span>Email</span>
                         <em>(required)</em>
-                        <input type="email" name="email" placeholder="email">
+                        <input type="email" name="email" placeholder="email" :value="old('email')" required autofocus autocomplete="email">
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div> 
                     <div class="input-style has-icon input-style-1 input-required pb-1">
                         <i class="input-icon fa fa-lock color-theme"></i>
                         <span>Password</span>
                         <em>(required)</em>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div> 
 
                     <button type="submit" class="btn btn-m mt-2 mb-4 btn-full bg-green1-dark rounded-sm text-uppercase font-900">Login</button>
@@ -65,7 +67,7 @@
             </div>
             
         </div>
-        <div style="padding: 100px; text-align:center; padding-top: 350px">
+        <div style="padding: 100px; text-align:center; padding-top: 250px">
             <h3>INTERMO</h3>
             <h6>Intercipta Corporation</h6>
         </div>

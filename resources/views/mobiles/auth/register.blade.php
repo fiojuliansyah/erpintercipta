@@ -40,25 +40,36 @@
                         <i class="input-icon fa fa-user color-theme"></i>
                         <span>No NIK</span>
                         <em>(sesuai KTP)</em>
-                        <input type="text" name="nik_number" placeholder="Nomor NIK">
+                        <input type="text" name="nik_number" placeholder="Nomor NIK"  :value="old('nik_number')" required autofocus autocomplete="nik_number" >
+                        <x-input-error :messages="$errors->get('nik_number')" class="mt-2" />
                     </div>
+                    <div class="input-style has-icon input-style-1 input-required pb-1">
+                        <i class="input-icon fa fa-user color-theme"></i>
+                        <span>Nama</span>
+                        <em>(Sesuai KTP/Ijazah)</em>
+                        <input type="name" name="name" placeholder="nama lengkap"  :value="old('name')" required autofocus autocomplete="name" >
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div> 
                     <div class="input-style has-icon input-style-1 input-required pb-1">
                         <i class="input-icon fa fa-user color-theme"></i>
                         <span>Email</span>
                         <em>(required)</em>
-                        <input type="email" name="email" placeholder="email">
+                        <input type="email" name="email" placeholder="email" :value="old('email')" required autocomplete="email" >
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" /> 
                     </div> 
                     <div class="input-style has-icon input-style-1 input-required pb-1">
                         <i class="input-icon fa fa-lock color-theme"></i>
                         <span>Password</span>
                         <em>(required)</em>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password" placeholder="Password" required autocomplete="new-password">
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div>
                     <div class="input-style has-icon input-style-1 input-required pb-1">
                         <i class="input-icon fa fa-lock color-theme"></i>
                         <span>Confirm Password</span>
                         <em>(required)</em>
-                        <input type="password" name="confirm_password" placeholder="Confirm Password">
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" required autocomplete="confirm_password">
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>  
                     <div class="input-style has-icon input-style-1 input-required pb-1">
                         <i class="input-icon fa fa-phone color-theme"></i>
@@ -66,7 +77,7 @@
                         <em>(Whatsapp Aktif)</em>
                         <input type="tlp" name="phone" placeholder="No Handphone">
                     </div> 
-
+                    <p class="text-center text-muted mb-0" style="font-size: 10px">Perusahaan memerlukan informasi ini untuk menghubungimu jika cocok.</p>
                     <button type="submit" class="btn btn-m mt-2 mb-4 btn-full bg-green1-dark rounded-sm text-uppercase font-900">Daftar</button>
                 </form>
                 {{-- <div class="divider"></div>
