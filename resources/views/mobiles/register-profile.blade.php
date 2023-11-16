@@ -611,6 +611,7 @@
       gtag('config', 'UA-116692175-1');
     </script>
   </body>
+
 </html>
 
 {{-- @push('js')

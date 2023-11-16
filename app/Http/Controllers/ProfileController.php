@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Career;
 use App\Models\Profile;
 use App\Models\Jobhistory;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +36,18 @@ class ProfileController extends Controller
 
     public function registerProfile()
     {
+        $agent = new Agent;
         $user = Auth::user();
-        return view('desktop.register-profile',compact('user'));
+
+        if ($agent->isMobile()) {
+            return view('mobiles.register-profile',compact('user'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.register-profile',compact('user'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+            return view('desktop.register-profile',compact('user'));
+        }
+        
     }
 
 

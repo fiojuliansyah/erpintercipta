@@ -20,7 +20,7 @@
             <h4>{{ $candidate->career['jobname'] }}</h4>
             <p class="mb-n1 font-600 color-highlight">{{ $candidate->career['location'] }}</p>
             <br>
-            <a href="store-invoice.html" class="d-flex">
+            <a href="#" class="d-flex">
                 <div class="align-self-center mr-2">
                     <h4 class="btn-warning color-white rounded-sm shadow-l font-12 font-400 p-1 px-2 mt-0 mb-3">Cek Berkas</h4>
                 </div>
