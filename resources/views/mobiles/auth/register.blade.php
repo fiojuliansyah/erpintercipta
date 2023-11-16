@@ -68,7 +68,7 @@
                         <i class="input-icon fa fa-lock color-theme"></i>
                         <span>Confirm Password</span>
                         <em>(required)</em>
-                        <input type="password" name="confirm_password" placeholder="Confirm Password" required autocomplete="confirm_password">
+                        <input type="password" name="password_confirmation" placeholder="Confirm Password" required autocomplete="new-password">
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>  
                     <div class="input-style has-icon input-style-1 input-required pb-1">
