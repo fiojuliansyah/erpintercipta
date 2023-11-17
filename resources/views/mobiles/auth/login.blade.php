@@ -50,8 +50,9 @@
                         <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div> 
-
-                    <button type="submit" class="btn btn-m mt-2 mb-4 btn-full bg-green1-dark rounded-sm text-uppercase font-900">Login</button>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-m mt-2 mb-4 btn-full bg-green1-dark rounded-sm text-uppercase font-900">Login</button>
+                    </div>   
                 </form>
                 {{-- <div class="divider"></div>
 

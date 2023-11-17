@@ -94,6 +94,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::resource('applicants', ApplicantController::class);
     Route::resource('sites', SiteController::class);
     Route::resource('agreements', AgreementController::class);
+    Route::post('/import-agreement',[AgreementController::class,'import'])->name('import-agreement');
     Route::resource('trainings', TrainingController::class);
     Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
     Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');

@@ -7,6 +7,8 @@ use App\Models\Company;
 use App\Models\Addendum;
 use App\Models\Agreement;
 use Illuminate\Http\Request;
+use App\Imports\ImportAgreements;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreAgreementRequest;
 use App\Http\Requests\UpdateAgreementRequest;
 
@@ -152,5 +154,11 @@ class AgreementController extends Controller
 
         return redirect()->route('agreements.index')
                         ->with('success','Agreement deleted successfully');
+    }
+    
+    public function import(Request $request)
+    {
+        Excel::import(new ImportAgreements, $request->file('file')->store('files'));
+        return redirect()->back();
     }
 }

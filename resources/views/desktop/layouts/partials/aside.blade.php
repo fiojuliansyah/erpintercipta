@@ -36,7 +36,7 @@
                 <ul class="menu">
                     <!-- .menu-item -->
                     <li class="menu-item {{ Request::path() == 'dashboard' ? 'has-active' : '' }}">
-                        <a href="{{ url('/admin/dashboard') }}" class="menu-link"><span
+                        <a href="{{ url('/dashboard') }}" class="menu-link"><span
                                 class="menu-icon fas fa-home"></span> <span class="menu-text">Dashboard</span></a>
                     </li><!-- /.menu-item -->
                     <!-- .menu-item -->

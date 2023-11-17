@@ -207,8 +207,8 @@
                                         <div class="form-label-group">
                                         <select class="custom-select" name="gender" id="gender" data-parsley-group="fieldset01" required="">
                                             <option value=""> Pilih... </option>
-                                            <option value="L"> Laki-Laki </option>
-                                            <option value="P"> Perempuan </option>
+                                            <option value="Laki-laki"> Laki-Laki </option>
+                                            <option value="Perempuan"> Perempuan </option>
                                         </select> <label for="fls1">Jenis Kelamin</label>
                                         </div>
                                     </div>
@@ -242,13 +242,14 @@
                                 <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-label-group">
-                                    <input type="text" class="form-control" name="bank_account" autocomplete="off" data-parsley-group="fieldset01" required=""> <label for="bank_account">No Rekening</label>
+                                    <input type="text" class="form-control" name="bank_account" autocomplete="off" data-parsley-group="fieldset01" required=""> <label for="bank_account">No Rekening <small style="color: red">beri tanda (-) jika tidak mempunyai No Rekening</small></label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-label-group">
                                     <select class="custom-select" name="bank_name" id="bank_name" data-parsley-group="fieldset01" required="">
                                         <option value=""> Pilih... </option>
+                                        <option value=""> Tidak Memiliki BANK </option>
                                         <option value="BCA"> BCA </option>
                                         <option value="BRI"> BRI </option>
                                         <option value="MANDIRI"> MANDIRI </option>

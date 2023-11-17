@@ -16,6 +16,7 @@ $(document).ready(function(){
         //ADD YOUR CUSTOM JAVASCRIPT CODES HERE! 
         //Do not put inside HTML files.
         //The init_template() function will be triggered when pages open.
+        
                
         //Generating Dynamic Styles to decrease CSS size and execute faster loading times. 
         var colorsArray = [
@@ -706,28 +707,60 @@ $(document).ready(function(){
 
         //File Upload
         var uploadFile = $('.upload-file');
-        function activate_upload_file(){
+
+        function activate_upload_file() {
             function readURL(input) {
                 if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                        $('.file-data img').attr('src', e.target.result);
-                        $('.file-data img').attr('class','img-fluid rounded-xs mt-4');
-                    }
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var targetImg;
+                        if ($(input).attr('id') === 'avatar') {
+                            targetImg = $('#avatarImage');
+                        } else if ($(input).attr('id') === 'card_ktp') {
+                            targetImg = $('#ktpImage');
+                        } else if ($(input).attr('id') === 'card_ijazah') {
+                            targetImg = $('#ijazahImage');
+                        } else if ($(input).attr('id') === 'card_family') {
+                            targetImg = $('#familyImage');
+                        } else if ($(input).attr('id') === 'card_skck') {
+                            targetImg = $('#skckImage');
+                        } else if ($(input).attr('id') === 'card_npwp') {
+                            targetImg = $('#npwpImage');
+                        } else if ($(input).attr('id') === 'card_sim') {
+                            targetImg = $('#simImage');
+                        } else if ($(input).attr('id') === 'card_certificate') {
+                            targetImg = $('#certificateImage');
+                        } else if ($(input).attr('id') === 'add_document_a') {
+                            targetImg = $('#documentaImage');
+                        } else if ($(input).attr('id') === 'add_document_b') {
+                            targetImg = $('#documentbImage');
+                        } else if ($(input).attr('id') === 'add_document_c') {
+                            targetImg = $('#documentcImage');
+                        }
+    
+                        if (targetImg) {
+                            targetImg.attr('src', e.target.result);
+                            targetImg.attr('class', 'img-fluid rounded-xs mt-4');
+                        }
+                    };
                     reader.readAsDataURL(input.files[0]);
                 }
             }
+    
             $(".upload-file").change(function(e) {
                 readURL(this);
                 var fileName = e.target.files[0].name;
-                $('.upload-file-data').removeClass('disabled');
-                $('.upload-file-name').html(e.target.files[0].name)
-                $('.upload-file-modified').html(e.target.files[0].lastModifiedDate);
-                $('.upload-file-size').html(e.target.files[0].size/1000+'kb')
-                $('.upload-file-type').html(e.target.files[0].type)
+                // $('.upload-file-data').removeClass('disabled');
+                // $('.upload-file-name').html(e.target.files[0].name)
+                // $('.upload-file-modified').html(e.target.files[0].lastModifiedDate);
+                // $('.upload-file-size').html(e.target.files[0].size/1000+'kb')
+                // $('.upload-file-type').html(e.target.files[0].type)
             });
-        };
-        if(uploadFile.length){activate_upload_file();}
+        }
+    
+        if (uploadFile.length) {
+            activate_upload_file();
+        }
 
         //Task List Check on Click
         var todo = $('.todo-list');

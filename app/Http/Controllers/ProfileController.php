@@ -10,6 +10,7 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
@@ -73,76 +74,92 @@ class ProfileController extends Controller
         $existingCardFamily = $user->profile->card_family ?? null;
         
 
+        $path1 = $existingAvatar;
         if ($request->hasFile('avatar')) {
+            if ($existingAvatar && $existingAvatar !== 'default_avatar.jpg') {
+                Storage::delete($existingAvatar);
+            }
             $path1 = $request->file('avatar')->store('public/avatars');
-        } else {
-            $path1 = $existingAvatar;
         }
 
-        if ($request->hasFile('card_ktp')) {
-            $path2 = $request->file('card_ktp')->store('public/ktp');
-        } else {
-            $path2 = $existingCardKTP;
+        $path2 = $existingCardKTP;
+        if ($request->hasFile('avatar')) {
+            if ($existingCardKTP && $existingCardKTP !== 'default_avatar.jpg') {
+                Storage::delete($existingCardKTP);
+            }
+            $path2 = $request->file('card-ktp')->store('public/ktp');
         }
 
+        $path3 = $existingCardIjazah;
         if ($request->hasFile('card_ijazah')) {
+            if ($existingCardIjazah && $existingCardIjazah !== 'default_avatar.jpg') {
+                Storage::delete($existingCardIjazah);
+            }
             $path3 = $request->file('card_ijazah')->store('public/ijazah');
-        } else {
-            $path3 = $existingCardIjazah;
         }
 
+        $path4 = $existingCardSKCK;
         if ($request->hasFile('card_skck')) {
+            if ($existingCardSKCK && $existingCardSKCK !== 'default_avatar.jpg') {
+                Storage::delete($existingCardSKCK);
+            }
             $path4 = $request->file('card_skck')->store('public/skck');
-        } else {
-            $path4 = $existingCardSKCK;
         }
 
+        $path5 = $existingCardCertificate;
         if ($request->hasFile('card_certificate')) {
+            if ($existingCardCertificate && $existingCardCertificate !== 'default_avatar.jpg') {
+                Storage::delete($existingCardCertificate);
+            }
             $path5 = $request->file('card_certificate')->store('public/certificate');
-        } else {
-            $path5 = $existingCardCertificate;
         }
 
+        $path6 = $existingCardSIM;
         if ($request->hasFile('card_sim')) {
+            if ($existingCardSIM && $existingCardSIM !== 'default_avatar.jpg') {
+                Storage::delete($existingCardSIM);
+            }
             $path6 = $request->file('card_sim')->store('public/sim');
-        } else {
-            $path6 = $existingCardSIM;
         }
 
+        $path7 = $existingCardNPWP;
         if ($request->hasFile('card_npwp')) {
+            if ($existingCardNPWP && $existingCardNPWP !== 'default_avatar.jpg') {
+                Storage::delete($existingCardNPWP);
+            }
             $path7 = $request->file('card_npwp')->store('public/npwp');
-        } else {
-            $path7 = $existingCardNPWP;
         }
 
+        $path8 = $existingDocumentA;
         if ($request->hasFile('add_document_a')) {
+            if ($existingDocumentA && $existingDocumentA !== 'default_avatar.jpg') {
+                Storage::delete($existingDocumentA);
+            }
             $path8 = $request->file('add_document_a')->store('public/add_documents');
-        } else {
-            $path8 = $existingDocumentA;
         }
 
+        $path9 = $existingDocumentB;
         if ($request->hasFile('add_document_b')) {
+            if ($existingDocumentB && $existingDocumentB !== 'default_avatar.jpg') {
+                Storage::delete($existingDocumentB);
+            }
             $path9 = $request->file('add_document_b')->store('public/add_documents');
-        } else {
-            $path9 = $existingDocumentB;
         }
 
+        $path10 = $existingDocumentC;
         if ($request->hasFile('add_document_c')) {
+            if ($existingDocumentC && $existingDocumentC !== 'default_avatar.jpg') {
+                Storage::delete($existingDocumentC);
+            }
             $path10 = $request->file('add_document_c')->store('public/add_documents');
-        } else {
-            $path10 = $existingDocumentC;
         }
 
-        if ($request->hasFile('transfer')) {
-            $path10 = $request->file('transfer')->store('public/transfers');
-        } else {
-            $path10 = $existingDocumentC;
-        }
-
+        $path11 = $existingCardFamily;
         if ($request->hasFile('card_family')) {
+            if ($existingCardFamily && $existingCardFamily !== 'default_avatar.jpg') {
+                Storage::delete($existingCardFamily);
+            }
             $path11 = $request->file('card_family')->store('public/card_families');
-        } else {
-            $path11 = $existingCardFamily;
         }
 
         $user->profile()->updateOrCreate(
