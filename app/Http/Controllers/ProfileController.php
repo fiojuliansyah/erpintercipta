@@ -56,10 +56,6 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
 
-        if ($user->hasRole('employee')) {
-            return redirect('/dashboard-employee');
-        }
-
         $existingAvatar = $user->profile->avatar ?? null;
         $existingCardKTP = $user->profile->card_ktp ?? null;
         $existingCardIjazah = $user->profile->card_ijazah ?? null;
@@ -83,7 +79,7 @@ class ProfileController extends Controller
         }
 
         $path2 = $existingCardKTP;
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('card-ktp')) {
             if ($existingCardKTP && $existingCardKTP !== 'default_avatar.jpg') {
                 Storage::delete($existingCardKTP);
             }
