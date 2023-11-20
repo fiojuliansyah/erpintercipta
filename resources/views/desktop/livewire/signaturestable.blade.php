@@ -72,6 +72,7 @@
             <tr>
                 <th>No</th>
                 <th>Signature</th>
+                <th>site</th>
                 <th>Nama</th>
                 <th width="100px"></th>
             </tr>
@@ -83,6 +84,7 @@
               <tr>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                   <td><img src="{{ Storage::url($signature->signatureDataUrl) }}" width="200" alt=""></td>
+                  <td>{{ $signature->user->pkwt->agreement->addendum->site->name ?? '' }}</td>
                   <td>{{ $signature->user['name'] ?? '' }}</td>
                   <td class="align-middle text-right">
                   <form action="{{ route('signatures.destroy',$signature->id) }}" method="POST">

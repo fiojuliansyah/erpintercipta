@@ -118,7 +118,16 @@ class DashboardController extends Controller
 
     public function pkwt(Pkwt $pkwt)
     {
-        return view('desktop.tanda-tangan', compact('pkwt'));
+        $agent = new Agent;
+
+        if ($agent->isMobile()) {
+            return view('mobiles.tanda-tangan', compact('pkwt'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.tanda-tangan', compact('pkwt'));
+        } else {
+            return view('desktop.tanda-tangan', compact('pkwt'));
+        }
+        
     }
 
 

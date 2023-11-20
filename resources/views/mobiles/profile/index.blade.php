@@ -1,14 +1,14 @@
 @extends('mobiles.layouts.master')
 
-@section('title','Iform | Intercipta Mobile')
+@section('title','Profile | Intercipta Mobile')
 
 @section('content')
 <div class="page-content">
         
     <div class="page-title page-title-small">
-        <h2></a>Form</h2>
+        <h2></a>Profil</h2>
     </div>
-    <div class="card header-card shape-rounded" data-card-height="150">
+    {{-- <div class="card header-card shape-rounded" data-card-height="150">
         <div class="card-overlay bg-highlight opacity-95"></div>
         <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg"></div>
     </div>
@@ -19,12 +19,12 @@
                 Pages styled to feel like Classic Site Pages or App Styled Pages. These are all highly flexible and incredibly easy to use and edit.
             </p>
         </div>
-    </div>
+    </div> --}}
     
     <div class="card card-style">
         <div class="content mt-0 mb-0">           
             <div class="list-group list-custom-small list-icon-0">
-                <a href="#"><i class="fa fa-users color-green2-dark"></i><span>Permintaan Karyawan</span><i class="fa fa-angle-right"></i></a>
+                <a href="#"><i class="fa fa-image color-blue2-dark"></i><span>Ganti Foto Profil</span><i class="fa fa-angle-right"></i></a>
                 {{-- <a href="page-careers.html"><i class="fa fa-handshake color-green1-dark"></i><span>Careers</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-calendar.html"><i class="fa fa-calendar-alt color-blue2-dark"></i><span>Calendars</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-chat.html"><i class="fa fa-comments color-orange-dark"></i><span>Chat Bubbles</span><i class="fa fa-angle-right"></i></a>

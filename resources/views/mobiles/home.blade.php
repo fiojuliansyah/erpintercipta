@@ -4,22 +4,12 @@
 
 @section('content')
 <div class="page-content">    
-    {{-- <div class="page-title page-title-large">
-        <h2 data-username="{{ Auth::user()->name ?? 'Guest' }}" class="greeting-text"></h2>
-        <a href="#" data-menu="menu-main" class="bg-fade-gray1-dark shadow-xl preload-img" data-src="{{ asset('') }}mobile/images/avatars/5s.png"></a>
-    </div> --}}
+
     <div class="page-title page-title-small" style="margin-top: 50px">
         <h3>INTERMO</h3>
         <h6>Intercipta Corporation</h6>
     </div>
-    {{-- <div class="page-title page-title-small">
-            <a href="index.html" class="header-title">INTERMO</a>
-            <a href="#" data-menu="menu-main" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
-            <a href="#" data-toggle-theme class="header-icon header-icon-2 show-on-theme-dark"><i class="fas fa-sun"></i></a>
-            <a href="#" data-toggle-theme class="header-icon header-icon-2 show-on-theme-light"><i class="fas fa-moon"></i></a>
-            <a href="#" data-menu="menu-highlights" class="header-icon header-icon-3"><i class="fas fa-brush"></i></a>
-        </div>
-    </div> --}}
+
     <div class="card card-style" style="margin-top: 50px">
         <div class="d-flex content mb-1">
             <!-- left side of profile -->
@@ -28,12 +18,8 @@
                 <p class="mb-2">
                     {{ Auth::user()->email ?? 'Guest' }}
                 </p>
-                {{-- <p class="font-10">
-                    <strong class="color-theme pr-1">1k</strong>Followers
-                    <strong class="color-theme pl-3 pr-1">342</strong>Following 
-                </p> --}}
+
             </div>
-            <!-- right side of profile. increase image width to increase column size-->
             <img src="{{ asset('') }}mobile/images/empty.png" data-src="{{ Storage::url($user ? $user->profile?->avatar : '') }}" width="70" height="70" class="bg-highlight rounded-circle shadow-xl preload-img">
         </div>
         @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
@@ -104,7 +90,6 @@
     </div>
     <div class="card header-card shape-square" data-card-height="200">
         <div class="card-overlay bg-highlight opacity-95"></div>
-        <div class="card-overlay dark-mode-tint"></div>
         <div class="card-bg preload-img"></div>
     </div>
     <!-- Homepage Slider-->
@@ -117,21 +102,31 @@
     <div class="double-slider text-center owl-carousel owl-no-dots">
         <a href="{{ route('iform') }}">
             <div class="item bg-theme rounded-m shadow-m">
-                <i class="fas fa-file mt-4 mb-4 color-green2-dark font-30"></i>
-                <h5 class="font-16">Form</h5>
-                <span class="badge badge-success">trial</span>
+                <i class="fas fa-tasks mt-4 mb-4 color-yellow2-dark font-30"></i>
+                <h5 class="font-16">PlanNest</h5>
+                <span class="badge badge-danger">soon</span>
                 <p class="line-height-s font-11">
-                    Request Form<br>Untuk Kebutuhan
+                    Perencanaan<br>Kerja
                 </p>
             </div>
         </a>
         <a href="{{ route('iform') }}">
             <div class="item bg-theme rounded-m shadow-m">
-                <i class="fas fa-warehouse mt-4 mb-4 color-magenta2-dark font-30"></i>
-                <h5 class="font-16">Warehouse</h5>
+                <i class="fas fa-file mt-4 mb-4 color-green2-dark font-30"></i>
+                <h5 class="font-16">SwiftForm</h5>
+                <span class="badge badge-success">trial</span>
+                <p class="line-height-s font-11">
+                    Request Formulir<br>Cepat
+                </p>
+            </div>
+        </a>
+        <a href="{{ route('iform') }}">
+            <div class="item bg-theme rounded-m shadow-m">
+                <i class="fas fa-dolly-flatbed mt-4 mb-4 color-magenta2-dark font-30"></i>
+                <h5 class="font-16">ProdOptima</h5>
                 <span class="badge badge-danger">soon</span>
                 <p class="line-height-s font-11">
-                    Request Form<br>Untuk Kebutuhan
+                    Optimasi<br>Perencanaan Produksi
                 </p>
             </div>
         </a>

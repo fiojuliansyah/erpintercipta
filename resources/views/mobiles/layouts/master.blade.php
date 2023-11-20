@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('') }}mobile/fonts/css/fontawesome-all.min.css">    
 <link rel="manifest" href="{{ asset('') }}_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('') }}mobile/app/icons/icon-192x192.png">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
 @livewireStyles
 </head>
     
@@ -68,5 +70,6 @@
 <script type="text/javascript" src="{{ asset('') }}mobile/scripts/jquery.js"></script>
 <script type="text/javascript" src="{{ asset('') }}mobile/scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="{{ asset('') }}mobile/scripts/custom.js"></script>
+@stack('js')
 @livewireScripts
 </body>

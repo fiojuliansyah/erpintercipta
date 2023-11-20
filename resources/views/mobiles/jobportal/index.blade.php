@@ -11,7 +11,6 @@
     </div>
     <div class="card header-card shape-rounded" data-card-height="150">
         <div class="card-overlay bg-highlight opacity-95"></div>
-        <div class="card-overlay dark-mode-tint"></div>
         <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg"></div>
     </div>
 
