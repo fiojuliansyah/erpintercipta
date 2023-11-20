@@ -3,16 +3,65 @@
 @section('title','Tanda Tangan | Intercipta Mobile')
 
 @section('content')
-<div class="page-content">
-        
+@if (Auth::user()->pkwt == null)
+<div class="page-content">  
     <div class="page-title page-title-small">
-        <h2><a href="#" data-back-button><i class="fa fa-arrow-left"></i></a>Invoice</h2>
-        <a href="#" data-menu="menu-main" class="bg-fade-gray1-dark shadow-xl preload-img" data-src="images/avatars/5s.png"></a>
+        <h2><a href="#" data-back-button></a>PKWT</h2>
     </div>
     <div class="card header-card shape-rounded" data-card-height="150">
         <div class="card-overlay bg-highlight opacity-95"></div>
-        <div class="card-overlay dark-mode-tint"></div>
-        <div class="card-bg preload-img" data-src="images/pictures/20s.jpg"></div>
+        <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg"></div>
+    </div>
+    <div data-card-height="cover-card" class="card card-style bg-17">
+        <div class="card-center text-center">
+            <i class="fa fa-lock fa-9x color-highlight mb-5"></i>
+            <h1 class="font-36 font-700 color-white mb-2 text-uppercase">DOKUMEN</h1>
+            <p class="text-uppercase font-15 color-highlight mt-n2 font-800">belum tersedia</p>
+            <p class="boxed-text-xl opacity-70 color-white">
+                Silahkan kontak admin, jika ada kekeliruan.
+            </p>
+            <div class="row mb-0">
+                <div class="col-6">
+                    <a href="#" class="btn btn-m bg-highlight btn-center-m rounded-sm bg-highlight font-900 text-uppercase float-right">Back Home</a>
+                </div>
+                <div class="col-6">
+                    <a href="#" class="btn btn-m bg-highlight btn-center-m rounded-sm bg-highlight font-900 text-uppercase float-left">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-overlay bg-black opacity-90"></div>
+    </div>
+</div>
+@elseif (Auth::user()->signature)
+<div class="page-content">  
+    <div class="page-title page-title-small">
+        <h2><a href="#" data-back-button></a>PKWT</h2>
+    </div>
+    <div class="card header-card shape-rounded" data-card-height="150">
+        <div class="card-overlay bg-highlight opacity-95"></div>
+        <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg"></div>
+    </div>
+    <div data-card-height="cover-card" class="card card-style bg-17">
+        <div class="card-center text-center">
+            <i class="fa fa-check-circle fa-9x color-highlight mb-5"></i>
+            <h1 class="font-36 font-700 color-white mb-2 text-uppercase">DOKUMEN</h1>
+            <p class="text-uppercase font-15 color-highlight mt-n2 font-800">sudah di tanda tangan</p>
+            <p class="boxed-text-xl opacity-70 color-white">
+                PKWT sudah di tanda tangan, jika ada bantuan hubungi admin!
+            </p>
+        </div>
+        <div class="card-overlay bg-black opacity-90"></div>
+    </div>
+</div>
+@else
+<div class="page-content">
+        
+    <div class="page-title page-title-small">
+        <h2><a href="#" data-back-button></a>PKWT</h2>
+    </div>
+    <div class="card header-card shape-rounded" data-card-height="150">
+        <div class="card-overlay bg-highlight opacity-95"></div>
+        <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg"></div>
     </div>
     
     <div class="card card-style">
@@ -37,9 +86,9 @@
     <div id="menu-confirm" class="menu menu-box-modal rounded-m" 
          data-menu-height="470" 
          data-menu-width="330">
-        <h1 class="text-center font-700 mt-3 pb-1">Are you sure?</h1>
+        <h1 class="text-center font-700 mt-3 pb-1">Apakah yakin?</h1>
         <p class="boxed-text-l">
-            You can even use these boxes for confirmations. Any element can trigger them.
+            Baca dokumen dengan teliti, sebelum melakukan tanda tangan digital!
         </p>
         <form id="signatureForm" enctype="multipart/form-data">
             <div class="modal-body">
@@ -47,7 +96,7 @@
             </div>
             <div class="row mr-3 ml-3 mb-0">
                 <div class="col-6">
-                    <button  id="saveButton" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-green1-dark">Simpan</button>
+                    <a id="saveButton" data-menu="menu-success-2" class="btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-green1-dark">Simpan</a>
                 </div>
                 <div class="col-6">
                     <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">Keluar</a>
@@ -55,17 +104,18 @@
             </div>
         </form>
     </div>
-    <div id="menu-success-2" class="menu menu-box-modal bg-green1-dark rounded-m" 
+    <div id="menu-success-2" class="menu menu-box-modal rounded-m" 
          data-menu-height="300" 
          data-menu-width="310">
-        <h1 class="text-center mt-3 pt-1"><i class="fa fa-3x fa-check-circle color-white shadow-xl rounded-circle"></i></h1>
-        <h1 class="text-center mt-3 font-700 color-white">All's Good</h1>
-        <p class="boxed-text-l color-white opacity-70">
-             You can continue with your previous actions.<br> Easy to attach these to success calls.
+        <h1 class="text-center mt-3 pt-1"><i class="fa fa-3x fa-check-circle color-green1-dark shadow-xl rounded-circle"></i></h1>
+        <h1 class="text-center mt-3 font-700">Berhasil</h1>
+        <p class="boxed-text-l">
+             Pkwt anda berhasil di tanda tangan.<br> akan dialihkan ke beranda.
         </p>
-        <a href="#" class="close-menu btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-white">Great</a>
-    </div>
-</div>  
+        <a href="#" class="close-menu btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-green1-light">Great</a>
+    </div> 
+</div>
+@endif
 @endsection
 
 @push('js')
@@ -145,8 +195,15 @@
                 })
                 .then(() => {
                     signaturePad.clear();
-                    // Redirect to the dashboard after saving the signature
-                    window.location.href = '/dashboard'; // Replace '/dashboard' with your actual dashboard URL
+
+                    // Show success modal
+                    var successModal = document.getElementById('menu-success-2');
+                    successModal.classList.add('menu-active');
+
+                    // Redirect to the dashboard after 4 seconds
+                    setTimeout(function() {
+                        window.location.href = '/dashboard'; // Replace '/dashboard' with your actual dashboard URL
+                    }, 2000);
                 })
                 .catch(error => {
                     console.error('Error:', error);
