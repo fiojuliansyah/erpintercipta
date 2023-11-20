@@ -14,7 +14,7 @@
                     <div class="modal-content">
                         <!-- .modal-header -->
                         <div class="modal-header">
-                            <h5 id="exampleModalScrollableLabel" class="modal-title"> Upload Data New PKWT Employee
+                            <h5 id="exampleModalScrollableLabel" class="modal-title"> Upload Agreement
                             </h5>
                         </div><!-- /.modal-header -->
                         <!-- .modal-body -->

@@ -293,7 +293,8 @@
             </p>
             <a href="#" class="btn btn-center-xl btn-m text-uppercase font-900 bg-highlight rounded-sm shadow-l">Buy now - $25</a>
         </div>
-    </div>    
+    </div>
+    {{-- <div data-menu="ad-timed-3" data-timed-ad="5" data-auto-show-ad="3"></div>     --}}
     @else
     <br>
     <div class="single-slider-boxed text-center owl-no-dots owl-carousel">
@@ -352,8 +353,21 @@
         </div>
         @endforeach
     </div>
+    <div data-menu="ad-timed-4" data-timed-ad="5" data-auto-show-ad="3"></div>  
     @endif
 </div>
+<div id="ad-timed-3" class="menu menu-box-modal">
+        <div class="card-top">
+            <a href="#" class="close-menu ad-time-close bg-red2-dark"><i class="fa fa-times disabled"></i><span></span></a>
+        </div>
+        <img src="{{ asset('') }}images/announcement.png" width="300px" alt="">      
+</div>
+
+<div id="ad-timed-4" class="menu menu-box-modal">
+    <div class="card-top">
+        <a href="#" class="close-menu ad-time-close color-highlight"><i class="fa fa-times disabled"></i><span></span></a>
+    </div>
+    <img src="{{ asset('') }}images/announcement.png" width="300px" alt=""></div>
 <div id="menu-share-thumbs" 
      class="menu menu-box-modal menu-box-detached rounded-m" 
      data-menu-height="420" 

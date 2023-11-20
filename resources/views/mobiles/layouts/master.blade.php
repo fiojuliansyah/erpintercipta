@@ -32,12 +32,12 @@
     <!-- end of page content-->
     
     
-    {{-- <div id="menu-share" 
+    <div id="menu-share" 
          class="menu menu-box-bottom menu-box-detached rounded-m" 
-         data-menu-load="menu-share.html"
          data-menu-height="420" 
          data-menu-effect="menu-over">
-    </div>     --}}
+         @include('mobiles.layouts.partials.quick') 
+    </div>    
     
     <div id="menu-highlights" 
          class="menu menu-box-bottom menu-box-detached rounded-m" 

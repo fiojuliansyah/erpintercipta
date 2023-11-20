@@ -1,9 +1,9 @@
 @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
 <div id="footer-bar" class="footer-bar-5">
     <a href="{{ url('dashboard') }}"><i class="fa fa-home"></i><span>Beranda</span></a>
-    <a href="index-pages.html" ><i class="fas fa-newspaper"></i><span>Workplace</span></a>
-    <a href="index-components.html"><i class="fa fa-envelope"></i><span>Inbox</span></a>
-    {{-- <a href="index-search.html"><i class="fa fa-search"></i><span>Search</span></a> --}}
+    <a href="#" ><i class="fas fa-newspaper"></i><span>Workplace</span></a>
+    <a href="#"><i class="fa fa-envelope"></i><span>Inbox</span></a>
+    <a href="#" data-menu="menu-share"><i class="	fa fa-th-large"></i><span>Quick</span></a>
     <a href="#"><i class="fa fa-user"></i><span>Profil</span></a>
 </div>  
 @else
