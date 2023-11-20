@@ -109,7 +109,7 @@
                             <p>*jpg,jpeg,png</p>
                             <div class="file-data">
                                 <input type="file" name="avatar" id="avatar"
-                                    class="upload-file bg-highlight shadow-s rounded-s " accept="image/*">
+                                    class="upload-file bg-highlight shadow-s rounded-s " accept="image/*" required>
                                 <p class="upload-file-text color-white">Upload Image</p>
                                 <img src="{{ asset('') }}mobile/images/empty.png" id="avatarImage">
                             </div>
@@ -128,37 +128,37 @@
                             <span>Nama Panggilan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="nickname" placeholder="Isi disini!">
+                                <input type="name" name="nickname" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Alamat</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="address" placeholder="Isi disini!">
+                                <input type="name" name="address" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tempat Lahir</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="birth_place" placeholder="Isi disini!">
+                                <input type="name" name="birth_place" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tanggal Lahir</span>
                             <div class="input-style input-style-1 input-required">
                                 <em><i class="fa fa-angle-down"></i></em>
-                                <input type="date" name="birth_date">
+                                <input type="date" name="birth_date" required>
                             </div>
                             <br>
                             <span>Agama</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="religion" placeholder="Isi disini!">
+                                <input type="name" name="religion" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Status</span>
                             <div class="input-style input-style-1 input-required">
                                 <em><i class="fa fa-angle-down"></i></em>
-                                <select name="person_status">
+                                <select name="person_status" required>
                                     <option value="default" disabled selected>Pilih status perkawinan</option>
                                     <option value="TK-0"> TK-0 : Tidak Kawin (lajang/janda/duda) </option>
                                     <option value="TK-1"> TK-1 : Duda/Janda (punya anak 1) </option>
@@ -174,13 +174,13 @@
                             <span>Nama Ibu Kandung</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="mother_name" placeholder="Isi disini!">
+                                <input type="name" name="mother_name" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tinggal Bersama</span>
                             <div class="input-style input-style-1 input-required">
                                 <em><i class="fa fa-angle-down"></i></em>
-                                <select name="stay_in">
+                                <select name="stay_in" required>
                                     <option value="default" disabled selected>Pilih tinggal bersama</option>
                                     <option value="Rumah Sendiri"> Rumah Sendiri </option>
                                     <option value="Orang Tua"> Orang Tua </option>
@@ -204,7 +204,7 @@
                             <span>Jenis Kelamin</span>
                             <div class="input-style input-style-1 input-required">
                                 <em><i class="fa fa-angle-down"></i></em>
-                                <select name="gender">
+                                <select name="gender" required>
                                     <option value="default" disabled selected>Pilih jenis kelamin</option>
                                     <option value="Laki-laki"> Laki-Laki </option>
                                     <option value="Perempuan"> Perempuan </option>
@@ -214,32 +214,32 @@
                             <span>Berat Badan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>Kg (wajib)</em>
-                                <input type="name" name="weight" placeholder="Isi disini!">
+                                <input type="name" name="weight" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tinggi Badan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>Cm (wajib)</em>
-                                <input type="name" name="height" placeholder="Isi disini!">
+                                <input type="name" name="height" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Hobi</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="hobby" placeholder="Isi disini!">
+                                <input type="name" name="hobby" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Nomor Rekening</span>
                             <p class="mb-0" style="color: red">beri tanda (-) jika tidak mempunyai No Rekening</p>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="bank_account" placeholder="Isi disini!">
+                                <input type="name" name="bank_account" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Nama Bank</span>
                             <div class="input-style input-style-1 input-required">
                                 <em><i class="fa fa-angle-down"></i></em>
-                                <select name="gender">
+                                <select name="gender" required>
                                     <option value="default" disabled selected>Pilih BANK</option>
                                     <option value=""> Tidak Memiliki BANK </option>
                                     <option value="BCA"> BCA </option>
@@ -301,7 +301,7 @@
                                 <p>*jpg,jpeg,png</p>
                                 <div class="file-data">
                                     <input type="file" name="card_ktp" id="card_ktp"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
+                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
                                     <p class="upload-file-text color-white">Upload KTP</p>
                                     <img src="{{ asset('') }}mobile/images/empty.png" id="ktpImage">
                                 </div>
@@ -314,7 +314,7 @@
                                 <p>*jpg,jpeg,png</p>
                                 <div class="file-data">
                                     <input type="file" name="card_ijazah" id="card_ijazah"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
+                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
                                     <p class="upload-file-text color-white">Upload Ijazah</p>
                                     <img src="{{ asset('') }}mobile/images/empty.png" id="ijazahImage">
                                 </div>
@@ -327,14 +327,14 @@
                                 <p>*jpg,jpeg,png</p>
                                 <div class="file-data">
                                     <input type="file" name="card_family" id="card_family"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
+                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
                                     <p class="upload-file-text color-white">Upload Kartu Keluarga</p>
                                     <img src="{{ asset('') }}mobile/images/empty.png" id="familyImage">
                                 </div>
                                 <span>No Kartu Keluarga</span>
                                 <div class="input-style input-style-1 input-required">
                                     <em>(wajib)</em>
-                                    <input type="tlp" name="family_number" placeholder="Isi disini!">
+                                    <input type="tlp" name="family_number" placeholder="Isi disini!" required>
                                 </div>
                                 <br>
                             </div>

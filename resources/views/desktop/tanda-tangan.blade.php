@@ -23,7 +23,7 @@
                 </div><!-- /.empty-state -->
             </div><!-- /.wrapper -->
         </main>
-    {{-- @elseif (Auth::user()->signature)
+    @elseif (Auth::user()->signature)
     <main class="app-main">
         <!-- .wrapper -->
         <div class="wrapper">
@@ -41,7 +41,7 @@
                 </div><!-- /.empty-state-container -->
             </div><!-- /.empty-state -->
         </div><!-- /.wrapper -->
-    </main> --}}
+    </main>
     @else
     <main class="app-main">
         <!-- .wrapper -->
@@ -163,17 +163,14 @@
                                         <h5 id="exampleModalCenterLabel" class="modal-title"> Tanda Tangan </h5>
                                     </div><!-- /.modal-header -->
                                     <!-- .modal-body -->
-                                    <form action="{{ route('signatures.store') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
+                                    <form id="signatureForm" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <canvas id="signatureCanvas" width="500" height="200"></canvas>
-                                        </div><!-- /.modal-body -->
-                                        <!-- .modal-footer -->
+                                        </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Keluar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
                                             <button id="saveButton" class="btn btn-primary">Simpan</button>
-                                        </div><!-- /.modal-footer -->
+                                        </div>
                                     </form>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
@@ -319,21 +316,24 @@
             var canvas = document.getElementById('signatureCanvas');
             var signaturePad = new SignaturePad(canvas);
             var saveButton = document.getElementById('saveButton');
-    
-            saveButton.addEventListener('click', function() {
+
+            saveButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default form submission behavior
+
                 if (signaturePad.isEmpty()) {
                     alert('Tanda tangan kosong, silakan tanda tangan');
                 } else {
                     if (!saveButton.disabled) {
-                        saveButton.disabled = false; // Menonaktifkan tombol
+                        saveButton.disabled = true; // Disable button to prevent multiple submissions
+
                         var signatureDataUrl = signaturePad.toDataURL();
                         saveSignature(signatureDataUrl);
                     }
                 }
             });
-    
+
             function saveSignature(signatureDataUrl) {
-                fetch('{{ url('signatures') }}', {
+                fetch('{{ route('signatures.store') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -343,17 +343,15 @@
                         signatureDataUrl: signatureDataUrl
                     })
                 })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
+                .then(() => {
                     signaturePad.clear();
-                    // Mengarahkan ke dasbor jika tanda tangan berhasil disimpan
-                    if (data.success) {
-                        window.location.href = '{{ url('/dashboard') }}';
-                    }
+                    // Redirect to the dashboard after saving the signature
+                    window.location.href = '/dashboard'; // Replace '/dashboard' with your actual dashboard URL
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                    alert('Terjadi kesalahan saat menyimpan tanda tangan.');
+                    saveButton.disabled = false; // Enable button in case of an error
                 });
             }
         });
