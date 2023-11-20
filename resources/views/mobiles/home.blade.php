@@ -40,12 +40,12 @@
         <!-- follow buttons-->
         <div class="content">
             <div class="row mb-0">
-                <div class="col-12">
+                <div class="col-6">
                     <a href="#" class="btn btn-full btn-m rounded-s text-uppercase font-900 shadow-xl bg-highlight"><i class="fas fa-camera">&nbsp</i> IN / OUT</a>
                 </div>
-                {{-- <div class="col-4">
+                <div class="col-6">
                     <a href="#" class="btn btn-full btn-border btn-m rounded-s text-uppercase font-900 shadow-l border-highlight color-highlight"><i class="fas fa-qrcode">&nbsp</i>QR</a>
-                </div> --}}
+                </div>
             </div>
         </div>
         <div class="content">
@@ -115,20 +115,26 @@
         <div class="clearfix"></div>
     </div>
     <div class="double-slider text-center owl-carousel owl-no-dots">
-        <div class="item bg-theme rounded-m shadow-m">
-            <i class="mt-4 mb-4" data-feather="shield" data-feather-line="1" data-feather-size="45" data-feather-color="blue2-dark" data-feather-bg="blue2-fade-light"></i>
-            <h5 class="font-16">I-Form</h5>
-            <p class="line-height-s font-11">
-                Request Form<br>Untuk Kebutuhan
-            </p>
-        </div>
-        <div class="item bg-theme rounded-m shadow-m">
-            <i class="mt-4 mb-4" data-feather="smartphone" data-feather-line="1" data-feather-size="45" data-feather-color="brown1-dark" data-feather-bg="brown1-fade-light"></i>
-            <h5 class="font-16">I-SCM</h5>
-            <p class="line-height-s font-11">
-                Just add it to your <br>Home Screen
-            </p>
-        </div>
+        <a href="{{ route('iform') }}">
+            <div class="item bg-theme rounded-m shadow-m">
+                <i class="fas fa-file mt-4 mb-4 color-green2-dark font-30"></i>
+                <h5 class="font-16">Form</h5>
+                <span class="badge badge-success">trial</span>
+                <p class="line-height-s font-11">
+                    Request Form<br>Untuk Kebutuhan
+                </p>
+            </div>
+        </a>
+        <a href="{{ route('iform') }}">
+            <div class="item bg-theme rounded-m shadow-m">
+                <i class="fas fa-warehouse mt-4 mb-4 color-magenta2-dark font-30"></i>
+                <h5 class="font-16">Warehouse</h5>
+                <span class="badge badge-danger">soon</span>
+                <p class="line-height-s font-11">
+                    Request Form<br>Untuk Kebutuhan
+                </p>
+            </div>
+        </a>
     </div>
     <br>
     <div class="single-slider-boxed text-center owl-no-dots owl-carousel">

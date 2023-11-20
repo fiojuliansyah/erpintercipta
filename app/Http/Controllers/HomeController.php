@@ -35,4 +35,9 @@ class HomeController extends Controller
     {
         return view('mobiles.home');
     }
+
+    public function iform()
+    {
+        return view('mobiles.iform.index');
+    }
 }

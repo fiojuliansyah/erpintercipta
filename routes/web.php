@@ -51,6 +51,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     
     Route::middleware('auth')->group(function () {
     Route::get('/mobiles/home', [HomeController::class, 'homeMobile']);
+    Route::get('/mobiles/iform', [HomeController::class, 'iform'])->name('iform');
     Route::resource('dashboard', DashboardController::class);
     // Route::get('/admin/dashboard', [DashboardController::class, 'dashboardEmployee']);
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
