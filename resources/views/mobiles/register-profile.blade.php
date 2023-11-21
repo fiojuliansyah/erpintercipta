@@ -80,7 +80,7 @@
             <div class="row mr-3 ml-3 mb-0">
                 <div class="col-6">
                     <a href="#"  data-toast="toast-1" onclick="event.preventDefault(); document.getElementById('register-profile').submit();"
-                        class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-highlight">IYA</a>
+                        class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-highlight" id="submitButton">IYA</a>
                 </div>
                 <div class="col-6">
                     <a href="#"
@@ -215,13 +215,13 @@
                             <span>Berat Badan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>Kg (wajib)</em>
-                                <input type="name" name="weight" placeholder="Isi disini!" required>
+                                <input type="tlp" name="weight" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tinggi Badan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>Cm (wajib)</em>
-                                <input type="name" name="height" placeholder="Isi disini!" required>
+                                <input type="tlp" name="height" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Hobi</span>
@@ -240,7 +240,7 @@
                             <span>Nama Bank</span>
                             <div class="input-style input-style-1 input-required">
                                 <em><i class="fa fa-angle-down"></i></em>
-                                <select name="gender" required>
+                                <select name="bank_name" required>
                                     <option value="default" disabled selected>Pilih BANK</option>
                                     <option value=""> Tidak Memiliki BANK </option>
                                     <option value="BCA"> BCA </option>
@@ -578,17 +578,20 @@
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/custom.js"></script>
     <script>
-        function showToast(event) {
+        function submitAndDisable(event) {
             event.preventDefault(); // Prevent the default behavior of the link
-            document.getElementById('register-profile').submit(); // Submit the form
+    
+            var submitButton = document.getElementById('submitButton');
+            submitButton.disabled = true; // Disable the button
     
             // Show the toast notification
             var toastId = event.target.getAttribute('data-toast');
             var toast = document.getElementById(toastId);
             if (toast) {
                 toast.classList.add('show'); // Display the toast notification
-                setTimeout(function() {
+                setTimeout(function () {
                     toast.classList.remove('show'); // Hide the toast after a certain time
+                    submitButton.disabled = false; // Enable the button after the toast disappears
                 }, parseInt(toast.getAttribute('data-delay'), 10));
             }
         }
