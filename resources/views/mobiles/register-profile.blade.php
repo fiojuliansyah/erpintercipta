@@ -79,7 +79,7 @@
             </p>
             <div class="row mr-3 ml-3 mb-0">
                 <div class="col-6">
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('register-profile').submit();"
+                    <a href="#"  data-toast="toast-1" onclick="event.preventDefault(); document.getElementById('register-profile').submit();"
                         class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-highlight">IYA</a>
                 </div>
                 <div class="col-6">
@@ -88,6 +88,7 @@
                 </div>
             </div>
         </div>
+        <div id="toast-1" class="toast toast-tiny toast-top bg-yellow2-dark" data-delay="100000" data-autohide="true"><i class="fa fa-sync fa-spin mr-3"></i>Proses Input Data ...</div>
 
         <form id="register-profile" action="{{ url('profiles') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -576,4 +577,20 @@
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/jquery.js"></script>
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/custom.js"></script>
+    <script>
+        function showToast(event) {
+            event.preventDefault(); // Prevent the default behavior of the link
+            document.getElementById('register-profile').submit(); // Submit the form
+    
+            // Show the toast notification
+            var toastId = event.target.getAttribute('data-toast');
+            var toast = document.getElementById(toastId);
+            if (toast) {
+                toast.classList.add('show'); // Display the toast notification
+                setTimeout(function() {
+                    toast.classList.remove('show'); // Hide the toast after a certain time
+                }, parseInt(toast.getAttribute('data-delay'), 10));
+            }
+        }
+    </script>
 </body>
