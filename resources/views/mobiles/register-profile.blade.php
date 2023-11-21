@@ -80,7 +80,7 @@
             <div class="row mr-3 ml-3 mb-0">
                 <div class="col-6">
                     <a href="#"  data-toast="toast-1" onclick="event.preventDefault(); document.getElementById('register-profile').submit();"
-                        class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-highlight" id="submitButton">IYA</a>
+                        class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-highlight">IYA</a>
                 </div>
                 <div class="col-6">
                     <a href="#"
@@ -578,20 +578,17 @@
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/custom.js"></script>
     <script>
-        function submitAndDisable(event) {
+        function showToast(event) {
             event.preventDefault(); // Prevent the default behavior of the link
-    
-            var submitButton = document.getElementById('submitButton');
-            submitButton.disabled = true; // Disable the button
+            document.getElementById('register-profile').submit(); // Submit the form
     
             // Show the toast notification
             var toastId = event.target.getAttribute('data-toast');
             var toast = document.getElementById(toastId);
             if (toast) {
                 toast.classList.add('show'); // Display the toast notification
-                setTimeout(function () {
+                setTimeout(function() {
                     toast.classList.remove('show'); // Hide the toast after a certain time
-                    submitButton.disabled = false; // Enable the button after the toast disappears
                 }, parseInt(toast.getAttribute('data-delay'), 10));
             }
         }
