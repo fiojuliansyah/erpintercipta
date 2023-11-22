@@ -93,8 +93,10 @@
         <div class="card-bg preload-img"></div>
     </div>
     <!-- Homepage Slider-->
-    @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'] or Auth::user()->candidate['status'] == '7' )
-    <div class="content mb-2">
+    @if (
+        Auth::user()->hasRole('employee') &&
+        (isset(Auth::user()->profile['department']) || (isset(Auth::user()->candidate) && Auth::user()->candidate['status'] == '7'))
+    )    <div class="content mb-2">
         <h5 class="float-left font-16 font-500">Fitur</h5>
         <a class="float-right font-12 color-highlight mt-n1" href="#">View All</a>
         <div class="clearfix"></div>
