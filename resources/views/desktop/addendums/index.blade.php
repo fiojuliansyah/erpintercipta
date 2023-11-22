@@ -1,6 +1,6 @@
 @extends('desktop.layouts.master')
 
-@section('title', 'Addendum List | InterCipta ERP Management')
+@section('title', 'Document List | InterCipta ERP Management')
 
 @section('content')
 <main class="app-main">
@@ -16,7 +16,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item active">
-                  <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Addendum List</a>
+                  <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Dokumen List</a>
                 </li>
               </ol>
             </nav><!-- /.breadcrumb -->

@@ -25,15 +25,11 @@ class ApplicantController extends Controller
     public function store(Request $request)
     {
         $candidate = new Candidate;
-        $candidate->status = $request->status;
+        $candidate->status = '0';
         $candidate->user_id = $request->user_id;
         $candidate->career_id = $request->career_id;
-        $candidate->save();
 
-        // Buat tautan untuk tampilan data pelamar dengan ID yang baru saja dibuat
-        $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
-
-        // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
+        $qrLink = route('candidates.show', ['candidate' => $candidate->user_id]);
         $qrCode = QrCode::size(200)->generate($qrLink);
 
         $candidate->qr_link = $qrCode;

@@ -1,4 +1,4 @@
-@if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
+@if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'] or Auth::user()->candidate['status'] == '7' )
 <div id="footer-bar" class="footer-bar-5">
     <a href="{{ url('dashboard') }}"><i class="fa fa-home"></i><span>Beranda</span></a>
     <a href="#" ><i class="fas fa-newspaper"></i><span>Workplace</span></a>

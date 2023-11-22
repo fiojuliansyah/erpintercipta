@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 use App\Exports\ExportCandidates;
 use Maatwebsite\Excel\Facades\Excel;
 
-class Gncstable extends Component
+class Interviewuserstable extends Component
 {
     use WithPagination;
 
@@ -90,6 +90,6 @@ class Gncstable extends Component
 
         $data = $dataQuery->paginate(10);
 
-        return view('desktop.livewire.gncstable', compact('data', 'projects'));
+        return view('desktop.livewire.interviewuserstable', compact('data', 'projects'));
     }
 }

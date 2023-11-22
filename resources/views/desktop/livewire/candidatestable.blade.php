@@ -48,14 +48,15 @@
             <!-- /thead -->
             <!-- tbody -->
             <tbody>
-                @foreach ($data as $key => $candidate)
+                @foreach ($data as $key => $candidate)                   
+                @if ($candidate->status == 0)
                     <tr>
                         <td>
                             <input type="checkbox" wire:model="selectedIds" value="{{ $candidate->id }}">
                         </td>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>{{ $candidate->career?->company['cmpy'] }}</td>
-                        <td>{{ $candidate->user['name'] }}</td>
+                        <td>{{ $candidate->user['name'] ?? ''}}</td>
                         <td>{{ $candidate->career['jobname'] ?? '' }}</td>
                         <td>{{ $candidate->user?->profile['address'] }}</td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal"
@@ -106,7 +107,7 @@
                                         <form action="{{ route('candidates.destroy', $candidate->id) }}"
                                             method="POST">
                                             <a class="dropdown-item"
-                                                href="{{ route('employees.edit', $candidate->user['id']) }}">Edit
+                                                href="{{ route('employees.edit', $candidate->user['id'] ?? '') }}">Edit
                                                 User</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('candidates.show', $candidate->id) }}">Lihat Profil</a>
@@ -121,6 +122,7 @@
                             </div>
                         </td>
                     </tr><!-- /tr -->
+                @endif
                 @endforeach
             </tbody><!-- /tbody -->
         </table>

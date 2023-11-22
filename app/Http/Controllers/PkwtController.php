@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Pkwt;
 use App\Models\Esign;
+use App\Models\Candidate;
 use App\Models\Signature;
 use App\Imports\ImportPkwts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StorePkwtRequest;
 use App\Http\Requests\UpdatePkwtRequest;
-use PDF;
-use Illuminate\Support\Facades\View;
 
 class PkwtController extends Controller
 {
@@ -60,6 +61,29 @@ class PkwtController extends Controller
         return redirect()->route('pkwts.index')
                         ->with('success','Pkwt created successfully.');
     }
+
+    public function storeFromCandidate(Request $request)
+    {
+        // Menyimpan data PKWT
+        $pkwt = new Pkwt;
+        $pkwt->agreement_id = $request->agreement_id;
+        $pkwt->pkwt_number = $request->pkwt_number;
+        $pkwt->user_id = $request->user_id;
+        $pkwt->save();
+    
+        // Jika penyimpanan PKWT berhasil, perbarui status candidate menjadi 7
+        if ($pkwt) {
+            $candidate = Candidate::where('user_id', $request->user_id)->first();
+            if ($candidate) {
+                $candidate->status = 7;
+                $candidate->save();
+            }
+        }
+    
+        return redirect()->route('pkwts.index')
+                        ->with('success', 'PKWT created successfully.');
+    }    
+    
 
     /**
      * Display the specified resource.

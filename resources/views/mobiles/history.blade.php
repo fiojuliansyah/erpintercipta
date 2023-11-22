@@ -22,11 +22,23 @@
             <br>
             <a href="#" class="d-flex">
                 <div class="align-self-center mr-2">
+                    @if ($candidate->status == '0')
                     <h4 class="btn-warning color-white rounded-sm shadow-l font-12 font-400 p-1 px-2 mt-0 mb-3">Cek Berkas</h4>
+                    @elseif ($candidate->status == '1')
+                    <h4 class="btn-primary color-white rounded-sm shadow-l font-12 font-400 p-1 px-2 mt-0 mb-3">Pending</h4>
+                    @elseif ($candidate->status == '2')
+                    <h4 class="btn-success color-white rounded-sm shadow-l font-12 font-400 p-1 px-2 mt-0 mb-3">NCC</h4>
+                    @elseif ($candidate->status == '3')
+                    <h4 class="btn-success color-white rounded-sm shadow-l font-12 font-400 p-1 px-2 mt-0 mb-3">GNC</h4>
+                    @elseif ($candidate->status == '4')
+                    <h4 class="btn-primary color-white rounded-sm shadow-l font-12 font-400 p-1 px-2 mt-0 mb-3">Interview User</h4>
+                    @elseif ($candidate->status == '5')
+                    <h4 class="btn-danger color-white rounded-sm shadow-l font-12 font-400 p-1 px-2 mt-0 mb-3">Ditolak</h4>
+                    @endif
                 </div>
                 <div>
-                    <h6 class="align-self-center mb-n2 mt-0">{{ Carbon\Carbon::parse($candidate->created_at)->format('d F Y') }}</h6>
-                    <span class="color-theme opacity-30 d-block mb-0 font-11">Pelamar : {{ $candidate->user['name'] }}</span>
+                    <h6 class="align-self-center mb-n2 mt-0">{{ Carbon\Carbon::parse($candidate->updated_at)->format('h:i') }}</h6>
+                    <span class="d-block mb-0 font-11">{{ Carbon\Carbon::parse($candidate->updated_at)->format('d F Y') }}</span>
                 </div>
                 <div class="align-self-center ml-auto">
                     <h6 class="text-right mb-n1 mt-n2">{{ $candidate->career['graduate'] }}</h6>

@@ -22,7 +22,7 @@
             </div>
             <img src="{{ asset('') }}mobile/images/empty.png" data-src="{{ Storage::url($user ? $user->profile?->avatar : '') }}" width="70" height="70" class="bg-highlight rounded-circle shadow-xl preload-img">
         </div>
-        @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
+        @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'] or Auth::user()->candidate['status'] == '7' )
         <!-- follow buttons-->
         <div class="content">
             <div class="row mb-0">
@@ -93,7 +93,7 @@
         <div class="card-bg preload-img"></div>
     </div>
     <!-- Homepage Slider-->
-    @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
+    @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'] or Auth::user()->candidate['status'] == '7' )
     <div class="content mb-2">
         <h5 class="float-left font-16 font-500">Fitur</h5>
         <a class="float-right font-12 color-highlight mt-n1" href="#">View All</a>
@@ -103,7 +103,7 @@
         <a href="{{ route('iform') }}">
             <div class="item bg-theme rounded-m shadow-m">
                 <i class="fas fa-tasks mt-4 mb-4 color-yellow2-dark font-30"></i>
-                <h5 class="font-16">PlanNest</h5>
+                <h5 class="font-16">Mo-Plan</h5>
                 <span class="badge badge-danger">soon</span>
                 <p class="line-height-s font-11">
                     Perencanaan<br>Kerja
@@ -113,7 +113,7 @@
         <a href="{{ route('iform') }}">
             <div class="item bg-theme rounded-m shadow-m">
                 <i class="fas fa-file mt-4 mb-4 color-green2-dark font-30"></i>
-                <h5 class="font-16">SwiftForm</h5>
+                <h5 class="font-16">Mo-Form</h5>
                 <span class="badge badge-success">trial</span>
                 <p class="line-height-s font-11">
                     Request Formulir<br>Cepat
@@ -123,10 +123,20 @@
         <a href="{{ route('iform') }}">
             <div class="item bg-theme rounded-m shadow-m">
                 <i class="fas fa-dolly-flatbed mt-4 mb-4 color-magenta2-dark font-30"></i>
-                <h5 class="font-16">ProdOptima</h5>
+                <h5 class="font-16">Mo-Chain</h5>
                 <span class="badge badge-danger">soon</span>
                 <p class="line-height-s font-11">
-                    Optimasi<br>Perencanaan Produksi
+                    Optimasi<br>Perencanaan Supply
+                </p>
+            </div>
+        </a>
+        <a href="{{ route('iform') }}">
+            <div class="item bg-theme rounded-m shadow-m">
+                <i class="fas fa-user-shield mt-4 mb-4 color-red1-dark font-30"></i>
+                <h5 class="font-16">Mo-Dit</h5>
+                <span class="badge badge-danger">soon</span>
+                <p class="line-height-s font-11">
+                    Optimasi<br>Perencanaan Supply
                 </p>
             </div>
         </a>

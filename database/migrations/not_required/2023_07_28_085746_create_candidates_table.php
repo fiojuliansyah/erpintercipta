@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('career_id')->nullable();
             $table->string('status')->nullable();
             $table->text('qr_link')->nullable();
+            $table->text('description_user')->nullable();
+            $table->text('description_client')->nullable();
+            $table->string('site_id')->nullable();
+            $table->string('date')->nullable();
+            $table->string('responsible')->nullable();
             $table->timestamps();
         });
     }

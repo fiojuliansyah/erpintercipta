@@ -327,9 +327,9 @@
                                                         <!-- .tab-content -->
                                                         <div id="myTabContent" class="tab-content">
                                                             <div class="tab-pane fade active show" id="orientasi">
-                                                                <form action="{{ route('trainings.store') }}"
-                                                                    method="POST" enctype="multipart/form-data">
-                                                                    @csrf
+                                                                <form action="{{ route('candidates.update',$candidate->id) }}" method="POST" enctype="multipart/form-data">
+                                                                    @method('PUT')
+                                                                      @csrf
                                                                     <input type="hidden" name="user_id"
                                                                         value="{{ $candidate->user['id'] }}">
                                                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -340,18 +340,48 @@
                                                                                 data-toggle="selectpicker"
                                                                                 data-live-search="true" data-width="100%"
                                                                                 name="status">
-                                                                                <option value="">Pilih</option>
-                                                                                <option value="0">PENDING</option>
-                                                                                <option value="1">NCC</option>
-                                                                                <option value="2">GNC</option>
-                                                                                <option value="3">PKL</option>
+                                                                                <option value="0">Pilih</option>
+                                                                                <option value="1">PENDING</option>
+                                                                                <option value="2">NCC</option>
+                                                                                <option value="3">GNC</option>
+                                                                                <option value="4">Interview User</option>
+                                                                                <option value="5">Reject</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                                         <div class="form-group">
-                                                                            <label class="control-label">Note</label>
-                                                                            <textarea class="form-control" name="description"></textarea>
+                                                                            <label class="control-label"
+                                                                                for="bss3">Pilih Karir</label>
+                                                                            <select id="bss3"
+                                                                                data-toggle="selectpicker"
+                                                                                data-live-search="true" data-width="100%"
+                                                                                name="career_id">
+                                                                                <option value="{{ $candidate->career['id'] }}">{{ $candidate->career->company['cmpy'] }} - {{ $candidate->career['jobname'] }}</option>
+                                                                                @foreach ($careers as $career)
+                                                                                    <option value="{{ $career->id }}">
+                                                                                      {{ $career->company['cmpy'] }} - {{ $career->jobname }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Note Untuk Pelamar</label>
+                                                                            <textarea class="form-control" name="description_user">{{ $candidate->description_user }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Note Untuk Client</label>
+                                                                            <textarea class="form-control" name="description_client">{{ $candidate->description_client }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Jadwal</label>
+                                                                            <input type="date" class="form-control" name="date" value="{{ $candidate->date }}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -362,13 +392,19 @@
                                                                                 data-toggle="selectpicker"
                                                                                 data-live-search="true" data-width="100%"
                                                                                 name="site_id">
-                                                                                <option value="">Pilih</option>
+                                                                                <option value="{{ $candidate->site['id'] }}">{{ $candidate->site->company['cmpy'] }} - {{ $candidate->site['name'] }}</option>
                                                                                 @foreach ($sites as $site)
                                                                                     <option value="{{ $site->id }}">
                                                                                       {{ $site->company['cmpy'] }} - {{ $site->name }}
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">Ketemu / Penanggung Jawab</label>
+                                                                            <input type="text" class="form-control" name="responsible" value="{{ $candidate->responsible }}">
                                                                         </div>
                                                                     </div>
                                                                     <br>
@@ -384,24 +420,29 @@
                                                             <div class="tab-pane fade" id="penempatan">
                                                                 <small style="color: red">*Pastikan Addendum sudah
                                                                     dibuat</small>
-                                                                <form action="{{ route('applicants.store') }}"
+                                                                <form action="{{ route('pkwt-candidate') }}"
                                                                     method="POST" enctype="multipart/form-data">
                                                                     @csrf
-                                                                    <input type="hidden" name="user_id"
-                                                                        value="{{ $candidate->user['id'] }}">
+                                                                    <input type="hidden" name="user_id" value="{{ $candidate->user['id'] }}">
+                                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label">No PKWT</label>
+                                                                            <input type="text" class="form-control" name="pkwt_number">
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                                         <div class="form-group">
                                                                             <label class="control-label"
-                                                                                for="bss3">Pilih Addendum</label>
+                                                                                for="bss3">Pilih Agreement</label>
                                                                             <select id="bss3"
                                                                                 data-toggle="selectpicker"
                                                                                 data-live-search="true" data-width="100%"
-                                                                                name="career_id">
+                                                                                name="agreement_id">
                                                                                 <option value="">Pilih</option>
-                                                                                @foreach ($addendums as $addendum)
-                                                                                    <option value="{{ $addendum->id }}">
-                                                                                        {{ $addendum->title }} ||
-                                                                                        {{ $addendum->site['name'] }}
+                                                                                @foreach ($agreements as $agreement)
+                                                                                    <option value="{{ $agreement->id }}">
+                                                                                        {{ $agreement->title }} ||
+                                                                                        {{ $agreement->addendum->site['name'] }}
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>

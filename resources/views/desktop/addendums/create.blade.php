@@ -31,7 +31,7 @@
                 </li>
               </ol>
             </nav>
-            <h1 class="page-title"> Buat Addendum </h1>
+            <h1 class="page-title"> Buat Template Dokumen </h1>
           </header><!-- /.page-title-bar -->
           <!-- .page-section -->
           <div class="page-section">
@@ -69,7 +69,7 @@
                             <option value="">Pilih</option>
                             @foreach ($sites as $site)
                             <option value="{{ $site->id }}">
-                                {{ $site->name }}
+                              {{ $site->company['cmpy'] }} - {{ $site->name }}
                             </option>
                             @endforeach
                             </select>

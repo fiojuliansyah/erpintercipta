@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site;
+use App\Models\Career;
+use App\Models\Addendum;
 use App\Models\Training;
+use App\Models\Candidate;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTrainingRequest;
 use App\Http\Requests\UpdateTrainingRequest;
@@ -19,9 +23,9 @@ class TrainingController extends Controller
         return view('desktop.trainings.index');
     }
 
-    public function indexGNC()
+    public function indexPending()
     {
-        return view('desktop.trainings.gnc');
+        return view('desktop.trainings.pending');
     }
 
     public function indexNCC()
@@ -29,86 +33,26 @@ class TrainingController extends Controller
         return view('desktop.trainings.ncc');
     }
 
-    public function indexPKL()
+    public function indexGNC()
     {
-        return view('desktop.trainings.pkl');
+        return view('desktop.trainings.gnc');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function indexInterview()
     {
-        //
+        return view('desktop.trainings.interviewuser');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreTrainingRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function indexReject()
     {
-        $training = new Training;
-        $training->user_id = $request->user_id;
-        $training->status = $request->status;
-        $training->description = $request->description;
-        $training->site_id = $request->site_id;
-        $training->save();
-
-        return redirect()->route('candidates.index')
-                        ->with('success','Updated successfully');
+        return view('desktop.trainings.reject');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Training  $training
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function showDoc(Candidate $candidate)
     {
-        $training = Training::find($id);
-        return view('desktop.trainings.show',compact('training'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Training  $training
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Training $training)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateTrainingRequest  $request
-     * @param  \App\Models\Training  $training
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateTrainingRequest $request, Training $training)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Training  $training
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Training $training)
-    {
-        $training->delete();
-
-        return redirect()->route('candidates.index')
-                        ->with('success','Deleted successfully');
+        $sites = Site::all();
+        $careers = Career::all();
+        $addendums = Addendum::all();
+        return view('desktop.trainings.show', compact('candidate','addendums', 'sites', 'careers'));
     }
 }

@@ -1,6 +1,6 @@
 @extends('desktop.layouts.master')
 
-@section('title', 'PKL List | InterCipta ERP Management')
+@section('title', 'Interview User List | InterCipta ERP Management')
 
 @section('content')
 <main class="app-main">
@@ -16,7 +16,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item active">
-                  <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>PKL List</a>
+                  <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Interview User List</a>
                 </li>
               </ol>
             </nav><!-- /.breadcrumb -->
@@ -33,7 +33,7 @@
               <div class="card-body">
             
                 <!-- .table-responsive -->
-                @livewire('pklstable')
+                @livewire('interviewuserstable')
               </div><!-- /.card-body -->
             </div><!-- /.card -->
           </div><!-- /.page-section -->

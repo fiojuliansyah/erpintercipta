@@ -49,12 +49,12 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     //     return view('dashboard');
     // })->middleware(['auth', 'verified'])->name('dashboard');
     
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth', 'visitor')->group(function () {
     Route::get('/mobiles/home', [HomeController::class, 'homeMobile']);
     Route::get('/mobiles/iform', [HomeController::class, 'iform'])->name('iform');
     Route::get('/mobiles/profile', [HomeController::class, 'profile'])->name('profile');
     Route::resource('dashboard', DashboardController::class);
-    // Route::get('/admin/dashboard', [DashboardController::class, 'dashboardEmployee']);
+
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
     Route::get('/employee/list', [EmployeeController::class, 'index'])->name('employee.index');
     Route::delete('employee/list/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
@@ -64,10 +64,13 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::get('/my-resume', [DashboardController::class, 'MyResume'])->name('my-resume');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
     Route::get('/history', [DashboardController::class, 'history'])->name('history');
+
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
+
     Route::resource('users', UserController::class);
     Route::post('/import-user',[UserController::class,'import'])->name('import-user');
+
     Route::resource('profiles', ProfileController::class);
     Route::post ('profiles',[ProfileController::class, 'updateUserDetail']);
     Route::get ('accountsettings',[ProfileController::class, 'indexAccountSettings']);
@@ -83,11 +86,15 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::resource('chartofaccounts', ChartofaccountController::class);
     Route::resource('vendors', VendorController::class);
     Route::resource('careers', CareerController::class);
+
     Route::resource('candidates', CandidateController::class);
     Route::put('/update-qrcode/{id}',[CandidateController::class,'QRUpdate'])->name('update-qrcode');
     Route::put('/update-qrcode-user/{id}',[userController::class,'QRUpdate'])->name('update-qrcode-user');
+   
     Route::resource('pkwts', PkwtController::class);
+    Route::post('pkwt/store', [PkwtController::class, 'storeFromCandidate'])->name('pkwt-candidate');
     Route::post('/import-pkwt',[PkwtController::class,'import'])->name('import-pkwt');
+
     Route::resource('signatures', SignatureController::class);
     Route::post ('signature/upload',[SignatureController::class, 'upload'])->name('upload-signature');
     Route::resource('esigns', EsignController::class);
@@ -95,12 +102,14 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::resource('employees', EmployeeController::class);
     Route::resource('applicants', ApplicantController::class);
     Route::resource('sites', SiteController::class);
+
     Route::resource('agreements', AgreementController::class);
     Route::post('/import-agreement',[AgreementController::class,'import'])->name('import-agreement');
-    Route::resource('trainings', TrainingController::class);
+
     Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
     Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');
-    Route::get ('training/pkl',[TrainingController::class, 'indexPKL'])->name('index-pkl');
+    Route::get ('training/interview-user',[TrainingController::class, 'indexInterview'])->name('index-interview');
+    Route::get ('training/document/{candidate}',[TrainingController::class, 'showDoc'])->name('document-print');
 
 });
 

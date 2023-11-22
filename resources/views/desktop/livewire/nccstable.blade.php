@@ -39,20 +39,20 @@
             <!-- /thead -->
             <!-- tbody -->
             <tbody>
-                @foreach ($data as $key => $training)
-                @if ($training->status == 1)
+                @foreach ($data as $key => $candidate)
+                @if ($candidate->status == 2)
                     <tr>
                         <td>
-                            <input type="checkbox" wire:model="selectedIds" value="{{ $training->id }}">
+                            <input type="checkbox" wire:model="selectedIds" value="{{ $candidate->id }}">
                         </td>
                         {{-- <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td> --}}
-                        <td>USER - {{ str_pad($training->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $training->user['name'] }}</td>
-                        <td>{{ $training->site['name'] }}</td>
-                        <td><a class="btn btn-primary" target="blank" href="{{ route('trainings.show', $training->id) }}">Print</a></td>               
+                        <td>USER - {{ str_pad($candidate->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
+                        <td>{{ $candidate->user['name'] }}</td>
+                        <td>{{ $candidate->site['name'] }}</td>
+                        <td><a class="btn btn-primary" target="blank" href="{{ route('document-print', $candidate->id) }}">Print</a></td>               
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                <a href="https://google.com">
+                                <a href="#">
                                     <button type="button" class="btn btn-primary">Menu</button>
                                 </a>
                                 <div class="btn-group" role="group">
@@ -60,13 +60,18 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <div class="dropdown-arrow"></div>
-                                        <form action="{{ route('trainings.destroy', $training->id) }}" method="POST">
+                                        <form action="{{ route('candidates.destroy', $candidate->id) }}"
+                                            method="POST">
                                             <a class="dropdown-item"
-                                                href="{{ route('trainings.edit', $training->id) }}">Edit
-                                                Status</a>
+                                                href="{{ route('employees.edit', $candidate->user['id'] ?? '') }}">Edit
+                                                User</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('candidates.show', $candidate->id) }}">Lihat Profil</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="dropdown-item">Hapus</button>
+                                            @can('candidate-delete')
+                                                <button type="submit" class="dropdown-item">Hapus</button>
+                                            @endcan
                                         </form>
                                     </div>
                                 </div>

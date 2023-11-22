@@ -38,16 +38,16 @@ class AppServiceProvider extends ServiceProvider
     
         view()->share('countPelamar', $countPelamar);
 
-        $countKandidat = Candidate::count();
+        $countKandidat = Candidate::where('status', 0)->count();
         view()->share('countKandidat', $countKandidat);
 
-        $countNCC = Training::where('status', 1)->count();
+        $countNCC = Candidate::where('status', 2)->count();
         view()->share('countNCC', $countNCC);
 
-        $countGNC = Training::where('status', 2)->count();
+        $countGNC = Candidate::where('status', 3)->count();
         view()->share('countGNC', $countGNC);
 
-        $countPKL = Training::where('status', 3)->count();
-        view()->share('countPKL', $countPKL);
+        $countInterview = Candidate::where('status', 4)->count();
+        view()->share('countInterview', $countInterview);
     }
 }

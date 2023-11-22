@@ -16,9 +16,13 @@ return new class extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->string('user_id')->nullable();
-            $table->enum('status', ['0', '1', '2', '3'])->nullable();
-            $table->string('description')->nullable();
+            $table->string('status')->nullable();
+            $table->text('description_user')->nullable();
+            $table->text('description_client')->nullable();
             $table->string('site_id')->nullable();
+            $table->string('career_id')->nullable();
+            $table->string('date')->nullable();
+            $table->string('responsible')->nullable();
             $table->timestamps();
         });
     }
