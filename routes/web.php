@@ -88,6 +88,8 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::resource('careers', CareerController::class);
 
     Route::resource('candidates', CandidateController::class);
+    Route::get('/candidates/{candidate}',[CandidateController::class,'show'])->name('candidates.show');
+
     Route::put('/update-qrcode/{id}',[CandidateController::class,'QRUpdate'])->name('update-qrcode');
     Route::put('/update-qrcode-user/{id}',[userController::class,'QRUpdate'])->name('update-qrcode-user');
    

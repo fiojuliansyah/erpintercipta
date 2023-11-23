@@ -35,9 +35,10 @@ class CandidateController extends Controller
     public function store(Request $request)
     {
         $candidate = new Candidate;
-        $candidate->status = $request->status;
+        $candidate->status = '0';
         $candidate->user_id = $request->user_id;
         $candidate->career_id = $request->career_id;
+        $candidate->save();
 
         $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
         $qrCode = QrCode::size(200)->generate($qrLink);

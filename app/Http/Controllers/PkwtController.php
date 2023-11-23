@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use App\Models\Pkwt;
+use App\Models\User;
 use App\Models\Esign;
 use App\Models\Candidate;
 use App\Models\Signature;
@@ -77,12 +78,24 @@ class PkwtController extends Controller
             if ($candidate) {
                 $candidate->status = 7;
                 $candidate->save();
+    
+                // Temukan profil pengguna terkait
+                $user = User::find($request->user_id);
+                if ($user) {
+                    // Asumsikan bahwa relasi antara User dan Profile adalah one-to-one
+                    $profile = $user->profile;
+                    if ($profile) {
+                        // Perbarui nilai department di sini sesuai kebutuhan Anda
+                        $profile->department = 'karyawan';
+                        $profile->save();
+                    }
+                }
             }
         }
     
         return redirect()->route('pkwts.index')
                         ->with('success', 'PKWT created successfully.');
-    }    
+    }        
     
 
     /**

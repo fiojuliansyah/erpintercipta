@@ -392,7 +392,7 @@
                                                                                 data-toggle="selectpicker"
                                                                                 data-live-search="true" data-width="100%"
                                                                                 name="site_id">
-                                                                                <option value="{{ $candidate->site['id'] }}">{{ $candidate->site->company['cmpy'] }} - {{ $candidate->site['name'] }}</option>
+                                                                                <option value="{{ $candidate->site['id'] ?? '' }}">{{ $candidate->site->company['cmpy'] ?? '' }} - {{ $candidate->site['name'] ?? '' }}</option>
                                                                                 @foreach ($sites as $site)
                                                                                     <option value="{{ $site->id }}">
                                                                                       {{ $site->company['cmpy'] }} - {{ $site->name }}
