@@ -144,33 +144,12 @@
     <br>
     <div class="single-slider-boxed text-center owl-no-dots owl-carousel">
         <div class="card rounded-l shadow-l" data-card-height="150">
-            <div class="card-bottom">
-                <h1 class="font-24 font-700">Meet InterMo</h1>
-                <p class="boxed-text-xl">
-                    InterMo brings beauty and colors to your Mobile device with a stunning user interface to match.
-                </p>
-            </div>
-            <div class="card-overlay bg-gradient-fade"></div>
             <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/17m.jpg"></div>
         </div>
         <div class="card rounded-l shadow-l" data-card-height="150">
-            <div class="card-bottom">
-                <h1 class="font-24 font-700">Beyond Powerful</h1>
-                <p class="boxed-text-xl">
-                    InterMo is a Mobile Web App Kit, fully featured, supporting PWA and Native Dark Mode!
-                </p>
-            </div>
-            <div class="card-overlay bg-gradient-fade"></div>
             <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/8m.jpg"></div>
         </div>
         <div class="card rounded-l shadow-l" data-card-height="150">
-            <div class="card-bottom">
-                <h1 class="font-24 font-700">A-Level Quality</h1>
-                <p class="boxed-text-xl">
-                    We build custom, premium products, that are easy to use and provide all features for you! 
-                </p>
-            </div>
-            <div class="card-overlay bg-gradient-fade"></div>
             <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/14m.jpg"></div>
         </div>
     </div>
@@ -304,33 +283,12 @@
     <br>
     <div class="single-slider-boxed text-center owl-no-dots owl-carousel">
         <div class="card rounded-l shadow-l" data-card-height="150">
-            <div class="card-bottom">
-                <h1 class="font-24 font-700">Meet InterMo</h1>
-                <p class="boxed-text-xl">
-                    InterMo brings beauty and colors to your Mobile device with a stunning user interface to match.
-                </p>
-            </div>
-            <div class="card-overlay bg-gradient-fade"></div>
             <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/17m.jpg"></div>
         </div>
         <div class="card rounded-l shadow-l" data-card-height="150">
-            <div class="card-bottom">
-                <h1 class="font-24 font-700">Beyond Powerful</h1>
-                <p class="boxed-text-xl">
-                    InterMo is a Mobile Web App Kit, fully featured, supporting PWA and Native Dark Mode!
-                </p>
-            </div>
-            <div class="card-overlay bg-gradient-fade"></div>
             <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/8m.jpg"></div>
         </div>
         <div class="card rounded-l shadow-l" data-card-height="150">
-            <div class="card-bottom">
-                <h1 class="font-24 font-700">A-Level Quality</h1>
-                <p class="boxed-text-xl">
-                    We build custom, premium products, that are easy to use and provide all features for you! 
-                </p>
-            </div>
-            <div class="card-overlay bg-gradient-fade"></div>
             <div class="card-bg owl-lazy" data-src="{{ asset('') }}mobile/images/pictures/14m.jpg"></div>
         </div>
     </div>
@@ -354,7 +312,7 @@
             <p>
                 <span class="badge badge-success">{{ $item->salary }}</span>
              </p>
-            <a href="#" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">Lamar</a>
+            <a href="{{ route('jobportal-show', $item->id) }}" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">Lamar</a>
         </div>
         @endforeach
     </div>

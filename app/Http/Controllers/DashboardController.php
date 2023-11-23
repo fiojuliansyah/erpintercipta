@@ -6,6 +6,7 @@ use App\Models\Pkwt;
 use App\Models\User;
 use App\Models\Career;
 use App\Models\Company;
+use App\Models\Statory;
 use App\Models\Candidate;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
@@ -106,15 +107,23 @@ class DashboardController extends Controller
         $agent = new Agent;
         $userId = Auth::id();
         $candidates = Candidate::where('user_id', $userId)->get();
-
-        if ($agent->isMobile()) {
-            return view('mobiles.history',compact('candidates'));;
-        } elseif ($agent->isDesktop()) {
-            return view('dekstop.history',compact('candidates'));
-        } else {
-            return view('dekstop.history',compact('candidates'));
+    
+        $statories = collect(); // Inisialisasi collection kosong untuk menampung hasil Statory
+    
+        foreach ($candidates as $candidate) {
+            // Mengambil Statory berdasarkan candidate_id untuk setiap kandidat
+            $statoriesForCandidate = Statory::where('candidate_id', $candidate->id)->get();
+            $statories = $statories->merge($statoriesForCandidate); // Menggabungkan hasil setiap kandidat ke dalam collection
         }
-    }
+    
+        if ($agent->isMobile()) {
+            return view('mobiles.history', compact('candidates', 'statories'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.history', compact('candidates', 'statories'));
+        } else {
+            return view('desktop.history', compact('candidates', 'statories'));
+        }
+    }    
 
     public function pkwt(Pkwt $pkwt)
     {

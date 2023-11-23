@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use App\Models\Career;
+use App\Models\Statory;
 use App\Models\Addendum;
 use App\Models\Agreement;
 use App\Models\Candidate;
@@ -39,6 +40,11 @@ class CandidateController extends Controller
         $candidate->user_id = $request->user_id;
         $candidate->career_id = $request->career_id;
         $candidate->save();
+
+        $statory = new Statory;
+        $statory->status = '0';
+        $statory->candidate_id = $candidate->id;
+        $statory->save();
 
         $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
         $qrCode = QrCode::size(200)->generate($qrLink);
@@ -103,16 +109,29 @@ class CandidateController extends Controller
         $candidate->responsible = $request->responsible;
         
         $candidate->update();
-        // $crud->update($request->all());
+    // Cek apakah pembaruan berhasil sebelum mencatat riwayat
+        if ($candidate->wasChanged()) {
+            $statory = new Statory;
+            $statory->status = $request->status;
+            $statory->candidate_id = $candidate->id; // Menggunakan ID dari candidate yang telah di-update
+            $statory->save();
+        }
+        
         return redirect()->route('candidates.index')
                         ->with('success','Candidate updated successfully');
     }
 
     public function destroy(Candidate $candidate)
     {
+        $candidateId = $candidate->id;
+    
+        // Hapus Statory yang berkaitan dengan candidate_id yang akan dihapus
+        Statory::where('candidate_id', $candidateId)->delete();
+    
+        // Hapus Candidate
         $candidate->delete();
-
+    
         return redirect()->route('candidates.index')
-                        ->with('success','Candidate deleted successfully');
+                        ->with('success', 'Candidate and associated Statory deleted successfully');
     }
 }

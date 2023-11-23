@@ -58,18 +58,21 @@ class Applicantstable extends Component
             ->whereHas('profile', function ($query) {
                 $query->where('department', null);
             })
-            ->whereDoesntHave('candidate') // Memeriksa apakah pengguna adalah kandidat
+            ->whereDoesntHave('candidate')
+            ->orderBy('created_at', 'desc') // Menyortir berdasarkan kolom created_at secara descending (terbaru paling atas)
             ->paginate(10);
         } else {
             $data = User::whereDoesntHave('roles')
                 ->whereHas('profile', function ($query) {
                     $query->where('department', null);
                 })
-                ->whereDoesntHave('candidate') // Memeriksa apakah pengguna adalah kandidat
+                ->whereDoesntHave('candidate')
+                ->orderBy('created_at', 'desc') // Menyortir berdasarkan kolom created_at secara descending (terbaru paling atas)
                 ->paginate(10);
         }
     
         return view('desktop.livewire.applicantstable', compact('data'));
-    }     
+    }
+       
 
 }

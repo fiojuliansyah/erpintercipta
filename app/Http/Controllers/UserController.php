@@ -183,10 +183,21 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $user = User::find($id);
+    
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', 'User not found');
+        }
+    
+        // Menghapus profile yang terkait dengan user yang akan dihapus
+        Profile::where('user_id', $user->id)->delete();
+    
+        // Menghapus user setelah profile terkait dihapus
+        $user->delete();
+    
         return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
-    }
+                        ->with('success', 'User and associated Profile deleted successfully');
+    }    
 
     public function import(Request $request)
     {
