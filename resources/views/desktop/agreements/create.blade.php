@@ -35,21 +35,32 @@
                         <h1 class="page-title"> Buat Perjanjian </h1>
                     </header><!-- /.page-title-bar -->
                     <!-- .page-section -->
-                    <div class="page-section">
-                        <div id="base-style" class="card">
-                            <!-- .card-body -->
-                            <div class="card-body">
-                                @if (count($errors) > 0)
-                                    <div class="alert alert-danger">
-                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <!-- .form -->
+                    <div class="card-deck-xl">
+                        <!-- .card -->
+                        <div class="card card-fluid">
+                          <!-- .card-header -->
+                          <div class="card-header">
+                            <!-- .nav-tabs -->
+                            <ul class="nav nav-tabs card-header-tabs">
+                              <li class="nav-item">
+                                <a class="nav-link active show" data-toggle="tab" href="#pkwt">PKWT & PERJANJIAN KERJA</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#penempatan">PENEMPATAN</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#interview">INTERVIEW</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#bko">BKO</a>
+                              </li>
+                            </ul><!-- /.nav-tabs -->
+                          </div><!-- /.card-header -->
+                          <!-- .card-body -->
+                          <div class="card-body">
+                            <!-- .tab-content -->
+                            <div id="myTabContent" class="tab-content">
+                              <div class="tab-pane fade active show" id="pkwt">
                                 <form action="{{ route('agreements.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <!-- .fieldset -->
@@ -262,11 +273,288 @@
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                </form><!-- /.form -->
-                            </div><!-- /.card-body -->
-                        </div><!-- /.card -->
-                    </div><!-- /.page-section -->
-                    <!-- .app-footer -->
+                                </form>
+                              </div>
+                              <div class="tab-pane fade" id="penempatan">
+                                <form action="{{ route('agreements.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <!-- .fieldset -->
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="title">Judul Perjanjian</label>
+                                            <input type="text" name="title" class="form-control"
+                                                placeholder="Tulis Disini">
+                                            @error('title')
+                                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="department">Untuk Posisi</label>
+                                                <input type="text" name="department" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('department')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="year">Bulan Romawi</label>
+                                                <input type="text" name="romawi" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('romawi')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="year">Tahun</label>
+                                                <input type="text" name="year" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('year')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="year">Tanggal Mulai</label>
+                                                <input type="date" name="start_date" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('start_date')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="year">Tanggal Berakhir</label>
+                                                <input type="date" name="end_date" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('end_date')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="responsible">Penanggung Jawab</label>
+                                                <input type="text" name="responsible" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('responsible')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="control-label" for="bss3">Pilih Addendum</label>
+                                                <select id="bss3" data-toggle="selectpicker" data-live-search="true"
+                                                    data-width="100%" name="addendum_id">
+                                                    <option value="">Pilih</option>
+                                                    @foreach ($addendums as $addendum)
+                                                        <option value="{{ $addendum->id }}">
+                                                            {{ $addendum->site['name'] ?? '' }} ({{ $addendum->title ?? '' }})
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                              </div>
+                              <div class="tab-pane fade" id="interview">
+                                <form action="{{ route('agreements.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <!-- .fieldset -->
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="title">Judul Perjanjian</label>
+                                            <input type="text" name="title" class="form-control"
+                                                placeholder="Tulis Disini">
+                                            @error('title')
+                                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="department">Untuk Posisi</label>
+                                                <input type="text" name="department" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('department')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="year">Bulan Romawi</label>
+                                                <input type="text" name="romawi" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('romawi')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="year">Tahun</label>
+                                                <input type="text" name="year" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('year')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="year">Tanggal Mulai</label>
+                                                <input type="date" name="start_date" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('start_date')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="year">Tanggal Berakhir</label>
+                                                <input type="date" name="end_date" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('end_date')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="responsible">Penanggung Jawab</label>
+                                                <input type="text" name="responsible" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('responsible')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="control-label" for="bss3">Pilih Addendum</label>
+                                                <select id="bss3" data-toggle="selectpicker" data-live-search="true"
+                                                    data-width="100%" name="addendum_id">
+                                                    <option value="">Pilih</option>
+                                                    @foreach ($addendums as $addendum)
+                                                        <option value="{{ $addendum->id }}">
+                                                            {{ $addendum->site['name'] ?? '' }} ({{ $addendum->title ?? '' }})
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                              </div>
+                              <div class="tab-pane fade" id="bko">
+                                <form action="{{ route('agreements.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <!-- .fieldset -->
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label for="title">Judul Perjanjian</label>
+                                            <input type="text" name="title" class="form-control"
+                                                placeholder="Tulis Disini">
+                                            @error('title')
+                                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="department">Untuk Posisi</label>
+                                                <input type="text" name="department" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('department')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="year">Bulan Romawi</label>
+                                                <input type="text" name="romawi" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('romawi')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="year">Tahun</label>
+                                                <input type="text" name="year" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('year')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="year">Tanggal Mulai</label>
+                                                <input type="date" name="start_date" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('start_date')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="year">Tanggal Berakhir</label>
+                                                <input type="date" name="end_date" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('end_date')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="responsible">Penanggung Jawab</label>
+                                                <input type="text" name="responsible" class="form-control"
+                                                    placeholder="Tulis Disini">
+                                                @error('responsible')
+                                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="control-label" for="bss3">Pilih Addendum</label>
+                                                <select id="bss3" data-toggle="selectpicker" data-live-search="true"
+                                                    data-width="100%" name="addendum_id">
+                                                    <option value="">Pilih</option>
+                                                    @foreach ($addendums as $addendum)
+                                                        <option value="{{ $addendum->id }}">
+                                                            {{ $addendum->site['name'] ?? '' }} ({{ $addendum->title ?? '' }})
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                              </div>
+                            </div><!-- /.tab-content -->
+                          </div><!-- /.card-body -->
+                        </div>
+                      </div>
                     <footer class="app-footer">
                         <ul class="list-inline">
                             <li class="list-inline-item">

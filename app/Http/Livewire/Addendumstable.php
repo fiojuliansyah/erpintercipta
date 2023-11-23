@@ -21,13 +21,16 @@ class Addendumstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Addendum::where('project', 'like', '%' . $this->search . '%')
-                ->orWhereRelation('company', 'company', 'like', '%' . $this->search . '%')
+            $data = Addendum::whereHas('site', function ($query) {
+                    $query->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhereRelation('company', 'company', 'like', '%' . $this->search . '%');
+                })
+                ->orWhere('title', 'like', '%' . $this->search . '%')
                 ->paginate(10);
         } else {
             $data = Addendum::paginate(10);
         }
-
+    
         return view('desktop.livewire.addendumstable', compact('data'));
-    }
+    }    
 }

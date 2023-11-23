@@ -21,8 +21,12 @@ class Agreementstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Agreement::where('title', 'like', '%' . $this->search . '%')
-                ->orWhereRelation('company', 'company', 'like', '%' . $this->search . '%')
+            $data = Agreement::whereHas('addendum', function ($query) {
+                    $query->where('title', 'like', '%' . $this->search . '%')
+                        ->orWhereRelation('site', 'name', 'like', '%' . $this->search . '%');
+                })
+                ->orWhere('title', 'like', '%' . $this->search . '%')
+                ->orWhere('department', 'like', '%' . $this->search . '%')
                 ->paginate(10);
         } else {
             $data = Agreement::paginate(10);
