@@ -96,6 +96,10 @@
                                             <span class="menu-text">Orientasi</span></a> <!-- grand child menu -->
                                         <ul class="menu">
                                             <li class="menu-item">
+                                                <a href="{{ route('index-pending') }}" class="menu-link">Pending<span
+                                                        class="badge badge-warning">{{ $countPending }}</span></a>
+                                            </li>
+                                            <li class="menu-item">
                                                 <a href="{{ route('index-ncc') }}" class="menu-link">NCC<span
                                                         class="badge badge-warning">{{ $countNCC }}</span></a>
                                             </li>
@@ -106,6 +110,10 @@
                                             <li class="menu-item">
                                                 <a href="{{ route('index-interview') }}" class="menu-link">Interview User<span
                                                         class="badge badge-warning">{{ $countInterview }}</span></a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{{ route('index-reject') }}" class="menu-link">Reject<span
+                                                        class="badge badge-warning">{{ $countReject }}</span></a>
                                             </li>
                                         </ul><!-- /grand child menu -->
                                     </li>

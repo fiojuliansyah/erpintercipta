@@ -110,6 +110,8 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
 
     Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
     Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');
+    Route::get ('training/pending',[TrainingController::class, 'indexpending'])->name('index-pending');
+    Route::get ('training/reject',[TrainingController::class, 'indexReject'])->name('index-reject');
     Route::get ('training/interview-user',[TrainingController::class, 'indexInterview'])->name('index-interview');
     Route::get ('training/document/{candidate}',[TrainingController::class, 'showDoc'])->name('document-print');
 

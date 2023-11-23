@@ -41,6 +41,9 @@ class AppServiceProvider extends ServiceProvider
         $countKandidat = Candidate::where('status', 0)->count();
         view()->share('countKandidat', $countKandidat);
 
+        $countPending = Candidate::where('status', 1)->count();
+        view()->share('countPending', $countPending);
+
         $countNCC = Candidate::where('status', 2)->count();
         view()->share('countNCC', $countNCC);
 
@@ -49,5 +52,8 @@ class AppServiceProvider extends ServiceProvider
 
         $countInterview = Candidate::where('status', 4)->count();
         view()->share('countInterview', $countInterview);
+
+        $countReject = Candidate::where('status', 5)->count();
+        view()->share('countReject', $countReject);
     }
 }
