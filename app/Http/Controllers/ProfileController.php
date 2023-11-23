@@ -79,11 +79,11 @@ class ProfileController extends Controller
         }
 
         $path2 = $existingCardKTP;
-        if ($request->hasFile('card-ktp')) {
+        if ($request->hasFile('card_ktp')) {
             if ($existingCardKTP && $existingCardKTP !== 'default_avatar.jpg') {
                 Storage::delete($existingCardKTP);
             }
-            $path2 = $request->file('card-ktp')->store('public/ktp');
+            $path2 = $request->file('card_ktp')->store('public/ktp');
         }
 
         $path3 = $existingCardIjazah;
