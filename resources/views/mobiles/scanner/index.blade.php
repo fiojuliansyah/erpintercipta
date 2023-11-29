@@ -17,15 +17,15 @@
         <div class="card-body">
             <h5 class="card-title">QR Scanner</h5>
             <div style="display: flex; justify-content: overflow: hidden;">
-                <video id="preview" style="width: 100%; border-radius: 6px; transform: rotateY(180deg);"></video>
+                <video id="preview" style="width: 100%; border-radius: 6px; -webkit-transform: scaleX(-1); transform: scaleX(-1);"></video>
             </div>
         </div>
     </div>
-</div>
+    <a href="#" class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Download CV</a>
+</div>    
 @endsection
 
 @push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/instascan/2.0.0/instascan.min.js"></script>
 <script>
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 
@@ -34,15 +34,17 @@
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
-        const selectedCamera = cameras.find(camera => camera && camera.name.toLowerCase().includes('back')); // Memilih kamera belakang
+        let selectedCamera = cameras.filter(camera => camera.name.toLowerCase().includes('back'))[0]; // Memilih kamera belakang
 
         if (selectedCamera) {
             scanner.start(selectedCamera);
+        } else if (cameras.length > 0) {
+            scanner.start(cameras[0]); // Gunakan kamera pertama jika kamera belakang tidak ditemukan
         } else {
-            console.error('Kamera belakang tidak ditemukan.');
+            console.error('Tidak ada kamera yang ditemukan.');
         }
     }).catch(function (e) {
-        console.error('Error: ', e);
+        console.error(e);
     });
 </script>
 @endpush
