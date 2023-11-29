@@ -1,10 +1,10 @@
 @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
 <div id="footer-bar" class="footer-bar-5">
-    <a href="{{ url('dashboard') }}"><i class="fa fa-home"></i><span>Beranda</span></a>
-    <a href="#" ><i class="fas fa-newspaper"></i><span>Workplace</span></a>
     <a href="#"><i class="fa fa-envelope"></i><span>Inbox</span></a>
+    <a href="#" ><i class="fas fa-newspaper"></i><span>Workplace</span></a>
+    <a href="{{ url('dashboard') }}" class="{{ request()->is('dashboard') ? 'active-nav' : '' }}"><i class="fa fa-home"></i><span>Beranda</span></a>
     <a href="#" data-menu="menu-share"><i class="	fa fa-th-large"></i><span>Quick</span></a>
-    <a href="{{ route('profile') }}"><i class="fa fa-user"></i><span>Profil</span></a>
+    <a href="{{ route('profile') }}" class="{{ request()->is('profile') ? 'active-nav' : '' }}"><i class="fa fa-user"></i><span>Profil</span></a>
 </div>  
 @else
 <div id="footer-bar" class="footer-bar-1">

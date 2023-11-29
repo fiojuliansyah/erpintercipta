@@ -14,10 +14,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('') }}mobile/app/icons/icon-192x192.png">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+<script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+</head>
 @livewireStyles
 </head>
     
-<body class="theme-light" data-highlight="yellow2">
+<body class="theme-light" data-highlight="red2">
     
 {{-- <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div> --}}
     

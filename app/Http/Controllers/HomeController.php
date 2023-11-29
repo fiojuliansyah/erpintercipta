@@ -40,4 +40,9 @@ class HomeController extends Controller
     {
         return view('mobiles.profile.index');
     }
+
+    public function scan()
+    {
+        return view('mobiles.scanner.index');
+    }
 }

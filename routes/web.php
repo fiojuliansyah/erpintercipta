@@ -23,6 +23,7 @@ use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SignatureController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AccounttypeController;
@@ -53,6 +54,9 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::get('/mobiles/home', [HomeController::class, 'homeMobile']);
     Route::get('/mobiles/iform', [HomeController::class, 'iform'])->name('iform');
     Route::get('/mobiles/profile', [HomeController::class, 'profile'])->name('profile');
+    Route::get('/mobiles/scan', [HomeController::class, 'scan'])->name('scan');
+    
+    
     Route::resource('dashboard', DashboardController::class);
 
     Route::get('/register-profile', [ProfileController::class, 'registerProfile']);
@@ -115,6 +119,11 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::get ('training/interview-user',[TrainingController::class, 'indexInterview'])->name('index-interview');
     Route::get ('training/document/{candidate}',[TrainingController::class, 'showDoc'])->name('document-print');
 
+    Route::get ('attendance',[AttendanceController::class, 'attendance'])->name('attendance');
+    Route::get ('attendance/clock-in',[AttendanceController::class, 'indexClockIn'])->name('index.clock-in');
+    Route::post ('attendance/clock-in/set',[AttendanceController::class, 'clockIn'])->name('clock-in');
+    Route::get ('attendance/clockout',[AttendanceController::class, 'indexClockOut'])->name('index.clock-out');
+    Route::post ('attendance/clock-out/set',[AttendanceController::class, 'clockOut'])->name('clock-out');
 });
 
 require __DIR__.'/auth.php';
