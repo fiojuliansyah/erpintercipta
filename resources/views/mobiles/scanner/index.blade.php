@@ -17,15 +17,15 @@
         <div class="card-body">
             <h5 class="card-title">QR Scanner</h5>
             <div style="display: flex; justify-content: overflow: hidden;">
-                <video id="preview" style="width: 100%; border-radius: 6px; transform: scaleX(-1);"></video>
+                <video id="preview" style="width: 100%; border-radius: 6px; transform: rotateY(0deg);"></video>
             </div>
         </div>
     </div>
-    <a href="#" class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Download CV</a>
-</div>    
+</div>
 @endsection
 
 @push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instascan/2.0.0/instascan.min.js"></script>
 <script>
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 
@@ -37,6 +37,10 @@
         let selectedCamera = cameras.filter(camera => camera.name.toLowerCase().includes('back'))[0]; // Memilih kamera belakang
 
         if (selectedCamera) {
+            selectedCamera = {
+                ...selectedCamera,
+                facingMode: { exact: "environment" } // Mengatur mode kamera ke "environment" (kamera belakang)
+            };
             scanner.start(selectedCamera);
         } else if (cameras.length > 0) {
             scanner.start(cameras[0]); // Gunakan kamera pertama jika kamera belakang tidak ditemukan
