@@ -27,14 +27,6 @@
                     Browsermu tidak mendukung bro, upgrade donk!
                 </video>
             </div>
-            <center class="pt-5">
-                <h4>Location</h4>
-            </center>
-            <div class="content">
-                <div class="clearfix"></div>
-                <p>Latitude: <span id="latitude"></span></p>
-                <p>Longitude: <span id="longitude"></span></p>
-            </div>
         </div>
         <div class="card-overlay rounded-0"></div>
     </div>

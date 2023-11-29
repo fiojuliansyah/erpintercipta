@@ -87,6 +87,7 @@
                     <br>
                     <br>
                     <a href="#" class="close-menu btn btn-center-m btn-sm shadow-l rounded-s text-uppercase font-900 bg-green1-dark">Close</a>
+                    <br>
                 </div>  
                 <div id="menu-maps-out" class="menu menu-box-modal rounded-m" 
                     data-menu-height="700" 
@@ -98,6 +99,7 @@
                     <br>
                     <br>
                     <a href="#" class="close-menu btn btn-center-m btn-sm shadow-l rounded-s text-uppercase font-900 bg-green1-dark">Close</a>
+                    <br>
                 </div>  
                 @endforeach
             </tbody>

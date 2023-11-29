@@ -73,7 +73,7 @@ class AttendanceController extends Controller
         $attendance->lat_in = $request->input('lat_in');
         $attendance->save();
 
-        sleep(3);
+        sleep(1);
     
         return view('mobiles.home');
     }
@@ -105,7 +105,8 @@ class AttendanceController extends Controller
             // Update data image_out
             $lastAttendance->image_out = $path;
             $lastAttendance->save();
-
+            
+            sleep(1);
             return view('mobiles.home');
         }
 
