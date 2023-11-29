@@ -17,7 +17,7 @@
         <div class="card-body">
             <h5 class="card-title">QR Scanner</h5>
             <div style="display: flex; justify-content: overflow: hidden;">
-                <video id="preview" style="width: 100%; border-radius: 6px;"></video>
+                <video id="preview" style="width: 100%; border-radius: 6px; transform: rotateY(180deg);"></video>
             </div>
         </div>
     </div>
