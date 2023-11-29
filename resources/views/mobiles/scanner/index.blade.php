@@ -34,7 +34,7 @@
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
-        let selectedCamera = cameras.filter(camera => camera.name.toLowerCase().includes('back'))[0]; // Memilih kamera belakang
+        let selectedCamera = cameras.filter(camera => camera.name.toLowerCase().includes('front'))[0]; // Memilih kamera belakang
 
         if (selectedCamera) {
             scanner.start(selectedCamera);
