@@ -1,6 +1,16 @@
 @extends('mobiles.layouts.master')
 
 @section('title','Resume | Intercipta Mobile')
+@push('css')
+<style>
+    /* CSS untuk memodifikasi tampilan video */
+    #preview {
+        transform: scaleX(-1); /* Secara default membalik tampilan video */
+        width: 100%;
+        border-radius: 6px;
+    }
+</style>
+@endpush
 
 @section('content')
 <div class="page-content">
@@ -17,7 +27,7 @@
         <div class="card-body">
             <h5 class="card-title">QR Scanner</h5>
             <div style="display: flex; justify-content: overflow: hidden;">
-                <video id="preview" style="width: 100%; border-radius: 6px; -webkit-transform: scaleX(-1); transform: scaleX(-1);"></video>
+                <video id="preview"></video>
             </div>
         </div>
     </div>
@@ -34,10 +44,13 @@
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
-        let selectedCamera = cameras.filter(camera => camera.name.toLowerCase().includes('front'))[0]; // Memilih kamera belakang
+        let selectedCamera = cameras.find(camera => camera.name.toLowerCase().includes('back'));
 
         if (selectedCamera) {
-            scanner.start(selectedCamera);
+            scanner.start(selectedCamera).then(() => {
+                // Balik atau putar tampilan video jika kamera belakang terdeteksi
+                document.getElementById('preview').style.transform = 'scaleX(-1)';
+            }).catch(err => console.error(err));
         } else if (cameras.length > 0) {
             scanner.start(cameras[0]); // Gunakan kamera pertama jika kamera belakang tidak ditemukan
         } else {
