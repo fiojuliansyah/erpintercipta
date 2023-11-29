@@ -16,7 +16,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
 <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 @livewireStyles
-@stack('css')
 </head>
     
 <body class="theme-light" data-highlight="red2">
