@@ -72,8 +72,6 @@ class AttendanceController extends Controller
         $attendance->long_in = $request->input('long_in');
         $attendance->lat_in = $request->input('lat_in');
         $attendance->save();
-
-        sleep(1);
     
         return view('mobiles.home');
     }
@@ -91,6 +89,8 @@ class AttendanceController extends Controller
         if ($lastAttendance) {
             // Update data clock_out
             $lastAttendance->clock_out = $current_time;
+            $lastAttendance->long_out = $request->input('long_out');
+            $lastAttendance->lat_out = $request->input('lat_out');
             $lastAttendance->save();
 
             // Decode data URL gambar keluar ke dalam format gambar yang sesungguhnya
@@ -106,7 +106,6 @@ class AttendanceController extends Controller
             $lastAttendance->image_out = $path;
             $lastAttendance->save();
             
-            sleep(1);
             return view('mobiles.home');
         }
 

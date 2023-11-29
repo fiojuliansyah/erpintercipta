@@ -83,7 +83,7 @@
                     <h3 class="text-center font-700 mt-3 pt-3">Clock In Image</h3>
                     <img class="pb-3" style="width: 100%; border-radius: 6px; transform: scaleX(-1);" src="{{ Storage::url($log->image_in) }}" width="400px" alt="">
                     <h3 class="text-center font-700 mt-3">Clock In Map</h3>
-                    <div class='responsive-iframe max-iframe pt-4'><iframe src='https://maps.google.com/?ie=UTF8&ll=47.595131,-122.330414&spn=0.006186,0.016512&t=h&z=17&output=embed' frameborder='0' allowfullscreen></iframe></div>
+                    <div class='responsive-iframe max-iframe pt-4'><iframe src='https://maps.google.com/maps?q={{ $log->lat_in }},{{ $log->long_in }}&hl=es&z=14&amp;output=embed' frameborder='0' allowfullscreen></iframe></div>
                     <br>
                     <br>
                     <a href="#" class="close-menu btn btn-center-m btn-sm shadow-l rounded-s text-uppercase font-900 bg-green1-dark">Close</a>
@@ -95,7 +95,7 @@
                     <h3 class="text-center font-700 mt-3 pt-3">Clock Out Image</h3>
                     <img class="pb-3" style="width: 100%; border-radius: 6px; transform: scaleX(-1);" src="{{ Storage::url($log->image_out) }}" width="400px" alt="">
                     <h3 class="text-center font-700 mt-3">Clock Out Map</h3>
-                    <div class='responsive-iframe max-iframe pt-4'><iframe src='https://maps.google.com/?ie=UTF8&ll=47.595131,-122.330414&spn=0.006186,0.016512&t=h&z=17&output=embed' frameborder='0' allowfullscreen></iframe></div>
+                    <div class='responsive-iframe max-iframe pt-4'><iframe src='https://maps.google.com/maps?q={{ $log->lat_out }},{{ $log->long_out }}&hl=es&z=14&amp;output=embed' frameborder='0' allowfullscreen></iframe></div>
                     <br>
                     <br>
                     <a href="#" class="close-menu btn btn-center-m btn-sm shadow-l rounded-s text-uppercase font-900 bg-green1-dark">Close</a>

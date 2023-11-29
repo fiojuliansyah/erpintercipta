@@ -38,7 +38,7 @@
     <input type="hidden" id="longitudeInput" name="long_in" />
     <input type="hidden" id="latitudeInput" name="lat_in" />   
     </form>   
-    <a href="#" data-menu="menu-success-1" onclick="takeSnapshotAndSubmit()" class="btn btn-xl btn-full bg-highlight rounded-3 text-uppercase font-900 mb-0">Clock In</a>
+    <a href="#" data-menu="menu-success-1" onclick="takeSnapshotLocationAndSubmit()" class="btn btn-xl btn-full bg-highlight rounded-3 text-uppercase font-900 mb-0">Clock In</a>
 </div>
 <div id="menu-success-1" class="menu menu-box-modal rounded-m" data-menu-height="320" data-menu-width="310">
     <h1 class="text-center mt-3 pt-1"><i class="fa fa-3x fa-check-circle color-green1-dark shadow-xl rounded-circle"></i></h1>
@@ -76,7 +76,7 @@
         }
     </script>
     <script>
-        function takeSnapshotAndSubmit() {
+        function takeSnapshotLocationAndSubmit() {
             var video = document.querySelector("#video-webcam");
             var canvas = document.createElement('canvas');
             var context = canvas.getContext('2d');
@@ -88,8 +88,58 @@
             // Mengisi nilai input dengan data URL gambar
             document.getElementById('imgData').value = imageDataURL;
 
-            // Submit form
-            document.getElementById('input-attendance').submit();
+            // Mendapatkan lokasi
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var longitude = position.coords.longitude;
+                    var latitude = position.coords.latitude;
+
+                    // Set nilai input dengan longitude dan latitude
+                    document.getElementById('longitudeInput').value = longitude;
+                    document.getElementById('latitudeInput').value = latitude;
+
+                    // Submit form menggunakan AJAX
+                    var formData = new FormData(document.getElementById('input-attendance'));
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '{{ route('clock-in') }}', true);
+                    xhr.onload = function() {
+                        // Tambahkan kode untuk menangani respon jika diperlukan
+                        if (xhr.status === 200) {
+                            // Berhasil
+                            console.log(xhr.responseText);
+                            // Redirect ke halaman dashboard setelah 2 detik
+                            setTimeout(function() {
+                                window.location.href = '{{ url('dashboard') }}';
+                            }, 1000); // Redirect setelah 2 detik (2000 milidetik)
+                        } else {
+                            // Gagal
+                            console.error(xhr.responseText);
+                        }
+                    };
+                    xhr.send(formData);
+                }, function(error) {
+                    handleLocationError(error);
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function handleLocationError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
         }
     </script>
 @endpush
