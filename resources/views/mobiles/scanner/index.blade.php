@@ -17,7 +17,7 @@
         <div class="card-body">
             <h5 class="card-title">QR Scanner</h5>
             <div style="display: flex; justify-content: overflow: hidden;">
-                <video id="preview" style="width: 100%; border-radius: 6px; transform: rotateY(0deg);"></video>
+                <video id="preview" style="width: 100%; border-radius: 6px;"></video>
             </div>
         </div>
     </div>
@@ -34,21 +34,15 @@
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
-        let selectedCamera = cameras.filter(camera => camera.name.toLowerCase().includes('back'))[0]; // Memilih kamera belakang
+        const selectedCamera = cameras.find(camera => camera && camera.name.toLowerCase().includes('back')); // Memilih kamera belakang
 
         if (selectedCamera) {
-            selectedCamera = {
-                ...selectedCamera,
-                facingMode: { exact: "environment" } // Mengatur mode kamera ke "environment" (kamera belakang)
-            };
             scanner.start(selectedCamera);
-        } else if (cameras.length > 0) {
-            scanner.start(cameras[0]); // Gunakan kamera pertama jika kamera belakang tidak ditemukan
         } else {
-            console.error('Tidak ada kamera yang ditemukan.');
+            console.error('Kamera belakang tidak ditemukan.');
         }
     }).catch(function (e) {
-        console.error(e);
+        console.error('Error: ', e);
     });
 </script>
 @endpush
