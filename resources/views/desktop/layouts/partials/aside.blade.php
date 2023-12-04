@@ -162,6 +162,25 @@
                                 </span></a>
                         </li>
                         @endcan
+                        @can('warehouse-system')
+                            <li class="menu-header">Warehouse</li>
+                            {{-- <li class="menu-item {{ Request::path() == 'projects/create' ? 'has-active' : '' }}">
+                                <a href="{{ route('projects.create') }}" class="menu-link"><span
+                                        class="menu-icon fas fa-city"></span> <span class="menu-text">Project
+                                        Stepper</span></a>
+                            </li> --}}
+                            <li class="menu-item has-child">
+                                <a href="#" class="menu-link  {{ Request::path() == '#' ? 'has-active' : '' }}"><span
+                                        class="menu-icon fas fa-database"></span> <span class="menu-text">Data
+                                        Product</span></a>
+                                <!-- child menu -->
+                                <ul class="menu">
+                                    <li class="menu-item {{ Request::path() == 'products' ? 'has-active' : '' }}">
+                                        <a href="{{ url('/products') }}" class="menu-link">Products</a>
+                                    </li>
+                                </ul><!-- /child menu -->
+                            </li>
+                        @endcan
                         <!-- .menu-header -->
                         @can('admin-only')
                             <li class="menu-header">Server Side <span class="badge badge-danger">Admin Only</span></li>

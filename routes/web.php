@@ -12,11 +12,13 @@ use App\Http\Controllers\EsignController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\QuantityController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\AgreementController;
 use App\Http\Controllers\ApplicantController;
@@ -108,6 +110,8 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::resource('employees', EmployeeController::class);
     Route::resource('applicants', ApplicantController::class);
     Route::resource('sites', SiteController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('quantities', QuantityController::class);
 
     Route::resource('agreements', AgreementController::class);
     Route::post('/import-agreement',[AgreementController::class,'import'])->name('import-agreement');

@@ -51,28 +51,66 @@
 @endsection
 
 @push('js')
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-expression-recognition"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+
     <script type="text/javascript">
-        // seleksi elemen video
+        // Seleksi elemen video
         var video = document.querySelector("#video-webcam");
 
-        // minta izin user
-        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+        // Mintalah izin pengguna
+        navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia);
 
-        // jika user memberikan izin
+        // Jika pengguna memberikan izin
         if (navigator.getUserMedia) {
-            // jalankan fungsi handleVideo, dan videoError jika izin ditolak
             navigator.getUserMedia({ video: true }, handleVideo, videoError);
         }
 
-        // fungsi ini akan dieksekusi jika  izin telah diberikan
+        // Fungsi ini akan dieksekusi jika izin telah diberikan
         function handleVideo(stream) {
             video.srcObject = stream;
+            // Gunakan faceapi.js untuk mendeteksi wajah
+            // Pastikan gambar pengguna tersedia dalam format yang dapat digunakan oleh faceapi.js
+            // Ganti 'BASE64_USER_IMAGE' dengan data gambar profil pengguna dalam format yang sesuai
+            var userImage = '{{ $imageBase64 }}'; // Ganti dengan data gambar profil pengguna
+            var image = new Image();
+            image.src = userImage;
+            image.onload = function () {
+                Promise.all([
+                    faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models'),
+                    faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models'),
+                    faceapi.nets.faceRecognitionNet.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models'),
+                    faceapi.nets.faceExpressionNet.loadFromUri('https://cdn.jsdelivr.net/npm/face-api.js/models')
+                ]).then(startRecognition);
+            };
+
+            function startRecognition() {
+                video.addEventListener('play', async () => {
+                    const canvas = faceapi.createCanvasFromMedia(video);
+                    document.body.append(canvas);
+                    const displaySize = { width: video.width, height: video.height };
+                    faceapi.matchDimensions(canvas, displaySize);
+
+                    setInterval(async () => {
+                        const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors().withFaceExpressions();
+                        const resizedDetections = faceapi.resizeResults(detections, displaySize);
+                        const faceMatcher = new faceapi.FaceMatcher(resizedDetections);
+
+                        const results = resizedDetections.map(detection => faceMatcher.findBestMatch(detection.descriptor));
+                        console.log(results);
+                        // Lakukan sesuatu dengan hasil pengenalan wajah di sini
+                        // Contoh: bandingkan dengan gambar profil pengguna atau lakukan tindakan lain
+                    }, 1000);
+                });
+            }
         }
 
-        // fungsi ini akan dieksekusi kalau user menolak izin
+        // Fungsi ini akan dieksekusi jika pengguna menolak izin
         function videoError(e) {
-            // do something
-            alert("Izinkan menggunakan webcam untuk demo!")
+            alert("Izinkan menggunakan webcam untuk demo!");
         }
     </script>
     <script>

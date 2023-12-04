@@ -14,7 +14,18 @@ class AttendanceController extends Controller
 {
     public function indexClockIn()
     {
-        return view('mobiles.attendance.clockin');
+        $avatarPath = 'avatars/' . Auth::user()->profile['avatar'];
+        $image = Storage::disk('public')->get($avatarPath);
+        $imageData = base64_encode($image);
+
+        $imageExtension = pathinfo(storage_path('app/public/' . $avatarPath), PATHINFO_EXTENSION);
+        $imageMimeType = 'image/' . $imageExtension;
+
+        $imageBase64 = 'data:' . $imageMimeType . ';base64,' . $imageData;
+
+        dd($imageBase64);
+
+        // return view('mobiles.attendance.clockin', compact('imageBase64'));
     }
 
     public function indexClockOut()
@@ -24,7 +35,6 @@ class AttendanceController extends Controller
 
     public function attendance()
     {
-        // Mendapatkan ID pengguna yang sedang login
         $userId = Auth::id();
     
         // Mendapatkan tanggal saat ini
