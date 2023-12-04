@@ -19,7 +19,7 @@
                  data-tab-items="4" 
                  data-tab-active="bg-highlight activated color-white">
                 <a href="#" data-tab-active data-tab="tab-1">Informasi</a>
-                <a href="#" data-tab="tab-2">Tambah Stock</a>
+                <a href="#" data-tab="tab-2">Tambah</a>
                 <a href="#" data-tab="tab-3">Opname</a>
                 <a href="#" data-tab="tab-4">In & Out</a>
             </div>
@@ -29,7 +29,6 @@
                     <div class="d-flex">
                         <div>
                             <h1>QR Code</h1>
-                            <p class="font-600 color-highlight mt-n3">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
                         </div>
                         <div class="ml-auto">
                         </div>
@@ -40,28 +39,28 @@
                     <div class="divider mt-3 mb-3"></div>
                     <div class="row mb-0">
                         <div class="col-4">
-                            <p class="color-theme font-700">Nama Produk</p>
+                            <p class="color-theme font-700">Produk</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $product->name }}</p>
                         </div>
         
                         <div class="col-4">
-                            <p class="color-theme font-700">ID Produk</p>
+                            <p class="color-theme font-700">ID</p>
                         </div>
                         <div class="col-8">
-                            <p class="font-400">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
+                            <p class="font-400 color-highlight">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
                         </div>
                         
                         <div class="col-4">
-                            <p class="color-theme font-700">Quantity</p>
+                            <p class="color-theme font-700">QTY</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $selisih }}</p>
                         </div>
         
                         <div class="col-4">
-                            <p class="color-theme font-700">Unit</p>
+                            <p class="color-theme font-700">Satuan</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $product->unit }}</p>
@@ -82,7 +81,6 @@
                     <div class="d-flex">
                         <div>
                             <h1>Tambah Stock</h1>
-                            <p class="font-600 color-highlight mt-n3">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
                         </div>
                         <div class="ml-auto">
                         </div>
@@ -90,28 +88,28 @@
                     <div class="divider mt-3 mb-3"></div>
                     <div class="row mb-0">
                         <div class="col-4">
-                            <p class="color-theme font-700">Nama Produk</p>
+                            <p class="color-theme font-700">Produk</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $product->name }}</p>
                         </div>
         
                         <div class="col-4">
-                            <p class="color-theme font-700">ID Produk</p>
+                            <p class="color-theme font-700">ID</p>
                         </div>
                         <div class="col-8">
-                            <p class="font-400">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
+                            <p class="font-400 color-highlight">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
                         </div>
                         
                         <div class="col-4">
-                            <p class="color-theme font-700">Quantity</p>
+                            <p class="color-theme font-700">QTY</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $selisih }}</p>
                         </div>
         
                         <div class="col-4">
-                            <p class="color-theme font-700">Unit</p>
+                            <p class="color-theme font-700">Satuan</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $product->unit }}</p>
@@ -140,12 +138,11 @@
                     </form>
                 </div>
             </div>
-            <div class="tab-content" id="tab-3">
+            <div class="tab-content" id="tab-3">    
                 <div class="content">
                     <div class="d-flex">
                         <div>
                             <h1>Opname</h1>
-                            <p class="font-600 color-highlight mt-n3">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
                         </div>
                         <div class="ml-auto">
                         </div>
@@ -153,28 +150,28 @@
                     <div class="divider mt-3 mb-3"></div>
                     <div class="row mb-0">
                         <div class="col-4">
-                            <p class="color-theme font-700">Nama Produk</p>
+                            <p class="color-theme font-700">Produk</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $product->name }}</p>
                         </div>
         
                         <div class="col-4">
-                            <p class="color-theme font-700">ID Produk</p>
+                            <p class="color-theme font-700">ID</p>
                         </div>
                         <div class="col-8">
-                            <p class="font-400">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
+                            <p class="font-400 color-highlight">{{ $product->floor }}-{{ $product->corridor }}-{{ str_pad($product->id, 5, '0', STR_PAD_LEFT) }}-{{ $product->accurate_id }}</p>
                         </div>
                         
                         <div class="col-4">
-                            <p class="color-theme font-700">Quantity</p>
+                            <p class="color-theme font-700">QTY</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $selisih }}</p>
                         </div>
         
                         <div class="col-4">
-                            <p class="color-theme font-700">Unit</p>
+                            <p class="color-theme font-700">Satuan</p>
                         </div>
                         <div class="col-8">
                             <p class="font-400">{{ $product->unit }}</p>
@@ -224,7 +221,7 @@
                             <tbody>
                                 @foreach ($quantities as $quantity)  
                                 <tr>
-                                    <th scope="row">{{ $quantity->created_at->format('d-m-Y') }}</th>
+                                    <th scope="row">{{ $quantity->created_at->format('d-m-y') }}</th>
                                     @if($quantity->opname == 1)
                                         <td class="color-yellow1-dark">{{ $quantity->in ?? '' }}</td>
                                     @else
@@ -244,7 +241,12 @@
                     <div class="content mb-2">
                         <table class="table table-borderless text-center rounded-sm shadow-l" style="overflow: hidden;">
                             <thead>
-                                    <th class="color-theme">Stock Summary</th>
+                                <tr class="bg-gray1-dark">
+                                    <th class="color-theme">Summary</th>
+                                    <th class="color-theme"></th>
+                                    <th class="color-theme"></th>
+                                    <th class="color-theme"></th>
+                                </tr>
                             </thead>
                             <thead>
                                 <tr class="bg-gray1-dark">
@@ -276,7 +278,5 @@
             </div>
         </div>
     </div>   
-    <!-- footer and footer card-->
-    <div class="footer" data-menu-load="menu-footer.html"></div>  
 </div> 
 @endsection

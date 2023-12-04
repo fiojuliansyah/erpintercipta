@@ -58,12 +58,16 @@ class ProductController extends Controller
         $product = new Product;
         $product->accurate_id = $request->accurate_id;
         $product->name = $request->name;
+        $product->floor = $request->floor;
+        $product->corridor = $request->corridor;
         $product->unit = $request->unit;
         $product->save();
 
         $quantity = new Quantity;
         $quantity->product_id = $product->id;
         $quantity->in = $request->in;
+        $quantity->opname = '1';
+        $quantity->description = 'opname';
         $quantity->save();
 
         $qrLink = route('products.show', ['product' => $product->id]);
