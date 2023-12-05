@@ -11,7 +11,7 @@
         <p class="font-11 opacity-70">Form</p>
     </div>
     <div class="col-3 mb-n2">
-        <a href="{{ route('iform') }}" class="icon icon-l bg-magenta2-dark rounded-s shadow-l"><i class="fas fa-warehouse font-22"></i><br></a>
+        <a href="{{ route('chain') }}" class="icon icon-l bg-magenta2-dark rounded-s shadow-l"><i class="fas fa-warehouse font-22"></i><br></a>
         <p class="font-11 opacity-70">Warehouse</p>
     </div>
     <div class="col-3 mb-n2">

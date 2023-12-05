@@ -29,7 +29,8 @@
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 
     scanner.addListener('scan', function (content) {
-        window.open(content, '_blank');
+        // Mengubah URL halaman saat ini ke URL yang dipindai
+        window.location.href = content;
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {

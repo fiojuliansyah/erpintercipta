@@ -36,6 +36,16 @@ class HomeController extends Controller
         return view('mobiles.iform.index');
     }
 
+    public function chain()
+    {
+        return view('mobiles.chain.index');
+    }
+
+    public function itemreq()
+    {
+        return view('mobiles.chain.itemreq');
+    }
+
     public function profile()
     {
         return view('mobiles.profile.index');

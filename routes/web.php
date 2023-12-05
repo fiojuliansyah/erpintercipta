@@ -57,6 +57,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::get('/mobiles/iform', [HomeController::class, 'iform'])->name('iform');
     Route::get('/mobiles/profile', [HomeController::class, 'profile'])->name('profile');
     Route::get('/mobiles/scan', [HomeController::class, 'scan'])->name('scan');
+    Route::get('/mobiles/chain', [HomeController::class, 'chain'])->name('chain');
     
     
     Route::resource('dashboard', DashboardController::class);
