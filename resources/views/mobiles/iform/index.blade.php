@@ -16,7 +16,7 @@
     <div class="card card-style">
         <div class="content">
             <p>
-                Pages styled to feel like Classic Site Pages or App Styled Pages. These are all highly flexible and incredibly easy to use and edit.
+                Formulir elektronik atau pengisian formulir secara digital
             </p>
         </div>
     </div>

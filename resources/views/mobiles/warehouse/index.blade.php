@@ -1,12 +1,12 @@
 @extends('mobiles.layouts.master')
 
-@section('title','Chain | Intercipta Mobile')
+@section('title','Warehouse | Intercipta Mobile')
 
 @section('content')
 <div class="page-content">
         
     <div class="page-title page-title-small">
-        <h2></a>Chain</h2>
+        <h2></a>Warehouse</h2>
     </div>
     <div class="card header-card shape-rounded" data-card-height="150">
         <div class="card-overlay bg-highlight opacity-95"></div>
@@ -16,7 +16,7 @@
     <div class="card card-style">
         <div class="content">
             <p>
-                Pages styled to feel like Classic Site Pages or App Styled Pages. These are all highly flexible and incredibly easy to use and edit.
+                Modul sistem manajemen penyimpanan atau gudang untuk menyimpan dan mengelola data atau barang
             </p>
         </div>
     </div>
@@ -24,8 +24,8 @@
     <div class="card card-style">
         <div class="content mt-0 mb-0">           
             <div class="list-group list-custom-small list-icon-0">
-                <a href="#"><i class="fas fa-boxes color-red2-dark"></i><span>Request Item</span><i class="fa fa-angle-right"></i></a>
-                <a href="page-careers.html"><i class="fa fa-handshake color-green1-dark"></i><span>Careers</span><i class="fa fa-angle-right"></i></a>
+                <a href="{{ route('itemreq') }}"><i class="fas fa-boxes color-red2-dark"></i><span>Request Item</span><i class="fa fa-angle-right"></i></a>
+                {{-- <a href="page-careers.html"><i class="fa fa-handshake color-green1-dark"></i><span>Careers</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-calendar.html"><i class="fa fa-calendar-alt color-blue2-dark"></i><span>Calendars</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-chat.html"><i class="fa fa-comments color-orange-dark"></i><span>Chat Bubbles</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-cover.html"><i class="fa fa-image color-blue2-dark"></i><span>Coverpage</span><i class="fa fa-angle-right"></i></a>
@@ -55,7 +55,7 @@
                 <a href="page-terms.html"><i class="fa fa-copyright color-blue1-dark"></i><span>Terms of Service</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-vcard.html"><i class="fa fa-id-card color-green2-dark"></i><span>V-Card</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-wallet.html"><i class="fa fa-wallet color-brown1-dark"></i><span>Wallet</span><i class="fa fa-angle-right"></i></a>
-                <a href="page-contact.html" class="no-border"><i class="fa fa-envelope color-blue2-dark"></i><span>Contact Page</span><i class="fa fa-angle-right"></i></a>
+                <a href="page-contact.html" class="no-border"><i class="fa fa-envelope color-blue2-dark"></i><span>Contact Page</span><i class="fa fa-angle-right"></i></a> --}}
             </div>
         </div>
     </div>

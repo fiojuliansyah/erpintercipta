@@ -90,16 +90,16 @@
                         <img src="https://img.icons8.com/color/48/agreement.png" alt="" width="60px" style="margin-bottom: 5px; padding-top:30px;">
                         <h5 class="font-16 pt-1">Form</h5>
                         <p class="line-height-s font-11">
-                            Perencanaan<br>Kerja
+                            Formulir<br>elektronik
                         </p>
                     </div>
                 </a>
-                <a href="{{ route('chain') }}">
+                <a href="{{ route('warehouse') }}">
                     <div class="item bg-theme rounded-m shadow-m" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                         <img src="https://img.icons8.com/color/48/storage_1.png" alt="" width="60px" style="margin-bottom: 5px; padding-top:30px;">
-                        <h5 class="font-16 pt-1">Chain</h5>
+                        <h5 class="font-16 pt-1">Warehouse</h5>
                         <p class="line-height-s font-11">
-                            Perencanaan<br>Kerja
+                            Sistem<br>Pergudangan
                         </p>
                     </div>
                 </a>

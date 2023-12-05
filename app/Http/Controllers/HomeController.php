@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Career;
+use App\Models\Product;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 
@@ -36,14 +37,15 @@ class HomeController extends Controller
         return view('mobiles.iform.index');
     }
 
-    public function chain()
+    public function warehouse()
     {
-        return view('mobiles.chain.index');
+        return view('mobiles.warehouse.index');
     }
 
     public function itemreq()
     {
-        return view('mobiles.chain.itemreq');
+        $products = Product::all(); 
+        return view('mobiles.warehouse.itemreq', compact('products'));
     }
 
     public function profile()
