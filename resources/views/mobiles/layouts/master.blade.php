@@ -18,7 +18,7 @@
 @livewireStyles
 </head>
     
-<body class="theme-light" data-highlight="red2">
+<body class="theme-light" data-highlight="yellow2">
     
 {{-- <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div> --}}
     
