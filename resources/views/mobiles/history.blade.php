@@ -6,6 +6,26 @@
     <div class="page-content">
 
         <div class="page-title page-title-small">
+            <div style="position: fixed; top: 20px; right: 20px; z-index: 1000; width: 300px;">
+                @if(session('success'))
+                    <div class="show-business-opened mb-4">
+                        <div class="ml-3 mr-3 alert alert-small rounded-s shadow-xl bg-green1-dark" role="alert">
+                            <span><i class="fa fa-check"></i></span>
+                            <strong>{{ session('success') }}</strong>
+                            <button type="button" class="close color-white opacity-60 font-16" data-dismiss="alert" aria-label="Close">&times;</button>
+                        </div>
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="show-business-opened mb-4">
+                        <div class="ml-3 mr-3 alert alert-small rounded-s shadow-xl bg-red1-dark" role="alert">
+                            <span><i class="fas fa-exclamation-triangle"></i></span>
+                            <strong>{{ session('error') }}</strong>
+                            <button type="button" class="close color-white opacity-60 font-16" data-dismiss="alert" aria-label="Close">&times;</button>
+                        </div>
+                    </div>
+                @endif
+            </div>
             <h2>Histori</h2>
         </div>
         <div class="card header-card shape-rounded" data-card-height="150">

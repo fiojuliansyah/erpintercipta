@@ -35,25 +35,33 @@ class CandidateController extends Controller
 
     public function store(Request $request)
     {
+        // Mengecek apakah pengguna sudah membuat calon sebelumnya
+        $existingCandidate = Candidate::where('user_id', auth()->id())->first();
+    
+        if ($existingCandidate) {
+            // Redirect atau lakukan tindakan lain sesuai kebutuhan Anda
+            return redirect()->route('history')->with('error', 'Anda sudah melamar pekerjaan sebelumnya.');
+        }
+    
+        // Jika pengguna belum membuat calon, lanjutkan dengan proses pembuatan
         $candidate = new Candidate;
         $candidate->status = '0';
-        $candidate->user_id = $request->user_id;
+        $candidate->user_id = auth()->id(); // Menggunakan ID pengguna yang diautentikasi
         $candidate->career_id = $request->career_id;
         $candidate->save();
-
+    
         $statory = new Statory;
         $statory->status = '0';
         $statory->candidate_id = $candidate->id;
         $statory->save();
-
+    
         $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
         $qrCode = QrCode::size(200)->generate($qrLink);
         $candidate->qr_link = $qrCode;
         $candidate->save();
-
-        return redirect('/dashboard')
-                        ->with('success','Berhasil Melamar Pekerjaan');
-    }
+    
+        return redirect()->route('history')->with('success', 'Berhasil Melamar Pekerjaan');
+    }    
 
     public function QRUpdate(Request $request, $id)
     {   

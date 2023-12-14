@@ -47,8 +47,8 @@
                         </td>
                         {{-- <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td> --}}
                         <td>USER - {{ str_pad($candidate->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $candidate->user['name'] }}</td>
-                        <td>{{ $candidate->site['name'] }}</td>
+                        <td>{{ $candidate->user['name'] ?? '' }}</td>
+                        <td>{{ $candidate->site['name'] ?? '' }}</td>
                         <td><a class="btn btn-primary" target="blank" href="{{ route('document-print', $candidate->id) }}">Print</a></td>               
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
