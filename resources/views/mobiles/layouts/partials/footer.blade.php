@@ -1,4 +1,4 @@
-@if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
+@if (Auth::user()->hasRole('employee') or (Auth::user()->profile && array_key_exists('department', Auth::user()->profile)))
 <div id="footer-bar" class="footer-bar-5">
     <a href="#"><i class="fa fa-envelope"></i><span>Inbox</span></a>
     <a href="#" ><i class="fas fa-newspaper"></i><span>Workplace</span></a>
