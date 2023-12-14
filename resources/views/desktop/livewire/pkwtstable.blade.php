@@ -63,7 +63,7 @@
                         </div><!-- /.modal-header -->
                         <!-- .modal-body -->
                         <div class="modal-body">
-                            <form action="{{ route('import-pkwt') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('import-agreement') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="custom-file">
                                     <input type="file" name="file" class="custom-file-input"
@@ -74,26 +74,34 @@
                                     @enderror
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="{{ asset('/admin/format_import/format_import_pkwt.xlsx') }}"
+                                    <a href="{{ asset('/admin/format_import/format_import_agreement.xlsx') }}"
                                         class="dropdown-item"><img
                                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
                                             width="20" alt="">&nbsp;&nbsp;Download Format Excel</a>
                                     <button type="submit" class="btn btn-success">Import Data</button>
                                 </div>
                             </form>
-                        </div><!-- /.modal-body -->
-                        <!-- .modal-footer -->
-                    </div><!-- /.modal-content -->
+                        </div>
+                    </div>
                 </div><!-- /.modal-dialog -->
             </div>
             <div class="dropdown">
                 <button type="button" class="btn btn-light" data-toggle="dropdown"><i
                         class="oi oi-data-transfer-download"></i> <span>Export</span> <span
                         class="fa fa-caret-down"></span></button>
-                <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right">
+                    <p style="text-align: center">Export Pkwt</p>
                     <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export Excel</button>
+                    <div class="dropdown-arrow"></div><button wire:click="exportPdf" class="dropdown-item"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
+                            width="20" alt="">&nbsp;&nbsp;Export PDF</button>
+                            <br>
+                    <p style="text-align: center">Export Agreement</p>
+                    <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
+                        width="20" alt="">&nbsp;&nbsp;Export Excel</button>
                     <div class="dropdown-arrow"></div><button wire:click="exportPdf" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export PDF</button>
