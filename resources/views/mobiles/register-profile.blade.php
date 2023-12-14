@@ -80,7 +80,7 @@
             </a>
             <a href="#" data-menu="instant-3" class="card card-style" data-card-height="150">
                 <div class="card-center">
-                    <p class="color-white pl-3 mt-n2 mb-0 opacity-60">Dengan mengisi Formulir diatas, saya menyatakan bahwa Pengrekrutan di Intercipta Corporation dengan tegas tidak dipungut Biaya Apapun</p>
+                    <p class="pl-3 mt-n2 mb-0 opacity-60">Dengan mengisi Formulir diatas, saya menyatakan bahwa Pengrekrutan di Intercipta Corporation dengan tegas tidak dipungut Biaya Apapun</p>
                 </div>
                 <span class="badges bg-danger" style="text-align: center">Pernyataan</span>
             </a>
