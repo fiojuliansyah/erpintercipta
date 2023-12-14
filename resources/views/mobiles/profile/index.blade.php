@@ -26,7 +26,7 @@
     <div class="card card-style">
         <div class="content mt-0 mb-0">           
             <div class="list-group list-custom-small list-icon-0">
-                <a href="#"><i class="fa fa-image color-blue2-dark"></i><span>Ganti Foto Profil</span><i class="fa fa-angle-right"></i></a>
+                <a href="{{ url('/register-profile') }}"><i class="fa fa-user color-blue2-dark"></i><span>Registrasi Ulang</span><i class="fa fa-angle-right"></i></a>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-power-off color-red2-dark"></i><span>Logout</span><i class="fa fa-angle-right"></i></a>
                 {{-- <a href="page-careers.html"><i class="fa fa-handshake color-green1-dark"></i><span>Careers</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-calendar.html"><i class="fa fa-calendar-alt color-blue2-dark"></i><span>Calendars</span><i class="fa fa-angle-right"></i></a>

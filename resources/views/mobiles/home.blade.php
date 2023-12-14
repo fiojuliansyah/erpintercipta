@@ -179,9 +179,6 @@
             <div class="page-title page-title-small" style="margin-top: 50px">
                 <h3>MOBILE</h3>
                 <h6>Apps</h6>
-                @if (Auth::user()->hasRole('employee') or (Auth::user()->profile && Auth::user()->profile->department))
-                   <p>*Anda belum menyelesaikan registrasi profil</p> 
-                @endif
             </div>
 
             <div class="card card-style" style="margin-top: 50px">
