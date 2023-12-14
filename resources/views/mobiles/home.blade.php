@@ -3,7 +3,7 @@
 @section('title','Beranda | Intercipta Mobile')
 
 @section('content')
-    @if (Auth::user()->hasRole('employee') or Auth::user()->profile['department'])
+    @if (Auth::user()->hasRole('employee') or (Auth::user()->profile && array_key_exists('department', Auth::user()->profile)))
         <div class="page-content">
             <div class="page-title page-title-small" style="margin-top: 50px">
                 <h3>MOBILE</h3>
