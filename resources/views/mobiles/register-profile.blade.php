@@ -23,16 +23,29 @@
     <div id="page">
 
         <!-- header and footer bar go here-->
+
         <div class="page-content">
 
             <div class="page-title page-title-small">
+                <div style="position: fixed; top: 20px; right: 20px; z-index: 1000; width: 300px;">
+                    @foreach(['nickname', 'address', 'birth_place', 'birth_date', 'religion', 'person_status', 'mother_name', 'stay_in', 'family_address', 'gender', 'weight', 'height', 'hobby', 'bank_account', 'bank_name', 'family_number', 'avatar', 'card_ktp', 'card_ijazah', 'card_family'] as $field)
+                        @error($field)
+                            <div class="show-business-opened mb-4">
+                                <div class="ml-3 mr-3 alert alert-small rounded-s shadow-xl bg-red1-dark" role="alert">
+                                    <span><i class="fas fa-exclamation-triangle"></i></span>
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="close color-white opacity-60 font-16" data-dismiss="alert" aria-label="Close">&times;</button>
+                                </div>
+                            </div>
+                        @enderror
+                    @endforeach
+                </div>
                 <h2>Data Personal</h2>
             </div>
             <div class="card header-card shape-rounded" data-card-height="150">
                 <div class="card-overlay bg-highlight opacity-95"></div>
                 <div class="card-overlay dark-mode-tint"></div>
             </div>
-
             <a href="#" id="formLink" data-menu="instant-1" class="card card-style" data-card-height="150">
                 <div class="card-center">
                     <h1 class="color-white pl-3">Identintas Diri</h1>
@@ -135,31 +148,31 @@
                             <span>Nama Panggilan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="nickname" placeholder="Isi disini!" required>
+                                <input type="name" name="nickname" value="{{ old('nickname') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Alamat</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="address" placeholder="Isi disini!" required>
+                                <input type="name" name="address" value="{{ old('address') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tempat Lahir</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="birth_place" placeholder="Isi disini!" required>
+                                <input type="name" name="birth_place" value="{{ old('birth_place') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tanggal Lahir</span>
                             <div class="input-style input-style-1 input-required">
                                 <em><i class="fa fa-angle-down"></i></em>
-                                <input type="date" name="birth_date" required>
+                                <input type="date" name="birth_date" value="{{ old('birth_date') }}" required>
                             </div>
                             <br>
                             <span>Agama</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="religion" placeholder="Isi disini!" required>
+                                <input type="name" name="religion" value="{{ old('religion') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Status</span>
@@ -167,21 +180,21 @@
                                 <em><i class="fa fa-angle-down"></i></em>
                                 <select name="person_status" required>
                                     <option value="default" disabled selected>Pilih status perkawinan</option>
-                                    <option value="TK-0"> TK-0 : Tidak Kawin (lajang/janda/duda) </option>
-                                    <option value="TK-1"> TK-1 : Duda/Janda (punya anak 1) </option>
-                                    <option value="TK-2"> TK-2 : Duda/Janda (punya anak 2) </option>
-                                    <option value="TK-3"> TK-3 : Duda/Janda (punya anak 3) </option>
-                                    <option value="K-0"> K-0 : Kawin </option>
-                                    <option value="K-1"> K-1 : Kawin (punya anak 1) </option>
-                                    <option value="K-2"> K-2 : Kawin (punya anak 2) </option>
-                                    <option value="K-3"> K-3 : Kawin (punya anak 3) </option>
+                                    <option value="TK-0" {{ old('person_status') == 'TK-0' ? 'selected' : '' }}>TK-0 : Tidak Kawin (lajang/janda/duda)</option>
+                                    <option value="TK-1" {{ old('person_status') == 'TK-1' ? 'selected' : '' }}>TK-1 : Duda/Janda (punya anak 1)</option>
+                                    <option value="TK-2" {{ old('person_status') == 'TK-2' ? 'selected' : '' }}>TK-2 : Duda/Janda (punya anak 2)</option>
+                                    <option value="TK-3" {{ old('person_status') == 'TK-3' ? 'selected' : '' }}>TK-3 : Duda/Janda (punya anak 3)</option>
+                                    <option value="K-0" {{ old('person_status') == 'K-0' ? 'selected' : '' }}>K-0 : Kawin</option>
+                                    <option value="K-1" {{ old('person_status') == 'K-1' ? 'selected' : '' }}>K-1 : Kawin (punya anak 1)</option>
+                                    <option value="K-2" {{ old('person_status') == 'K-2' ? 'selected' : '' }}>K-2 : Kawin (punya anak 2)</option>
+                                    <option value="K-3" {{ old('person_status') == 'K-3' ? 'selected' : '' }}>K-3 : Kawin (punya anak 3)</option>
                                 </select>
                             </div>
                             <br>
                             <span>Nama Ibu Kandung</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="mother_name" placeholder="Isi disini!" required>
+                                <input type="name" name="mother_name" value="{{ old('mother_name') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tinggal Bersama</span>
@@ -189,23 +202,23 @@
                                 <em><i class="fa fa-angle-down"></i></em>
                                 <select name="stay_in" required>
                                     <option value="default" disabled selected>Pilih tinggal bersama</option>
-                                    <option value="Rumah Sendiri"> Rumah Sendiri </option>
-                                    <option value="Orang Tua"> Orang Tua </option>
-                                    <option value="Saudara/Family"> Saudara/Family </option>
-                                    <option value="KOS"> KOS </option>
+                                    <option value="Rumah Sendiri" {{ old('stay_in') == 'Rumah Sendiri' ? 'selected' : '' }}>Rumah Sendiri</option>
+                                    <option value="Orang Tua" {{ old('stay_in') == 'Orang Tua' ? 'selected' : '' }}>Orang Tua</option>
+                                    <option value="Saudara/Family" {{ old('stay_in') == 'Saudara/Family' ? 'selected' : '' }}>Saudara/Family</option>
+                                    <option value="KOS" {{ old('stay_in') == 'KOS' ? 'selected' : '' }}>KOS</option>
                                 </select>
                             </div>
                             <br>
                             <span>Nama Saudara/Family, KOS, Pemilik Rumah</span>
                             <div class="input-style input-style-1">
                                 <em>(opsional)</em>
-                                <input type="name" name="family_name" placeholder="Isi disini!">
+                                <input type="name" name="family_name" value="{{ old('family_name') }}" placeholder="Isi disini!">
                             </div>
                             <br>
-                            <span>Alamat Saudara/Family, KOS, Pemilik Rumah</span>
+                            <span>Alamat Sekarang</span>
                             <div class="input-style input-style-1">
                                 <em>(opsional)</em>
-                                <input type="name" name="family_address" placeholder="Isi disini!">
+                                <input type="name" name="family_address" value="{{ old('family_address') }}" placeholder="Isi disini!">
                             </div>
                             <br>
                             <span>Jenis Kelamin</span>
@@ -213,34 +226,34 @@
                                 <em><i class="fa fa-angle-down"></i></em>
                                 <select name="gender" required>
                                     <option value="default" disabled selected>Pilih jenis kelamin</option>
-                                    <option value="Laki-laki"> Laki-Laki </option>
-                                    <option value="Perempuan"> Perempuan </option>
+                                    <option value="Laki-laki" {{ old('gender') == 'Laki-laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                    <option value="Perempuan" {{ old('gender') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                             <br>
                             <span>Berat Badan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>Kg (wajib)</em>
-                                <input type="tlp" name="weight" placeholder="Isi disini!" required>
+                                <input type="tlp" name="weight" value="{{ old('weight') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Tinggi Badan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>Cm (wajib)</em>
-                                <input type="tlp" name="height" placeholder="Isi disini!" required>
+                                <input type="tlp" name="height" value="{{ old('height') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Hobi</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="hobby" placeholder="Isi disini!" required>
+                                <input type="name" name="hobby" value="{{ old('hobby') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Nomor Rekening</span>
                             <p class="mb-0" style="color: red">beri tanda (-) jika tidak mempunyai No Rekening</p>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="bank_account" placeholder="Isi disini!" required>
+                                <input type="name" name="bank_account" value="{{ old('bank_account') }}" placeholder="Isi disini!" required>
                             </div>
                             <br>
                             <span>Nama Bank</span>
@@ -248,14 +261,14 @@
                                 <em><i class="fa fa-angle-down"></i></em>
                                 <select name="bank_name" required>
                                     <option value="default" disabled selected>Pilih BANK</option>
-                                    <option value=""> Tidak Memiliki BANK </option>
-                                    <option value="BCA"> BCA </option>
-                                    <option value="BRI"> BRI </option>
-                                    <option value="MANDIRI"> MANDIRI </option>
-                                    <option value="CIMB NIAGA"> CIMB NIAGA </option>
-                                    <option value="BNI"> BNI </option>
-                                    <option value="DANAMON"> DANAMON </option>
-                                    <option value="ARTHA GRAHA"> ARTHA GRAHA </option>
+                                    <option value="" {{ old('bank_name') == '-' ? 'selected' : '' }}>Tidak Memiliki BANK</option>
+                                    <option value="BCA" {{ old('bank_name') == 'BCA' ? 'selected' : '' }}>BCA</option>
+                                    <option value="BRI" {{ old('bank_name') == 'BRI' ? 'selected' : '' }}>BRI</option>
+                                    <option value="MANDIRI" {{ old('bank_name') == 'MANDIRI' ? 'selected' : '' }}>MANDIRI</option>
+                                    <option value="CIMB NIAGA" {{ old('bank_name') == 'CIMB NIAGA' ? 'selected' : '' }}>CIMB NIAGA</option>
+                                    <option value="BNI" {{ old('bank_name') == 'BNI' ? 'selected' : '' }}>BNI</option>
+                                    <option value="DANAMON" {{ old('bank_name') == 'DANAMON' ? 'selected' : '' }}>DANAMON</option>
+                                    <option value="ARTHA GRAHA" {{ old('bank_name') == 'ARTHA GRAHA' ? 'selected' : '' }}>ARTHA GRAHA</option>
                                 </select>
                             </div>
                         </div>
@@ -266,19 +279,19 @@
                             <span>Nama Referensi</span>
                             <div class="input-style input-style-1">
                                 <em>(opsional)</em>
-                                <input type="name" name="reference" placeholder="Isi disini!">
+                                <input type="name" name="reference" value="{{ old('reference') }}" placeholder="Isi disini!">
                             </div>
                             <br>
                             <span>Pekerjaan Referensi</span>
                             <div class="input-style input-style-1">
                                 <em>(opsional)</em>
-                                <input type="name" name="reference_job" placeholder="Isi disini!">
+                                <input type="name" name="reference_job" value="{{ old('reference_job') }}" placeholder="Isi disini!">
                             </div>
                             <br>
                             <span>Alamat Referensi</span>
                             <div class="input-style input-style-1">
                                 <em>(opsional)</em>
-                                <input type="name" name="reference_address" placeholder="Isi disini!">
+                                <input type="name" name="reference_address" value="{{ old('reference_address') }}" placeholder="Isi disini!">
                             </div>
                         </div>
                     </div>
@@ -304,15 +317,14 @@
                         <p style="color: red; text-align: center; margin-top: 30px;">Dokumen Wajib</p>
                         <div class="card card-style">
                             <div class="content mb-0">
-                                <h3>Upload KTP</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="card_ktp" id="card_ktp"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
-                                    <p class="upload-file-text color-white">Upload KTP</p>
-                                    <img src="{{ asset('') }}mobile/images/empty.png" id="ktpImage">
-                                </div>
-                                <br>
+                              <h3>Upload KTP</h3>
+                              <p>*jpg, jpeg, png</p>
+                              <div class="file-data">
+                                <input type="file" name="card_ktp" id="card_ktp" class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
+                                <p class="upload-file-text color-white">Upload KTP</p>
+                                <img src="{{ asset('') }}mobile/images/empty.png" id="ktpImage" class="overlay">
+                              </div>
+                              <br>
                             </div>
                         </div>
                         <div class="card card-style">
@@ -341,7 +353,7 @@
                                 <span>No Kartu Keluarga</span>
                                 <div class="input-style input-style-1 input-required">
                                     <em>(wajib)</em>
-                                    <input type="tlp" name="family_number" placeholder="Isi disini!" required>
+                                    <input type="tlp" name="family_number" value="{{ old('family_number') }}" placeholder="Isi disini!" required>
                                 </div>
                                 <br>
                             </div>
@@ -380,7 +392,7 @@
                                 <span>No NPWP</span>
                                 <div class="input-style input-style-1">
                                     <em>(wajib)</em>
-                                    <input type="tlp" name="npwp_number" placeholder="Isi disini!">
+                                    <input type="tlp" name="npwp_number" value="{{ old('npwp_number') }}" placeholder="Isi disini!">
                                 </div>
                                 <br>
                             </div>
@@ -427,7 +439,7 @@
                                 <span>Nama Dokumen</span>
                                 <div class="input-style input-style-1">
                                     <em>(wajib)</em>
-                                    <input type="name" name="add_name_document_a">
+                                    <input type="name" name="add_name_document_a" value="{{ old('add_name_document_a') }}">
                                 </div>
                                 <br>
                             </div>
@@ -445,7 +457,7 @@
                                 <span>Nama Dokumen</span>
                                 <div class="input-style input-style-1">
                                     <em>(wajib)</em>
-                                    <input type="name" name="add_name_document_b">
+                                    <input type="name" name="add_name_document_b" value="{{ old('add_name_document_b') }}">
                                 </div>
                                 <br>
                             </div>
@@ -463,7 +475,7 @@
                                 <span>Nama Dokumen</span>
                                 <div class="input-style input-style-1">
                                     <em>(wajib)</em>
-                                    <input type="name" name="add_name_document_c">
+                                    <input type="name" name="add_name_document_c" value="{{ old('add_name_document_c') }}">
                                 </div>
                                 <br>
                             </div>
@@ -492,25 +504,25 @@
                             <div class="input-style has-icon input-style-1 input-required">
                                 <i class="input-icon fa fa-user"></i>
                                 <em>(wajib)</em>
-                                <input type="name" name="company_name_a" placeholder="Isi disini!">
+                                <input type="name" name="company_name_a" value="{{ old('company_name_a') }}">
                             </div>
                             <br>
                             <span>Periode</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="period_a" placeholder="Isi disini!">
+                                <input type="name" name="period_a" value="{{ old('period_a') }}">
                             </div>
                             <br>
                             <span>Jabatan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="position_a" placeholder="Isi disini!">
+                                <input type="name" name="position_a"  value="{{ old('position_a') }}">
                             </div>
                             <br>
                             <span>Gaji</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="salary_a" placeholder="Isi disini!">
+                                <input type="name" name="salary_a"  value="{{ old('salary_a') }}">
                             </div>
                         </div>
                     </div>
@@ -520,25 +532,25 @@
                             <div class="input-style has-icon input-style-1 input-required">
                                 <i class="input-icon fa fa-user"></i>
                                 <em>(wajib)</em>
-                                <input type="name" name="company_name_b" placeholder="Isi disini!">
+                                <input type="name" name="company_name_b" value="{{ old('company_name_b') }}">
                             </div>
                             <br>
                             <span>Periode</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="period_b" placeholder="Isi disini!">
+                                <input type="name" name="period_b" value="{{ old('period_b') }}">
                             </div>
                             <br>
                             <span>Jabatan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="position_b" placeholder="Isi disini!">
+                                <input type="name" name="position_b" value="{{ old('position_b') }}">
                             </div>
                             <br>
                             <span>Gaji</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="salary_b" placeholder="Isi disini!">
+                                <input type="name" name="salary_b" value="{{ old('salary_b') }}">
                             </div>
                         </div>
                     </div>
@@ -548,25 +560,25 @@
                             <div class="input-style has-icon input-style-1 input-required">
                                 <i class="input-icon fa fa-user"></i>
                                 <em>(wajib)</em>
-                                <input type="name" name="company_name_c" placeholder="Isi disini!">
+                                <input type="name" name="company_name_c" value="{{ old('company_name_c') }}">
                             </div>
                             <br>
                             <span>Periode</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="period_c" placeholder="Isi disini!">
+                                <input type="name" name="period_c" value="{{ old('period_c') }}">
                             </div>
                             <br>
                             <span>Jabatan</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="position_c" placeholder="Isi disini!">
+                                <input type="name" name="position_c" value="{{ old('position_c') }}">
                             </div>
                             <br>
                             <span>Gaji</span>
                             <div class="input-style input-style-1 input-required">
                                 <em>(wajib)</em>
-                                <input type="name" name="salary_c" placeholder="Isi disini!">
+                                <input type="name" name="salary_c" value="{{ old('salary_c') }}">
                             </div>
                         </div>
                     </div>
@@ -578,7 +590,6 @@
         </form>
 
     </div>
-
 
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/jquery.js"></script>
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/bootstrap.min.js"></script>

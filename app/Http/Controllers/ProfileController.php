@@ -54,6 +54,61 @@ class ProfileController extends Controller
 
     public function updateUserDetail(Request $request)
     {
+        $request->validate([
+            'nickname' => 'required',
+            'address' => 'required',
+            'nickname' => 'required',
+            'address' => 'required',
+            'birth_place' => 'required',
+            'birth_date' => 'required',
+            'religion' => 'required',
+            'person_status' => 'required',
+            'mother_name' => 'required',
+            'stay_in' => 'required',
+            'family_address' => 'required',
+            'gender' => 'required',
+            'weight'  => 'required',
+            'height' => 'required',
+            'hobby' => 'required',
+            'bank_account' => 'required',
+            'bank_name' => 'required',
+
+            'family_number' => 'required',
+
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
+            'card_ktp' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
+            'card_family' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
+            'card_ijazah' => 'required|image|mimes:jpeg,png,jpg,gif|max:1024',
+
+        ],[
+            'nickname.required' => 'Nama Panggilan harus diisi.',
+            'address.required' => 'Alamat harus diisi.',
+            'avatar.required' => 'Foto Profil harus diupload',
+            'birth_place.required' => 'Tempat Lahir harus diisi',
+            'birth_date.required' => 'Tanggal Lahir harus diisi',
+            'religion.required' => 'Agama harus diisi',
+            'person_status.required' => 'Status Hubungan harus diisi',
+            'mother_name.required' => 'Nama Ibu kandung harus diisi',
+            'stay_in.required' => 'Tinggal Bersama harus diisi',
+            'family_name.required' => 'Nama Keluarga harus diisi',
+            'family_address.required' => 'Alamat Sekarang harus diisi',
+            'gender.required' => 'Jenis Kelamin harus diisi',
+            'weight.required'  => 'Berat harus diisi',
+            'height.required' => 'Tinggi harus diisi',
+            'hobby.required' => 'Hobi harus diisi',
+            'bank_account.required' => 'No Rekening harus diisi',
+            'bank_name.required' => 'nama Bank harus diisi',
+
+            'family_number.required' => 'No Kartu Keluarga harus diisi',
+            'card_ktp.required' => 'SCAN KTP harus diupload',
+            'card_ijazah.required' => 'SCAN IJAZAH harus diupload',
+            'card_family.required' => 'SCAN KK harus diupload',
+            'card_ktp.mimes' => 'SCAN KTP harus jpeg,png,jpg,gif',
+            'card_ijazah.mimes' => 'SCAN IJAZAH harus jpeg,png,jpg,gif',
+            'card_family.mimes' => 'SCAN KK harus jpeg,png,jpg,gif',
+            
+        ]);
+
         $user = User::findOrFail(Auth::user()->id);
 
         $existingAvatar = $user->profile->avatar ?? null;
@@ -220,7 +275,7 @@ class ProfileController extends Controller
             ]
         );
 
-        return Redirect::to('/dashboard');
+        return Redirect::to('/dashboard')->withInput();
     }
 
     public function show(Profile $profile)

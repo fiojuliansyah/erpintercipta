@@ -93,9 +93,9 @@ return [
         'numeric' => 'The :attribute must not be greater than :max.',
         'string' => 'The :attribute must not be greater than :max characters.',
     ],
-    'max_digits' => 'The :attribute must not have more than :max digits.',
-    'mimes' => 'The :attribute must be a file of type: :values.',
-    'mimetypes' => 'The :attribute must be a file of type: :values.',
+    'max_digits' => 'Ukuran :attribute tidak boleh lebih dari :max digits.',
+    'mimes' => 'tipe File :attribute harus: :values.',
+    'mimetypes' => 'tipe File :attribute harus: :values.',
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
         'file' => 'The :attribute must be at least :min kilobytes.',
