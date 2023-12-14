@@ -3,7 +3,7 @@
 @section('title','Beranda | Intercipta Mobile')
 
 @section('content')
-    @if (Auth::user()->hasRole('employee') or (Auth::user()->profile && array_key_exists('department', Auth::user()->profile)))
+    @if (Auth::user()->hasRole('employee') or (Auth::user()->profile && Auth::user()->profile->department))
         <div class="page-content">
             <div class="page-title page-title-small" style="margin-top: 50px">
                 <h3>MOBILE</h3>
@@ -179,6 +179,9 @@
             <div class="page-title page-title-small" style="margin-top: 50px">
                 <h3>MOBILE</h3>
                 <h6>Apps</h6>
+                @if (Auth::user()->hasRole('employee') or (Auth::user()->profile && Auth::user()->profile->department))
+                   <p>*Anda belum menyelesaikan registrasi profil</p> 
+                @endif
             </div>
 
             <div class="card card-style" style="margin-top: 50px">
