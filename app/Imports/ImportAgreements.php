@@ -48,7 +48,7 @@ class ImportAgreements implements ToModel, WithStartRow
         // Sekarang, buat atau asosiasikan Pkwt
         $pkwt = new Pkwt([
             'agreement_id' => $agreement->id,
-            'user_id' => $row[0],
+            'user_id' => $user_id,
             'pkwt_number' => $row[2]
             // ... tambahkan pemetaan lain sesuai kebutuhan
         ]);
