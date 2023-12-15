@@ -25,9 +25,9 @@ class ImportUsers implements ToModel, WithStartRow
             $user = new User([
                 'nik_number' => $row[0],
                 'email' => $row[1],
-                'name' => $row[2],
-                'phone' => $row[3],
-                'password' => bcrypt($row[4]),
+                'name' => $row[3],
+                'phone' => $row[4],
+                'password' => bcrypt($row[5]),
             ]);
 
             // Simpan pengguna ke database
@@ -45,7 +45,7 @@ class ImportUsers implements ToModel, WithStartRow
         $profile = Profile::updateOrCreate(
             ['user_id' => $user->id],
             [
-                'department' => $row[5],
+                'employee_nik' => $row[2],
                 'address' => $row[6],
                 'birth_place' => $row[7],
                 'birth_date' => Date::excelToDateTimeObject($row[8])->format('Y-m-d'), // Ubah format sesuai kebutuhan Anda
@@ -53,21 +53,14 @@ class ImportUsers implements ToModel, WithStartRow
                 'person_status' => $row[10],
                 'stay_in' => $row[11],
                 'mother_name' => $row[12],
-                'family_name' => $row[13],
-                'family_address' => $row[14],
-                'gender' => $row[15],
-                'weight' => $row[16],
-                'height' => $row[17],
-                'hobby' => $row[18],
-                'bank_name' => $row[19],
-                'bank_account' => $row[20],
-                'reference' => $row[21],
-                'reference_job' => $row[22],
-                'reference_relation' => $row[23],
-                'reference_address' => $row[24],
-                'active_date' => $row[25],
-                'family_number' => $row[26],
-                'npwp_number' => $row[27],
+                'gender' => $row[13],
+                'weight' => $row[14],
+                'height' => $row[15],
+                'bank_name' => $row[16],
+                'bank_account' => $row[17],
+                'family_number' => $row[18],
+                'npwp_number' => $row[19],
+                'department' => $row[20],
                 // Tambahkan lebih banyak kolom profil jika diperlukan
             ]);
 

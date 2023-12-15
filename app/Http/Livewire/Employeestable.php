@@ -34,13 +34,9 @@ class Employeestable extends Component
     
             $modifiedData = $selectedData->map(function ($user) {
                 return [
-                    'addendum_id' => null,
-                    'no_pkwt' => null,
                     'id' => $user->id,
                     'name' => $user->name,
-                    'department' => $user->profile['department'],
-                    'project' => $user->profile['project'],
-                    'area' => $user->profile['area'],
+                    
                 ];
             });
     

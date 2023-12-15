@@ -23,13 +23,30 @@ class ExportEmployees implements FromCollection, WithHeadings
     {
         // Define the column headings for the Excel file
         return [
-            'ID Addendum',
-            'No Pkwt',
             'ID User',
             'Nama User',
+            'No PKWT',
             'Jabatan',
-            'project',
+            'Judul',
+            'romawi',
+            'Tahun',
             'Area',
+            'Tanggal Mulai',
+            'tanggal Berakhir',
+            'Lama Bekerja',
+            'Tempat Pelaksana',
+            'Penanggung Jawab',
+            'Gaji',
+            'Tunjangan Jabatan',
+            'Tunjangan Kehadiran',
+            'Tunjangan Kehadiran',
+            'Tunjangan kehadiran',
+            'Tunjangan makanan',
+            'Tunjangan Transport',
+            'Tunjangan Lokasi',
+            'Other Non Fix',
+            'Pinalti',
+            'addendum_id',
         ];
     }
 }
