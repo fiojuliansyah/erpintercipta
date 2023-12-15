@@ -35,9 +35,9 @@ class ImportUsers implements ToModel, WithStartRow
         } else {
             // Perbarui data pengguna jika sudah ada
             $user->nik_number = $row[0];
-            $user->name = $row[2];
-            $user->phone = $row[3];
-            $user->password = bcrypt($row[4]);
+            $user->name = $row[3];
+            $user->phone = $row[4];
+            $user->password = bcrypt($row[5]);
             $user->save();
         }
 
