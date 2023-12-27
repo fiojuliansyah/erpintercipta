@@ -58,7 +58,7 @@
                         <td>{{ $candidate->career?->company['cmpy'] }}</td>
                         <td>{{ $candidate->user['name'] ?? ''}}</td>
                         <td>{{ $candidate->career['jobname'] ?? '' }}</td>
-                        <td>{{ $candidate->user?->profile['address'] }}</td>
+                        <td>{{ $candidate->user?->profile['address'] ?? '' }}</td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#exampleModalCenter{{ $candidate->id }}">Show</button>
                             <div class="modal fade" id="exampleModalCenter{{ $candidate->id }}" tabindex="-1"
