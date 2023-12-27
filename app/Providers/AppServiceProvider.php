@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Training;
 use App\Models\Candidate;
 use Illuminate\Pagination\Paginator;
+use App\Broadcasting\WhatsappChannel;
 use Illuminate\Support\ServiceProvider;
+use Notification;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -55,5 +57,9 @@ class AppServiceProvider extends ServiceProvider
 
         $countReject = Candidate::where('status', 5)->count();
         view()->share('countReject', $countReject);
+
+        Notification::extend('whatsapp', function ($app) {
+            return new WhatsappChannel();
+        });
     }
 }

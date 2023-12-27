@@ -10,6 +10,7 @@ use App\Models\Agreement;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\CandidateUpdate;
 use Illuminate\Support\Facades\Redirect;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Requests\StoreCandidateRequest;
@@ -59,6 +60,7 @@ class CandidateController extends Controller
         $qrCode = QrCode::size(200)->generate($qrLink);
         $candidate->qr_link = $qrCode;
         $candidate->save();
+
     
         return redirect()->route('history')->with('success', 'Berhasil Melamar Pekerjaan');
     }    
@@ -123,6 +125,20 @@ class CandidateController extends Controller
             $statory->status = $request->status;
             $statory->candidate_id = $candidate->id; // Menggunakan ID dari candidate yang telah di-update
             $statory->save();
+        }
+
+        // Mengirim notifikasi
+        $notifiable = $candidate->user;
+        $phone = $candidate->user->phone; // Mendapatkan nomor telepon dari user
+
+        if ($notifiable && $phone) {
+            $notifiable->notify(new CandidateUpdate(
+                $candidate->status,
+                $candidate->description_user,
+                $candidate->responsible,
+                $candidate->date,
+                $phone // Mengirimkan nomor telepon ke constructor notifikasi
+            ));
         }
         
         return redirect()->route('candidates.index')

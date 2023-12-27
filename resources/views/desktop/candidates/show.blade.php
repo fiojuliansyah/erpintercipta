@@ -441,8 +441,8 @@
                                                                                 <option value="">Pilih</option>
                                                                                 @foreach ($agreements as $agreement)
                                                                                     <option value="{{ $agreement->id }}">
-                                                                                        {{ $agreement->title }} ||
-                                                                                        {{ $agreement->addendum->site['name'] }}
+                                                                                        {{ $agreement->title ?? '' }} ||
+                                                                                        {{ $agreement->addendum->site['name'] ?? '' }}
                                                                                     </option>
                                                                                 @endforeach
                                                                             </select>
