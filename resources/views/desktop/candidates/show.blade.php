@@ -14,7 +14,7 @@
                     <header class="page-title-bar">
                         <!-- page title stuff goes here -->
                         <div class="container-fluid py-3">
-                            <img src="{{ Storage::url($candidate->user?->profile['avatar']) }}" width="350" alt="">
+                            <img src="{{ Storage::url($candidate->user?->profile['avatar'] ?? 'Tidak ada Data') }}" width="350" alt="">
                         </div>
                     </header><!-- /.page-title-bar -->
                     <!-- .page-section -->
@@ -44,74 +44,74 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama Lengkap</strong>
-                                                    <p>{{ $candidate->user['name'] }}</p>
+                                                    <p>{{ $candidate->user['name'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama Panggilan</strong>
-                                                    <p>{{ $candidate->user?->profile['nickname'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['nickname'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tempat Tanggal Lahir</strong>
-                                                    <p>{{ $candidate->user?->profile['birth_place'] }},
-                                                        {{ $candidate->user?->profile['birth_date'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['birth_place'] ?? 'Tidak ada Data' }},
+                                                        {{ $candidate->user?->profile['birth_date'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Alamat sesuai KTP</strong>
-                                                    <p>{{ $candidate->user?->profile['address'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['address'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Berat Badan</strong>
-                                                    <p>{{ $candidate->user?->profile['weight'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['weight'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tinggi Badan</strong>
-                                                    <p>{{ $candidate->user?->profile['height'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['height'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>No Telepon</strong>
-                                                    <p>{{ $candidate->user['phone'] }}</p>
+                                                    <p>{{ $candidate->user['phone'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Email</strong>
-                                                    <p>{{ $candidate->user['email'] }}</p>
+                                                    <p>{{ $candidate->user['email'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Status</strong>
-                                                    <p>{{ $candidate->user?->profile['person_status'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['person_status'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tinggal Bersama</strong>
-                                                    <p>{{ $candidate->user?->profile['stay_in'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['stay_in'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Tinggal Bersama</strong>
-                                                    <p>{{ $candidate->user?->profile['family_name'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['family_name'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Alamat (Tempat Tinggal)</strong>
-                                                    <p>{{ $candidate->user?->profile['family_address'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['family_address'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>No Rekening</strong>
-                                                    <p>{{ $candidate->user?->profile['bank_account'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['bank_account'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama BANK</strong>
-                                                    <p>{{ $candidate->user?->profile['bank_name'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['bank_name'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Hobi & Kegiatan di waktu luang</strong>
-                                                    <p>{{ $candidate->user?->profile['hobby'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['hobby'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Agama</strong>
-                                                    <p>{{ $candidate->user?->profile['religion'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['religion'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                             </div>
 
@@ -128,19 +128,19 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama</strong>
-                                                    <p>{{ $candidate->user?->profile['reference'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['reference'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Pekerjaan / Jabatan</strong>
-                                                    <p>{{ $candidate->user?->profile['reference_job'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['reference_job'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Alamat</strong>
-                                                    <p>{{ $candidate->user?->profile['reference_address'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['reference_address'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Hubungan</strong>
-                                                    <p>{{ $candidate->user?->profile['reference_relation'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['reference_relation'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                             </div>
                                         </div><!-- /.card-body -->
@@ -159,30 +159,30 @@
                                                     <br>
                                                     <br>
                                                     <p>{{ $candidate->user->nik_number }}</p>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_ktp']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['card_ktp'] ?? 'Tidak ada Data') }}"
                                                         width="300" alt="">
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>SCAN KARTU KELUARGA</strong>
                                                     <br>
                                                     <br>
-                                                    <p>{{ $candidate->user?->profile['family_number'] }}</p>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_family']) }}"
+                                                    <p>{{ $candidate->user?->profile['family_number'] ?? 'Tidak ada Data' }}</p>
+                                                    <img src="{{ Storage::url($candidate->user?->profile['card_family'] ?? 'Tidak ada Data') }}"
                                                         width="300" alt="">
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>SCAN IJAZAH</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_ijazah']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['card_ijazah'] ?? 'Tidak ada Data') }}"
                                                         width="300" alt="">
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>SCAN SKCK <span
-                                                            class="badge badge-danger">{{ $candidate->user?->profile['active_date'] }}</span></strong>
+                                                            class="badge badge-danger">{{ $candidate->user?->profile['active_date'] ?? 'Tidak ada Data' }}</span></strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_skck']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['card_skck'] ?? 'Tidak ada Data') }}"
                                                         width="300" alt="">
                                                 </div>
                                             </div>
@@ -191,47 +191,47 @@
                                                     <strong>SCAN SERITIFKAT</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_certificate']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['card_certificate'] ?? 'Tidak ada Data') }}"
                                                         width="350" alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN NPWP</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_npwp']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['card_npwp'] ?? 'Tidak ada Data') }}"
                                                         width="350" alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN SIM</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_sim']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['card_sim'] ?? 'Tidak ada Data') }}"
                                                         width="350" alt="">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN
-                                                        {{ $candidate->user?->profile['add_name_document_a'] }}</strong>
+                                                        {{ $candidate->user?->profile['add_name_document_a'] ?? 'Tidak ada Data' }}</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_a']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_a'] ?? 'Tidak ada Data') }}"
                                                         width="350" alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN
-                                                        {{ $candidate->user?->profile['add_name_document_b'] }}</strong>
+                                                        {{ $candidate->user?->profile['add_name_document_b'] ?? 'Tidak ada Data' }}</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_b']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_b'] ?? 'Tidak ada Data') }}"
                                                         width="350" alt="">
                                                 </div>
                                                 <div class="col-md-4 mb-4">
                                                     <strong>SCAN
-                                                        {{ $candidate->user?->profile['add_name_document_c'] }}</strong>
+                                                        {{ $candidate->user?->profile['add_name_document_c'] ?? 'Tidak ada Data' }}</strong>
                                                     <br>
                                                     <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_c']) }}"
+                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_c'] ?? 'Tidak ada Data') }}"
                                                         width="350" alt="">
                                                 </div>
                                             </div>
@@ -251,31 +251,31 @@
                                             <div class="row">
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Nama Perusahaan</strong>
-                                                    <p>{{ $candidate->user?->profile['company_name_a'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['company_name_b'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['company_name_c'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['company_name_d'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['company_name_a'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['company_name_b'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['company_name_c'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['company_name_d'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Periode</strong>
-                                                    <p>{{ $candidate->user?->profile['period_a'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['period_b'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['period_c'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['period_d'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['period_a'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['period_b'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['period_c'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['period_d'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Posisi / Jabatan</strong>
-                                                    <p>{{ $candidate->user?->profile['position_a'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['position_b'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['position_c'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['position_d'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['position_a'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['position_b'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['position_c'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['position_d'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                                 <div class="col-md-3 mb-4">
                                                     <strong>Gaji yang diterima</strong>
-                                                    <p>{{ $candidate->user?->profile['salary_a'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['salary_b'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['salary_c'] }}</p>
-                                                    <p>{{ $candidate->user?->profile['salary_d'] }}</p>
+                                                    <p>{{ $candidate->user?->profile['salary_a'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['salary_b'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['salary_c'] ?? 'Tidak ada Data' }}</p>
+                                                    <p>{{ $candidate->user?->profile['salary_d'] ?? 'Tidak ada Data' }}</p>
                                                 </div>
                                             </div>
 
@@ -392,7 +392,7 @@
                                                                                 data-toggle="selectpicker"
                                                                                 data-live-search="true" data-width="100%"
                                                                                 name="site_id">
-                                                                                <option value="{{ $candidate->site['id'] ?? '' }}">{{ $candidate->site->company['cmpy'] ?? '' }} - {{ $candidate->site['name'] ?? '' }}</option>
+                                                                                <option value="{{ $candidate->site['id'] ?? 'Tidak ada Data' }}">{{ $candidate->site->company['cmpy'] ?? 'Tidak ada Data' }} - {{ $candidate->site['name'] ?? 'Tidak ada Data' }}</option>
                                                                                 @foreach ($sites as $site)
                                                                                     <option value="{{ $site->id }}">
                                                                                       {{ $site->company['cmpy'] }} - {{ $site->name }}

@@ -286,7 +286,7 @@
         </p>
         <div class="divider divider-margins"></div>
         <div class="row justify-content-center mr-3 ml-3 mb-5">
-            {!! html_entity_decode(Auth::user()->qr_link ?? '') !!}
+            {!! html_entity_decode(Auth::user()->qr_link ?? 'Tidak ada Data') !!}
         </div>  
         @else
         <h1 class="text-center font-700 mt-3 pt-2">CANDIDATE - {{ str_pad(Auth::user()->id, 5, '0', STR_PAD_LEFT) }}</h1>
@@ -295,7 +295,7 @@
         </p>
         <div class="divider divider-margins"></div>
         <div class="row justify-content-center mr-3 ml-3 mb-5">
-            {!! html_entity_decode(Auth::user()->candidate['qr_link'] ?? '') !!}
+            {!! html_entity_decode(Auth::user()->candidate['qr_link'] ?? 'Tidak ada Data') !!}
         </div> 
         @endif
     </div>

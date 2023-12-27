@@ -47,8 +47,8 @@
                         </td>
                         {{-- <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td> --}}
                         <td>USER - {{ str_pad($candidate->user['id'], 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $candidate->user['name'] ?? '' }}</td>
-                        <td>{{ $candidate->site['name'] ?? '' }}</td>
+                        <td>{{ $candidate->user['name'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $candidate->site['name'] ?? 'Tidak ada Data' }}</td>
                         <td><a class="btn btn-primary" target="blank" href="{{ route('document-print', $candidate->id) }}">Print</a></td>               
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -63,7 +63,7 @@
                                         <form action="{{ route('candidates.destroy', $candidate->id) }}"
                                             method="POST">
                                             <a class="dropdown-item"
-                                                href="{{ route('employees.edit', $candidate->user['id'] ?? '') }}">Edit
+                                                href="{{ route('employees.edit', $candidate->user['id'] ?? 'Tidak ada Data') }}">Edit
                                                 User</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('candidates.show', $candidate->id) }}">Lihat Profil</a>

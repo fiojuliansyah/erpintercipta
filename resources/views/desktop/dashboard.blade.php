@@ -238,7 +238,7 @@
                                             <div style="text-align: center">
                                                 <p style="text-align: center; padding-top: 25px; font-size: 25px">
                                                     {{ Auth::user()->name }}</p>
-                                                {!! html_entity_decode(Auth::user()->candidate['qr_link'] ?? '') !!}
+                                                {!! html_entity_decode(Auth::user()->candidate['qr_link'] ?? 'Tidak ada Data') !!}
                                                 <p style="text-align: center; padding-top: 20px; font-size: 20px">CANDIDATE -
                                                     {{ str_pad(Auth::user()->id, 5, '0', STR_PAD_LEFT) }}</p>
                                                 <p>*Gunakan QR Code ini pada saat panggilan Interview dan Test</p>

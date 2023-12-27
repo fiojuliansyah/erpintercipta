@@ -33,7 +33,7 @@
                                           @foreach ($users as $user)
                                             @if ($user->pkwt && $user->pkwt->agreement && $user->pkwt->agreement->addendum && $user->pkwt->agreement->addendum->site)   
                                               <option value="{{ $user->id }}">
-                                                {{ $user->pkwt->agreement->addendum->site['name'] ?? ''}} | {{ $user->name }}
+                                                {{ $user->pkwt->agreement->addendum->site['name'] ?? 'Tidak ada Data'}} | {{ $user->name }}
                                               </option>
                                             @endif
                                           @endforeach
@@ -84,8 +84,8 @@
               <tr>
                   <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                   <td><img src="{{ Storage::url($signature->signatureDataUrl) }}" width="200" alt=""></td>
-                  <td>{{ $signature->user->pkwt->agreement->addendum->site->name ?? '' }}</td>
-                  <td>{{ $signature->user['name'] ?? '' }}</td>
+                  <td>{{ $signature->user->pkwt->agreement->addendum->site->name ?? 'Tidak ada Data' }}</td>
+                  <td>{{ $signature->user['name'] ?? 'Tidak ada Data' }}</td>
                   <td class="align-middle text-right">
                   <form action="{{ route('signatures.destroy',$signature->id) }}" method="POST">
                     @csrf

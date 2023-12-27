@@ -85,9 +85,9 @@
                             <input type="checkbox" wire:model="selectedIds" value="{{ $product->id }}">
                         </td>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
-                        <td>{{ $product->accurate_id ?? '' }}</td>
-                        <td>{{ $product->name ?? '' }}</td>
-                        <td>{{ $product->unit ?? '' }}</td>
+                        <td>{{ $product->accurate_id ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $product->name ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $product->unit ?? 'Tidak ada Data' }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                 <button class="btn btn-primary">Menu</button>

@@ -113,7 +113,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->pkwt?->agreement['department'] }}</td>
-                        <td>{{ $user->pkwt?->agreement->addendum->site['name'] ?? '' }}</td>
+                        <td>{{ $user->pkwt?->agreement->addendum->site['name'] ?? 'Tidak ada Data' }}</td>
                         <td>{{ $user->pkwt?->agreement['area'] }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">

@@ -34,25 +34,25 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Company</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->company['company'] ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->company['company'] ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Customer Name</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->customername ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->customername ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label>Address</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->address ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->address ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->email ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->email ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <!-- grid column -->
@@ -60,44 +60,44 @@
                         <!-- .form-group -->
                             <div class="form-group">
                                 <label>Contact</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->contact ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->contact ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div><!-- /grid column -->
                         <!-- grid column -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->phone ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->phone ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div><!-- /grid column -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Term</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->term['term'] ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->term['term'] ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Tax Number</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxnumber ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxnumber ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Tax Category 1 </label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxcategorya['taxcategory'] ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxcategorya['taxcategory'] ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Tax Category 2</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxcategoryb['taxcategory'] ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxcategoryb['taxcategory'] ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <label>Tax Address</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxaddress ?? '' }}" disabled>
+                                <input class="form-control" id="tfDisabled" value="{{ $customer->taxaddress ?? 'Tidak ada Data' }}" disabled>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -116,7 +116,7 @@
                                 <!-- .modal-body -->
                                 <div class="modal-body">
                                   <div class="row">
-                                    <img src="{{ Storage::url($customer->tax_image) ?? '' }}" width="400px" alt="">
+                                    <img src="{{ Storage::url($customer->tax_image) ?? 'Tidak ada Data' }}" width="400px" alt="">
                                   </div>
                                 </div><!-- /.modal-body -->
                               </div><!-- /.modal-content -->

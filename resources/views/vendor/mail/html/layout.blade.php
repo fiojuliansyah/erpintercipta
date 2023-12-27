@@ -30,7 +30,7 @@ width: 100% !important;
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-{{ $header ?? '' }}
+{{ $header ?? 'Tidak ada Data' }}
 
 <!-- Email Body -->
 <tr>
@@ -41,14 +41,14 @@ width: 100% !important;
 <td class="content-cell">
 {{ Illuminate\Mail\Markdown::parse($slot) }}
 
-{{ $subcopy ?? '' }}
+{{ $subcopy ?? 'Tidak ada Data' }}
 </td>
 </tr>
 </table>
 </td>
 </tr>
 
-{{ $footer ?? '' }}
+{{ $footer ?? 'Tidak ada Data' }}
 </table>
 </td>
 </tr>

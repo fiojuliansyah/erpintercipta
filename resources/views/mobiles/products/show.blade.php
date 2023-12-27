@@ -223,15 +223,15 @@
                                 <tr>
                                     <th scope="row">{{ $quantity->created_at->format('d-m-y') }}</th>
                                     @if($quantity->opname == 1)
-                                        <td class="color-yellow1-dark">{{ $quantity->in ?? '' }}</td>
+                                        <td class="color-yellow1-dark">{{ $quantity->in ?? 'Tidak ada Data' }}</td>
                                     @else
-                                        <td class="color-green1-dark">{{ $quantity->in ?? '' }}</td>
+                                        <td class="color-green1-dark">{{ $quantity->in ?? 'Tidak ada Data' }}</td>
                                     @endif 
-                                    <td class="color-red1-dark">{{ $quantity->out ?? '' }}</td>
+                                    <td class="color-red1-dark">{{ $quantity->out ?? 'Tidak ada Data' }}</td>
                                     @if($quantity->opname == 1)
-                                        <td class="color-yellow1-dark">{{ $quantity->description ?? '' }}</td>
+                                        <td class="color-yellow1-dark">{{ $quantity->description ?? 'Tidak ada Data' }}</td>
                                     @else
-                                        <td class="color-theme">{{ $quantity->description ?? '' }}</td>
+                                        <td class="color-theme">{{ $quantity->description ?? 'Tidak ada Data' }}</td>
                                     @endif 
                                 </tr>
                                 @endforeach

@@ -54,9 +54,9 @@
                     <tr>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $addendum->title ?? '' }}</td>
-                        <td>{{ $addendum->site?->company['company'] ?? '' }}</td>
-                        <td>{{ $addendum->site['name'] ?? '' }}</td>
+                        <td>{{ $addendum->title ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site?->company['company'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site['name'] ?? 'Tidak ada Data' }}</td>
                         <td>
                           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                   <button type="submit" class="btn btn-primary">Menu</button>
@@ -117,9 +117,9 @@
                     <tr>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $addendum->title ?? '' }}</td>
-                        <td>{{ $addendum->site?->company['company'] ?? '' }}</td>
-                        <td>{{ $addendum->site['name'] ?? '' }}</td>
+                        <td>{{ $addendum->title ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site?->company['company'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site['name'] ?? 'Tidak ada Data' }}</td>
                         <td>
                           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                   <button type="submit" class="btn btn-primary">Menu</button>
@@ -180,9 +180,9 @@
                     <tr>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $addendum->title ?? '' }}</td>
-                        <td>{{ $addendum->site?->company['company'] ?? '' }}</td>
-                        <td>{{ $addendum->site['name'] ?? '' }}</td>
+                        <td>{{ $addendum->title ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site?->company['company'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site['name'] ?? 'Tidak ada Data' }}</td>
                         <td>
                           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                   <button type="submit" class="btn btn-primary">Menu</button>
@@ -243,9 +243,9 @@
                     <tr>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $addendum->title ?? '' }}</td>
-                        <td>{{ $addendum->site?->company['company'] ?? '' }}</td>
-                        <td>{{ $addendum->site['name'] ?? '' }}</td>
+                        <td>{{ $addendum->title ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site?->company['company'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site['name'] ?? 'Tidak ada Data' }}</td>
                         <td>
                           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                   <button type="submit" class="btn btn-primary">Menu</button>
@@ -306,9 +306,9 @@
                     <tr>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>ADDINDUM - {{ str_pad($addendum->id, 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $addendum->title ?? '' }}</td>
-                        <td>{{ $addendum->site?->company['company'] ?? '' }}</td>
-                        <td>{{ $addendum->site['name'] ?? '' }}</td>
+                        <td>{{ $addendum->title ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site?->company['company'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $addendum->site['name'] ?? 'Tidak ada Data' }}</td>
                         <td>
                           <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                   <button type="submit" class="btn btn-primary">Menu</button>

@@ -80,8 +80,8 @@
                                 @foreach ($quantities as $quantity)
                                     <tr>
                                         <td>{{ $quantity->created_at }}</td>
-                                        <td>{{ $quantity->in ?? '' }}</td>
-                                        <td>{{ $quantity->out ?? '' }}</td>
+                                        <td>{{ $quantity->in ?? 'Tidak ada Data' }}</td>
+                                        <td>{{ $quantity->out ?? 'Tidak ada Data' }}</td>
                                     </tr><!-- /tr -->
                                 @endforeach
                 

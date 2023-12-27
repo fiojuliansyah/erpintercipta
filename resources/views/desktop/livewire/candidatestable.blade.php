@@ -56,9 +56,9 @@
                         </td>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>{{ $candidate->career?->company['cmpy'] }}</td>
-                        <td>{{ $candidate->user['name'] ?? ''}}</td>
-                        <td>{{ $candidate->career['jobname'] ?? '' }}</td>
-                        <td>{{ $candidate->user?->profile['address'] ?? '' }}</td>
+                        <td>{{ $candidate->user['name'] ?? 'Tidak ada Data'}}</td>
+                        <td>{{ $candidate->career['jobname'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $candidate->user?->profile['address'] ?? 'Tidak ada Data' }}</td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#exampleModalCenter{{ $candidate->id }}">Show</button>
                             <div class="modal fade" id="exampleModalCenter{{ $candidate->id }}" tabindex="-1"
@@ -107,7 +107,7 @@
                                         <form action="{{ route('candidates.destroy', $candidate->id) }}"
                                             method="POST">
                                             <a class="dropdown-item"
-                                                href="{{ route('employees.edit', $candidate->user['id'] ?? '') }}">Edit
+                                                href="{{ route('employees.edit', $candidate->user['id'] ?? 'Tidak ada Data') }}">Edit
                                                 User</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('candidates.show', $candidate->id) }}">Lihat Profil</a>

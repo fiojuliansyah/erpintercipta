@@ -264,7 +264,7 @@
                                                     <option value="">Pilih</option>
                                                     @foreach ($addendums as $addendum)
                                                         <option value="{{ $addendum->id }}">
-                                                            {{ $addendum->site['name'] ?? '' }} ({{ $addendum->title ?? '' }})
+                                                            {{ $addendum->site['name'] ?? 'Tidak ada Data' }} ({{ $addendum->title ?? 'Tidak ada Data' }})
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -356,7 +356,7 @@
                                                     <option value="">Pilih</option>
                                                     @foreach ($addendums as $addendum)
                                                         <option value="{{ $addendum->id }}">
-                                                            {{ $addendum->site['name'] ?? '' }} ({{ $addendum->title ?? '' }})
+                                                            {{ $addendum->site['name'] ?? 'Tidak ada Data' }} ({{ $addendum->title ?? 'Tidak ada Data' }})
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -448,7 +448,7 @@
                                                     <option value="">Pilih</option>
                                                     @foreach ($addendums as $addendum)
                                                         <option value="{{ $addendum->id }}">
-                                                            {{ $addendum->site['name'] ?? '' }} ({{ $addendum->title ?? '' }})
+                                                            {{ $addendum->site['name'] ?? 'Tidak ada Data' }} ({{ $addendum->title ?? 'Tidak ada Data' }})
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -540,7 +540,7 @@
                                                     <option value="">Pilih</option>
                                                     @foreach ($addendums as $addendum)
                                                         <option value="{{ $addendum->id }}">
-                                                            {{ $addendum->site['name'] ?? '' }} ({{ $addendum->title ?? '' }})
+                                                            {{ $addendum->site['name'] ?? 'Tidak ada Data' }} ({{ $addendum->title ?? 'Tidak ada Data' }})
                                                         </option>
                                                     @endforeach
                                                 </select>
