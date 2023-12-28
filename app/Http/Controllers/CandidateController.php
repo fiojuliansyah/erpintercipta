@@ -119,7 +119,7 @@ class CandidateController extends Controller
         $candidate->responsible = $request->responsible;
         
         $candidate->update();
-    // Cek apakah pembaruan berhasil sebelum mencatat riwayat
+        // Cek apakah pembaruan berhasil sebelum mencatat riwayat
         if ($candidate->wasChanged()) {
             $statory = new Statory;
             $statory->status = $request->status;

@@ -2,12 +2,19 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Site;
+use App\Models\Career;
+use App\Models\Statory;
 use Livewire\Component;
-use App\Models\Candidate;
+use App\Models\Addendum;
 use App\Models\Training;
+use App\Models\Agreement;
+use App\Models\Candidate;
 use Livewire\WithPagination;
 use App\Exports\ExportCandidates;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Notifications\CandidateUpdate;
+use Illuminate\Http\Request;
 
 class Candidatestable extends Component
 {
@@ -17,6 +24,14 @@ class Candidatestable extends Component
     public $exportToExcel = false;
     public $search = '';
     public $selectedIds = [];
+    protected $request;
+    public $selectedStatus;
+    public $selectedCareerId;
+    public $selectedDescriptionUser;
+    public $selectedDescriptionClient;
+    public $selectedDate;
+    public $selectedSiteId;
+    public $selectedResponsible;
 
     public function updatingSearch()
     {
@@ -73,8 +88,89 @@ class Candidatestable extends Component
         }
     }
 
+    public function mount(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    public function updateSelected(Request $request)
+    {   
+        if (count($this->selectedIds) > 0) {
+            foreach ($this->selectedIds as $candidateId) {
+                $candidate = Candidate::find($candidateId);
+
+                if ($candidate) {
+                    $candidate->status = $this->selectedStatus;
+                    $candidate->career_id = $this->selectedCareerId;
+                    $candidate->description_user = $this->selectedDescriptionUser;
+                    $candidate->description_client = $this->selectedDescriptionClient;
+                    $candidate->site_id = $this->selectedSiteId;
+                    $candidate->date = $this->selectedDate;
+                    $candidate->responsible = $this->selectedResponsible;
+
+                    $candidate->update();
+                    
+                    // Cek apakah pembaruan berhasil sebelum mencatat riwayat
+                    if ($candidate->wasChanged()) {
+                        $statory = new Statory;
+                        $statory->status = $candidate->id;
+                        $statory->candidate_id = $candidate->id; // Menggunakan ID dari candidate yang telah di-update
+                        $statory->save();
+                    }
+
+                    // Mengirim notifikasi
+                    $notifiable = $candidate->user;
+                    $phone = $candidate->user->phone; // Mendapatkan nomor telepon dari user
+
+                    if ($notifiable && $phone) {
+                        $notifiable->notify(new CandidateUpdate(
+                            $candidate->status,
+                            $candidate->description_user,
+                            $candidate->responsible,
+                            $candidate->date,
+                            $phone // Mengirimkan nomor telepon ke constructor notifikasi
+                        ));
+                    }
+                }
+            }
+
+            // Setelah update, bersihkan input
+            $this->resetInputFields();
+
+            session()->flash('success', 'Selected candidates updated successfully.');
+        } else {
+            session()->flash('error', 'No candidates selected for update.');
+        }
+    }
+
+    public function resetInputFields()
+    {
+        $this->selectedStatus = null;
+        $this->selectedCareerId = null;
+        $this->selectedDescriptionUser = null;
+        $this->selectedDescriptionClient = null;
+        $this->selectedSiteId = null;
+        $this->selectedDate = null;
+        $this->selectedResponsible = null;
+    }
+
+    public function submitUpdate()
+    {
+        $this->updateSelected($this->request);
+
+        // Lakukan apapun yang diperlukan setelah update, misalnya mengambil data baru, mengosongkan input, atau menampilkan pesan sukses.
+        // Contoh:
+        $this->selectedIds = []; // Mengosongkan kembali selectedIds setelah update
+        $this->resetInputFields(); // Mengosongkan nilai input setelah update
+        session()->flash('success', 'Selected candidates updated successfully.');
+    }
+
     public function render()
     {
+        $sites = Site::all();
+        $careers = Career::all();
+        $addendums = Addendum::all();
+        $agreements = Agreement::all();
         $hiddenUserIds = $this->getHiddenUserIds();
 
         if ($this->search != '') {
@@ -88,6 +184,6 @@ class Candidatestable extends Component
                 ->paginate(10);
         }
 
-        return view('desktop.livewire.candidatestable', compact('data'));
+        return view('desktop.livewire.candidatestable', compact('data','addendums', 'sites', 'careers', 'agreements'));
     }
 }

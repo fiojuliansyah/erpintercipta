@@ -93,6 +93,7 @@
     <link rel="stylesheet" href="{{ asset('') }}admin/vendor/bootstrap-select/css/bootstrap-select.min.css">
     <script src="{{ asset('') }}admin/vendor/easy-pie-chart/jquery.easypiechart.min.js"></script>
     <script src="{{ asset('') }}admin/vendor/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('') }}admin/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- END PLUGINS JS -->
 
     <!-- BEGIN THEME JS -->
