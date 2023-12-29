@@ -46,15 +46,15 @@ class CandidateUpdate extends Notification
 
         // Menyesuaikan pesan berdasarkan nilai $this->status
         if ($this->status == 1) {
-            $message = 'Menunggu Penempatan';
+            $message = 'Sementara, kamu Menunggu Penempatan tersedia dulu yaa!';
         } elseif ($this->status == 2) {
-            $message = 'memasuki tahap Training Newcomer Class';
+            $message = 'Selamat! Kamu memasuki tahap Training Newcomer Class';
         } elseif ($this->status == 3) {
-            $message = 'memasuki tahap Training gana New Class';
+            $message = 'Selamat! Kamu memasuki tahap Training gana New Class';
         } elseif ($this->status == 4) {
-            $message = 'memasuki tahap Interview User';
+            $message = 'Selamat! Kamu memasuki tahap Interview User';
         } elseif ($this->status == 5) {
-            $message = 'Ditolak untuk pekerjaan ini';
+            $message = 'Mohon Maaf, Kamu Ditolak untuk pekerjaan ini';
         } else {
             // Jika nilai $this->status bukan 0 atau 1
             
@@ -63,7 +63,7 @@ class CandidateUpdate extends Notification
 
         return [
             'number' => $this->phone,
-            'data' => "Intercipta Corporation,\n\nAnda " . $message . "\npada tanggal " . $formatted_date . "\n\nBertemu dengan " . $this->responsible . "\n\nNote:\n" . $this->description_user .  "\n\nLihat riwayat di sini\n" . $historyLink,
+            'data' => "Intercipta Corporation,\n\n" . $message . "\npada tanggal " . $formatted_date . "\n\nBertemu dengan " . $this->responsible . "\n\nNote:\n" . $this->description_user .  "\n\nLihat riwayat di sini\n" . $historyLink,
         ];
     }
 }
