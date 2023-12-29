@@ -1,6 +1,6 @@
 <div>
     <div class="d-md-flex align-items-md-start">
-        <h1 class="page-title mr-sm-auto"> Candidate List </h1>
+        <h1 class="page-title mr-sm-auto"> List Kandidat </h1>
         <div class="btn-toolbar">
             <div class="dropdown">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateStatus"><i
@@ -28,9 +28,6 @@
                                             <a class="nav-link active show" data-toggle="tab"
                                                 href="#orientasi">Orientasi</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#penempatan">Penempatan</a>
-                                        </li>
                                     </ul><!-- /.nav-tabs -->
                                 </div><!-- /.card-header -->
                                 <!-- .card-body -->
@@ -38,13 +35,13 @@
                                     <!-- .tab-content -->
                                     <div id="myTabContent" class="tab-content">
                                         <div class="tab-pane fade active show" id="orientasi">
-                                            <form  wire:submit.prevent="updateSelected">
+                                            <form  wire:submit.prevent="submitUpdate">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label" for="bss3">Pilih
                                                             Training</label>
-                                                        <input list="statuss" class="form-control" name="selectedStatus"
-                                                            id="status" wire:ignore="selectedStatus">
+                                                        <input list="statuss" class="form-control" wire:model.defer="status"
+                                                            id="status">
                                                         <datalist id="statuss">
                                                             <option value="0">Pilih</option>
                                                             <option value="1">PENDING</option>
@@ -58,8 +55,8 @@
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label" for="bss3">Pilih Karir</label>
-                                                        <input list="careers" class="form-control" name="selectedCareerId"
-                                                            id="career" wire:ignore="selectedCareerId">
+                                                        <input list="careers" class="form-control" wire:model.defer="career_id"
+                                                            id="career">
                                                         <datalist id="careers">
                                                             @foreach ($careers as $career)
                                                                 <option value="{{ $career->id }}">
@@ -74,26 +71,26 @@
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label">Note Untuk Pelamar</label>
-                                                        <textarea class="form-control" name="selectedDescriptionUser" wire:ignore="selectedDescriptionUser"></textarea>
+                                                        <textarea class="form-control" wire:model.defer="description_user"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label">Note Untuk Client</label>
-                                                        <textarea class="form-control" name="selectedDescriptionClient" wire:ignore="selectedDescriptionClient"></textarea>
+                                                        <textarea class="form-control" wire:model.defer="description_client"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label">Jadwal</label>
-                                                        <input type="date" class="form-control" name="selectedDate" value="" wire:ignore="selectedDate">
+                                                        <input type="date" class="form-control" wire:model.defer="date">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label" for="bss3">Pilih Site /
                                                             Project</label>
-                                                        <input list="sites" class="form-control" name="selectedSiteId" id="site" wire:ignore="selectedSiteId">
+                                                        <input list="sites" class="form-control" wire:model.defer="site_id" id="site">
                                                         <datalist id="sites">
                                                             @foreach ($sites as $site)
                                                                 <option value="{{ $site->id }}">
@@ -106,46 +103,7 @@
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">
                                                         <label class="control-label">Ketemu / Penanggung Jawab</label>
-                                                        <input type="text" class="form-control" name="selectedResponsible" wire:ignore="selectedResponsible">
-                                                    </div>
-                                                </div>
-                                                <br>
-                                                <br>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light"
-                                                        data-dismiss="modal">CLose</button>
-                                                    <button type="submit" class="btn btn-warning">Submit</button>
-                                                </div><!-- /.modal-footer -->
-                                            </form>
-                                        </div>
-                                        <div class="tab-pane fade" id="penempatan">
-                                            <small style="color: red">*Pastikan Addendum sudah
-                                                dibuat</small>
-                                            <form action="{{ route('pkwt-candidate') }}" method="POST"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                <input type="hidden" name="user_id" value="">
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <label class="control-label">No PKWT</label>
-                                                        <input type="text" class="form-control"
-                                                            name="pkwt_number">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    <div class="form-group">
-                                                        <label class="control-label" for="bss3">Pilih
-                                                            Agreement</label>
-                                                        <input list="agreements" class="form-control"
-                                                            name="agreement_id" id="agreement">
-                                                        <datalist id="agreements">
-                                                            @foreach ($agreements as $agreement)
-                                                                <option value="{{ $agreement->id }}">
-                                                                    {{ $agreement->title ?? '' }} ||
-                                                                    {{ $agreement->addendum->site['name'] ?? '' }}
-                                                                </option>
-                                                            @endforeach
-                                                        </datalist>
+                                                        <input type="text" class="form-control" wire:model.defer="responsible">
                                                     </div>
                                                 </div>
                                                 <br>
@@ -211,8 +169,6 @@
                     <th width="100px"></th>
                 </tr>
             </thead>
-            <!-- /thead -->
-            <!-- tbody -->
             <tbody>
                 @foreach ($data as $key => $candidate)
                     @if ($candidate->status == 0)
@@ -292,10 +248,20 @@
                         </tr><!-- /tr -->
                     @endif
                 @endforeach
-            </tbody><!-- /tbody -->
+            </tbody>
         </table>
     </div>
     <ul class="pagination justify-content-center mt-4">
         {{ $data->links() }}
     </ul>
 </div>
+
+@push('js')
+<script>
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('refreshPage', function () {
+            location.reload(); // Reloads the current page
+        });
+    });
+</script>
+@endpush

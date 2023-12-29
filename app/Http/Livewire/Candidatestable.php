@@ -25,13 +25,14 @@ class Candidatestable extends Component
     public $search = '';
     public $selectedIds = [];
     protected $request;
-    public $selectedStatus;
-    public $selectedCareerId;
-    public $selectedDescriptionUser;
-    public $selectedDescriptionClient;
-    public $selectedDate;
-    public $selectedSiteId;
-    public $selectedResponsible;
+    public $status;
+    public $user_id;
+    public $career_id;
+    public $site_id;
+    public $description_user;
+    public $description_client;
+    public $date;
+    public $responsible;
 
     public function updatingSearch()
     {
@@ -96,31 +97,34 @@ class Candidatestable extends Component
     public function updateSelected(Request $request)
     {   
         if (count($this->selectedIds) > 0) {
-            foreach ($this->selectedIds as $candidateId) {
-                $candidate = Candidate::find($candidateId);
+            // Mendapatkan user_id dari data candidat yang terpilih
+            $userIds = Candidate::whereIn('id', $this->selectedIds)->pluck('user_id')->toArray();
+
+            foreach ($this->selectedIds as $index => $selectedId) {
+                $candidate = Candidate::find($selectedId);
 
                 if ($candidate) {
-                    $candidate->status = $this->selectedStatus;
-                    $candidate->career_id = $this->selectedCareerId;
-                    $candidate->description_user = $this->selectedDescriptionUser;
-                    $candidate->description_client = $this->selectedDescriptionClient;
-                    $candidate->site_id = $this->selectedSiteId;
-                    $candidate->date = $this->selectedDate;
-                    $candidate->responsible = $this->selectedResponsible;
+                    $candidate->user_id = $userIds[$index];
+                    $candidate->status = $this->status;
+                    $candidate->career_id = $this->career_id;
+                    $candidate->description_user = $this->description_user;
+                    $candidate->description_client = $this->description_client;
+                    $candidate->site_id = $this->site_id;
+                    $candidate->date = $this->date;
+                    $candidate->responsible = $this->responsible;
 
-                    $candidate->update();
+                    $candidate->save();
                     
-                    // Cek apakah pembaruan berhasil sebelum mencatat riwayat
                     if ($candidate->wasChanged()) {
                         $statory = new Statory;
-                        $statory->status = $candidate->id;
-                        $statory->candidate_id = $candidate->id; // Menggunakan ID dari candidate yang telah di-update
+                        $statory->status = $candidate->status;
+                        $statory->candidate_id = $candidate->id;
                         $statory->save();
                     }
 
-                    // Mengirim notifikasi
+                   
                     $notifiable = $candidate->user;
-                    $phone = $candidate->user->phone; // Mendapatkan nomor telepon dari user
+                    $phone = $candidate->user->phone;
 
                     if ($notifiable && $phone) {
                         $notifiable->notify(new CandidateUpdate(
@@ -128,41 +132,27 @@ class Candidatestable extends Component
                             $candidate->description_user,
                             $candidate->responsible,
                             $candidate->date,
-                            $phone // Mengirimkan nomor telepon ke constructor notifikasi
+                            $phone
                         ));
                     }
                 }
             }
-
-            // Setelah update, bersihkan input
-            $this->resetInputFields();
-
             session()->flash('success', 'Selected candidates updated successfully.');
         } else {
             session()->flash('error', 'No candidates selected for update.');
         }
     }
 
-    public function resetInputFields()
-    {
-        $this->selectedStatus = null;
-        $this->selectedCareerId = null;
-        $this->selectedDescriptionUser = null;
-        $this->selectedDescriptionClient = null;
-        $this->selectedSiteId = null;
-        $this->selectedDate = null;
-        $this->selectedResponsible = null;
-    }
-
     public function submitUpdate()
     {
-        $this->updateSelected($this->request);
+        $request = request();
 
-        // Lakukan apapun yang diperlukan setelah update, misalnya mengambil data baru, mengosongkan input, atau menampilkan pesan sukses.
-        // Contoh:
-        $this->selectedIds = []; // Mengosongkan kembali selectedIds setelah update
-        $this->resetInputFields(); // Mengosongkan nilai input setelah update
+        $this->updateSelected($request);
+
+        $this->selectedIds = [];
         session()->flash('success', 'Selected candidates updated successfully.');
+
+        $this->emit('refreshPage');
     }
 
     public function render()
