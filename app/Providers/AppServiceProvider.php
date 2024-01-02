@@ -32,7 +32,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
 
-        Blade::directive('currency', function ( $expression ) { return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; });
+        Blade::directive('currency', function ($expression) {
+            return "Rp. <?php echo number_format((float)$expression, 0, ',', '.'); ?>";
+        });        
     
         $countPelamar = User::whereDoesntHave('roles')
             ->whereHas('profile', function ($query) {
