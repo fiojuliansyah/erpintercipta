@@ -2,13 +2,14 @@
 
 namespace App\Providers;
 
+use Notification;
 use App\Models\User;
 use App\Models\Training;
 use App\Models\Candidate;
 use Illuminate\Pagination\Paginator;
 use App\Broadcasting\WhatsappChannel;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Notification;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrapFive();
+
+        Blade::directive('currency', function ( $expression ) { return "Rp. <?php echo number_format($expression,0,',','.'); ?>"; });
     
         $countPelamar = User::whereDoesntHave('roles')
             ->whereHas('profile', function ($query) {
