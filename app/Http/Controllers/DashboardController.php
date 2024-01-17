@@ -45,14 +45,14 @@ class DashboardController extends Controller
         $alluser = User::count();
         $companies = Company::all();
 
-        if ($agent->isMobile()) {
-            return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
-        } elseif ($agent->isDesktop()) {
-            return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
-        } else {
-            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
-            return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
-        }
+        return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+        // if ($agent->isMobile()) {
+        // } elseif ($agent->isDesktop()) {
+        //     return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+        // } else {
+        //     // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+        //     return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+        // }
     }
 
     public function karirDetail($id)
