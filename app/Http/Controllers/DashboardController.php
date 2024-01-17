@@ -46,7 +46,7 @@ class DashboardController extends Controller
         $companies = Company::all();
 
         if ($agent->isMobile()) {
-            return view('mobiles.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
+            return view('dekstop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
         } elseif ($agent->isDesktop()) {
             return view('desktop.job-portal' ,compact('careers','user','allcareer','alluser','companies'));
         } else {
@@ -75,7 +75,7 @@ class DashboardController extends Controller
         $companies = Company::all();
 
         if ($agent->isMobile()) {
-            return view('desktop.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
+            return view('mobiles.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
         } elseif ($agent->isDesktop()) {
             return view('desktop.jobportal.index' ,compact('careers','user','allcareer','alluser','companies'));
         } else {
