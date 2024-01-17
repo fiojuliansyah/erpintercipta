@@ -72,32 +72,40 @@
                                     <th>Tanggal</th>
                                     <th>In</th>
                                     <th>Out</th>
+                                    <th>Decription</th>
                                 </tr>
                             </thead>
                             <!-- /thead -->
                             <!-- tbody -->
                             <tbody>
-                                @foreach ($quantities as $quantity)
-                                    <tr>
-                                        <td>{{ $quantity->created_at }}</td>
-                                        <td>{{ $quantity->in ?? 'Tidak ada Data' }}</td>
-                                        <td>{{ $quantity->out ?? 'Tidak ada Data' }}</td>
-                                    </tr><!-- /tr -->
-                                @endforeach
+                              @foreach ($quantities as $quantity)  
+                              <tr>
+                                  <th scope="row">{{ $quantity->created_at->format('d-m-y') }}</th>
+                                  @if($quantity->opname == 1)
+                                      <td class="color-yellow1-dark">{{ $quantity->in ?? '' }}</td>
+                                  @else
+                                      <td class="color-green1-dark">{{ $quantity->in ?? '' }}</td>
+                                  @endif 
+                                  <td class="color-red1-dark">{{ $quantity->out ?? '' }}</td>
+                                  @if($quantity->opname == 1)
+                                      <td class="color-yellow1-dark">{{ $quantity->description ?? '' }}</td>
+                                  @else
+                                      <td class="color-theme">{{ $quantity->description ?? '' }}</td>
+                                  @endif 
+                              </tr>
+                              @endforeach
                 
                                 <!-- Menampilkan total quantity_in dan quantity_out secara terpisah -->
                                 <tr>
-                                    <td><strong>Total Quantity In:</strong></td>
-                                    <td><strong>{{ $totalIn }}</strong></td>
+                                    <td><strong>Total Quantity :</strong></td>
+                                    <td><strong>{{ $totalAfterIn }}</strong></td>
+                                    <td><strong>{{ $totalAfterOut }}</strong></td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Total Quantity Out:</strong></td>
-                                    <td></td>
-                                    <td><strong>{{ $totalOut }}</strong></td>
-                                </tr>
-                
-                                <!-- Menampilkan selisih antara totalIn dan totalOut -->
+                                  <td><strong>last Opname:</strong></td>
+                                  <td><strong>{{ $opnameIn }}</strong></td>
+                                </tr
                                 <tr>
                                     <td><strong>Selisih:</strong></td>
                                     <td><strong>{{ $selisih }}</strong></td>

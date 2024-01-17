@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quantity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuantityController extends Controller
 {
@@ -35,7 +36,10 @@ class QuantityController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        
         $quantity = new Quantity;
+        $quantity->user_id = $user->id;
         $quantity->product_id = $request->product_id;
         $quantity->in = $request->in;
         $quantity->opname = $request->opname;

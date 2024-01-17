@@ -90,7 +90,7 @@ class ProductController extends Controller
         $agent = new Agent;
         
         // Fetch quantities related to the product
-        $quantities = Quantity::where('product_id', $product->id)->get();
+        $quantities = Quantity::where('product_id', $product->id)->paginate(5);
     
         // Mendapatkan data quantities dengan opname = 1 yang terbaru
         $latestOpname = Quantity::where('product_id', $product->id)
@@ -111,16 +111,16 @@ class ProductController extends Controller
         $totalAfterIn = $latestQuantitiesAfterOpname->sum('in'); // Menghitung total 'in' dari koleksi setelah $latestOpname
         $totalAfterOut = $latestQuantitiesAfterOpname->sum('out');
 
-        $selisihQty = $totalIn-$totalOut;
+        $selisihQty = $totalAfterIn-$totalAfterOut;
         $selisih = $opnameIn+$totalAfterIn-$totalAfterOut;
         
         if ($agent->isMobile()) {
-            return view('mobiles.products.show', compact('product', 'quantities', 'totalIn', 'totalOut', 'selisih', 'opnameIn', 'selisihQty'));
+            return view('mobiles.products.show', compact('product', 'quantities', 'totalIn', 'totalOut', 'selisih', 'opnameIn', 'selisihQty', 'totalAfterIn', 'totalAfterOut'));
         } elseif ($agent->isDesktop()) {
-            return view('desktop.products.show', compact('product', 'quantities', 'totalIn', 'totalOut', 'selisih', 'opnameIn', 'selisihQty'));
+            return view('desktop.products.show', compact('product', 'quantities', 'totalIn', 'totalOut', 'selisih', 'opnameIn', 'selisihQty', 'totalAfterIn', 'totalAfterOut'));
         } else {
             // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan yang sesuai
-            return view('unknown-device.products.show', compact('product', 'quantities', 'totalIn', 'totalOut', 'selisih', 'opnameIn', 'selisihQty'));
+            return view('unknown-device.products.show', compact('product', 'quantities', 'totalIn', 'totalOut', 'selisih', 'opnameIn', 'selisihQty', 'totalAfterIn', 'totalAfterOut'));
         }
     }
     

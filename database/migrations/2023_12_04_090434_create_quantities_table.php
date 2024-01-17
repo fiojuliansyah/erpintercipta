@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('quantities', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id')->nullable();
             $table->string('product_id')->nullable();
             $table->string('in')->nullable();
             $table->string('out')->nullable();

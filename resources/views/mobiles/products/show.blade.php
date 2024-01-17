@@ -18,10 +18,10 @@
             <div class="tab-controls tabs-round tab-animated tabs-small tabs-rounded shadow-xl" 
                  data-tab-items="4" 
                  data-tab-active="bg-highlight activated color-white">
-                <a href="#" data-tab-active data-tab="tab-1">Informasi</a>
+                <a href="#" data-tab="tab-1">Informasi</a>
                 <a href="#" data-tab="tab-2">Tambah</a>
                 <a href="#" data-tab="tab-3">Opname</a>
-                <a href="#" data-tab="tab-4">In & Out</a>
+                <a href="#" data-tab-active data-tab="tab-4">In & Out</a>
             </div>
             <div class="clearfix mb-3"></div>
             <div class="tab-content" id="tab-1">
@@ -73,8 +73,8 @@
                             <p class="font-400">{{ $product->created_at->format('d-m-Y') }}</p>
                         </div>
                     </div>
-                    
                 </div>
+                <a href="#" class="btn btn-full btn-margins  bg-highlight btn-m text-uppercase font-900 rounded-s shadow-xl">Print QR Code</a>
             </div>
             <div class="tab-content" id="tab-2">
                 <div class="content">
@@ -212,10 +212,11 @@
                         <table class="table table-borderless text-center rounded-sm shadow-l" style="overflow: hidden;">
                             <thead>
                                 <tr class="bg-gray1-dark">
-                                    <th scope="col" class="color-theme">Tanggal</th>
+                                    <th scope="col" class="color-theme">Date</th>
                                     <th scope="col" class="color-theme">In</th>
                                     <th scope="col" class="color-theme">Out</th>
-                                    <th scope="col" class="color-theme">Description</th>
+                                    <th scope="col" class="color-theme">Ket</th>
+                                    <th scope="col" class="color-theme">Req</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -223,20 +224,22 @@
                                 <tr>
                                     <th scope="row">{{ $quantity->created_at->format('d-m-y') }}</th>
                                     @if($quantity->opname == 1)
-                                        <td class="color-yellow1-dark">{{ $quantity->in ?? 'Tidak ada Data' }}</td>
+                                        <td class="color-yellow1-dark">{{ $quantity->in ?? '' }}</td>
                                     @else
-                                        <td class="color-green1-dark">{{ $quantity->in ?? 'Tidak ada Data' }}</td>
+                                        <td class="color-green1-dark">{{ $quantity->in ?? '' }}</td>
                                     @endif 
-                                    <td class="color-red1-dark">{{ $quantity->out ?? 'Tidak ada Data' }}</td>
+                                    <td class="color-red1-dark">{{ $quantity->out ?? '' }}</td>
                                     @if($quantity->opname == 1)
-                                        <td class="color-yellow1-dark">{{ $quantity->description ?? 'Tidak ada Data' }}</td>
+                                        <td class="color-yellow1-dark">Op</td>
                                     @else
-                                        <td class="color-theme">{{ $quantity->description ?? 'Tidak ada Data' }}</td>
+                                        <td class="color-theme"></td>
                                     @endif 
+                                    <td scope="row">{{ $quantity->user['nickname'] ?? '' }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        {{ $quantities->links() }}
                     </div>
                     <div class="content mb-2">
                         <table class="table table-borderless text-center rounded-sm shadow-l" style="overflow: hidden;">
@@ -258,15 +261,15 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td  class="color-theme">Total Qty :</td>
-                                    <td  class="color-theme">{{ $totalIn }}</td>
-                                    <td  class="color-theme">{{ $totalOut }}</td>
-                                    <td  class="color-theme">{{ $selisihQty }}</td>
-                                </tr>
-                                <tr>
                                     <td  class="color-theme"> last Opname:</td>
                                     <td  class="color-theme">{{ $opnameIn }}</td>
                                 </tr
+                                <tr>
+                                    <td  class="color-theme">Total Qty :</td>
+                                    <td  class="color-theme">{{ $totalAfterIn }}</td>
+                                    <td  class="color-theme">{{ $totalAfterOut }}</td>
+                                    <td  class="color-theme">{{ $selisihQty }}</td>
+                                </tr>
                                 <tr>
                                     <td  class="color-theme">Final:</td>
                                     <td  class="color-theme">{{ $selisih }}</td>

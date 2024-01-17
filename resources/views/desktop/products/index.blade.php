@@ -21,9 +21,9 @@
               </ol>
             </nav><!-- /.breadcrumb -->
             <!-- floating action -->
-            {{-- <a href="{{ route('projects.create') }}">
+            <a href="{{ route('products.create') }}">
               <button type="button" class="btn btn-success btn-floated"><span class="fa fa-plus"></span></button> <!-- /floating action -->
-            </a>            <!-- title and toolbar --> --}}
+            </a>            <!-- title and toolbar -->
             <!-- /title and toolbar -->
           </header><!-- /.page-title-bar -->
           <!-- .page-section -->
