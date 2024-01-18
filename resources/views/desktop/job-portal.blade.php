@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><!-- End Required meta tags -->
     <!-- Begin SEO tag -->
     <title> Cipta Karir | PT Intercipta Corporation </title>
-    <meta property="og:title" content="Cipta Karir | PT Intercipta Corporation">
+    {{-- <meta property="og:title" content="Cipta Karir | PT Intercipta Corporation">
     <meta name="author" content="Beni Arisandi">
     <meta property="og:locale" content="en_US">
     <meta name="description" content="Peluang kerja melalui Cipta Karir by Intercipta">
@@ -31,7 +31,7 @@
         "headline": "Peluang kerja melalui Cipta Karir by Intercipta",
         "@context": "http://karir.interciptacorp.com"
       }
-    </script><!-- End SEO tag -->
+    </script><!-- End SEO tag --> --}}
     <!-- FAVICONS -->
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('') }}admin/apple-touch-icon.png">
     <link rel="shortcut icon" href="{{ asset('') }}admin/favicon.ico">
