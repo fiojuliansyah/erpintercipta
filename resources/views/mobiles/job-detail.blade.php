@@ -94,7 +94,7 @@
                 </p>
                 <div class="double-slider owl-carousel owl-no-dots">
                     @foreach ($careers as $item) 
-                    <a href="{{ route('jkarir-detail', $item->id) }}"">
+                    <a href="{{ route('karir-detail', $item->id) }}"">
                         <div data-card-height="200" class="card rounded-sm shadow-l bg-14">
                             <div class="card-bottom pb-4">
                                 <h4 class="color-white font-100 line-height-l mb-3 ml-3">{{ $item->jobname }}</h4>
