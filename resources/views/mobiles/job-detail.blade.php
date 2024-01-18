@@ -110,6 +110,7 @@
             <div class="card-overlay dark-mode-tint"></div>
         </div>
     </div>
+    @if (Auth::user())
     <div id="menu-confirm" class="menu menu-box-modal rounded-m" 
             data-menu-height="200" 
             data-menu-width="330">
@@ -132,6 +133,8 @@
             </div>
         </div>
     </div> 
+    @else   
+    @endif
 </div>    
 
 
