@@ -86,25 +86,25 @@
     </div>
 </div>
 <div id="menu-confirm" class="menu menu-box-modal rounded-m" 
-         data-menu-height="200" 
-         data-menu-width="330">
-        <h1 class="text-center font-700 mt-3 pb-1">Kamu yakin ?</h1>
-        <p class="boxed-text-l">
-           Pilih IYA kalau kamu setuju, dan pilih TIDAK kalau kamu tidak setuju!
-        </p>
-        <div class="row mr-3 ml-3 mb-0">
-            <form id="input-applicant" action="{{ route('candidates.store') }}" method="POST" enctype="multipart/form-data" style="display: none;">
-                @csrf
-                <input type="hidden" name="status" value="0">
-                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                <input type="hidden" name="career_id" value="{{ $career->id }}">
-            </form>  
-            <div class="col-6">
-                <a href="#" onclick="event.preventDefault(); document.getElementById('input-applicant').submit();" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-green1-dark">IYA</a>
-            </div>
-            <div class="col-6">
-                <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">TIDAK</a>
-            </div>
+        data-menu-height="200" 
+        data-menu-width="330">
+    <h1 class="text-center font-700 mt-3 pb-1">Kamu yakin ?</h1>
+    <p class="boxed-text-l">
+        Pilih IYA kalau kamu setuju, dan pilih TIDAK kalau kamu tidak setuju!
+    </p>
+    <div class="row mr-3 ml-3 mb-0">
+        <form id="input-applicant" action="{{ route('candidates.store') }}" method="POST" enctype="multipart/form-data" style="display: none;">
+            @csrf
+            <input type="hidden" name="status" value="0">
+            <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+            <input type="hidden" name="career_id" value="{{ $career->id }}">
+        </form>  
+        <div class="col-6">
+            <a href="#" onclick="event.preventDefault(); document.getElementById('input-applicant').submit();" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-green1-dark">IYA</a>
         </div>
-    </div>    
+        <div class="col-6">
+            <a href="#" class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">TIDAK</a>
+        </div>
+    </div>
+</div>    
 @endsection

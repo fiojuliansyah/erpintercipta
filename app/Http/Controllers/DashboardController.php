@@ -57,11 +57,21 @@ class DashboardController extends Controller
 
     public function karirDetail($id)
     {
+        $agent = new Agent;
+
         $career = Career::find($id);
         $allcareer = Career::count();
         $alluser = User::count();
         $companies = Company::all();
-        return view('desktop.job-detail',compact('career','allcareer','alluser','companies'));
+
+        if ($agent->isMobile()) {
+            return view('mobiles.job-detail' ,compact('careers','user','allcareer','alluser','companies'));
+        } elseif ($agent->isDesktop()) {
+             return view('desktop.job-detail',compact('career','allcareer','alluser','companies'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
+             return view('desktop.job-detail',compact('career','allcareer','alluser','companies'));
+        }
     }
 
     public function jobPortal()
