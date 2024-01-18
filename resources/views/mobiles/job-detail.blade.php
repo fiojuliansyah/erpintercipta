@@ -77,8 +77,13 @@
                         <h5 class="font-13 font-600">{{ $career->candidate }} Orang</h5>
                     </div>
                 </div>
-                <div class="divider mt-3"></div>   
-                <a href="#" data-menu="menu-confirm" class="btn btn-full bg-highlight btn-l rounded-sm text-uppercase font-800">lamar Sekarang</a>        </div>
+                <div class="divider mt-3"></div>
+                @if (Auth::user())
+                <a href="#" data-menu="menu-confirm" class="btn btn-full bg-highlight btn-l rounded-sm text-uppercase font-800">lamar Sekarang</a>  
+                @else
+                <a href="{{ route('login') }}" class="btn btn-full bg-highlight btn-l rounded-sm text-uppercase font-800">Login untuk melamar</a>   
+                @endif   
+            </div>    
         </div>
     
         <div class="card mt-4 preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg">
