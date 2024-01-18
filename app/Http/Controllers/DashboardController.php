@@ -60,12 +60,13 @@ class DashboardController extends Controller
         $agent = new Agent;
 
         $career = Career::find($id);
+        $careers = Career::paginate(5);
         $allcareer = Career::count();
         $alluser = User::count();
         $companies = Company::all();
 
         if ($agent->isMobile()) {
-            return view('mobiles.job-detail' ,compact('careers','user','allcareer','alluser','companies'));
+            return view('mobiles.job-detail' ,compact('career', 'careers'));
         } elseif ($agent->isDesktop()) {
              return view('desktop.job-detail',compact('career','allcareer','alluser','companies'));
         } else {
