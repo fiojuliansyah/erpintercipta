@@ -137,16 +137,23 @@
                 <br>
                 <div style="display: flex;">
                     <div style="margin-right: 30px;">
-                        <h6>Nama Bank</h6>
-                        <p>{{ $candidate->user->profile['bank_name'] ?? '' }}</p>
+                        <h6>Nama</h6>
+                        <p>{{ $candidate->user->profile['reference'] ?? '' }}</p>
                     </div>
                     <div style="margin-right: 30px;">
-                        <h6>Nama Rekening</h6>
-                        <p>{{ $candidate->user['name'] ?? '' }}</p>
+                        <h6>Pekerjaan</h6>
+                        <p>{{ $candidate->user['reference_job'] ?? '' }}</p>
                     </div>
                     <div>
-                        <h6>No Rekening</h6>
-                        <p>{{ $candidate->user->profile['bank_account'] ?? '' }}</p>
+                        <h6>Hubungan</h6>
+                        <p>{{ $candidate->user->profile['reference_relation'] ?? '' }}</p>
+                    </div>
+                </div>
+                <br>
+                <div style="display: flex;">
+                    <div style="margin-right: 30px;">
+                        <h6>Alamat</h6>
+                        <p>{{ $candidate->user->profile['reference_address'] ?? '' }}</p>
                     </div>
                 </div>
                 <br>
