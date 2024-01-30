@@ -284,7 +284,7 @@
     });
 </script>
 
-<script>
+{{-- <script>
     function printContent() {
         var printWindow = window.open('', '', 'width=800, height=1000'); // Setel ukuran kertas A4
 
@@ -317,8 +317,41 @@
         printWindow.print();
         printWindow.close();
     }
-</script>
+</script> --}}
 
+<script>
+    function printContent() {
+        var printWindow = window.open('', '', 'width=800, height=1000');
+
+        var printableElements = document.getElementsByClassName('printable-text');
+        
+        printWindow.document.open();
+        printWindow.document.write('<html><head><title>Cetak PKWT</title>');
+
+        printWindow.document.write('<style type="text/css">');
+            printWindow.document.write('.printable-text { font-family: "Times New Roman", Times, serif; font-size: 16px; }');
+        printWindow.document.write('.printable-text img { max-width: 100%; height: auto; }'); // Menjamin gambar tercetak dengan benar
+        printWindow.document.write('</style>');
+
+        printWindow.document.write('</head><body>');
+
+        for (var i = 0; i < printableElements.length; i++) {
+            var element = printableElements[i];
+            element.style.border = 'none'; // Hapus border
+            printWindow.document.write(element.innerHTML);
+
+            if (i < printableElements.length - 1) {
+                printWindow.document.write('<div style="page-break-after: always;"></div>');
+            }
+        }
+
+        printWindow.document.write('</body></html>');
+
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
+    }
+</script>
 
 
 
