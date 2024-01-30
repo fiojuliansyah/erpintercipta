@@ -8,6 +8,7 @@ use App\Models\Statory;
 use App\Models\Addendum;
 use App\Models\Agreement;
 use App\Models\Candidate;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\CandidateUpdate;
@@ -94,11 +95,21 @@ class CandidateController extends Controller
 
     public function show(Candidate $candidate)
     {
+        $agent = new Agent;
         $sites = Site::all();
         $careers = Career::all();
         $addendums = Addendum::all();
         $agreements = Agreement::all();
-        return view('desktop.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements'));
+        
+        if ($agent->isMobile()) {
+            return view('mobiles.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements'));
+        } else {
+            // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan yang sesuai
+            return view('desktop.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements'));
+        }
+    
     }
 
     public function edit(Candidate $candidate)

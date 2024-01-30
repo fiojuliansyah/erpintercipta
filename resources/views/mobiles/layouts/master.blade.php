@@ -34,7 +34,7 @@
 
     <!-- end of page content-->
     
-    
+    @yield('modal')
     <div id="menu-share" 
          class="menu menu-box-bottom menu-box-detached rounded-m" 
          data-menu-height="420" 
