@@ -18,7 +18,7 @@
             <div class="content">
                 <div class="d-flex">
                     <div>
-                        <img src="{{ Storage::url($candidate ? $candidate->user->profile?->avatar : '') }}" width="50"
+                        <img src="{{ Storage::url($candidate->user?->profile['avatar'] ?? 'Tidak ada Data') }}" width="50"
                             class="mr-3 bg-highlight rounded-xl">
                     </div>
                     <div>
@@ -115,15 +115,15 @@
                 <br>
                 <div style="display: flex;">
                     <div style="margin-right: 30px;">
-                        <h6>Nama Bank</h6>
+                        <h6>Bank</h6>
                         <p>{{ $candidate->user->profile['bank_name'] ?? '' }}</p>
                     </div>
                     <div style="margin-right: 30px;">
-                        <h6>Nama Rekening</h6>
+                        <h6>Nama</h6>
                         <p>{{ $candidate->user['name'] ?? '' }}</p>
                     </div>
                     <div>
-                        <h6>No Rekening</h6>
+                        <h6>Rekening</h6>
                         <p>{{ $candidate->user->profile['bank_account'] ?? '' }}</p>
                     </div>
                 </div>
