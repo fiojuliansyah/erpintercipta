@@ -18,7 +18,8 @@
             <div class="content">
                 <div class="d-flex">
                     <div>
-                        <img src="{{ Storage::url($candidate->user?->profile['avatar'] ?? 'Tidak ada Data') }}" width="50">
+                        <img src="{{ Storage::url($candidate->user?->profile['avatar'] ?? 'Tidak ada Data') }}" width="50"
+                            class="mr-3 bg-highlight rounded-xl">
                     </div>
                     <div>
                         <h1 class="mb-0 pt-1">{{ $candidate->user['name'] }}</h1>
