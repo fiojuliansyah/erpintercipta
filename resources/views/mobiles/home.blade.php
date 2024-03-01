@@ -37,53 +37,20 @@
                 <div class="card-overlay bg-highlight opacity-95"></div>
                 <div class="card-bg preload-img"></div>
             </div>
-            <!-- Homepage Slider-->
-            {{-- <div class="content">
-                <p>
-                    <h5 class="float-left font-16 font-600">Attendance</h5>&nbsp&nbsp&nbsp&nbsp<small><span class="badge badge-danger">coming soon</span></small>
-                </p>
-            </div>
-            <div class="user-list-slider owl-carousel mt-1 mb-n1">
-                <div class="icon-user" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <img src="https://img.icons8.com/color/48/hourglass.png" alt="" width="30px" style="margin-bottom: 5px;">
-                    <div style="display: flex; align-items: center;">
-                        <span>Overtime</span>
-                    </div>
-                </div>
-                <div class="icon-user" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <img src="https://img.icons8.com/color/48/timeline-week.png" alt="" width="30px" style="margin-bottom: 5px;">
-                    <div style="display: flex; align-items: center;">
-                        <span>Log</span>
-                    </div>
-                </div>
-                <div class="icon-user" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <img src="https://img.icons8.com/color/48/planner.png" alt="" width="30px" style="margin-bottom: 5px;">
-                    <div style="display: flex; align-items: center;">
-                        <span>Activity</span>
-                    </div>
-                </div>
-                <div class="icon-user" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <img src="https://img.icons8.com/color/48/bonds.png" alt="" width="30px" style="margin-bottom: 5px;">
-                    <div style="display: flex; align-items: center;">
-                        <span>payslip</span>
-                    </div>
-                </div>
-            </div> --}}
             <div class="content mb-2">
                 <h5 class="float-left font-16 font-500">Fitur</h5>&nbsp&nbsp&nbsp&nbsp<small></small>
                 <div class="clearfix"></div>
             </div>
             <div class="double-slider text-center owl-carousel owl-no-dots">
-                {{-- <a href="{{ route('iform') }}">
+                <a href="{{ route('hris') }}">
                     <div class="item bg-theme rounded-m shadow-m" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <img src="https://img.icons8.com/color/48/saving-book.png" alt="" width="60px" style="margin-bottom: 5px; padding-top:30px;">
-                        <h5 class="font-16 pt-1">Mo-Plan</h5>
-                        <span class="badge badge-danger">soon</span>
+                        <img src="https://img.icons8.com/?size=256&id=gyG76Ytfjnuy&format=png" alt="" width="60px" style="margin-bottom: 5px; padding-top:30px;">
+                        <h5 class="font-16 pt-1">HR</h5>
                         <p class="line-height-s font-11">
-                            Perencanaan<br>Kerja
+                            Recruitment<br>Online
                         </p>
                     </div>
-                </a> --}}
+                </a>
                 <a href="{{ route('iform') }}">
                     <div class="item bg-theme rounded-m shadow-m" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                         <img src="https://img.icons8.com/color/48/agreement.png" alt="" width="60px" style="margin-bottom: 5px; padding-top:30px;">
@@ -126,7 +93,7 @@
                 </div>
             </div>
             
-            <div class="card card-style">
+            {{-- <div class="card card-style">
                 <div class="content text-center">
                     <h2>Ready in 3 Steps</h2>
                     <p class="boxed-text-xl">
@@ -170,7 +137,7 @@
                         </div>
                     </div>            
                 </div>
-            </div>
+            </div> --}}
             {{-- <div data-menu="ad-timed-3" data-timed-ad="5" data-auto-show-ad="3"></div>     --}}
         </div>
     @else
@@ -262,19 +229,6 @@
             <div data-menu="ad-timed-4" data-timed-ad="5" data-auto-show-ad="3"></div>  
         </div>
     @endif
-    <div id="ad-timed-3" class="menu menu-box-modal">
-            <div class="card-top">
-                <a href="#" class="close-menu ad-time-close bg-red2-dark"><i class="fa fa-times disabled"></i><span></span></a>
-            </div>
-            <img src="{{ asset('') }}images/announcement.png" width="300px" alt="">      
-    </div>
-
-    <div id="ad-timed-4" class="menu menu-box-modal">
-        <div class="card-top">
-            <a href="#" class="close-menu ad-time-close bg-red2-dark"><i class="fa fa-times disabled"></i><span></span></a>
-        </div>
-        <img src="{{ asset('') }}images/announcement.png" width="300px" alt="">      
-    </div>
     <div id="menu-share-thumbs" 
         class="menu menu-box-modal menu-box-detached rounded-m" 
         data-menu-height="420" 

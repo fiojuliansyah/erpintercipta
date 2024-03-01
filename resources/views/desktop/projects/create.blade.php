@@ -42,10 +42,10 @@
                         <li class="step" data-target="#test-l-2" data-validate="fieldset02">
                           <a href="#" class="step-trigger" tabindex="-1"><span class="step-indicator step-indicator-icon"><i class="oi oi-briefcase"></i></span> <span class="d-none d-sm-inline">Department</span></a>
                         </li>
-                        <li class="step" data-target="#test-l-3" data-validate="fieldset03">
+                        {{-- <li class="step" data-target="#test-l-3" data-validate="fieldset03">
                           <a href="#" class="step-trigger" tabindex="-1"><span class="step-indicator step-indicator-icon"><i class="oi oi-document"></i></span> <span class="d-none d-sm-inline">Chart Of Account</span></a>
-                        </li>
-                        <li class="step" data-target="#test-l-4" data-validate="agreement">
+                        </li> --}}
+                        <li class="step" data-target="#test-l-3" data-validate="agreement">
                           <a href="#" class="step-trigger" tabindex="-1"><span class="step-indicator step-indicator-icon"><i class="oi oi-check"></i></span> <span class="d-none d-sm-inline">Confirm</span></a>
                         </li>
                       </ul>
@@ -193,7 +193,7 @@
                         </fieldset><!-- /fieldset -->
                       </div><!-- /.content -->
                       <!-- .content -->
-                      <div id="test-l-3" class="content dstepper-none fade">
+                      {{-- <div id="test-l-3" class="content dstepper-none fade">
                         <!-- fieldset -->
                         <fieldset>
                           <legend>Chart Of Account</legend> <!-- .custom-control -->
@@ -217,9 +217,9 @@
                             <button type="button" class="prev btn btn-secondary">Previous</button> <button type="button" class="next btn btn-primary ml-auto" data-validate="fieldset03">Next step</button>
                           </div>
                         </fieldset><!-- /fieldset -->
-                      </div><!-- /.content -->
+                      </div><!-- /.content --> --}}
                       <!-- .content -->
-                      <div id="test-l-4" class="content dstepper-none fade">
+                      <div id="test-l-3" class="content dstepper-none fade">
                         <!-- fieldset -->
                         <fieldset>
                           <legend>Terms Agreement</legend> <!-- .card -->

@@ -171,8 +171,8 @@
                 </div>
             </div>
         </div>
-        <a href="#"
-            class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Download CV</a>
+        <a href="#" data-menu="update-lowongan"
+            class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Update Lowongan</a>
 
     </div>
 @endsection
@@ -361,5 +361,102 @@
         <a href="#"
             class="close-menu btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-red1-light">Close</a>
         <br>
+    </div>
+    <div id="update-lowongan" class="menu menu-box-modal rounded-m" data-menu-height="800" data-menu-width="350">
+        <div class="content mb-0">
+            <form action="{{ route('candidates.update',$candidate->id) }}" method="POST" enctype="multipart/form-data">
+                @method('PUT')
+                  @csrf
+                <input type="hidden" name="user_id"
+                    value="{{ $candidate->user['id'] }}">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label class="control-label"
+                            for="bss3">Pilih Training</label>
+                        <select id="bss3"
+                            data-toggle="selectpicker"
+                            data-live-search="true" class="form-control" data-width="100%"
+                            name="status">
+                            <option value="0">Pilih</option>
+                            <option value="1">PENDING</option>
+                            <option value="2">NCC</option>
+                            <option value="3">GNC</option>
+                            <option value="4">Interview User</option>
+                            <option value="5">Reject</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label class="control-label"
+                            for="bss3">Pilih Karir</label>
+                        <select id="bss3"
+                            data-toggle="selectpicker"
+                            data-live-search="true" class="form-control" data-width="100%"
+                            name="career_id">
+                            <option value="{{ $candidate->career['id'] }}">{{ $candidate->career->company['cmpy'] }} - {{ $candidate->career['jobname'] }}</option>
+                            @foreach ($careers as $career)
+                                <option value="{{ $career->id }}">
+                                  {{ $career->company['cmpy'] }} - {{ $career->jobname }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Note Untuk Pelamar</label>
+                        <textarea class="form-control" name="description_user">{{ $candidate->description_user }}</textarea>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Note Untuk Client</label>
+                        <textarea class="form-control" name="description_client">{{ $candidate->description_client }}</textarea>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Jadwal</label>
+                        <input type="date" class="form-control" name="date" value="{{ $candidate->date }}">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label class="control-label"
+                            for="bss3">Pilih Site / Project</label>
+                        <select id="bss3"
+                            data-toggle="selectpicker"
+                            data-live-search="true" class="form-control" data-width="100%"
+                            name="site_id">
+                            <option value="{{ $candidate->site['id'] ?? 'Tidak ada Data' }}">{{ $candidate->site->company['cmpy'] ?? 'Tidak ada Data' }} - {{ $candidate->site['name'] ?? 'Tidak ada Data' }}</option>
+                            @foreach ($sites as $site)
+                                <option value="{{ $site->id }}">
+                                  {{ $site->company['cmpy'] }} - {{ $site->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <label class="control-label">Ketemu / Penanggung Jawab</label>
+                        <input type="text" class="form-control" name="responsible" value="{{ $candidate->responsible }}">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-s button-s shadow-l rounded-s text-uppercase font-900 bg-blue1-light">Submit</button>
+                    </div>
+                    <div class="col-6">
+                        <a href="#"
+                            class="close-menu btn btn-s button-s shadow-l rounded-s text-uppercase font-900 bg-red1-light">Close</a>                     
+                    </div>
+                </div>
+                <br>
+            </form>
+        </div>
     </div>
 @endsection

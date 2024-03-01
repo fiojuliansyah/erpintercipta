@@ -1,7 +1,52 @@
 @extends('mobiles.layouts.master')
 
 @section('title','Product Show | Intercipta Mobile')
+@push('head')
+<style>
+    @media print {
+        /* Gaya cetak untuk area cetak */
+        #printableArea {
+            width: 80mm;
+            height: auto;
+            font-family: 'Arial', sans-serif;
+            font-size: 17px; 
+        }
 
+        body * {
+            visibility: hidden;
+        }
+    
+        #printableArea, #printableArea * {
+            visibility: visible;
+        }
+    
+        .tab-controls, .page-title, .card.header-card {
+            display: none; /* Menyembunyikan elemen yang tidak diperlukan */
+        }
+    
+        /* Gaya cetak untuk tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        th, td {
+            border: 1px solid #000; /* Tambahkan border pada sel tabel */
+            padding: 8px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #f2f2f2; /* Atur latar belakang th */
+        }
+    
+        /* Mengatur margin sesuai kebutuhan */
+        body {
+            margin: 5mm;
+        }
+    }
+    </style>
+@endpush
 @section('content')
 <div class="page-content">
     <div class="page-title page-title-small">
@@ -25,7 +70,7 @@
             </div>
             <div class="clearfix mb-3"></div>
             <div class="tab-content" id="tab-1">
-                <div class="content">
+                <div class="content" id="printableArea">
                     <div class="d-flex">
                         <div>
                             <h1>QR Code</h1>
@@ -74,7 +119,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" class="btn btn-full btn-margins  bg-highlight btn-m text-uppercase font-900 rounded-s shadow-xl">Print QR Code</a>
+                <button onclick="window.print()" value="print a div!" class="btn btn-full btn-margins  bg-highlight btn-m text-uppercase font-900 rounded-s shadow-xl">Print QR Code</button>
             </div>
             <div class="tab-content" id="tab-2">
                 <div class="content">
@@ -282,4 +327,4 @@
         </div>
     </div>   
 </div> 
-@endsection
+@endsection 

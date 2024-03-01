@@ -55,6 +55,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
     Route::middleware('auth', 'visitor')->group(function () {
     Route::get('/mobiles/home', [HomeController::class, 'homeMobile']);
     Route::get('/mobiles/iform', [HomeController::class, 'iform'])->name('iform');
+    Route::get('/mobiles/hris', [HomeController::class, 'hris'])->name('hris');
     Route::get('/mobiles/profile', [HomeController::class, 'profile'])->name('profile');
     Route::get('/mobiles/scan', [HomeController::class, 'scan'])->name('scan');
     Route::get('/mobiles/warehouse', [HomeController::class, 'warehouse'])->name('warehouse');

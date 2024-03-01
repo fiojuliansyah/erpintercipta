@@ -42,6 +42,11 @@ class HomeController extends Controller
         return view('mobiles.warehouse.index');
     }
 
+    public function hris()
+    {
+        return view('mobiles.hris.index');
+    }
+
     public function itemreq()
     {
         $products = Product::all(); 
