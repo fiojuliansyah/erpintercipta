@@ -22,16 +22,28 @@ class ImportUsers implements ToModel, WithStartRow
 
         if (!$user) {
             // Buat pengguna baru jika tidak ada yang ditemukan
-            $user = new User([
-                'nik_number' => $row[0],
-                'email' => $row[1],
-                'name' => $row[3],
-                'phone' => $row[4],
-                'password' => bcrypt($row[5]),
-            ]);
+            $user = User::where('email', $row[1])->first();
 
-            // Simpan pengguna ke database
-            $user->save();
+            if (!$user) {
+                // Buat pengguna baru jika alamat email belum digunakan
+                $user = new User([
+                    'nik_number' => $row[0],
+                    'email' => $row[1],
+                    'name' => $row[3],
+                    'phone' => $row[4],
+                    'password' => bcrypt($row[5]),
+                ]);
+
+                // Simpan pengguna ke database
+                $user->save();
+            } else {
+                // Perbarui data pengguna yang sudah ada
+                $user->nik_number = $row[0];
+                $user->name = $row[3];
+                $user->phone = $row[4];
+                $user->password = bcrypt($row[5]);
+                $user->save();
+            }
         } else {
             // Perbarui data pengguna jika sudah ada
             $user->nik_number = $row[0];
