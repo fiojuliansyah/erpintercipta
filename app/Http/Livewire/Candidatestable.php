@@ -10,11 +10,12 @@ use App\Models\Addendum;
 use App\Models\Training;
 use App\Models\Agreement;
 use App\Models\Candidate;
+use Jenssegers\Agent\Agent;
+use Illuminate\Http\Request;
 use Livewire\WithPagination;
 use App\Exports\ExportCandidates;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Notifications\CandidateUpdate;
-use Illuminate\Http\Request;
 
 class Candidatestable extends Component
 {
@@ -157,6 +158,7 @@ class Candidatestable extends Component
 
     public function render()
     {
+        $agent = new Agent;
         $sites = Site::all();
         $careers = Career::all();
         $addendums = Addendum::all();
@@ -174,6 +176,11 @@ class Candidatestable extends Component
                 ->paginate(10);
         }
 
+        if ($agent->isDekstop()) {
+            return view('desktop.livewire.candidatestable', compact('data','addendums', 'sites', 'careers', 'agreements'));
+        } elseif ($agent->isMobile()) {
+            return view('mobiles.livewire.candidatestable', compact('data','addendums', 'sites', 'careers', 'agreements'));
+        }
         return view('desktop.livewire.candidatestable', compact('data','addendums', 'sites', 'careers', 'agreements'));
     }
 }

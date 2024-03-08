@@ -25,8 +25,8 @@
         <div class="content mt-0 mb-0">           
             <div class="list-group list-custom-small list-icon-0">
                 <a href="#"><i class="fa fa-briefcase color-green2-dark"></i><span>Lowongan</span><i class="fa fa-angle-right"></i></a>
-                <a href="#"><i class="fa fa-users color-green1-dark"></i><span>Pelamar</span><i class="fa fa-angle-right"></i></a>
-                <a href="#"><i class="fa fa-users color-blue2-dark"></i><span>kandidat</span><i class="fa fa-angle-right"></i></a>
+                <a href="{{ route('applicants.index') }}"><i class="fa fa-users color-green1-dark"></i><span>Pelamar</span><i class="fa fa-angle-right"></i></a>
+                <a href="{{ route('candidates.index') }}"><i class="fa fa-users color-blue2-dark"></i><span>kandidat</span><i class="fa fa-angle-right"></i></a>
                 {{-- <a href="page-chat.html"><i class="fa fa-comments color-orange-dark"></i><span>Chat Bubbles</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-cover.html"><i class="fa fa-image color-blue2-dark"></i><span>Coverpage</span><i class="fa fa-angle-right"></i></a>
                 <a href="page-error-1.html"><i class="fa fa-exclamation-triangle color-yellow1-dark"></i><span>Error 404</span><i class="fa fa-angle-right"></i></a>

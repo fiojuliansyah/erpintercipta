@@ -28,7 +28,15 @@ class CandidateController extends Controller
     
     public function index()
     {
-        return view('desktop.candidates.index');
+        $agent = new Agent;
+        
+        if ($agent->isMobile()) {
+            return view('mobiles.candidates.index');
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.candidates.index');
+        } else {
+            return view('desktop.candidates.index');
+        }
     }
 
     public function create()
