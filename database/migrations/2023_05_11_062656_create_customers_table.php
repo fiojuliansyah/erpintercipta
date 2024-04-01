@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('contact')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('term_id')->nullable();
             $table->string('taxcategorya_id')->nullable();
             $table->string('taxcategoryb_id')->nullable();
             $table->string('taxnumber')->nullable();

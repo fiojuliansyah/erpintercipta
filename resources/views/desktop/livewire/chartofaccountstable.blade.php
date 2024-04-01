@@ -11,7 +11,6 @@
             <tr>
                 <th>No</th>
                 <th>Status</th>
-                <th>Customer Name</th>
                 <th>Account Type</th>
                 <th>Account Name</th>
                 <th>Request By</th>
@@ -33,7 +32,6 @@
                       <span class="badge badge-warning">Pending</span>
                     @endif
                   </td>
-                  <td>{{ $coa->customer ['customername'] }}</td>
                   <td>{{ $coa->accounttype ['accounttype'] }}</td>
                   <td>{{ $coa->accountname }}</td>
                   <td>{{ $coa->user_id }}</td>

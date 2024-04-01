@@ -23,8 +23,7 @@ class Departmentstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Department::whereRelation('customer', 'customername', 'like', '%' . $this->search . '%')
-                ->orWhere('departmentname', 'like', '%' . $this->search . '%')
+            $data = Department::where('departmentname', 'like', '%' . $this->search . '%')
                 ->orWhere('user_id', 'like', '%' . $this->search . '%')
                 ->paginate(10);
         } else {

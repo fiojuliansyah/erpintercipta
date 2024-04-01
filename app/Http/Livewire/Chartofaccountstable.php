@@ -21,8 +21,7 @@ class Chartofaccountstable extends Component
     public function render()
     {
         if ($this->search != '') {
-            $data = Chartofaccount::whereRelation('customer', 'customername', 'like', '%' . $this->search . '%')
-                ->orWhere('accountname', 'like', '%' . $this->search . '%')
+            $data = Chartofaccount::where('accountname', 'like', '%' . $this->search . '%')
                 ->orWhere('accounttype_id', 'like', '%' . $this->search . '%')
                 ->orWhere('user_id', 'like', '%' . $this->search . '%')
                 ->paginate(10);

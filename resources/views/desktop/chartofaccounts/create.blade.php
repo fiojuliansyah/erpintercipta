@@ -58,19 +58,6 @@
                     @endcan
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <label for="customer_id">Customer</label>
-                            <select id="customer_id" class="custom-select custom-select-lg d-block w-100" name="customer_id" required="">
-                            <option value=""> Choose Customer </option>
-                                @foreach ($customers as $customer)
-                                @if ( $customer->status == '1' )
-                                    <option value="{{ $customer->id }}"> {{ $customer->customername }} </option>
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
                             <label for="accounttype_id">Account Type</label>
                             <select id="accounttype_id" class="custom-select custom-select-lg d-block w-100" name="accounttype_id" required="">
                             <option value=""> Choose Account Type </option>

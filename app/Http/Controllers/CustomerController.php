@@ -39,8 +39,7 @@ class CustomerController extends Controller
     {
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
-        $terms = Term::all();
-        return view('desktop.customers.create', compact('companies','taxcategories','terms'));
+        return view('desktop.customers.create', compact('companies','taxcategories'));
     }
 
     /**
@@ -66,7 +65,6 @@ class CustomerController extends Controller
         $customer->contact = $request->contact;
         $customer->phone = $request->phone;
         $customer->email = $request->email;
-        $customer->term_id = $request->term_id;
         $customer->taxcategorya_id = $request->taxcategorya_id;
         $customer->taxcategoryb_id = $request->taxcategoryb_id;
         $customer->taxnumber = $request->taxnumber;
@@ -101,8 +99,7 @@ class CustomerController extends Controller
     {
         $companies = Company::all();
         $taxcategories = Taxcategory::all();
-        $terms = Term::all();
-        return view('desktop.customers.edit',compact('customer','companies','taxcategories','terms'));
+        return view('desktop.customers.edit',compact('customer','companies','taxcategories'));
     }
 
     /**
@@ -130,7 +127,6 @@ class CustomerController extends Controller
         $customer->contact = $request->contact;
         $customer->phone = $request->phone;
         $customer->email = $request->email;
-        $customer->term_id = $request->term_id;
         $customer->taxcategorya_id = $request->taxcategorya_id;
         $customer->taxcategoryb_id = $request->taxcategoryb_id;
         $customer->taxnumber = $request->taxnumber;

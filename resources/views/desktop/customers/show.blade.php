@@ -72,12 +72,6 @@
                         </div><!-- /grid column -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Term</label>
-                                <input class="form-control" id="tfDisabled" value="{{ $customer->term['term'] ?? 'Tidak ada Data' }}" disabled>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label>Tax Number</label>
                                 <input class="form-control" id="tfDisabled" value="{{ $customer->taxnumber ?? 'Tidak ada Data' }}" disabled>
                             </div>

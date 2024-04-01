@@ -78,7 +78,6 @@ class ProjectController extends Controller
         $customer->contact = $request->contact;
         $customer->phone = $request->phone;
         $customer->email = $request->email;
-        $customer->term_id = $request->term_id;
         $customer->taxcategorya_id = $request->taxcategorya_id;
         $customer->taxcategoryb_id = $request->taxcategoryb_id;
         $customer->taxnumber = $request->taxnumber;
@@ -89,16 +88,14 @@ class ProjectController extends Controller
         
         $department = new Department;
         $department->status = $customer->status;
-        $department->customer_id = $customer->id;
         $department->departmentname = $request->departmentname;
         $department->user_id = $user;
         $department->save();
 
         $chartofaccount = new Chartofaccount;
         $chartofaccount->status = $customer->status;
-        $chartofaccount->customer_id = $customer->id;
-        $chartofaccount->accounttype_id = $request->accounttype_id;
-        $chartofaccount->accountname = $request->accountname;
+        $chartofaccount->accounttype_id = '2';
+        $chartofaccount->accountname = $request->customername;
         $chartofaccount->user_id = $user;
         $chartofaccount->save();
         

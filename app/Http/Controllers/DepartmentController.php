@@ -48,14 +48,12 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'customer_id' => 'required',
             'departmentname' => 'required',
         ]);
         $user = Auth::user()->name;
         
         $department = new Department;
         $department->status = $request->status;
-        $department->customer_id = $request->customer_id;
         $department->departmentname = $request->departmentname;
         $department->user_id = $user;
         $department->save();
@@ -84,8 +82,7 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        $customers = Customer::all();
-        return view('desktop.departments.edit',compact('department', 'customers'));
+        return view('desktop.departments.edit',compact('department'));
     }
 
     /**
@@ -100,7 +97,6 @@ class DepartmentController extends Controller
         $department = Department::find($id);
 
         $department->status = $request->status;
-        $department->customer_id = $request->customer_id;
         $department->departmentname = $request->departmentname;
         
         $department->save();

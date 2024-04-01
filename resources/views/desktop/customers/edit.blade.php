@@ -79,17 +79,6 @@
                         </div><!-- /grid column -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="term_id">Term</label>
-                                <select id="term_id" class="custom-select custom-select-lg d-block w-100" name="term_id">
-                                    <option value=""> Choose Term </option>
-                                    @foreach ($terms as $term)
-                                    <option value="{{ $term->id }}" {{ old('term_id', $customer->term_id ) == $term->id ? 'selected' : null }}> {{ $term->term }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label>Tax Number</label>
                                 <input class="form-control" id="tfDisabled" value="{{ $customer->taxnumber }}" name="taxnumber">
                             </div>

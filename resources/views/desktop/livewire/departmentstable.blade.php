@@ -11,7 +11,6 @@
             <tr>
                 <th>No</th>
                 <th>Status</th>
-                <th>Customer Name</th>
                 <th>Department Name</th>
                 <th>Request By</th>
                 <th width="100px"></th>
@@ -32,7 +31,6 @@
                       <span class="badge badge-warning">Pending</span>
                     @endif
                   </td>
-                  <td>{{ $department->customer ['customername'] }}</td>
                   <td>{{ $department->departmentname }}</td>
                   <td>{{ $department->user_id }}</td>
                   <td class="align-middle text-right">

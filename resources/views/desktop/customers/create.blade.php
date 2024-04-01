@@ -111,17 +111,6 @@
                               <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                            @enderror
                         </div>
-                    </div>    
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <label for="term_id">Term</label>
-                            <select id="term_id" class="custom-select custom-select-lg d-block w-100" name="term_id">
-                                <option value=""> Choose Term </option>
-                                @foreach ($terms as $term)
-                                <option value="{{ $term->id }}"> {{ $term->term }} </option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">

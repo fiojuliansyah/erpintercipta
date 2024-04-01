@@ -35,17 +35,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="customer_id">Customer Name</label>
-                                <select id="customer_id" class="custom-select custom-select-lg d-block w-100" name="customer_id">
-                                <option value=""> Choose Customer </option>
-                                @foreach ($customers as $customer)
-                                <option value="{{ $customer->id }}" {{ old('customer_id', $department->customer_id ) == $customer->id ? 'selected' : null }}> {{ $customer->customername }} </option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label>department Name</label>
                                 <input class="form-control" id="tfDisabled" value="{{ $department->departmentname }}" name="departmentname">
                             </div>

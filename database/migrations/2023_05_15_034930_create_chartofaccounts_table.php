@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('chartofaccounts', function (Blueprint $table) {
             $table->id();
             $table->string('status')->nullable();
-            $table->string('customer_id')->nullable();
             $table->string('accounttype_id')->nullable();
             $table->string('accountname')->nullable();
             $table->string('user_id')->nullable();

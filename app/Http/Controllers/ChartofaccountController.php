@@ -51,7 +51,6 @@ class ChartofaccountController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'customer_id' => 'required',
             'accounttype_id' => 'required',
             'accountname' => 'required',
         ]);
@@ -59,7 +58,6 @@ class ChartofaccountController extends Controller
         
         $chartofaccount = new Chartofaccount;
         $chartofaccount->status = $request->status;
-        $chartofaccount->customer_id = $request->customer_id;
         $chartofaccount->accounttype_id = $request->accounttype_id;
         $chartofaccount->accountname = $request->accountname;
         $chartofaccount->user_id = $user;
@@ -89,9 +87,8 @@ class ChartofaccountController extends Controller
      */
     public function edit(Chartofaccount $chartofaccount)
     {
-        $customers = Customer::all();
         $accounttypes = Accounttype::all();
-        return view('desktop.chartofaccounts.edit',compact('chartofaccount', 'customers', 'accounttypes'));
+        return view('desktop.chartofaccounts.edit',compact('chartofaccount', 'accounttypes'));
     }
 
     /**
@@ -106,7 +103,6 @@ class ChartofaccountController extends Controller
         $chartofaccount = Chartofaccount::find($id);
 
         $chartofaccount->status = $request->status;
-        $chartofaccount->customer_id = $request->customer_id;
         $chartofaccount->accounttype_id = $request->accounttype_id;
         $chartofaccount->accountname = $request->accountname;
         
