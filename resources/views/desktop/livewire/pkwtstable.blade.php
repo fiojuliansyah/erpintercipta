@@ -75,7 +75,7 @@
                                     @enderror
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="{{ asset('/admin/format_import/format_import_agreement.xlsx') }}"
+                                    <a href="{{ asset('/admin/format_import/FORMAT_NEW_PKWT.xlsx') }}"
                                         class="dropdown-item"><img
                                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
                                             width="20" alt="">&nbsp;&nbsp;Download Format Excel</a>
