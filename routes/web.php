@@ -118,6 +118,7 @@ Route::get('/karir/{id}', [DashboardController::class, 'karirDetail'])->name('ka
 
     Route::resource('agreements', AgreementController::class);
     Route::post('/import-agreement',[AgreementController::class,'import'])->name('import-agreement');
+     Route::post('/import-pkwt-all',[AgreementController::class,'importAll'])->name('import-agreement-all');
 
     Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
     Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');

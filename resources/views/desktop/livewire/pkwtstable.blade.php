@@ -63,7 +63,8 @@
                         </div><!-- /.modal-header -->
                         <!-- .modal-body -->
                         <div class="modal-body">
-                            <form action="{{ route('import-agreement') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('import-agreement-all') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="custom-file">
                                     <input type="file" name="file" class="custom-file-input"
@@ -89,7 +90,7 @@
                 <button type="button" class="btn btn-light" data-toggle="dropdown"><i
                         class="oi oi-data-transfer-download"></i> <span>Export</span> <span
                         class="fa fa-caret-down"></span></button>
-                        <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-right">
                     <p style="text-align: center">Export Pkwt</p>
                     <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
@@ -97,11 +98,11 @@
                     <div class="dropdown-arrow"></div><button wire:click="exportPdf" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export PDF</button>
-                            <br>
+                    <br>
                     <p style="text-align: center">Export Agreement</p>
                     <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
-                        width="20" alt="">&nbsp;&nbsp;Export Excel</button>
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
+                            width="20" alt="">&nbsp;&nbsp;Export Excel</button>
                     <div class="dropdown-arrow"></div><button wire:click="exportPdf" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export PDF</button>
@@ -201,7 +202,7 @@
             var canvas = document.getElementById('signatureCanvas');
             var signaturePad = new SignaturePad(canvas);
             var saveButton = document.getElementById('saveButton');
-    
+
             saveButton.addEventListener('click', function() {
                 if (signaturePad.isEmpty()) {
                     alert('Tanda tangan kosong, silakan tanda tangan');
@@ -213,30 +214,30 @@
                     }
                 }
             });
-    
+
             function saveSignature(signatureDataUrl) {
                 fetch('{{ url('esigns') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({
-                        signatureDataUrl: signatureDataUrl
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            signatureDataUrl: signatureDataUrl
+                        })
                     })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    signaturePad.clear();
-                    // Mengarahkan ke dasbor jika tanda tangan berhasil disimpan
-                    if (data.success) {
-                        window.location.href = '{{ url('/pkwts') }}';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        signaturePad.clear();
+                        // Mengarahkan ke dasbor jika tanda tangan berhasil disimpan
+                        if (data.success) {
+                            window.location.href = '{{ url('/pkwts') }}';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             }
         });
     </script>
