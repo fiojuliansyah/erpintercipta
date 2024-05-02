@@ -2,14 +2,14 @@
 
 namespace App\Imports;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Agreement;
 use App\Models\Pkwt;
-use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithStartRow;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
 class ImportUserAndAgreements implements ToModel, WithStartRow
 {
@@ -19,46 +19,34 @@ class ImportUserAndAgreements implements ToModel, WithStartRow
             return null; // Skip the header row
         }
 
-        // Check if it's a user or agreement
-        if (!empty($row[1])) {
-            // Importing user
-            return $this->importUser($row);
-        } else {
-            // Importing agreement
-            return $this->importAgreement($row);
-        }
-    }
-
-    private function importUser($row)
-    {
-        // Check if nik_number is null
+        // Pemeriksaan apakah nik_number null
         if ($row[0] === null) {
-            // If nik_number is null, skip this row
+            // Jika nik_number null, lewati baris ini
             return null;
         }
 
-        // Find user based on email address
+        // Cari pengguna berdasarkan alamat email
         $existingUser = User::where('email', $row[1])->first();
 
         if ($existingUser) {
-            // If user exists, update user data
+            // Jika pengguna sudah ada, perbarui data pengguna
             $existingUser->update([
                 'nik_number' => $row[0],
                 'name' => $row[2],
-                'password' => Hash::make($row[3]), // Hash password for security
+                'password' => bcrypt($row[3]),
             ]);
             $user = $existingUser;
         } else {
-            // Create new user if not found
+            // Buat pengguna baru jika tidak ada yang ditemukan
             $user = User::create([
                 'nik_number' => $row[0],
                 'email' => $row[1],
                 'name' => $row[2],
-                'password' => Hash::make($row[3]), // Hash password for security
+                'password' => bcrypt($row[3]),
             ]);
         }
 
-        // Create or update profile associated with the user
+        // Buat profil yang terkait dengan pengguna
         $profile = Profile::updateOrCreate(
             ['user_id' => $user->id],
             [
@@ -68,93 +56,52 @@ class ImportUserAndAgreements implements ToModel, WithStartRow
                 'birth_place' => $row[7],
                 'birth_date' => Date::excelToDateTimeObject($row[8])->format('Y-m-d'), // Change format as needed
                 'gender' => $row[9],
-            ]);
-
-        return $user; // Return User model if needed
-    }
-
-    private function importAgreement($row)
-    {
-        // Check if user_id and agreement_id already exist based on department
-        $existingAgreement = Agreement::whereHas('user.profile', function ($query) use ($row) {
-            $query->where('department', $row[4]);
-        })
-            ->where('department', $row[4])
-            ->first();
-
-        if ($existingAgreement) {
-            // If agreement exists, you can update the existing agreement or handle the case as needed.
-            // Here, I assume updating some information of the existing agreement.
-            $existingAgreement->update([
-                'romawi' => $row[11],
-                'year' => $row[12],
-                'area' => $row[13],
-                'start_date' => Date::excelToDateTimeObject($row[14])->format('Y-m-d'),
-                'end_date' => Date::excelToDateTimeObject($row[15])->format('Y-m-d'),
-                'length_of_work' => $row[16],
-                'responsible' => $row[17],
-                'salary' => $row[18],
-                'department_allowance' => $row[19],
-                'attendance_allowance' => $row[20],
-                'comunication_allowance' => $row[21],
-                'beauty_allowance' => $row[22],
-                'food_allowance' => $row[23],
-                'transport_allowance' => $row[24],
-                'location_allowance' => $row[25],
-                'other_non_fix_allowance' => $row[26],
-                'penalty' => $row[27],
-                'addendum_id' => $row[28],
-            ]);
-            $agreement = $existingAgreement;
-        } else {
-            // If agreement does not exist, create a new agreement.
-            $user = User::whereHas('profile', function ($query) use ($row) {
-                $query->where('department', $row[4]);
-            })->first();
-
-            if ($user) {
-                $agreement = Agreement::create([
-                    'user_id' => $user->id,
-                    'department' => $row[4],
-                    'title' => 'PKWT' . $row[13],
-                    'romawi' => $row[11],
-                    'year' => $row[12],
-                    'area' => $row[13],
-                    'start_date' => Date::excelToDateTimeObject($row[14])->format('Y-m-d'),
-                    'end_date' => Date::excelToDateTimeObject($row[15])->format('Y-m-d'),
-                    'length_of_work' => $row[16],
-                    'responsible' => $row[17],
-                    'salary' => $row[18],
-                    'department_allowance' => $row[19],
-                    'attendance_allowance' => $row[20],
-                    'comunication_allowance' => $row[21],
-                    'beauty_allowance' => $row[22],
-                    'food_allowance' => $row[23],
-                    'transport_allowance' => $row[24],
-                    'location_allowance' => $row[25],
-                    'other_non_fix_allowance' => $row[26],
-                    'penalty' => $row[27],
-                    'addendum_id' => $row[28],
-                ]);
-            } else {
-                // Handle case when user with specified department does not exist
-                return null;
-            }
-        }
-
-        // Now, create or update PKWT
-        $pkwt = Pkwt::updateOrCreate(
-            ['user_id' => $user->id, 'agreement_id' => $agreement->id],
-            ['pkwt_number' => $row[10]]
-            // Add other mappings as needed
+            ]
         );
 
-        return $agreement; // Return Agreement model if needed
+        // Buat agreement baru
+        $agreement = new Agreement([
+            'department' => $row[4],
+            'title' => 'PKWT ' . $row[13],
+            'romawi' => $row[11],
+            'year' => $row[12],
+            'area' => $row[13],
+            'start_date' => Date::excelToDateTimeObject($row[14])->format('Y-m-d'),
+            'end_date' => Date::excelToDateTimeObject($row[15])->format('Y-m-d'),
+            'length_of_work' => $row[16],
+            'responsible' => $row[17],
+            'salary' => $row[18],
+            'department_allowance' => $row[19],
+            'attendance_allowance' => $row[20],
+            'comunication_allowance' => $row[21],
+            'beauty_allowance' => $row[22],
+            'food_allowance' => $row[23],
+            'transport_allowance' => $row[24],
+            'location_allowance' => $row[25],
+            'other_non_fix_allowance' => $row[26],
+            'penalty' => $row[27],
+            'addendum_id' => $row[28],
+        ]);
+
+        // Simpan Agreement
+        $agreement->save();
+
+        // Sekarang, buat atau asosiasikan Pkwt
+        $pkwt = new Pkwt([
+            'agreement_id' => $agreement->id,
+            'user_id' => $user->id,
+            'pkwt_number' => $row[10],
+        ]);
+
+        // Simpan Pkwt
+        $pkwt->save();
+
+        // Kembalikan User (atau null) - tergantung kebutuhan Anda
+        return $user;
     }
 
     public function startRow(): int
     {
-        return 2; // Start from row 2 (skip the header row)
+        return 2; // Mulai dari baris 2 (lewati baris header)
     }
 }
-
