@@ -143,12 +143,12 @@
             <div class="form-group">
                 <select class="custom-select" wire:model="selectedTitle" name="title">
                     <option value="">Pilih Judul</option>
-                    @foreach ($addendums as $addendum)
+                    @foreach ($addendums->unique('title') as $addendum)
                         <option value="{{ $addendum->title }}">{{ $addendum->title }}</option>
                     @endforeach
                 </select>
             </div>
-        </div>      
+        </div>        
     </div>
     <div class="table-responsive">
         <table id="roletable" class="table">
