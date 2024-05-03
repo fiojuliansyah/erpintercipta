@@ -110,11 +110,35 @@
             </div>
         </div><!-- /.btn-toolbar -->
     </div>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
-        </div><input type="text" class="form-control" name="keyword" placeholder="Search..."
-            wire:model="search">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
+                </div>
+                <input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <select class="custom-select" wire:model="selectedProject" name="project">
+                    <option value="">Select Project</option>
+                    @foreach ($projects as $project)
+                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <select class="custom-select" wire:model="selectedCompany" name="company">
+                    <option value="">Select Company</option>
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->id }}">{{ $company->company }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>        
     </div>
     <div class="table-responsive">
         <table id="roletable" class="table">

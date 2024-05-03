@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Pkwt;
+use App\Models\Site;
+use App\Models\Company;
 use Livewire\Component;
 use App\Exports\ExportPkwts;
 use Livewire\WithPagination;
@@ -15,6 +17,8 @@ class Pkwtstable extends Component
     public $exportToExcel = false;
     public $search = '';
     public $selectedIds = [];
+    public $selectedCompany = null;
+    public $selectedProject = null;
 
     public function updatingSearch()
     {
@@ -47,13 +51,35 @@ class Pkwtstable extends Component
 
     public function render()
     {
-        if ($this->search != '') {
-            $data = Pkwt::whereRelation('user', 'name', 'like', '%' . $this->search . '%')
-                ->paginate(10);
-        } else {
-            $data = Pkwt::paginate(10);
-        }
+        $companies = Company::all();
+        $projects = Site::all();
 
-        return view('desktop.livewire.pkwtstable', compact('data'));
+        $query = Pkwt::query();
+
+        // Applying search filter
+        if ($this->search) {
+            $query->whereHas('user', function ($query) {
+                $query->where('name', 'like', '%' . $this->search . '%');
+            });
+        }
+    
+        // Applying company filter
+        if ($this->selectedCompany) {
+            $query->whereHas('agreement.addendum.site', function ($query) {
+                $query->where('company_id', $this->selectedCompany);
+            });
+        }
+    
+        // Applying project filter
+        if ($this->selectedProject) {
+            $query->whereHas('agreement.addendum.site', function ($query) {
+                $query->where('id', $this->selectedProject);
+            });
+        }
+    
+        // Fetching paginated results
+        $data = $query->paginate(10);
+    
+        return view('desktop.livewire.pkwtstable', compact('data', 'companies', 'projects'));
     }
 }
