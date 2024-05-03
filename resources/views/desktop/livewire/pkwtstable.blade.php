@@ -142,7 +142,7 @@
                         </td>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>{{ $pkwt->agreement->addendum->site->company['company'] ?? 'Tidak ada Data' }}</td>
-                        <td>{{ $pkwt->agreement['title'] ?? 'Tidak ada Data' }}</td>
+                        <td>{{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}</td>
                         <td>APPLICANT - {{ str_pad($pkwt->user['id'] ?? 'Tidak ada Data', 5, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ $pkwt->user['name'] ?? 'Tidak ada Data' }}</td>
                         <td>
