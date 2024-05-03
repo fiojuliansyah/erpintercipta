@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Pkwt;
 use App\Models\Site;
 use App\Models\Company;
+use App\Models\Addendum;
 use Livewire\Component;
 use App\Exports\ExportPkwts;
 use Livewire\WithPagination;
@@ -19,6 +20,7 @@ class Pkwtstable extends Component
     public $selectedIds = [];
     public $selectedCompany = null;
     public $selectedProject = null;
+    public $selectedTitle = null;
 
     public function updatingSearch()
     {
@@ -53,6 +55,7 @@ class Pkwtstable extends Component
     {
         $companies = Company::all();
         $projects = Site::all();
+        $addendums = Addendum::all();
 
         $query = Pkwt::query();
 
@@ -76,10 +79,17 @@ class Pkwtstable extends Component
                 $query->where('id', $this->selectedProject);
             });
         }
+
+        // Applying title filter
+        if ($this->selectedTitle) {
+            $query->whereHas('agreement.addendum', function ($query) {
+                $query->where('title', $this->selectedTitle);
+            });
+        }
     
         // Fetching paginated results
         $data = $query->paginate(10);
     
-        return view('desktop.livewire.pkwtstable', compact('data', 'companies', 'projects'));
+        return view('desktop.livewire.pkwtstable', compact('data', 'companies', 'projects', 'addendums'));
     }
 }
