@@ -147,12 +147,9 @@
                 <tr>
                     <th width="50px"></th>
                     <th>No</th>
-                    <th>Perusahaan</th>
                     <th>Addendum</th>
-                    <th>ID Pelamar</th>
                     <th>Nama</th>
-                    <th>TTD Pelamar</th>
-                    <th>TTD HRD</th>
+                    <th>Signature</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -165,18 +162,29 @@
                             <input type="checkbox" wire:model="selectedIds" value="{{ $pkwt->id }}">
                         </td>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
-                        <td>{{ $pkwt->agreement->addendum->site->company['company'] ?? 'Tidak ada Data' }}</td>
-                        <td>{{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}</td>
-                        <td>APPLICANT - {{ str_pad($pkwt->user['id'] ?? 'Tidak ada Data', 5, '0', STR_PAD_LEFT) }}</td>
-                        <td>{{ $pkwt->user['name'] ?? 'Tidak ada Data' }}</td>
                         <td>
+                            {{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}
+                        <br>
+                        <small>
+                            {{ $pkwt->agreement->addendum->site->company['company'] ?? 'Tidak ada Data' }}
+                        </small>
+                        </td>
+                        <td>
+                            {{ $pkwt->user['name'] ?? 'Tidak ada Data' }}
+                        <br>
+                        <small>
+                            APPLICANT - {{ str_pad($pkwt->user['id'] ?? 'Tidak ada Data', 5, '0', STR_PAD_LEFT) }}
+                        </small>
+                        </td>
+                        <td>
+                            Employee :
                             @if ($pkwt->user?->signature == null)
                                 <span class="badge badge-danger">Belum Tertanda Tangan</span>
                             @else
                                 <span class="badge badge-success">Sudah Tertanda Tangan</span>
                             @endif
-                        </td>
-                        <td>
+                            <br>
+                            HRD :
                             @if ($pkwt->signature_hrd == null)
                                 <span class="badge badge-danger">Belum Tertanda Tangan</span>
                             @else
@@ -196,20 +204,48 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <div class="dropdown-arrow"></div>
-                                        <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
-                                            <a class="dropdown-item"
-                                                href="{{ route('pkwts.show', $pkwt->id) }}">Lihat Pkwt</a>
-                                            @csrf
-                                            @method('DELETE')
-                                            @can('pkwt-delete')
-                                                <button type="submit" class="dropdown-item">Hapus</button>
-                                            @endcan
-                                        </form>
+                                        <a class="dropdown-item"
+                                            href="{{ route('pkwts.show', $pkwt->id) }}">Lihat Pkwt</a>
+                                            <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalAlertWarning{{ $pkwt->id }}">Hapus</a>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr><!-- /tr -->
+                    <div class="modal modal-alert fade" id="exampleModalAlertWarning{{ $pkwt->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalAlertWarningLabel" aria-hidden="true">
+                        <!-- .modal-dialog -->
+                        <div class="modal-dialog" role="document">
+                          <!-- .modal-content -->
+                          <div class="modal-content">
+                            <!-- .modal-header -->
+                            <div class="modal-header">
+                              <h5 id="exampleModalAlertWarningLabel" class="modal-title">
+                                <i class="fa fa-bullhorn text-danger mr-1"></i> Apakah anda yakin?</h5>
+                            </div><!-- /.modal-header -->
+                            <!-- .modal-body -->
+                            <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                @can('pkwt-delete')
+                                <div class="modal-body">
+                                    Detail PKWT :
+                                    <br>
+                                    <br>
+                                    Addendum :
+                                     {{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}
+                                     <br>
+                                     Karyawan :
+                                     {{ $pkwt->user['name'] ?? 'Tidak ada Data' }}
+                                </div><!-- /.modal-body -->
+                                <!-- .modal-footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> <button type="submit" class="btn btn-danger">Hapus</button>
+                                </div><!-- /.modal-footer -->
+                                @endcan
+                            </form>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div>
                 @endforeach
             </tbody><!-- /tbody -->
         </table>
