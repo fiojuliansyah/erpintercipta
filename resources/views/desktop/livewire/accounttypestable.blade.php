@@ -27,7 +27,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-sm btn-icon btn-secondary"><i class="far fa-trash-alt"></i> <span class="sr-only">Remove</span></button>
-                  </form>  
+                  </form>
                 </td>
               </tr><!-- /tr -->
             @endforeach

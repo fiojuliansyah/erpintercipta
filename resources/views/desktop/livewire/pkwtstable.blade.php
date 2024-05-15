@@ -121,20 +121,20 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <select class="custom-select" wire:model="selectedProject" name="project">
-                    <option value="">Pilih Project</option>
-                    @foreach ($projects as $project)
-                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                <select class="custom-select" wire:model="selectedCompany" name="company">
+                    <option value="">Pilih Perusahaan</option>
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->id }}">{{ $company->company }}</option>
                     @endforeach
                 </select>
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <select class="custom-select" wire:model="selectedCompany" name="company">
-                    <option value="">Pilih Perusahaan</option>
-                    @foreach ($companies as $company)
-                        <option value="{{ $company->id }}">{{ $company->company }}</option>
+                <select class="custom-select" wire:model="selectedProject" name="project">
+                    <option value="">Pilih Project</option>
+                    @foreach ($projects as $project)
+                        <option value="{{ $project->id }}">{{ $project->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -255,7 +255,7 @@
                             </form>
                           </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
-                      </div>
+                    </div>
                 @endforeach
             </tbody><!-- /tbody -->
         </table>

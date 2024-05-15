@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Pkwt;
 use App\Models\User;
 use App\Models\Career;
 use App\Models\Company;
+use App\Models\Product;
 use App\Models\Statory;
 use App\Models\Candidate;
+use App\Models\ItemRequest;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
@@ -172,6 +175,66 @@ class DashboardController extends Controller
         $user = Auth::user();
         return view('desktop.dashboard-employee' ,compact('user'));
     }
+
+    public function catalog()
+    {
+        $products = Product::all();
+        $cart = Cart::where('status', 'pending')->count();
+        return view('desktop.warehouse.catalog', compact('products', 'cart'));
+    }
+    
+    
+    public function addToCart(Request $request)
+    {
+        $user = Auth::user();
+
+        $cart = new Cart;
+        $cart->user_id = $user->id;
+        $cart->product_id = $request->product_id;
+        $cart->quantity = $request->quantity;
+        $cart->status = 'pending';
+        $cart->save();
+
+        return redirect()->route('catalog')
+                        ->with('success','Product added successfully.');
+    }
+
+    public function cart()
+    {
+        $user = Auth::user();
+        $carts = Cart::where('status', 'pending')
+                    ->where('user_id', $user->id)
+                    ->get();
+    
+        $products = $carts->map(function ($item) {
+            return $item->product;
+        });
+    
+        return view('desktop.warehouse.cart', compact('products', 'carts'));
+    }
+
+    public function itemReq(Request $request)
+    {
+        $user = Auth::user();
+
+        $itemreq = new ItemRequest;
+        $itemreq->user_id = $user->id;
+        $itemreq->status = 'waiting';
+        $itemreq->customer = $request->customer;
+        $itemreq->address = $request->address;
+        $itemreq->description = $request->description;
+        $itemreq->save();
+    
+        return redirect()->route('item-request')
+                        ->with('success','Product added successfully.');
+    }
+
+    public function showItem($id)
+    {   
+        $item = ItemRequest::with('carts')->find($id);
+        return view('desktop.warehouse.show-item',compact('item'));
+    }
+    
 
     /**
      * Show the form for creating a new resource.

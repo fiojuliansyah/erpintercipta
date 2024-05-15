@@ -90,7 +90,7 @@ class ProductController extends Controller
         $agent = new Agent;
         
         // Fetch quantities related to the product
-        $quantities = Quantity::where('product_id', $product->id)->paginate(5);
+        $quantities = Quantity::where('product_id', $product->id)->paginate(10);
     
         // Mendapatkan data quantities dengan opname = 1 yang terbaru
         $latestOpname = Quantity::where('product_id', $product->id)

@@ -164,11 +164,14 @@
                         @endcan
                         @can('warehouse-system')
                             <li class="menu-header">Warehouse</li>
-                            {{-- <li class="menu-item {{ Request::path() == 'projects/create' ? 'has-active' : '' }}">
-                                <a href="{{ route('projects.create') }}" class="menu-link"><span
-                                        class="menu-icon fas fa-city"></span> <span class="menu-text">Project
-                                        Stepper</span></a>
-                            </li> --}}
+                            <li class="menu-item {{ Request::path() == 'item-request' ? 'has-active' : '' }}">
+                                <a href="{{ route('item-request') }}" class="menu-link"><span
+                                        class="menu-icon fas fa-dolly-flatbed"></span> <span class="menu-text">Item Request</span></a>
+                            </li>
+                            <li class="menu-item {{ Request::path() == 'all-item' ? 'has-active' : '' }}">
+                                <a href="{{ route('all-item') }}" class="menu-link"><span
+                                        class="menu-icon fas fa-dolly-flatbed"></span> <span class="menu-text">All Item Request</span></a>
+                            </li>
                             <li class="menu-item has-child">
                                 <a href="#" class="menu-link  {{ Request::path() == '#' ? 'has-active' : '' }}"><span
                                         class="menu-icon fas fa-database"></span> <span class="menu-text">Data
