@@ -34,6 +34,9 @@
                 @endif
                 <!-- .form -->
                   <div class="row">
+                    <div style="text-align: center">
+                      {!! html_entity_decode($product->qr_link) !!}
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <label for="accurate_id">Produk ID-Accurate ID</label>
