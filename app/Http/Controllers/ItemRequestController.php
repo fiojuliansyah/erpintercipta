@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\ItemRequest;
+use Jenssegers\Agent\Agent;
 use App\Imports\ImportCarts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,9 +54,10 @@ class ItemRequestController extends Controller
         $item->status = 'waiting';
         $item->save();
 
-        $qrLink = route('edit-item', ['item' => $item->id]);
+        $qrLink = route('edit-item', ['id' => $item->id]);
         $qrCode = QrCode::size(200)->generate($qrLink);
         $item->qr_link = $qrCode;
+        $item->save();
         
         return redirect()->route('item-request')
                         ->with('success',' created successfully.');
@@ -84,7 +86,16 @@ class ItemRequestController extends Controller
         $products = Product::all();
         $item = itemRequest::find($id);
         $carts = Cart::where('item_request_id', $item->id)->get();
-        return view('desktop.warehouse.edit-item',compact('products','carts','item'));
+
+        $agent = new Agent;
+
+        if ($agent->isMobile()) {
+            return view('mobiles.warehouse.edit-item',compact('products','carts','item'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.warehouse.edit-item',compact('products','carts','item'));
+        } else {
+            return view('desktop.warehouse.edit-item',compact('products','carts','item'));
+        }
     }
 
     public function addToCart(Request $request)

@@ -66,6 +66,11 @@
                 <h5>{{ $item->customer }}</h5>
                 <p>{{ $item->description }}</p>
                 <p>Delivery Date : <span class="badge badge-danger">{{ $item->delivery_date }}</span></p>
+                <br>
+                <br>
+                {!! html_entity_decode($item->qr_link) !!}
+                <br>
+                <br>
                 <!-- .table-responsive -->
                 <div class="table-responsive">
                     <table id="roletable" class="table">
@@ -186,6 +191,7 @@
                   <div class="pb-6"></div>
                   <div class="pb-6"></div>
                   <div class="pb-6"></div>
+                </div>
               </div><!-- /.card-body -->
             </div><!-- /.card -->
           </div><!-- /.page-section -->
