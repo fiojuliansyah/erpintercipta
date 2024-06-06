@@ -222,6 +222,7 @@
                             </div>
                         </td>
                     </tr><!-- /tr -->
+                    <div wire:ignore>
                     <div class="modal modal-alert fade" id="exampleModalAlertWarning{{ $pkwt->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalAlertWarningLabel{{ $pkwt->id }}" aria-hidden="true">
                         <!-- .modal-dialog -->
                         <div class="modal-dialog" role="document">
@@ -233,28 +234,29 @@
                                 <i class="fa fa-bullhorn text-danger mr-1"></i> Apakah anda yakin?</h5>
                             </div><!-- /.modal-header -->
                             <!-- .modal-body -->
-                            <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                @can('pkwt-delete')
-                                <div class="modal-body">
-                                    Detail PKWT :
-                                    <br>
-                                    <br>
-                                    Addendum :
-                                     {{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}
-                                     <br>
-                                     Karyawan :
-                                     {{ $pkwt->user['name'] ?? 'Tidak ada Data' }}
-                                </div><!-- /.modal-body -->
-                                <!-- .modal-footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> <button type="submit" class="btn btn-danger">Hapus</button>
-                                </div><!-- /.modal-footer -->
-                                @endcan
-                            </form>
+                                <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    @can('pkwt-delete')
+                                    <div class="modal-body">
+                                        Detail PKWT :
+                                        <br>
+                                        <br>
+                                        Addendum :
+                                         {{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}
+                                         <br>
+                                         Karyawan :
+                                         {{ $pkwt->user['name'] ?? 'Tidak ada Data' }}
+                                    </div><!-- /.modal-body -->
+                                    <!-- .modal-footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> <button type="submit" class="btn btn-danger">Hapus</button>
+                                    </div><!-- /.modal-footer -->
+                                    @endcan
+                                </form>
                           </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
+                    </div>
                     </div>
                 @endforeach
             </tbody><!-- /tbody -->
