@@ -222,14 +222,14 @@
                             </div>
                         </td>
                     </tr><!-- /tr -->
-                    <div class="modal modal-alert fade" id="exampleModalAlertWarning{{ $pkwt->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalAlertWarningLabel" aria-hidden="true">
+                    <div class="modal modal-alert fade" id="exampleModalAlertWarning{{ $pkwt->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalAlertWarningLabel{{ $pkwt->id }}" aria-hidden="true">
                         <!-- .modal-dialog -->
                         <div class="modal-dialog" role="document">
                           <!-- .modal-content -->
                           <div class="modal-content">
                             <!-- .modal-header -->
                             <div class="modal-header">
-                              <h5 id="exampleModalAlertWarningLabel" class="modal-title">
+                              <h5 id="exampleModalAlertWarningLabel{{ $pkwt->id }}" class="modal-title">
                                 <i class="fa fa-bullhorn text-danger mr-1"></i> Apakah anda yakin?</h5>
                             </div><!-- /.modal-header -->
                             <!-- .modal-body -->
