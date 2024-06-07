@@ -188,10 +188,10 @@
                         </td>
                         <td>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-4">
                                     Employee
                                 </div>
-                                <div class="col">
+                                <div class="col-8">
                                     @if ($pkwt->user?->signature == null)
                                         : <span class="badge badge-danger">Belum Tertanda Tangan</span>
                                     @else
@@ -201,10 +201,10 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-4">
                                     HRD
                                 </div>
-                                <div class="col">
+                                <div class="col-8">
                                     @if ($pkwt->signature_hrd == null)
                                         : <span class="badge badge-danger">Belum Tertanda Tangan</span>
                                     @else
