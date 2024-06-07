@@ -46,65 +46,8 @@
                 <div class="card-overlay bg-highlight opacity-95"></div>
                 <div class="card-overlay dark-mode-tint"></div>
             </div>
-            <a href="#" id="formLink" data-menu="instant-1" class="card card-style" data-card-height="150">
-                <div class="card-center">
-                    <h1 class="color-white pl-3">Identintas Diri</h1>
-                    <p class="color-white pl-3 mt-n2 mb-0 opacity-60">Isi data diri anda dengan benar</p>
-                </div>
-                <div class="card-center" id="iconContainer">
-                    <i id="icon" class="fa fa-user color-white font-24 float-right opacity-50 pr-3"></i>
-                </div>
-                <div class="card-overlay bg-dark opacity-90"></div>
-            </a>
-
-            <a href="#" data-menu="instant-2" class="card card-style" data-card-height="150">
-                <div class="card-center">
-                    <h1 class="color-white pl-3">Upload Dokumen</h1>
-                    <p class="color-white pl-3 mt-n2 mb-0 opacity-60">Upload Dokumen</p>
-                </div>
-                <div class="card-center">
-                    <i class="fa fa-file color-white font-24 float-right opacity-50 pr-3"></i>
-                </div>
-                <div class="card-overlay bg-dark opacity-90"></div>
-            </a>
-
-            <a href="#" data-menu="instant-3" class="card card-style" data-card-height="150">
-                <div class="card-center">
-                    <h1 class="color-white pl-3">Riwayat Pekerjaan</h1>
-                    <p class="color-white pl-3 mt-n2 mb-0 opacity-60">Isi riwayat pekerjaan anda</p>
-                </div>
-                <div class="card-center">
-                    <i class="fa fa-briefcase color-white font-24 float-right opacity-50 pr-3"></i>
-                </div>
-                <div class="card-overlay bg-dark opacity-90"></div>
-            </a>
-            <a href="#" class="card card-style" data-card-height="150">
-                <div class="card-center">
-                    <p class="pl-3 mt-n2 mb-0 opacity-60">Dengan mengisi Formulir diatas, saya menyatakan bahwa Pengrekrutan di Intercipta Corporation dengan tegas tidak dipungut Biaya Apapun</p>
-                </div>
-                <span class="badges bg-danger" style="text-align: center">Pernyataan</span>
-            </a>
-
-            <div class="col-12">
-                <a href="#" data-menu="menu-confirm"
-                    class="btn btn-xl btn-full bg-highlight rounded-50 text-uppercase font-900 mb-0">Daftar</a>
-            </div>
-        </div>
-        <div id="toast-1" class="toast toast-tiny toast-top bg-yellow2-dark" data-delay="100000" data-autohide="true"><i class="fa fa-sync fa-spin mr-3"></i>Proses Input Data ...</div>
-
-        <form id="register-profile" action="{{ url('profiles') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div id="instant-1" class="menu menu-box-right" data-menu-width="100%" data-menu-effect="menu-over">
-                <div class="page-title page-title-small">
-                    <h2><a href="#" class="close-menu"><i class="fa fa-arrow-left"></i></a></h2>
-                </div>
-                <div class="card header-card shape-rounded" data-card-height="90">
-                    <div class="card-overlay bg-highlight opacity-95"></div>
-                    <div class="card-overlay dark-mode-tint"></div>
-                    <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg">
-                    </div>
-                </div>
-
+            <form id="register-profile" action="{{ url('profiles') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="content">
                     <div class="card card-style">
                         <div class="content mb-0">
@@ -278,315 +221,35 @@
                         </div>
                     </div>
                 </div>
-                <a href="#"
-                    class="close-menu btn btn-xl btn-full bg-highlight rounded-0 text-uppercase font-900 mb-0">Tutup
-                    Data Diri</a>
-            </div>
-            <div id="instant-2" class="menu menu-box-right" data-menu-width="100%" data-menu-effect="menu-over">
-
-                <div class="page-title page-title-small">
-                    <h2><a href="#" class="close-menu"><i class="fa fa-arrow-left"></i></a></h2>
+                <a href="#" class="card card-style" data-card-height="150">
+                    <div class="card-center">
+                        <p class="pl-3 mt-n2 mb-0 opacity-60">Dengan mengisi Formulir diatas, saya menyatakan bahwa Pengrekrutan di Intercipta Corporation dengan tegas tidak dipungut Biaya Apapun</p>
+                    </div>
+                    <span class="badges bg-danger" style="text-align: center">Pernyataan</span>
+                </a>
+            </form>
+        </div>
+        <div class="col-12">
+            <a href="#" data-menu="menu-confirm"
+                class="btn btn-xl btn-full bg-highlight rounded-50 text-uppercase font-900 mb-0">Daftar</a>
+        </div>
+        <div id="menu-confirm" class="menu menu-box-modal rounded-m" data-menu-height="400" data-menu-width="330">
+            <h1 class="text-center font-700 mt-3 pb-1">Apakah anda yakin?</h1>
+            <p class="boxed-text-l">
+                Isilah data diri Anda secara jujur, benar, dan lengkap. Saya menyatakan dengan sesungguhnya bahwa segala keterangan yang saya berikan dalam Formulir ini adalah benar adanya dan saya memahami jika saya memberikan keterangan yang tidak benar atau dipalsukan, maka saya bersedia mempertanggungjawabkannya di hadapan hukum.
+            </p>
+            <div class="row mr-3 ml-3 mb-0">
+                <div class="col-6">
+                    <a href="#"  data-toast="toast-1" onclick="event.preventDefault(); document.getElementById('register-profile').submit();"
+                        class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-highlight">IYA</a>
                 </div>
-                <div class="card header-card shape-rounded" data-card-height="90">
-                    <div class="card-overlay bg-highlight opacity-95"></div>
-                    <div class="card-overlay dark-mode-tint"></div>
-                    <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg">
-                    </div>
-                </div>
-
-                <div class="content">
-                    <div class="card card-style">
-                        <p style="color: red; text-align: center; margin-top: 30px;">Dokumen Wajib</p>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                              <h3>Upload KTP</h3>
-                              <p>*jpg, jpeg, png</p>
-                              <div class="file-data">
-                                <input type="file" name="card_ktp" id="card_ktp" class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
-                                <p class="upload-file-text color-white">Upload KTP</p>
-                                <img src="{{ $existingCardKTP ? Storage::url($existingCardKTP) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="ktpImage" class="overlay">
-                              </div>
-                              <br>
-                            </div>
-                        </div>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload Ijazah</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="card_ijazah" id="card_ijazah"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
-                                    <p class="upload-file-text color-white">Upload Ijazah</p>
-                                    <img src="{{ $existingCardIjazah ? Storage::url($existingCardIjazah) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="ijazahImage">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload Kartu Keluarga</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="card_family" id="card_family"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*" required>
-                                    <p class="upload-file-text color-white">Upload Kartu Keluarga</p>
-                                    <img src="{{ $existingCardFamily ? Storage::url($existingCardFamily) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="familyImage">
-                                </div>
-                                <span>No Kartu Keluarga</span>
-                                <div class="input-style input-style-1 input-required">
-                                    <em>(wajib)</em>
-                                    <input type="tel" name="family_number" value="{{ old('family_number', $user->profile['family_number'] ?? '') }}" placeholder="Isi disini!" required>
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-style">
-                        <p style="color: gold; text-align: center; margin-top: 30px;">Dokumen Opsional</p>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload SKCK</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="card_skck" id="card_skck"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
-                                    <p class="upload-file-text color-white">Upload SKCK</p>
-                                    <img src="{{ $existingCardSKCK ? Storage::url($existingCardSKCK) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="skckImage">
-                                </div>
-                                <span>Masa Aktif SKCK</span>
-                                <div class="input-style input-style-1">
-                                    <em>(wajib)</em>
-                                    <input type="date" name="active_date" value="{{ old('active_date', $user->profile['active_date'] ?? '') }}">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload NPWP</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="card_npwp" id="card_npwp"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
-                                    <p class="upload-file-text color-white">Upload NPWP</p>
-                                    <img src="{{ $existingCardNPWP ? Storage::url($existingCardNPWP) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="npwpImage">
-                                </div>
-                                <span>No NPWP</span>
-                                <div class="input-style input-style-1">
-                                    <em>(wajib)</em>
-                                    <input type="tel" name="npwp_number" value="{{ old('npwp_number', $user->profile['npwp_number'] ?? '') }}" placeholder="Isi disini!">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload SIM</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="card_sim" id="card_sim"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
-                                    <p class="upload-file-text color-white">Upload SIM</p>
-                                    <img src="{{ $existingCardSIM ? Storage::url($existingCardSIM) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="simImage">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload Sertifikat</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="card_certificate" id="card_certificate"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
-                                    <p class="upload-file-text color-white">Upload Sertifikat</p>
-                                    <img src="{{ $existingCardCertificate ? Storage::url($existingCardCertificate) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="certificateImage">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-style">
-                        <p style="color: blue; text-align: center; margin-top: 30px;">Dokumen Tambahan</p>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload Dokumen</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="add_document_a" id="add_document_a"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
-                                    <p class="upload-file-text color-white">Upload Dokumen</p>
-                                    <img src="{{ $existingDocumentA ? Storage::url($existingDocumentA) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="documentaImage">
-                                </div>
-                                <span>Nama Dokumen</span>
-                                <div class="input-style input-style-1">
-                                    <em>(wajib)</em>
-                                    <input type="name" name="add_name_document_a" value="{{ old('add_name_document_a', $user->profile['add_name_document_a'] ?? '') }}">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload Dokumen</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="add_document_b" id="add_document_b"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
-                                    <p class="upload-file-text color-white">Upload Dokumen</p>
-                                    <img src="{{ $existingDocumentB ? Storage::url($existingDocumentB) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="documentbImage">
-                                </div>
-                                <span>Nama Dokumen</span>
-                                <div class="input-style input-style-1">
-                                    <em>(wajib)</em>
-                                    <input type="name" name="add_name_document_b" value="{{ old('add_name_document_b', $user->profile['add_name_document_b'] ?? '') }}">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                        <div class="card card-style">
-                            <div class="content mb-0">
-                                <h3>Upload Dokumen</h3>
-                                <p>*jpg,jpeg,png</p>
-                                <div class="file-data">
-                                    <input type="file" name="add_document_c" id="add_document_c"
-                                        class="upload-file bg-highlight shadow-s rounded-s" accept="image/*">
-                                    <p class="upload-file-text color-white">Upload Dokumen</p>
-                                    <img src="{{ $existingDocumentC ? Storage::url($existingDocumentC) : asset('mobile/images/empty.png') }}" class="img-fluid rounded-xs mt-4" id="documentcImage">
-                                </div>
-                                <span>Nama Dokumen</span>
-                                <div class="input-style input-style-1">
-                                    <em>(wajib)</em>
-                                    <input type="name" name="add_name_document_c" value="{{ old('add_name_document_c', $user->profile['add_name_document_c'] ?? '') }}">
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#"
-                    class="close-menu btn btn-xl btn-full bg-highlight rounded-0 text-uppercase font-900 mb-0">Tutup
-                    Upload Dokumen</a>
-            </div>
-            <div id="instant-3" class="menu menu-box-right" data-menu-width="100%" data-menu-effect="menu-over">
-                <div class="page-title page-title-small">
-                    <h2><a href="#" class="close-menu"><i class="fa fa-arrow-left"></i></a></h2>
-                </div>
-                <div class="card header-card shape-rounded" data-card-height="90">
-                    <div class="card-overlay bg-highlight opacity-95"></div>
-                    <div class="card-overlay dark-mode-tint"></div>
-                    <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg">
-                    </div>
-                </div>
-
-                <div class="content">
-                    <div class="card card-style">
-                        <div class="content mb-0">
-                            <span>Nama Perusahaan</span>
-                            <div class="input-style has-icon input-style-1 input-required">
-                                <i class="input-icon fa fa-user"></i>
-                                <em>(wajib)</em>
-                                <input type="name" name="company_name_a" value="{{ old('company_name_a', $user->profile['company_name_a'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Periode</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="period_a" value="{{ old('period_a', $user->profile['period_a'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Jabatan</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="position_a"  value="{{ old('position_a', $user->profile['position_a'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Gaji</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="salary_a"  value="{{ old('salary_a', $user->profile['salary_a'] ?? '') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-style">
-                        <div class="content mb-0">
-                            <span>Nama Perusahaan</span>
-                            <div class="input-style has-icon input-style-1 input-required">
-                                <i class="input-icon fa fa-user"></i>
-                                <em>(wajib)</em>
-                                <input type="name" name="company_name_b" value="{{ old('company_name_b', $user->profile['company_name_b'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Periode</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="period_b" value="{{ old('period_b', $user->profile['period_b'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Jabatan</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="position_b" value="{{ old('position_b', $user->profile['position_b'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Gaji</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="salary_b" value="{{ old('salary_b', $user->profile['salary_b'] ?? '') }}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card card-style">
-                        <div class="content mb-0">
-                            <span>Nama Perusahaan</span>
-                            <div class="input-style has-icon input-style-1 input-required">
-                                <i class="input-icon fa fa-user"></i>
-                                <em>(wajib)</em>
-                                <input type="name" name="company_name_c" value="{{ old('company_name_c', $user->profile['company_name_c'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Periode</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="period_c" value="{{ old('period_c', $user->profile['period_c'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Jabatan</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="position_c" value="{{ old('position_c', $user->profile['position_b'] ?? '') }}">
-                            </div>
-                            <br>
-                            <span>Gaji</span>
-                            <div class="input-style input-style-1 input-required">
-                                <em>(wajib)</em>
-                                <input type="name" name="salary_c" value="{{ old('salary_c', $user->profile['salary_c'] ?? '') }}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#"
-                    class="close-menu btn btn-xl btn-full bg-highlight rounded-0 text-uppercase font-900 mb-0">Tutup
-                    Riwayat</a>
-            </div>
-            <div id="menu-confirm" class="menu menu-box-modal rounded-m" data-menu-height="400" data-menu-width="330">
-                <h1 class="text-center font-700 mt-3 pb-1">Apakah anda yakin?</h1>
-                <p class="boxed-text-l">
-                    Isilah data diri Anda secara jujur, benar, dan lengkap. Saya menyatakan dengan sesungguhnya bahwa segala keterangan yang saya berikan dalam Formulir ini adalah benar adanya dan saya memahami jika saya memberikan keterangan yang tidak benar atau dipalsukan, maka saya bersedia mempertanggungjawabkannya di hadapan hukum.
-                </p>
-                <div class="row mr-3 ml-3 mb-0">
-                    <div class="col-6">
-                        <a href="#"  data-toast="toast-1" onclick="event.preventDefault(); document.getElementById('register-profile').submit();"
-                            class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-highlight">IYA</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#"
-                            class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">TIDAK</a>
-                    </div>
+                <div class="col-6">
+                    <a href="#"
+                        class="close-menu btn btn-sm btn-full button-s shadow-l rounded-s text-uppercase font-900 bg-red1-dark">TIDAK</a>
                 </div>
             </div>
-        </form>
-
+        </div>
+        <div id="toast-1" class="toast toast-tiny toast-top bg-yellow2-dark" data-delay="100000" data-autohide="true"><i class="fa fa-sync fa-spin mr-3"></i>Proses Input Data ...</div> 
     </div>
 
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/jquery.js"></script>
@@ -594,16 +257,16 @@
     <script type="text/javascript" src="{{ asset('') }}mobile/scripts/custom.js"></script>
     <script>
         function showToast(event) {
-            event.preventDefault(); // Prevent the default behavior of the link
-            document.getElementById('register-profile').submit(); // Submit the form
+            event.preventDefault();
+            document.getElementById('register-profile').submit();
     
             // Show the toast notification
             var toastId = event.target.getAttribute('data-toast');
             var toast = document.getElementById(toastId);
             if (toast) {
-                toast.classList.add('show'); // Display the toast notification
+                toast.classList.add('show');
                 setTimeout(function() {
-                    toast.classList.remove('show'); // Hide the toast after a certain time
+                    toast.classList.remove('show');
                 }, parseInt(toast.getAttribute('data-delay'), 10));
             }
         }

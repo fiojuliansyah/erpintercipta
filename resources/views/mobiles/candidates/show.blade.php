@@ -166,8 +166,8 @@
                         class="btn btn-full bg-blue2-dark rounded-sm shadow-xl btn-m text-uppercase font-900">Berkas</a>
                 </div>
                 <div class="col-6">
-                    <a href="#" data-menu="menu-pengalaman"
-                        class="btn btn-full bg-red1-dark rounded-sm shadow-xl btn-m text-uppercase font-900">Pengalaman</a>
+                    <a href="#"
+                        class="btn btn-full bg-red1-dark rounded-sm shadow-xl btn-m text-uppercase font-900">Reject</a>
                 </div>
             </div>
         </div>
@@ -178,191 +178,19 @@
 @endsection
 
 @section('modal')
-    <div id="menu-berkas" class="menu menu-box-modal rounded-m" data-menu-height="800" data-menu-width="350">
+    <div id="menu-berkas" class="menu menu-box-modal rounded-m" data-menu-height="600" data-menu-width="350">
         <div class="content mb-0">
-            <strong>SCAN KTP</strong>
-            <br>
-            <br>
-            <p>{{ $candidate->user->nik_number }}</p>
-            <img src="{{ Storage::url($candidate->user?->profile['card_ktp'] ?? 'Tidak ada Data') }}" width="300"
+            @foreach ($documents as $doc) 
+            <h6>{{ $doc->type }}</h6>
+            <p>{{ $doc->title }}</p>
+            <img src="{{ $doc->file_url ?? 'Tidak ada Data' }}" width="300"
                 alt="">
             <br>
             <br>
-            <strong>SCAN KARTU KELUARGA</strong>
-            <br>
-            <br>
-            <p>{{ $candidate->user?->profile['family_number'] ?? 'Tidak ada Data' }}</p>
-            <img src="{{ Storage::url($candidate->user?->profile['card_family'] ?? 'Tidak ada Data') }}" width="300"
-                alt="">
-            <br>
-            <br>
-            <strong>SCAN IJAZAH</strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['card_ijazah'] ?? 'Tidak ada Data') }}" width="300"
-                alt="">
-            <br>
-            <br>
-            <strong>SCAN SKCK <span
-                    class="badge badge-danger">{{ $candidate->user?->profile['active_date'] ?? 'Tidak ada Data' }}</span></strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['card_skck'] ?? 'Tidak ada Data') }}" width="300"
-                alt="">
-            <br>
-            <br>
-            <strong>SCAN SERITIFKAT</strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['card_certificate'] ?? 'Tidak ada Data') }}"
-                width="350" alt="">
-            <br>
-            <br>
-            <strong>SCAN NPWP</strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['card_npwp'] ?? 'Tidak ada Data') }}" width="350"
-                alt="">
-            <br>
-            <br>
-            <strong>SCAN SIM</strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['card_sim'] ?? 'Tidak ada Data') }}" width="350"
-                alt="">
-            <br>
-            <br>
-            <strong>SCAN
-                {{ $candidate->user?->profile['add_name_document_a'] ?? 'Tidak ada Data' }}</strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['add_document_a'] ?? 'Tidak ada Data') }}" width="350"
-                alt="">
-            <br>
-            <br>
-            <strong>SCAN
-                {{ $candidate->user?->profile['add_name_document_b'] ?? 'Tidak ada Data' }}</strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['add_document_b'] ?? 'Tidak ada Data') }}" width="350"
-                alt="">
-            <br>
-            <br>
-            <strong>SCAN
-                {{ $candidate->user?->profile['add_name_document_c'] ?? 'Tidak ada Data' }}</strong>
-            <br>
-            <br>
-            <img src="{{ Storage::url($candidate->user?->profile['add_document_c'] ?? 'Tidak ada Data') }}" width="350"
-                alt="">
-            <br>
-            <br>
-            <a href="#"
-                class="close-menu btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-red1-light">tutup</a>
-            <br>
-            <br>
+            @endforeach
         </div>
     </div>
-    <div id="menu-pengalaman" class="menu menu-box-modal rounded-m" data-menu-height="800" data-menu-width="350">
-        <div class="content mb-0">
-            <h3 class="font-600">Pengalaman</h3>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Nama Perusahaan</h6>
-                    <p>{{ $candidate->user?->profile['company_name_a'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Periode</h6>
-                    <p>{{ $candidate->user?->profile['period_a'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Posisi / Jabatan</h6>
-                    <p>{{ $candidate->user?->profile['position_a'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Gaji</h6>
-                    <p>{{ $candidate->user?->profile['salary_a'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Nama Perusahaan</h6>
-                    <p>{{ $candidate->user?->profile['company_name_b'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Periode</h6>
-                    <p>{{ $candidate->user?->profile['period_b'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Posisi / Jabatan</h6>
-                    <p>{{ $candidate->user?->profile['position_b'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Gaji</h6>
-                    <p>{{ $candidate->user?->profile['salary_b'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Nama Perusahaan</h6>
-                    <p>{{ $candidate->user?->profile['company_name_c'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Periode</h6>
-                    <p>{{ $candidate->user?->profile['period_c'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Posisi / Jabatan</h6>
-                    <p>{{ $candidate->user?->profile['position_c'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Gaji</h6>
-                    <p>{{ $candidate->user?->profile['salary_c'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Nama Perusahaan</h6>
-                    <p>{{ $candidate->user?->profile['company_name_d'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Periode</h6>
-                    <p>{{ $candidate->user?->profile['period_d'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-            <div style="display: flex;">
-                <div style="margin-right: 30px;">
-                    <h6>Posisi / Jabatan</h6>
-                    <p>{{ $candidate->user?->profile['position_d'] ?? 'Tidak ada Data' }}</p>
-                </div>
-                <div style="margin-right: 30px;">
-                    <h6>Gaji</h6>
-                    <p>{{ $candidate->user?->profile['salary_d'] ?? 'Tidak ada Data' }}</p>
-                </div>
-            </div>
-            <br>
-        </div>
-        <a href="#"
-            class="close-menu btn btn-m btn-center-m button-s shadow-l rounded-s text-uppercase font-900 bg-red1-light">Close</a>
-        <br>
-    </div>
-    <div id="update-lowongan" class="menu menu-box-modal rounded-m" data-menu-height="800" data-menu-width="350">
+    <div id="update-lowongan" class="menu menu-box-modal rounded-m" data-menu-height="600" data-menu-width="350">
         <div class="content mb-0">
             <form action="{{ route('candidates.update',$candidate->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')

@@ -222,11 +222,11 @@
                     <p>
                         <span class="badge badge-success">{{ $item->salary }}</span>
                     </p>
-                    <a href="{{ route('jobportal-show', $item->id) }}" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">Lamar</a>
+                    {{-- <a href="{{ route('jobportal-show', $item->id) }}" class="btn btn-xs bg-highlight btn-center-xs rounded-s shadow-s text-uppercase font-900">Lamar</a> --}}
                 </div>
                 @endforeach
             </div>
-            <div data-menu="ad-timed-4" data-timed-ad="5" data-auto-show-ad="3"></div>  
+            {{-- <div data-menu="ad-timed-4" data-timed-ad="5" data-auto-show-ad="3"></div>   --}}
         </div>
     @endif
     <div id="menu-share-thumbs" 

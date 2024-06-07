@@ -37,36 +37,25 @@
           <div class="card-deck-xl">
             <!-- .card -->
             <div class="card card-fluid">
-              <!-- .card-header -->
-              <div class="card-header">
-                <!-- .nav-tabs -->
-                <ul class="nav nav-tabs card-header-tabs">
-                  <li class="nav-item">
-                    <a class="nav-link active show" data-toggle="tab" href="#pkwt">PKWT</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#perjanjian-kerja">Perjanjian Kerja</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#penempatan">Penempatan</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#interview-user">Interview</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#bko">BKO</a>
-                  </li>
-                </ul><!-- /.nav-tabs -->
-              </div><!-- /.card-header -->
-              <!-- .card-body -->
               <div class="card-body">
                 <!-- .tab-content -->
-                <div id="myTabContent" class="tab-content">
-                  <div class="tab-pane fade active show" id="pkwt">
-                    <h3 class="page-title"> PKWT </h3>
+                    <h3 class="page-title"> Dokumen </h3>
                       <form action="{{ route('addendums.store') }}" method="POST" enctype="multipart/form-data">
                           @csrf
-                          <input type="hidden" name="title" value="pkwt">
+                          <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <label class="control-label" for="bss3">Pilih Tipe Dokumen</label>
+                                <select class="form-control" name="title">
+                                <option value="">Pilih</option>
+                                <option value="pkwt">pkwt</option>
+                                <option value="perjanjian kerja">perjanjian kerja</option>
+                                <option value="bko">bko</option>
+                                <option value="paklaring">paklaring</option>
+                                <option value="pkwt">interview</option>
+                                <option value="surat peringatan">surat peringatan</option>
+                                </select>
+                            </div>
+                        </div>
                           <div class="col-xs-12 col-sm-12 col-md-12">
                               <div class="form-group">
                                   <label class="control-label" for="bss3">Pilih Project / Site</label>
@@ -90,7 +79,7 @@
                               <!-- .card -->
                               <div class="card card-fluid">
                                   <!-- #summernote-basic -->
-                                  <textarea name="addendum" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
+                                  <textarea id="addendum" name="addendum" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
                               </div>
                           </div>
                           <div class="col-xs-20 col-sm-20 col-md-12">
@@ -101,7 +90,7 @@
                               <!-- .card -->
                               <div class="card card-fluid">
                                   <!-- #summernote-basic -->
-                                  <textarea name="attachment_1" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
+                                  <textarea id="addendum" name="attachment_1" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
                               </div>
                           </div>
                           <div class="col-xs-20 col-sm-20 col-md-12">
@@ -112,172 +101,12 @@
                             <!-- .card -->
                             <div class="card card-fluid">
                                 <!-- #summernote-basic -->
-                                <textarea name="attachment_2" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
+                                <textarea id="addendum" name="attachment_2" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
                             </div>
                         </div>
                           <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
                   </div>
-                  <div class="tab-pane fade" id="perjanjian-kerja">
-                    <h3 class="page-title"> PERJANJIAN KERJA </h3>
-                    <form action="{{ route('addendums.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="title" value="perjanjian kerja">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label class="control-label" for="bss3">Pilih Project / Site</label>
-                                <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="site_id">
-                                <option value="">Pilih</option>
-                                @foreach ($sites as $site)
-                                <option value="{{ $site->id }}">
-                                  {{ $site->company['cmpy'] }} - {{ $site->name }}
-                                </option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <a href="{{asset('/admin/format_import/format_draft_pkwt.doc')}}" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" width="20" alt="">&nbsp;&nbsp;Download Format ADDENDUM</a>
-                        <div class="col-xs-20 col-sm-20 col-md-12">
-                            <div class="section-block">
-                                <label for="addendum">Addendum</label>
-                                <p class="text-muted"> Buat addendum dengan kesepakatan proyek atau area </p>
-                            </div><!-- /.section-block -->
-                            <!-- .card -->
-                            <div class="card card-fluid">
-                                <!-- #summernote-basic -->
-                                <textarea name="addendum" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
-                            </div>
-                        </div>
-                        <div class="col-xs-20 col-sm-20 col-md-12">
-                            <div class="section-block">
-                                <label for="skk">LAMPIRAN TAMBAHAN 1</label>
-                                <p class="text-muted"> Buat lampiran Tambahan dengan kesepakatan proyek atau area </p>
-                            </div><!-- /.section-block -->
-                            <!-- .card -->
-                            <div class="card card-fluid">
-                                <!-- #summernote-basic -->
-                                <textarea name="attachment_1" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
-                            </div>
-                        </div>
-                        <div class="col-xs-20 col-sm-20 col-md-12">
-                          <div class="section-block">
-                              <label for="skk">LAMPIRAN TAMBAHAN 2</label>
-                              <p class="text-muted"> Buat lampiran Tambahan dengan kesepakatan proyek atau area </p>
-                          </div><!-- /.section-block -->
-                          <!-- .card -->
-                          <div class="card card-fluid">
-                              <!-- #summernote-basic -->
-                              <textarea name="attachment_2" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
-                          </div>
-                        </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="penempatan">
-                    <h3 class="page-title"> PENEMPATAN </h3>
-                    <form action="{{ route('addendums.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="title" value="penempatan">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label class="control-label" for="bss3">Pilih Project / Site</label>
-                                <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="site_id">
-                                <option value="">Pilih</option>
-                                @foreach ($sites as $site)
-                                <option value="{{ $site->id }}">
-                                  {{ $site->company['cmpy'] }} - {{ $site->name }}
-                                </option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <a href="{{asset('/admin/format_import/format_draft_pkwt.doc')}}" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" width="20" alt="">&nbsp;&nbsp;Download Format ADDENDUM</a>
-                        <div class="col-xs-20 col-sm-20 col-md-12">
-                            <div class="section-block">
-                                <label for="addendum">Addendum</label>
-                                <p class="text-muted"> Buat addendum dengan kesepakatan proyek atau area </p>
-                            </div><!-- /.section-block -->
-                            <!-- .card -->
-                            <div class="card card-fluid">
-                                <!-- #summernote-basic -->
-                                <textarea name="addendum" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
-                            </div>
-                        </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="interview-user">
-                    <h3 class="page-title"> INTERVIEW USER </h3>
-                    <form action="{{ route('addendums.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="title" value="interview user">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label class="control-label" for="bss3">Pilih Project / Site</label>
-                                <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="site_id">
-                                <option value="">Pilih</option>
-                                @foreach ($sites as $site)
-                                <option value="{{ $site->id }}">
-                                  {{ $site->company['cmpy'] }} - {{ $site->name }}
-                                </option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <a href="{{asset('/admin/format_import/format_draft_pkwt.doc')}}" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" width="20" alt="">&nbsp;&nbsp;Download Format ADDENDUM</a>
-                        <div class="col-xs-20 col-sm-20 col-md-12">
-                            <div class="section-block">
-                                <label for="addendum">Addendum</label>
-                                <p class="text-muted"> Buat addendum dengan kesepakatan proyek atau area </p>
-                            </div><!-- /.section-block -->
-                            <!-- .card -->
-                            <div class="card card-fluid">
-                                <!-- #summernote-basic -->
-                                <textarea name="addendum" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
-                            </div>
-                        </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="bko">
-                    <h3 class="page-title"> BKO </h3>
-                    <form action="{{ route('addendums.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="title" value="bko">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <label class="control-label" for="bss3">Pilih Project / Site</label>
-                                <select id="bss3" data-toggle="selectpicker" data-live-search="true" data-width="100%" name="site_id">
-                                <option value="">Pilih</option>
-                                @foreach ($sites as $site)
-                                <option value="{{ $site->id }}">
-                                  {{ $site->company['cmpy'] }} - {{ $site->name }}
-                                </option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <a href="{{asset('/admin/format_import/format_draft_pkwt.doc')}}" class="dropdown-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1200px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png" width="20" alt="">&nbsp;&nbsp;Download Format ADDENDUM</a>
-                        <div class="col-xs-20 col-sm-20 col-md-12">
-                            <div class="section-block">
-                                <label for="addendum">Addendum</label>
-                                <p class="text-muted"> Buat addendum dengan kesepakatan proyek atau area </p>
-                            </div><!-- /.section-block -->
-                            <!-- .card -->
-                            <div class="card card-fluid">
-                                <!-- #summernote-basic -->
-                                <textarea name="addendum" data-toggle="summernote" data-placeholder="Write here..." data-height="200"></textarea><!-- /#summernote-basic -->
-                            </div>
-                        </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                  </div>
-                </div><!-- /.tab-content -->
-              </div><!-- /.card-body -->
             </div><!-- /.card -->
             <!-- .card -->
           </div>
@@ -307,8 +136,15 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('') }}admin/vendor/summernote/summernote-bs4.min.js"></script>
 <script src="{{ asset('') }}admin/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.1.2/tinymce.min.js"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea#addendum',
+    plugins: 'code table lists',
+    toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+  });
+</script>
 {{-- <script>
   ClassicEditor
   .create( document.querySelector( '#addendum' ) )

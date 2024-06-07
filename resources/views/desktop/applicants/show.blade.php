@@ -138,143 +138,30 @@
                                             </div>
                                         </div><!-- /.card-body -->
                                     </div>
-                                    <!-- .card -->
                                     <div class="card mt-4">
-                                        <!-- .card-body -->
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h2 id="client-billing-contact-tab" class="card-title"> Informasi Dokumen
                                                 </h2>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN KTP</strong>
-                                                    <br>
-                                                    <br>
-                                                    <p>{{ $applicant->nik_number }}</p>
-                                                    <img src="{{ Storage::url($applicant->profile['card_ktp']) }}"
-                                                        width="300" alt="">
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN KARTU KELUARGA</strong>
-                                                    <br>
-                                                    <br>
-                                                    <p>{{ $applicant->profile['family_number'] }}</p>
-                                                    <img src="{{ Storage::url($applicant->profile['card_family']) }}"
-                                                        width="300" alt="">
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN IJAZAH</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['card_ijazah']) }}"
-                                                        width="300" alt="">
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN SKCK <span
-                                                            class="badge badge-danger">{{ $applicant->profile['active_date'] }}</span></strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['card_skck']) }}"
-                                                        width="300" alt="">
-                                                </div>
+                                            <div class="card">
+                                                @foreach ($documents as $doc)
+                                                    <div class="card-body">
+                                                        <strong>{{ $doc->type ?? '' }}</strong>
+                                                        <br>
+                                                        <br>
+                                                        <p>{{ $doc->title ?? '' }}</p>
+                                                        <img src="{{ $doc->file_url ?? '' }}"
+                                                            width="300" alt="">
+                                                    </div>   
+                                                @endforeach
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN SERITIFKAT</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['card_certificate']) }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN NPWP</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['card_npwp']) }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN SIM</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['card_sim']) }}"
-                                                        width="350" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN
-                                                        {{ $applicant->profile['add_name_document_a'] }}</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['add_document_a']) }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN
-                                                        {{ $applicant->profile['add_name_document_b'] }}</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['add_document_b']) }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN
-                                                        {{ $applicant->profile['add_name_document_c'] }}</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($applicant->profile['add_document_c']) }}"
-                                                        width="350" alt="">
-                                                </div>
-                                            </div>
-
                                         </div><!-- /.card-body -->
                                         <!-- .card-footer -->
                                         <div class="alert alert-danger"> <span style="color: red">Perhatian:</span> Cek
                                             dengan teliti scan dokumen agar tidak terjadi kelolosan data pribadi! </div>
                                         <!-- /.card-footer -->
-                                    </div><!-- /.card -->
-                                    <div class="card mt-4">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h2 id="client-billing-contact-tab" class="card-title"> Informasi Riwayat
-                                                    Pekerjaan </h2>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Nama Perusahaan</strong>
-                                                    <p>{{ $applicant->profile['company_name_a'] }}</p>
-                                                    <p>{{ $applicant->profile['company_name_b'] }}</p>
-                                                    <p>{{ $applicant->profile['company_name_c'] }}</p>
-                                                    <p>{{ $applicant->profile['company_name_d'] }}</p>
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Periode</strong>
-                                                    <p>{{ $applicant->profile['period_a'] }}</p>
-                                                    <p>{{ $applicant->profile['period_b'] }}</p>
-                                                    <p>{{ $applicant->profile['period_c'] }}</p>
-                                                    <p>{{ $applicant->profile['period_d'] }}</p>
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Posisi / Jabatan</strong>
-                                                    <p>{{ $applicant->profile['position_a'] }}</p>
-                                                    <p>{{ $applicant->profile['position_b'] }}</p>
-                                                    <p>{{ $applicant->profile['position_c'] }}</p>
-                                                    <p>{{ $applicant->profile['position_d'] }}</p>
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Gaji yang diterima</strong>
-                                                    <p>{{ $applicant->profile['salary_a'] }}</p>
-                                                    <p>{{ $applicant->profile['salary_b'] }}</p>
-                                                    <p>{{ $applicant->profile['salary_c'] }}</p>
-                                                    <p>{{ $applicant->profile['salary_d'] }}</p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div><!-- /.card-body -->
+                                    </div>
                                 </div>
                                 <div class="card mt-4">
                                     <div class="card-body">

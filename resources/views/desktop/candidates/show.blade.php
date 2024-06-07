@@ -153,86 +153,18 @@
                                                 <h2 id="client-billing-contact-tab" class="card-title"> Informasi Dokumen
                                                 </h2>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN KTP</strong>
-                                                    <br>
-                                                    <br>
-                                                    <p>{{ $candidate->user->nik_number }}</p>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_ktp'] ?? 'Tidak ada Data') }}"
-                                                        width="300" alt="">
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN KARTU KELUARGA</strong>
-                                                    <br>
-                                                    <br>
-                                                    <p>{{ $candidate->user?->profile['family_number'] ?? 'Tidak ada Data' }}</p>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_family'] ?? 'Tidak ada Data') }}"
-                                                        width="300" alt="">
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN IJAZAH</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_ijazah'] ?? 'Tidak ada Data') }}"
-                                                        width="300" alt="">
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>SCAN SKCK <span
-                                                            class="badge badge-danger">{{ $candidate->user?->profile['active_date'] ?? 'Tidak ada Data' }}</span></strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_skck'] ?? 'Tidak ada Data') }}"
-                                                        width="300" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN SERITIFKAT</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_certificate'] ?? 'Tidak ada Data') }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN NPWP</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_npwp'] ?? 'Tidak ada Data') }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN SIM</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['card_sim'] ?? 'Tidak ada Data') }}"
-                                                        width="350" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN
-                                                        {{ $candidate->user?->profile['add_name_document_a'] ?? 'Tidak ada Data' }}</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_a'] ?? 'Tidak ada Data') }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN
-                                                        {{ $candidate->user?->profile['add_name_document_b'] ?? 'Tidak ada Data' }}</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_b'] ?? 'Tidak ada Data') }}"
-                                                        width="350" alt="">
-                                                </div>
-                                                <div class="col-md-4 mb-4">
-                                                    <strong>SCAN
-                                                        {{ $candidate->user?->profile['add_name_document_c'] ?? 'Tidak ada Data' }}</strong>
-                                                    <br>
-                                                    <br>
-                                                    <img src="{{ Storage::url($candidate->user?->profile['add_document_c'] ?? 'Tidak ada Data') }}"
-                                                        width="350" alt="">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    @foreach ($documents as $doc)
+                                                        <div class="card-body">
+                                                            <strong>{{ $doc->type ?? '' }}</strong>
+                                                            <br>
+                                                            <br>
+                                                            <p>{{ $doc->title ?? '' }} <span class="badge badge-danger">{{ $doc->expired ?? '' }}</span></p>
+                                                            <img src="{{ $doc->file_url ?? '' }}"
+                                                                width="300" alt="">
+                                                        </div>   
+                                                    @endforeach
                                                 </div>
                                             </div>
 
@@ -241,47 +173,7 @@
                                         <div class="alert alert-danger"> <span style="color: red">Perhatian:</span> Cek
                                             dengan teliti scan dokumen agar tidak terjadi kelolosan data pribadi! </div>
                                         <!-- /.card-footer -->
-                                    </div><!-- /.card -->
-                                    <div class="card mt-4">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h2 id="client-billing-contact-tab" class="card-title"> Informasi Riwayat
-                                                    Pekerjaan </h2>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Nama Perusahaan</strong>
-                                                    <p>{{ $candidate->user?->profile['company_name_a'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['company_name_b'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['company_name_c'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['company_name_d'] ?? 'Tidak ada Data' }}</p>
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Periode</strong>
-                                                    <p>{{ $candidate->user?->profile['period_a'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['period_b'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['period_c'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['period_d'] ?? 'Tidak ada Data' }}</p>
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Posisi / Jabatan</strong>
-                                                    <p>{{ $candidate->user?->profile['position_a'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['position_b'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['position_c'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['position_d'] ?? 'Tidak ada Data' }}</p>
-                                                </div>
-                                                <div class="col-md-3 mb-4">
-                                                    <strong>Gaji yang diterima</strong>
-                                                    <p>{{ $candidate->user?->profile['salary_a'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['salary_b'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['salary_c'] ?? 'Tidak ada Data' }}</p>
-                                                    <p>{{ $candidate->user?->profile['salary_d'] ?? 'Tidak ada Data' }}</p>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div><!-- /.card-body -->
+                                    </div>
                                 </div>
                                 <div class="card mt-4">
                                     <div class="card-body">

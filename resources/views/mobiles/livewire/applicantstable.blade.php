@@ -13,10 +13,8 @@
         <div class="content mb-0">
             <div class="content mt-0 mb-0">           
                 <div class="list-group list-custom-small list-icon-0">
-                    @foreach ($data as $key => $candidate)  
-                        @if ($candidate->status == 0)
-                            <a href="{{ route('candidates.show', $candidate->id) }}"><span>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}. </span><span>{{ $candidate->user['name'] ?? 'Tidak ada Data' }}</span><i class="fa fa-angle-right"></i></a>
-                        @endif
+                    @foreach ($data as $key => $applicant)  
+                            <a href="{{ route('applicants.show', $applicant->id) }}"><span>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}. </span><span>{{ $applicant->name ?? 'Tidak ada Data' }}</span><i class="fa fa-angle-right"></i></a>
                     @endforeach
                 </div>
             </div>

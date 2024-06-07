@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use Livewire\Component;
+use Jenssegers\Agent\Agent;
 use Livewire\WithPagination;
 use App\Exports\ExportEmployees;
 use Maatwebsite\Excel\Facades\Excel;
@@ -48,6 +49,8 @@ class Applicantstable extends Component
 
     public function render()
     {
+        $agent = new Agent;
+        
         if ($this->search != '') {
             $data = User::where(function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%')
@@ -70,7 +73,12 @@ class Applicantstable extends Component
                 ->orderBy('created_at', 'desc') // Menyortir berdasarkan kolom created_at secara descending (terbaru paling atas)
                 ->paginate(10);
         }
-    
+
+        if ($agent->isDekstop()) {
+            return view('desktop.livewire.applicantstable', compact('data'));
+        } elseif ($agent->isMobile()) {
+            return view('mobiles.livewire.applicantstable', compact('data'));
+        }
         return view('desktop.livewire.applicantstable', compact('data'));
     }
        

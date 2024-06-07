@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <a href="#" class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Download CV</a>
+    <a href="{{ route('document-print', Auth::user()->id) }}" class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Download CV</a>
     
 
     

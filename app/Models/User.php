@@ -84,4 +84,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Career::class, 'user_id', 'id');
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'user_id', 'id');
+    }
 }

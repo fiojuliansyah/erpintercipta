@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Career;
 use App\Models\Candidate;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -12,14 +13,32 @@ class ApplicantController extends Controller
 {
     public function index()
     {
+        $agent = new Agent;
         $pelamar = User::whereDoesntHave('career')->count();
-        return view('desktop.applicants.index', compact('pelamar'));
+
+        if ($agent->isMobile()) {
+            return view('mobiles.applicants.index', compact('pelamar'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.applicants.index', compact('pelamar'));
+        } else {
+            return view('desktop.applicants.index', compact('pelamar'));
+        }
     }
 
     public function show(User $applicant)
     {
+        $agent = new Agent;
         $careers = Career::all();
-        return view('desktop.applicants.show', compact('applicant','careers'));
+        $documents = $applicant->documents;
+
+        if ($agent->isMobile()) {
+            return view('mobiles.applicants.show', compact('applicant','careers','documents'));
+        } elseif ($agent->isDesktop()) {
+            return view('desktop.applicants.show', compact('applicant','careers','documents'));
+        } else {
+            return view('desktop.applicants.show', compact('applicant','careers','documents'));
+        }
+
     }
 
     public function store(Request $request)

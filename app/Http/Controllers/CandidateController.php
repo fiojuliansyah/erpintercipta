@@ -108,14 +108,15 @@ class CandidateController extends Controller
         $careers = Career::all();
         $addendums = Addendum::all();
         $agreements = Agreement::all();
+        $documents = $candidate->user->documents;
         
         if ($agent->isMobile()) {
-            return view('mobiles.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements'));
+            return view('mobiles.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements', 'documents'));
         } elseif ($agent->isDesktop()) {
-            return view('desktop.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements'));
+            return view('desktop.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements', 'documents'));
         } else {
             // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan yang sesuai
-            return view('desktop.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements'));
+            return view('desktop.candidates.show', compact('candidate','addendums', 'sites', 'careers', 'agreements', 'documents'));
         }
     
     }

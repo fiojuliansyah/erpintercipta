@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AddendumController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\QuantityController;
 use App\Http\Controllers\TrainingController;
@@ -117,6 +118,7 @@ Route::middleware('auth', 'visitor')->group(function () {
     Route::resource('sites', SiteController::class);
     Route::resource('products', ProductController::class);
     Route::resource('quantities', QuantityController::class);
+    Route::resource('documents', DocumentController::class);
 
     Route::resource('agreements', AgreementController::class);
     Route::post('/import-agreement',[AgreementController::class,'import'])->name('import-agreement');
