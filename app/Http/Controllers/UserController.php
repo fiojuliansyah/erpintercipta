@@ -204,4 +204,20 @@ class UserController extends Controller
         Excel::import(new ImportUsers, $request->file('file')->store('files'));
         return redirect()->back();
     }
+
+    public function userProfileDestroy()
+    {
+        // Menghapus pengguna yang tidak memiliki roles dan tidak memiliki profile->department
+        $users = User::doesntHave('roles')
+                      ->whereHas('profile', function ($query) {
+                          $query->whereNull('department');
+                      })
+                      ->get();
+
+        foreach ($users as $user) {
+            $user->delete();
+        }
+
+        return redirect()->back()->with('success', 'Users without roles and profile->department have been deleted.');
+    }
 }

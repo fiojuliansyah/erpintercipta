@@ -28,6 +28,13 @@
               <h1 class="page-title mr-sm-auto"> User List </h1><!-- .btn-toolbar -->
               <div class="btn-toolbar">
                 <div class="dropdown">
+                  <form action="{{ route('user.profile.destroy') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete these user profiles?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-light"><i class="oi oi-circle-x"></i> <span>Delete User Profile</span></button>
+                </form>
+                </div>
+                <div class="dropdown">
                   <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalScrollable"><i class="oi oi-data-transfer-upload"></i> <span>Upload</span></button>
                 </div>
                 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">

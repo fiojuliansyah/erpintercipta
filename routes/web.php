@@ -82,6 +82,7 @@ Route::middleware('auth', 'visitor')->group(function () {
 
     Route::resource('users', UserController::class);
     Route::post('/import-user',[UserController::class,'import'])->name('import-user');
+    Route::delete('/delete-user-profiles', [UserController::class, 'userProfileDestroy'])->name('user.profile.destroy');
 
     Route::resource('profiles', ProfileController::class);
     Route::post ('profiles',[ProfileController::class, 'updateUserDetail']);
