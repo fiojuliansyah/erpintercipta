@@ -161,7 +161,7 @@
 
 <body class="c2 doc-content">
     <p class="c0"><span class="c1">
-        {!! $pkwt->addendum['addendum'] !!}
+        {!! $pkwt->agreement->addendum['addendum'] !!}
     </span></p>
     <br>
     <div class="row">
@@ -174,7 +174,7 @@
               <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
             @endif
             <br>
-            <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+            <p>( <u>{{ $pkwt->agreement->addendum['responsible'] }}</u> )</p>
             <p>Human Resource Development</p>
         </div>
         <div class="col-md-6 mb-4 text-center">
@@ -194,7 +194,7 @@
     <br>
     <br>
     <p class="c0"><span class="c1">
-        {!! $pkwt->addendum['attachment_1'] !!}
+        {!! $pkwt->agreement->addendum['attachment_1'] !!}
     </span></p>
     <div class="row">
         <div class="col-md-6 mb-4 text-center">
@@ -206,7 +206,7 @@
               <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
             @endif
             <br>
-            <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+            <p>( <u>{{ $pkwt->agreement->addendum['responsible'] }}</u> )</p>
             <p>Human Resource Development</p>
         </div>
         <div class="col-md-6 mb-4 text-center">
@@ -224,7 +224,7 @@
         <br>
     </div>
     <p class="c0"><span class="c1">
-        {!! $pkwt->addendum['attachment_2'] !!}
+        {!! $pkwt->agreement->addendum['attachment_2'] !!}
     </span></p>
     <div class="row">
         <div class="col-md-6 mb-4 text-center">
@@ -236,7 +236,7 @@
               <img src="{{ Storage::url($pkwt->signature_hrd) }}" width="300" alt="">
             @endif
             <br>
-            <p>( <u>{{ $pkwt->addendum['responsible'] }}</u> )</p>
+            <p>( <u>{{ $pkwt->agreement->addendum['responsible'] }}</u> )</p>
             <p>Human Resource Development</p>
         </div>
         <div class="col-md-6 mb-4 text-center">
@@ -260,8 +260,8 @@
     // Ganti teks dalam elemen tersebut
     if (element) {
         element.innerHTML = element.innerHTML
-            .replace('{NO_SURAT}', '<b>No. {{ $pkwt->pkwt_number }}/{{ $pkwt->addendum?->company['cmpy'] }}/HR-{{ $pkwt->addendum['area'] }}/{{ $pkwt->addendum['romawi'] }}/{{ $pkwt->addendum['year'] }}</b>')
-            .replace('{PENANGGUNG_JAWAB}', '{{ $pkwt->addendum['responsible'] }}')
+            .replace('{NO_SURAT}', '<b>No. {{ $pkwt->pkwt_number }}/{{ $pkwt->agreement->addendum?->company['cmpy'] }}/HR-{{ $pkwt->agreement->addendum['area'] }}/{{ $pkwt->agreement->addendum['romawi'] }}/{{ $pkwt->agreement->addendum['year'] }}</b>')
+            .replace('{PENANGGUNG_JAWAB}', '{{ $pkwt->agreement->addendum['responsible'] }}')
             .replace('{PELAMAR}', '{{ $pkwt->user['name'] }}')
             .replace('{JENIS_KELAMIN}', '{{ $pkwt->user?->profile['gender'] }}')
             .replace('{TTL}', '{{ $pkwt->user?->profile['birth_place'] }}, {{ $pkwt->user?->profile['birth_date'] }}')

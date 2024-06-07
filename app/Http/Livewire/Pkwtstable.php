@@ -10,6 +10,7 @@ use Livewire\Component;
 use App\Exports\ExportPkwts;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class Pkwtstable extends Component
 {
@@ -51,6 +52,33 @@ class Pkwtstable extends Component
         }
     }
 
+    public function exportSelectedToPdf()
+    {
+        if (count($this->selectedIds) > 0) {
+            $pdfs = [];
+            foreach ($this->selectedIds as $id) {
+                $pkwt = Pkwt::findOrFail($id);
+                $pdf = PDF::loadView('exports.pkwt_pdf', compact('pkwt'));
+                $fileName = $pkwt->user['name'] . '_' . $pkwt->agreement->addendum['title'] . '.pdf';
+                $pdfs[$fileName] = $pdf->output();
+            }
+
+            $zip = new \ZipArchive();
+            $zipFileName = $pkwt->agreement->addendum->site['name'] . '.zip';
+            $zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
+
+            foreach ($pdfs as $fileName => $pdfContent) {
+                $zip->addFromString($fileName, $pdfContent);
+            }
+
+            $zip->close();
+
+            return response()->download($zipFileName)->deleteFileAfterSend(true);
+        } else {
+            session()->flash('error', 'No data selected for export.');
+        }
+    }
+
     public function render()
     {
         $companies = Company::all();
@@ -65,14 +93,14 @@ class Pkwtstable extends Component
                 $query->where('name', 'like', '%' . $this->search . '%');
             });
         }
-    
+
         // Applying company filter
         if ($this->selectedCompany) {
             $query->whereHas('agreement.addendum.site', function ($query) {
                 $query->where('company_id', $this->selectedCompany);
             });
         }
-    
+
         // Applying project filter
         if ($this->selectedProject) {
             $query->whereHas('agreement.addendum.site', function ($query) {
@@ -86,10 +114,10 @@ class Pkwtstable extends Component
                 $query->where('title', $this->selectedTitle);
             });
         }
-    
+
         // Fetching paginated results
         $data = $query->paginate(10);
-    
+
         return view('desktop.livewire.pkwtstable', compact('data', 'companies', 'projects', 'addendums'));
     }
 }

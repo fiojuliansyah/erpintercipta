@@ -95,15 +95,7 @@
                     <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export Excel</button>
-                    <div class="dropdown-arrow"></div><button wire:click="exportPdf" class="dropdown-item"><img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
-                            width="20" alt="">&nbsp;&nbsp;Export PDF</button>
-                    <br>
-                    <p style="text-align: center">Export Agreement</p>
-                    <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
-                            width="20" alt="">&nbsp;&nbsp;Export Excel</button>
-                    <div class="dropdown-arrow"></div><button wire:click="exportPdf" class="dropdown-item"><img
+                    <div class="dropdown-arrow"></div><button wire:click="exportSelectedToPdf" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export PDF</button>
                 </div>
