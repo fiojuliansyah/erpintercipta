@@ -187,19 +187,31 @@
                         </small>
                         </td>
                         <td>
-                            Employee :
-                            @if ($pkwt->user?->signature == null)
-                                <span class="badge badge-danger">Belum Tertanda Tangan</span>
-                            @else
-                                <span class="badge badge-success">Sudah Tertanda Tangan</span>
-                            @endif
+                            <div class="row">
+                                <div class="col">
+                                    Employee
+                                </div>
+                                <div class="col">
+                                    @if ($pkwt->user?->signature == null)
+                                        : <span class="badge badge-danger">Belum Tertanda Tangan</span>
+                                    @else
+                                        : <span class="badge badge-success">Sudah Tertanda Tangan</span>
+                                    @endif
+                                </div>
+                            </div>
                             <br>
-                            HRD :
-                            @if ($pkwt->signature_hrd == null)
-                                <span class="badge badge-danger">Belum Tertanda Tangan</span>
-                            @else
-                                <span class="badge badge-success">Sudah Tertanda Tangan</span>
-                            @endif
+                            <div class="row">
+                                <div class="col">
+                                    HRD
+                                </div>
+                                <div class="col">
+                                    @if ($pkwt->signature_hrd == null)
+                                        : <span class="badge badge-danger">Belum Tertanda Tangan</span>
+                                    @else
+                                        : <span class="badge badge-success">Sudah Tertanda Tangan</span>
+                                    @endif
+                                </div>
+                            </div>
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
