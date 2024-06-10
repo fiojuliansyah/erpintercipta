@@ -17,8 +17,9 @@ class DocumentController extends Controller
     {
         $user = Auth::user();
         $documents = $user->documents;
+        $documentCount = Document::where('user_id', $user->id)->count();
 
-        return view('mobiles.profile.document', compact('documents'));
+        return view('mobiles.profile.document', compact('documents','documentCount'));
     }
 
     /**

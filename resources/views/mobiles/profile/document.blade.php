@@ -13,6 +13,22 @@
         <div class="card-bg preload-img" data-src="{{ asset('') }}mobile/images/pictures/20s.jpg"></div>
     </div>
 
+    <div class="card card-style">
+        <div class="content">
+            <p>
+                masukan document secara detail melalui hasil scan!
+            </p>
+        </div>
+    </div>
+    @if ($documentCount <= 3)
+        <div class="ml-3 mr-3 alert alert-small rounded-s shadow-xl bg-yellow1-dark" role="alert">
+            <span><i class="fa fa-exclamation-triangle"></i></span>
+            <strong>upload document minimal 3!</strong>
+            <button type="button" class="close color-white opacity-60 font-16" data-dismiss="alert" aria-label="Close">&times;</button>
+        </div>
+        <br>
+    @endif 
+
     <br>
     <div class="row">
         @foreach ($documents as $doc) 
