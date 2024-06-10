@@ -190,6 +190,7 @@
                                             <form action="{{ route('applicants.store') }}" method="POST"
                                                 enctype="multipart/form-data">
                                                 @csrf
+                                                <input type="hidden" name="status" value="0">
                                                 <input type="hidden" name="user_id" value="{{ $applicant->id }}">
                                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                                     <div class="form-group">

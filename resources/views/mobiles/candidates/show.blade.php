@@ -166,8 +166,14 @@
                         class="btn btn-full bg-blue2-dark rounded-sm shadow-xl btn-m text-uppercase font-900">Berkas</a>
                 </div>
                 <div class="col-6">
-                    <a href="#"
-                        class="btn btn-full bg-red1-dark rounded-sm shadow-xl btn-m text-uppercase font-900">Reject</a>
+                    <form action="{{ route('applicants.store') }}" method="POST"
+                    enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="status" value="5">
+                        <input type="hidden" name="user_id" value="{{ $candidate->user['id'] }}">
+                        <button type="submit"
+                            class="btn btn-full bg-red1-dark rounded-sm shadow-xl btn-m text-uppercase font-900">Reject</button>
+                    </form>
                 </div>
             </div>
         </div>

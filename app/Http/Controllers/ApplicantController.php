@@ -44,7 +44,7 @@ class ApplicantController extends Controller
     public function store(Request $request)
     {
         $candidate = new Candidate;
-        $candidate->status = '0';
+        $candidate->status = $request->status;
         $candidate->user_id = $request->user_id;
         $candidate->career_id = $request->career_id;
 
