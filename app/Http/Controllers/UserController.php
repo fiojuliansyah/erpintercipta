@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Hash;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Support\Arr;
 use App\Imports\ImportUsers;
 use Illuminate\Http\Request;
