@@ -190,7 +190,16 @@
                 <div class="card-overlay bg-highlight opacity-95"></div>
                 <div class="card-bg preload-img"></div>
             </div>
+            <br>
             <!-- Homepage Slider-->
+            @if ($documentCount <= 3)
+                <div class="ml-3 mr-3 alert alert-small rounded-s shadow-xl bg-yellow1-dark" role="alert">
+                    <span><i class="fa fa-exclamation-triangle"></i></span>
+                    <strong>Update dokumen anda di profil terlebih dahulu</strong>
+                    <button type="button" class="close color-white opacity-60 font-16" data-dismiss="alert" aria-label="Close">&times;</button>
+                </div>
+                <br>
+            @endif  
             <br>
             <div class="single-slider-boxed text-center owl-no-dots owl-carousel">
                 <div class="card rounded-l shadow-l" data-card-height="150">
