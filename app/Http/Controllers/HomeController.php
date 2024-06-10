@@ -6,6 +6,7 @@ use App\Models\Career;
 use App\Models\Product;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
