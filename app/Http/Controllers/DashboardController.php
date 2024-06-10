@@ -9,6 +9,7 @@ use App\Models\Career;
 use App\Models\Company;
 use App\Models\Product;
 use App\Models\Statory;
+use App\Models\Document;
 use App\Models\Candidate;
 use App\Models\ItemRequest;
 use Illuminate\Support\Str;
@@ -28,14 +29,15 @@ class DashboardController extends Controller
         $agent = new Agent;
         $user = Auth::user();
         $careers = Career::paginate(5);
+        $documentCount = Document::where('user_id', $user->id)->count();
 
         if ($agent->isMobile()) {
-            return view('mobiles.home', compact('user','careers'));
+            return view('mobiles.home', compact('user','careers','documentCount'));
         } elseif ($agent->isDesktop()) {
-            return view('desktop.dashboard' ,compact('user','careers'));
+            return view('desktop.dashboard' ,compact('user','careers','documentCount'));
         } else {
             // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
-            return view('desktop.dashboard' ,compact('user','careers'));
+            return view('desktop.dashboard' ,compact('user','careers','documentCount'));
         }
     }
 
