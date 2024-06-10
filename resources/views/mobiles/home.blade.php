@@ -193,11 +193,13 @@
             <br>
             <!-- Homepage Slider-->
             @if ($documentCount <= 3)
+            <a href="{{ route('profile') }}">
                 <div class="ml-3 mr-3 alert alert-small rounded-s shadow-xl bg-yellow1-dark" role="alert">
                     <span><i class="fa fa-exclamation-triangle"></i></span>
-                    <strong>Update dokumen anda di profil terlebih dahulu</strong>
+                    <strong>Klik disini untuk update document anda</strong>
                     <button type="button" class="close color-white opacity-60 font-16" data-dismiss="alert" aria-label="Close">&times;</button>
                 </div>
+            </a>
                 <br>
             @endif  
             <br>

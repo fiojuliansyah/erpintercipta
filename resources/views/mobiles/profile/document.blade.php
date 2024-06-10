@@ -17,6 +17,7 @@
         <div class="content">
             <p>
                 masukan document secara detail melalui hasil scan!
+                <img src="{{ asset('') }}images/not.png" alt="" width="350">
             </p>
         </div>
     </div>
