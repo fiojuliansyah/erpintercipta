@@ -51,7 +51,7 @@
                         <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     </div> 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-m mt-2 mb-4 btn-full bg-green1-dark rounded-sm text-uppercase font-900">Login</button>
+                        <button type="submit" class="btn btn-m mt-2 mb-4 btn-full bg-green1-dark rounded-sm text-uppercase font-900">Masuk</button>
                     </div>   
                 </form>
                 {{-- <div class="divider"></div>
@@ -62,14 +62,13 @@
                 <div class="divider mt-4 mb-3"></div> --}}
 
                 <div class="d-flex">
-                    <div class="w-50 font-11 pb-2 color-theme opacity-60 pb-3 text-left"><a href="{{ route('register') }}" class="color-theme">Create Account</a></div>
-                    <div class="w-50 font-11 pb-2 color-theme opacity-60 pb-3 text-right"><a href="#" class="color-theme">Forgot Credentials</a></div>
+                    <div class="w-50 font-11 pb-2 color-theme opacity-60 pb-3 text-left"><a href="{{ route('register') }}" class="color-theme">Buat Akun</a></div>
                 </div>
             </div>
             
         </div>
         <div style="padding: 100px; text-align:center; padding-top: 250px">
-            <h3>INTERMO</h3>
+            <h3>INTERKARIR</h3>
             <h6>Intercipta Corporation</h6>
         </div>
 </div>    

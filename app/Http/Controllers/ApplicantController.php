@@ -47,14 +47,30 @@ class ApplicantController extends Controller
         $candidate->status = $request->status;
         $candidate->user_id = $request->user_id;
         $candidate->career_id = $request->career_id;
-
+    
         $qrLink = route('candidates.show', ['candidate' => $candidate->user_id]);
         $qrCode = QrCode::size(200)->generate($qrLink);
-
+    
         $candidate->qr_link = $qrCode;
         $candidate->save();
-
+    
+        // Mengecek jika status kandidat adalah 5
+        if ($candidate->status == 5) {
+            $notifiable = $candidate->user;
+            $phone = $candidate->user->phone;
+    
+            if ($notifiable && $phone) {
+                $notifiable->notify(new CandidateUpdate(
+                    $candidate->status,
+                    $candidate->description_user,
+                    $candidate->responsible,
+                    $candidate->date,
+                    $phone
+                ));
+            }
+        }
+    
         return redirect()->route('applicants.index')
-                        ->with('success','Berhasil Melamar Pekerjaan');
+                        ->with('success', 'Berhasil Melamar Pekerjaan');
     }
 }

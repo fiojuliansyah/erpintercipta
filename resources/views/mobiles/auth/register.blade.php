@@ -89,7 +89,7 @@
 
                 <div class="d-flex">
                     <div class="w-50 font-11 pb-2 color-theme opacity-60 pb-3 text-left"><a href="{{ route('login') }}" class="color-theme">Sudah Punya Akun ?</a></div>
-                    <div class="w-50 font-11 pb-2 color-highlight opacity-60 pb-3 text-right"><a href="{{ route('login') }}" class="color-highlight">Login</a></div>
+                    <div class="w-50 font-11 pb-2 color-highlight opacity-60 pb-3 text-right"><a href="{{ route('login') }}" class="color-highlight">Masuk</a></div>
                 </div>
             </div>
             

@@ -25,11 +25,11 @@
         <div class="card preload-img" data-src="{{ asset('') }}mobile/images/pictures/9.jpg" data-card-height="cover">
         
             <div class="card-center text-center">
-                <h1 class="fa-4x color-theme font-900">INTERMO</h1>
-                <h4 class="font-300 color-highlight">Intercipta Mobile Apps</h4>
+                <h1 class="fa-4x color-theme font-900">INTERKARIR</h1>
+                <h4 class="font-300 color-highlight">Intercipta Karir Apps</h4>
                 
                 <p class="boxed-text-xl pt-4">
-                    Welcome to InterMo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate repellat mollitia doloremque quaerat iusto placeat fugit enim corporis dolorum hic dignissimos unde nisi animi ad, aspernatur dicta sequi, quis delectus..
+                    Selamat datang di INTERKARIR, website resmi lowongan kerja yang di kelola oleh Intercipta Corporation.
                 </p>
             </div>
         
