@@ -233,6 +233,9 @@
             <a href="#" data-menu="menu-confirm"
                 class="btn btn-xl btn-full bg-highlight rounded-50 text-uppercase font-900 mb-0">Daftar</a>
         </div>
+        <br>
+        <br>
+        
         <div id="menu-confirm" class="menu menu-box-modal rounded-m" data-menu-height="400" data-menu-width="330">
             <h1 class="text-center font-700 mt-3 pb-1">Apakah anda yakin?</h1>
             <p class="boxed-text-l">
