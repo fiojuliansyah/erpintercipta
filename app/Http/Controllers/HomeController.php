@@ -17,17 +17,14 @@ class HomeController extends Controller
         $careers = Career::paginate(2);
         $careersmo = Career::paginate(2);
         $allcareer = Career::count();
-
-        $user = Auth::user();
-        $documentCount = Document::where('user_id', $user->id)->count();
     
         if ($agent->isMobile()) {
-            return view('mobiles.welcome', compact('careers', 'careersmo', 'allcareer', 'documentCount'));
+            return view('mobiles.welcome', compact('careers', 'careersmo', 'allcareer'));
         } elseif ($agent->isDesktop()) {
-            return view('desktop.welcome', compact('careers', 'allcareer', 'documentCount'));
+            return view('desktop.welcome', compact('careers', 'allcareer'));
         } else {
             // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
-            return view('desktop.welcome', compact('careers', 'allcareer', 'documentCount'));
+            return view('desktop.welcome', compact('careers', 'allcareer'));
         }
     }    
 
