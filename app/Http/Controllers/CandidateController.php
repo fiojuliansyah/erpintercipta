@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Site;
 use App\Models\Career;
 use App\Models\Statory;
@@ -45,18 +46,15 @@ class CandidateController extends Controller
 
     public function store(Request $request)
     {
-        // Mengecek apakah pengguna sudah membuat calon sebelumnya
         $existingCandidate = Candidate::where('user_id', auth()->id())->first();
     
         if ($existingCandidate) {
-            // Redirect atau lakukan tindakan lain sesuai kebutuhan Anda
             return redirect()->route('history')->with('error', 'Anda sudah melamar pekerjaan sebelumnya.');
         }
     
-        // Jika pengguna belum membuat calon, lanjutkan dengan proses pembuatan
         $candidate = new Candidate;
         $candidate->status = '0';
-        $candidate->user_id = auth()->id(); // Menggunakan ID pengguna yang diautentikasi
+        $candidate->user_id = auth()->id();
         $candidate->career_id = $request->career_id;
         $candidate->save();
     
@@ -76,22 +74,14 @@ class CandidateController extends Controller
 
     public function QRUpdate(Request $request, $id)
     {   
-        // Cari data pelamar berdasarkan ID
         $candidate = Candidate::find($id);
-
-        // Pastikan data pelamar ditemukan sebelum melanjutkan
         if (!$candidate) {
             return redirect()->route('candidates.index')
                             ->with('error', 'Candidate not found');
         }
 
-        // Buat tautan untuk tampilan data pelamar dengan ID yang ditemukan
         $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
-
-        // Lanjutkan dengan menghasilkan QR code seperti sebelumnya
         $qrCode = QrCode::size(200)->generate($qrLink);
-
-        // Simpan tautan QR code ke dalam basis data
         $candidate->qr_link = $qrCode;
         $candidate->save();
 
@@ -139,17 +129,15 @@ class CandidateController extends Controller
         $candidate->responsible = $request->responsible;
         
         $candidate->update();
-        // Cek apakah pembaruan berhasil sebelum mencatat riwayat
         if ($candidate->wasChanged()) {
             $statory = new Statory;
             $statory->status = $request->status;
-            $statory->candidate_id = $candidate->id; // Menggunakan ID dari candidate yang telah di-update
+            $statory->candidate_id = $candidate->id;
             $statory->save();
         }
 
-        // Mengirim notifikasi
         $notifiable = $candidate->user;
-        $phone = $candidate->user->phone; // Mendapatkan nomor telepon dari user
+        $phone = $candidate->user->phone;
 
         if ($notifiable && $phone) {
             $notifiable->notify(new CandidateUpdate(
@@ -157,8 +145,8 @@ class CandidateController extends Controller
                 $candidate->description_user,
                 $candidate->responsible,
                 $candidate->date,
-                $phone // Mengirimkan nomor telepon ke constructor notifikasi
-            ));
+                $phone 
+                ));
         }
         
         return redirect()->route('candidates.index')
@@ -168,8 +156,6 @@ class CandidateController extends Controller
     public function destroy(Candidate $candidate)
     {
         $candidateId = $candidate->id;
-    
-        // Hapus Statory yang berkaitan dengan candidate_id yang akan dihapus
         Statory::where('candidate_id', $candidateId)->delete();
     
         // Hapus Candidate

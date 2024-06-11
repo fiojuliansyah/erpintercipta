@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Career;
+use App\Models\Statory;
 use App\Models\Candidate;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
@@ -53,24 +55,26 @@ class ApplicantController extends Controller
     
         $candidate->qr_link = $qrCode;
         $candidate->save();
-    
-        // Mengecek jika status kandidat adalah 5
-        if ($candidate->status == 5) {
-            $notifiable = $candidate->user;
-            $phone = $candidate->user->phone;
-    
-            if ($notifiable && $phone) {
-                $notifiable->notify(new CandidateUpdate(
-                    $candidate->status,
-                    $candidate->description_user,
-                    $candidate->responsible,
-                    $candidate->date,
-                    $phone
+
+        $statory = new Statory;
+        $statory->status = $request->status;
+        $statory->candidate_id = $candidate->id;
+        $statory->save();
+
+        $notifiable = $candidate->user;
+        $phone = $candidate->user->phone;
+
+        if ($notifiable && $phone) {
+            $notifiable->notify(new CandidateUpdate(
+                $candidate->status,
+                $candidate->description_user,
+                $candidate->responsible,
+                $candidate->date,
+                $phone 
                 ));
-            }
         }
-    
+        
         return redirect()->route('applicants.index')
                         ->with('success', 'Berhasil Melamar Pekerjaan');
-    }
+    }  
 }

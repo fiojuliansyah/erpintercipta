@@ -41,8 +41,9 @@ class CandidateUpdate extends Notification
     public function toWhatsapp($notifiable)
     {
         $historyLink = 'https://karir.interciptacorp.com/history';
+        $reportLink = 'https://wa.me/6281190030570/';
         $formatted_date = date('j F Y', strtotime($this->date));
-        $message = ''; // Inisialisasi variabel pesan
+        $message = '';
 
         // Menyesuaikan pesan berdasarkan nilai $this->status
         if ($this->status == 1) {
@@ -63,7 +64,7 @@ class CandidateUpdate extends Notification
 
         return [
             'number' => $this->phone,
-            'data' => "Intercipta Corporation,\n\n" . $message . "\npada tanggal " . $formatted_date . "\n\nBertemu dengan " . $this->responsible . "\n\nNote:\n" . $this->description_user .  "\n\nLihat riwayat di sini\n" . $historyLink,
+            'data' => "Intercipta Corporation,\n\n" . $message . "\npada tanggal " . $formatted_date . "\n\nBertemu dengan " . $this->responsible . "\n\nNote:\n" . $this->description_user .  "\n\nLihat riwayat di sini\n" . $historyLink .  "\n\nInfo Pengaduan di\n" . $reportLink,
         ];
     }
 }
