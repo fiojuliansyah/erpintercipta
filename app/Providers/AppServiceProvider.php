@@ -9,6 +9,7 @@ use App\Models\Candidate;
 use Illuminate\Pagination\Paginator;
 use App\Broadcasting\WhatsappChannel;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,36 +36,41 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('currency', function ($expression) {
             return "Rp. <?php echo number_format((float)$expression, 0, ',', '.'); ?>";
         });        
+
+        Schema::defaultStringLength(191);
+
+        if (!$this->app->runningInConsole()) {
     
-        $countPelamar = User::whereDoesntHave('roles')
-            ->whereHas('profile', function ($query) {
-                $query->where('department', null);
-            })
-            ->whereDoesntHave('candidate')
-            ->count();
-    
-        view()->share('countPelamar', $countPelamar);
+            $countPelamar = User::whereDoesntHave('roles')
+                ->whereHas('profile', function ($query) {
+                    $query->where('department', null);
+                })
+                ->whereDoesntHave('candidate')
+                ->count();
+        
+            view()->share('countPelamar', $countPelamar);
 
-        $countKandidat = Candidate::where('status', 0)->count();
-        view()->share('countKandidat', $countKandidat);
+            $countKandidat = Candidate::where('status', 0)->count();
+            view()->share('countKandidat', $countKandidat);
 
-        $countPending = Candidate::where('status', 1)->count();
-        view()->share('countPending', $countPending);
+            $countPending = Candidate::where('status', 1)->count();
+            view()->share('countPending', $countPending);
 
-        $countNCC = Candidate::where('status', 2)->count();
-        view()->share('countNCC', $countNCC);
+            $countNCC = Candidate::where('status', 2)->count();
+            view()->share('countNCC', $countNCC);
 
-        $countGNC = Candidate::where('status', 3)->count();
-        view()->share('countGNC', $countGNC);
+            $countGNC = Candidate::where('status', 3)->count();
+            view()->share('countGNC', $countGNC);
 
-        $countInterview = Candidate::where('status', 4)->count();
-        view()->share('countInterview', $countInterview);
+            $countInterview = Candidate::where('status', 4)->count();
+            view()->share('countInterview', $countInterview);
 
-        $countReject = Candidate::where('status', 5)->count();
-        view()->share('countReject', $countReject);
+            $countReject = Candidate::where('status', 5)->count();
+            view()->share('countReject', $countReject);
 
-        Notification::extend('whatsapp', function ($app) {
-            return new WhatsappChannel();
-        });
+            Notification::extend('whatsapp', function ($app) {
+                return new WhatsappChannel();
+            });
+        }
     }
 }
