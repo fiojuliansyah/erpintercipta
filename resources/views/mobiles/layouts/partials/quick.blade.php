@@ -6,20 +6,26 @@
 <div class="divider divider-margins"></div>
 
 <div class="row text-center mr-4 ml-4 mb-0">
+    @if (Auth::user()->hasRole('employee'))
+        <div class="col-3 mb-n2">
+            <a href="{{ route('iform') }}" class="icon icon-l bg-green2-dark rounded-s shadow-l"><i
+                    class="fas fa-file font-22"></i><br></a>
+            <p class="font-11 opacity-70">Form</p>
+        </div>
+        <div class="col-3 mb-n2">
+            <a href="{{ route('warehouse') }}" class="icon icon-l bg-magenta2-dark rounded-s shadow-l"><i
+                    class="fas fa-warehouse font-22"></i><br></a>
+            <p class="font-11 opacity-70">Warehouse</p>
+        </div>
+    @endif
     <div class="col-3 mb-n2">
-        <a href="{{ route('iform') }}" class="icon icon-l bg-green2-dark rounded-s shadow-l"><i class="fas fa-file font-22"></i><br></a>
-        <p class="font-11 opacity-70">Form</p>
-    </div>
-    <div class="col-3 mb-n2">
-        <a href="{{ route('warehouse') }}" class="icon icon-l bg-magenta2-dark rounded-s shadow-l"><i class="fas fa-warehouse font-22"></i><br></a>
-        <p class="font-11 opacity-70">Warehouse</p>
-    </div>
-    <div class="col-3 mb-n2">
-        <a href="{{ route('pkwt-show') }}" class="icon icon-l bg-red2-dark rounded-s shadow-l"><i class="fas fa-signature font-22"></i><br></a>
+        <a href="{{ route('pkwt-show') }}" class="icon icon-l bg-red2-dark rounded-s shadow-l"><i
+                class="fas fa-signature font-22"></i><br></a>
         <p class="font-11 opacity-70">Dokumen</p>
     </div>
     <div class="col-3 mb-n2">
-        <a href="#" class="close-menu icon icon-l bg-red2-dark rounded-s shadow-l"><i class="fa fa-times font-22"></i><br></a>
+        <a href="#" class="close-menu icon icon-l bg-red2-dark rounded-s shadow-l"><i
+                class="fa fa-times font-22"></i><br></a>
         <p class="font-11 opacity-70">Close</p>
     </div>
 </div>

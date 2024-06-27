@@ -28,16 +28,17 @@ class DashboardController extends Controller
     {
         $agent = new Agent;
         $user = Auth::user();
+        $userPkwt = Pkwt::where('user_id', $user->id)->exists();
         $careers = Career::paginate(5);
         $documentCount = Document::where('user_id', $user->id)->count();
 
         if ($agent->isMobile()) {
-            return view('mobiles.home', compact('user','careers','documentCount'));
+            return view('mobiles.home', compact('user','careers','documentCount','userPkwt'));
         } elseif ($agent->isDesktop()) {
-            return view('desktop.dashboard' ,compact('user','careers','documentCount'));
+            return view('desktop.dashboard' ,compact('user','careers','documentCount','userPkwt'));
         } else {
             // Jika bukan perangkat mobile atau desktop, Anda bisa mengembalikan tampilan default di sini.
-            return view('desktop.dashboard' ,compact('user','careers','documentCount'));
+            return view('desktop.dashboard' ,compact('user','careers','documentCount','userPkwt'));
         }
     }
 
