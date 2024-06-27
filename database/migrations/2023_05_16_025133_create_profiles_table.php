@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('nickname')->nullable();
             $table->text('address')->nullable();
+            $table->string('employee_nik')->nullable();
             $table->string('birth_place')->nullable();
             $table->string('birth_date')->nullable();
             $table->string('religion')->nullable();

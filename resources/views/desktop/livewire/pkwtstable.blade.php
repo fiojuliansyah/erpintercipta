@@ -53,15 +53,11 @@
             </div>
             <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalScrollableLabel" aria-hidden="true">
-                <!-- .modal-dialog -->
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
-                    <!-- .modal-content -->
                     <div class="modal-content">
-                        <!-- .modal-header -->
                         <div class="modal-header">
                             <h5 id="exampleModalScrollableLabel" class="modal-title"> Upload Data New PKWT </h5>
-                        </div><!-- /.modal-header -->
-                        <!-- .modal-body -->
+                        </div>
                         <div class="modal-body">
                             <form action="{{ route('import-agreement-all') }}" method="POST"
                                 enctype="multipart/form-data">
@@ -84,7 +80,38 @@
                             </form>
                         </div>
                     </div>
-                </div><!-- /.modal-dialog -->
+                </div>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#approveByProject"><i
+                        class="oi oi-shield"></i>
+                    <span>Approve by Project</span></button>
+            </div>
+            <div class="modal fade" id="approveByProject" tabindex="-1" role="dialog"
+                aria-labelledby="approveByProjectLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="approveByProjectLabel" class="modal-title"> Upload Data New PKWT </h5>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('approve-by-project') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <label for="project_id">Pilih Project/Site</label>
+                                <select name="project_id" class="form-control">
+                                    <option value="">Pilih</option>
+                                    @foreach ($projects as $site)
+                                        <option value="{{ $site->id }}">{{ $site->name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Approve</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="dropdown">
                 <button type="button" class="btn btn-light" data-toggle="dropdown"><i
@@ -95,7 +122,8 @@
                     <div class="dropdown-arrow"></div><button wire:click="exportSelected" class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Microsoft_Excel_2013-2019_logo.svg/2170px-Microsoft_Excel_2013-2019_logo.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export Excel</button>
-                    <div class="dropdown-arrow"></div><button wire:click="exportSelectedToPdf" class="dropdown-item"><img
+                    <div class="dropdown-arrow"></div><button wire:click="exportSelectedToPdf"
+                        class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export PDF</button>
                 </div>
@@ -108,7 +136,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><span class="oi oi-magnifying-glass"></span></span>
                 </div>
-                <input type="text" class="form-control" name="keyword" placeholder="Search..." wire:model="search">
+                <input type="text" class="form-control" name="keyword" placeholder="Search..."
+                    wire:model="search">
             </div>
         </div>
         <div class="col-md-3">
@@ -130,7 +159,7 @@
                     @endforeach
                 </select>
             </div>
-        </div> 
+        </div>
         <div class="col-md-3">
             <div class="form-group">
                 <select class="custom-select" wire:model="selectedTitle" name="title">
@@ -140,7 +169,7 @@
                     @endforeach
                 </select>
             </div>
-        </div>        
+        </div>
     </div>
     <div class="table-responsive">
         <table id="roletable" class="table">
@@ -165,18 +194,19 @@
                         </td>
                         <td>{{ ($data->currentPage() - 1) * $data->perpage() + $loop->index + 1 }}</td>
                         <td>
-                            {{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}
-                        <br>
-                        <small>
-                            {{ $pkwt->agreement->addendum->site->company['company'] ?? 'Tidak ada Data' }}
-                        </small>
+                            {{ $pkwt->agreement->addendum['title'] }}
+                            {{ $pkwt->agreement->addendum->site['description'] }}
+                            <br>
+                            <small>
+                                {{ $pkwt->agreement->addendum->site->company['company'] ?? 'Tidak ada Data' }}
+                            </small>
                         </td>
                         <td>
                             {{ $pkwt->user['name'] ?? 'Tidak ada Data' }}
-                        <br>
-                        <small>
-                            APPLICANT - {{ str_pad($pkwt->user['id'] ?? 'Tidak ada Data', 5, '0', STR_PAD_LEFT) }}
-                        </small>
+                            <br>
+                            <small>
+                                APPLICANT - {{ str_pad($pkwt->user['id'] ?? 'Tidak ada Data', 5, '0', STR_PAD_LEFT) }}
+                            </small>
                         </td>
                         <td>
                             <div class="row">
@@ -218,49 +248,57 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                         <div class="dropdown-arrow"></div>
-                                        <a class="dropdown-item"
-                                            href="{{ route('pkwts.show', $pkwt->id) }}">Lihat Pkwt</a>
-                                            <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalAlertWarning{{ $pkwt->id }}">Hapus</a>
+                                        <a class="dropdown-item" href="{{ route('pkwts.show', $pkwt->id) }}">Lihat
+                                            Pkwt</a>
+                                        <a class="dropdown-item" data-toggle="modal"
+                                            data-target="#exampleModalAlertWarning{{ $pkwt->id }}">Hapus</a>
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr><!-- /tr -->
                     <div wire:ignore>
-                    <div class="modal modal-alert fade" id="exampleModalAlertWarning{{ $pkwt->id }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalAlertWarningLabel{{ $pkwt->id }}" aria-hidden="true">
-                        <!-- .modal-dialog -->
-                        <div class="modal-dialog" role="document">
-                          <!-- .modal-content -->
-                          <div class="modal-content">
-                            <!-- .modal-header -->
-                            <div class="modal-header">
-                              <h5 id="exampleModalAlertWarningLabel{{ $pkwt->id }}" class="modal-title">
-                                <i class="fa fa-bullhorn text-danger mr-1"></i> Apakah anda yakin?</h5>
-                            </div><!-- /.modal-header -->
-                            <!-- .modal-body -->
-                                <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    @can('pkwt-delete')
-                                    <div class="modal-body">
-                                        Detail PKWT :
-                                        <br>
-                                        <br>
-                                        Addendum :
-                                         {{ $pkwt->agreement->addendum['title'] }} {{ $pkwt->agreement->addendum->site['description'] }}
-                                         <br>
-                                         Karyawan :
-                                         {{ $pkwt->user['name'] ?? 'Tidak ada Data' }}
-                                    </div><!-- /.modal-body -->
-                                    <!-- .modal-footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> <button type="submit" class="btn btn-danger">Hapus</button>
-                                    </div><!-- /.modal-footer -->
-                                    @endcan
-                                </form>
-                          </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div>
+                        <div class="modal modal-alert fade" id="exampleModalAlertWarning{{ $pkwt->id }}"
+                            data-backdrop="static" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalAlertWarningLabel{{ $pkwt->id }}" aria-hidden="true">
+                            <!-- .modal-dialog -->
+                            <div class="modal-dialog" role="document">
+                                <!-- .modal-content -->
+                                <div class="modal-content">
+                                    <!-- .modal-header -->
+                                    <div class="modal-header">
+                                        <h5 id="exampleModalAlertWarningLabel{{ $pkwt->id }}"
+                                            class="modal-title">
+                                            <i class="fa fa-bullhorn text-danger mr-1"></i> Apakah anda yakin?
+                                        </h5>
+                                    </div><!-- /.modal-header -->
+                                    <!-- .modal-body -->
+                                    <form action="{{ route('pkwts.destroy', $pkwt->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        @can('pkwt-delete')
+                                            <div class="modal-body">
+                                                Detail PKWT :
+                                                <br>
+                                                <br>
+                                                Addendum :
+                                                {{ $pkwt->agreement->addendum['title'] }}
+                                                {{ $pkwt->agreement->addendum->site['description'] }}
+                                                <br>
+                                                Karyawan :
+                                                {{ $pkwt->user['name'] ?? 'Tidak ada Data' }}
+                                            </div><!-- /.modal-body -->
+                                            <!-- .modal-footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light"
+                                                    data-dismiss="modal">Close</button> <button type="submit"
+                                                    class="btn btn-danger">Hapus</button>
+                                            </div><!-- /.modal-footer -->
+                                        @endcan
+                                    </form>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div>
                     </div>
                 @endforeach
             </tbody><!-- /tbody -->

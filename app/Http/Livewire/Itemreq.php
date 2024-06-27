@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Itemreq extends Component
 {

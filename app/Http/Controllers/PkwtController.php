@@ -174,4 +174,35 @@ class PkwtController extends Controller
         return redirect()->back();
     }
 
+    public function approveByProject(Request $request)
+    {
+        $projectId = $request->input('project_id');
+        if (empty($projectId)) {
+            return redirect()->back()->with('error', 'Please select a project');
+        }
+
+        $hrApprove = Auth::user()->name;
+        $userId = Auth::user()->id;
+        $signature = Esign::where('user_id', $userId)->first();
+
+        if ($signature) {
+            $hrSignature = $signature->signatureDataUrl;
+        } else {
+            $hrSignature = null;
+        }
+
+        $pkws = Pkwt::whereHas('agreement.addendum', function ($query) use ($projectId) {
+            $query->where('site_id', $projectId);
+        })->get();
+
+        foreach ($pkws as $pkwt) {
+            $pkwt->user_hrd = $hrApprove;
+            $pkwt->signature_hrd = $hrSignature;
+            $pkwt->save();
+        }
+
+        return redirect()->route('pkwts.index')
+                        ->with('success', 'All selected PKWTs updated successfully');
+    }
+
 }

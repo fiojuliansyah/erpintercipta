@@ -123,7 +123,8 @@ Route::middleware('auth', 'visitor')->group(function () {
 
     Route::resource('agreements', AgreementController::class);
     Route::post('/import-agreement',[AgreementController::class,'import'])->name('import-agreement');
-     Route::post('/import-pkwt-all',[AgreementController::class,'importAll'])->name('import-agreement-all');
+    Route::post('/import-pkwt-all',[AgreementController::class,'importAll'])->name('import-agreement-all');
+    Route::post('/approve-by-project',[PkwtController::class,'approveByProject'])->name('approve-by-project');
 
     Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
     Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');

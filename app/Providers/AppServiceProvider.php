@@ -35,13 +35,15 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('currency', function ($expression) {
             return "Rp. <?php echo number_format((float)$expression, 0, ',', '.'); ?>";
         });        
-    
+        
+        if (!$this->app->runningInConsole()) {
+
         $countPelamar = User::whereDoesntHave('roles')
-            ->whereHas('profile', function ($query) {
-                $query->where('department', null);
-            })
-            ->whereDoesntHave('candidate')
-            ->count();
+        ->whereHas('profile', function ($query) {
+            $query->where('department', null);
+        })
+        ->whereDoesntHave('candidate')
+        ->count();
     
         view()->share('countPelamar', $countPelamar);
 
@@ -62,6 +64,8 @@ class AppServiceProvider extends ServiceProvider
 
         $countReject = Candidate::where('status', 5)->count();
         view()->share('countReject', $countReject);
+
+        }
 
         Notification::extend('whatsapp', function ($app) {
             return new WhatsappChannel();

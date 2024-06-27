@@ -31,9 +31,11 @@ return new class extends Migration
             $table->string('place')->nullable();
             $table->string('year')->nullable();
             $table->string('romawi')->nullable();
+            $table->string('length_of_work')->nullable();
             $table->string('title')->nullable();
             $table->string('responsible')->nullable();
             $table->string('addendum_id')->nullable();
+            $table->string('penalty')->nullable();
             $table->timestamps();
         });
     }
