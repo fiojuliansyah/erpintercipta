@@ -156,6 +156,20 @@ class DashboardController extends Controller
         
     }
 
+    public function document(Pkwt $pkwt)
+    {
+        $agent = new Agent;
+
+        if ($agent->isMobile()) {
+            return view('mobiles.document-view', compact('pkwt'));
+        } elseif ($agent->isDesktop()) {
+            return view('mobiles.document-view', compact('pkwt'));
+        } else {
+            return view('mobiles.document-view', compact('pkwt'));
+        }
+        
+    }
+
 
     public function MyResume(Candidate $candidate)
     {

@@ -73,6 +73,7 @@ Route::middleware('auth', 'visitor')->group(function () {
 
     Route::get('/jobportal', [DashboardController::class, 'jobPortal'])->name('jobportal');
     Route::get('/pkwt', [DashboardController::class, 'pkwt'])->name('pkwt-show');
+    Route::get('/show-document', [DashboardController::class, 'document'])->name('document-show');
     Route::get('/my-resume', [DashboardController::class, 'MyResume'])->name('my-resume');
     Route::get('/jobportal/{career}', [DashboardController::class, 'jobDetail'])->name('jobportal-show');
     Route::get('/history', [DashboardController::class, 'history'])->name('history');

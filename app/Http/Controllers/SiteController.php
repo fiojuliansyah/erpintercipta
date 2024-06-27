@@ -100,6 +100,7 @@ class SiteController extends Controller
         $site->description = $request->description;
         $site->lat = $request->lat;
         $site->long = $request->long;
+        $site->show_document = $request->show_document;
         $site->save();
 
         // $crud->update($request->all());

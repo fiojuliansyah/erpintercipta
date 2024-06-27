@@ -96,14 +96,29 @@
                     <a href="{{ route('pkwt-show') }}">
                         <div class="item bg-theme rounded-m shadow-m"
                             style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                            <img src="https://img.icons8.com/?size=256w&id=13580&format=png" alt="" width="60px"
-                                style="margin-bottom: 5px; padding-top:30px;">
-                            <h5 class="font-16 pt-1">Dokumen</h5>
+                            <img src="https://img.icons8.com/?size=256w&id=wrK5cT76XMEo&format=png" alt=""
+                                width="60px" style="margin-bottom: 5px; padding-top:30px;">
+                            <h5 class="font-16 pt-1">Signature</h5>
                             <p class="line-height-s font-11">
-                                Lihat atau<br>Tanda Tangan
+                                Tanda Tangan <br>
+                                Dokumen
                             </p>
                         </div>
                     </a>
+                    @if ($user->pkwt->agreement->addendum->site['show_document'] == 1)
+                        <a href="{{ route('document-show') }}">
+                            <div class="item bg-theme rounded-m shadow-m"
+                                style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                                <img src="https://img.icons8.com/?size=256w&id=13580&format=png" alt=""
+                                    width="60px" style="margin-bottom: 5px; padding-top:30px;">
+                                <h5 class="font-16 pt-1">Dokumen</h5>
+                                <p class="line-height-s font-11">
+                                    Lihat <br>
+                                    Dokumen
+                                </p>
+                            </div>
+                        </a>
+                    @endif
                 </div>
             @endif
             <br>
