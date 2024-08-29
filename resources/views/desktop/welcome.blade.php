@@ -94,7 +94,8 @@
             <div class="col-12 col-md-6 order-md-1" data-aos="fade-in">
               <div class="col-fix pl-xl-3 ml-auto text-center text-sm-left">
                 <h1 class="display-4 enable-responsive-font-size mb-4">Dapatkan pekerjaan <strong>sekarang juga!</strong></h1>
-                <p class="lead mb-5" style="color:red"> *Proses pelamaran pekerjaan di PT Intercipta Corporation tidak dipungut biaya </p>
+                <p class="lead mb-3" style="color:red"> *Proses pelamaran pekerjaan di PT Intercipta Corporation tidak dipungut biaya </p>
+                <h5 class="lead mb-5" style="color:red"> HOTLINE : 081190030570 </h5>
                 <a href="{{ route('login') }}" class="btn btn-lg btn-primary d-block d-sm-inline-block mr-sm-2 my-3" data-aos="zoom-in" data-aos-delay="200">Login <i class="fa fa-angle-right ml-2"></i></a> 
                 <a href="{{ route('register') }}" class="btn btn-lg btn-subtle-primary d-block d-sm-inline-block my-3" data-aos="zoom-in" data-aos-delay="300">Daftar</a>
               </div>
@@ -340,6 +341,10 @@
                 Jakarta 11840 </p>
               <address class="">
                 <abbr title="US phone code">021 </abbr>5439 4888 </address><!-- Social -->
+                <strong>Hotline</strong>
+                <p>
+                  081190030570 
+                </p>
                 <strong>Email</strong>
                 <p>
                   marketing@interciptacorp.com
