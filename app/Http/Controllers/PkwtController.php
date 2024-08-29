@@ -205,4 +205,29 @@ class PkwtController extends Controller
                         ->with('success', 'All selected PKWTs updated successfully');
     }
 
+    public function deleteByProject(Request $request)
+    {
+        $projectId = $request->input('project_id');
+        if (empty($projectId)) {
+            return redirect()->back()->with('error', 'Please select a project');
+        }
+    
+        // Mendapatkan semua PKWT yang terkait dengan project_id
+        $pkws = Pkwt::whereHas('agreement.addendum', function ($query) use ($projectId) {
+            $query->where('site_id', $projectId);
+        })->get();
+    
+        if ($pkws->isEmpty()) {
+            return redirect()->back()->with('error', 'No PKWTs found for the selected project');
+        }
+    
+        // Menghapus semua PKWT yang ditemukan
+        foreach ($pkws as $pkwt) {
+            $pkwt->delete();
+        }
+    
+        return redirect()->route('pkwts.index')
+                        ->with('success', 'All selected PKWTs deleted successfully');
+    }    
+
 }

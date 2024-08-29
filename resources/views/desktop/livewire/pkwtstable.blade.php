@@ -92,7 +92,7 @@
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 id="approveByProjectLabel" class="modal-title"> Upload Data New PKWT </h5>
+                            <h5 id="approveByProjectLabel" class="modal-title"> Appprove PKWT </h5>
                         </div>
                         <div class="modal-body">
                             <form action="{{ route('approve-by-project') }}" method="POST"
@@ -126,6 +126,37 @@
                         class="dropdown-item"><img
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/PDF_icon.svg/1792px-PDF_icon.svg.png"
                             width="20" alt="">&nbsp;&nbsp;Export PDF</button>
+                </div>
+            </div>            
+            <div class="dropdown">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#deleteByProject"><i
+                        class="oi oi-shield"></i>
+                    <span>Hapus by Project</span></button>
+            </div>
+            <div class="modal fade" id="deleteByProject" tabindex="-1" role="dialog"
+                aria-labelledby="deleteByProjectLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="deleteByProjectLabel" class="modal-title"> Hapus PKWT </h5>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('delete-by-project') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <label for="project_id">Pilih Project/Site</label>
+                                <select name="project_id" class="form-control">
+                                    <option value="">Pilih</option>
+                                    @foreach ($projects as $site)
+                                        <option value="{{ $site->id }}">{{ $site->name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success">Approve</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div><!-- /.btn-toolbar -->
