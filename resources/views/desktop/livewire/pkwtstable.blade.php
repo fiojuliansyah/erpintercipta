@@ -152,7 +152,7 @@
                                     @endforeach
                                 </select>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success">Approve</button>
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
                                 </div>
                             </form>
                         </div>
