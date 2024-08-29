@@ -253,7 +253,7 @@
           </div>
         </div><!-- /.sticker -->
         <!-- .container -->
-        <div class="container position-relative mb-5">
+        {{-- <div class="container position-relative mb-5">
           <h2 class="text-center"> Berbagai industri dan sektor pekerjaan </h2>
           <p class="text-center text-muted font-size-lg mb-5"> Beberapa Perusahaan yang bekerjasama dengan CiptaKarir by InterCipta Corporation </p><!-- .row -->
           <div class="row mb-6">
@@ -294,7 +294,7 @@
               </div><!-- /.row -->
             </div><!-- /.col -->
           </div><!-- /.row -->
-        </div><!-- /.container -->
+        </div><!-- /.container --> --}}
       </section><!-- /testimonials -->
       <!-- call to action -->
       <section class="py-5 position-relative bg-light">
@@ -334,23 +334,16 @@
             <div class="col-12 col-md-4 col-lg-3">
               <!-- Brand -->
               <img src="{{asset('/admin/images/cipta-karir.png')}}" width="180" alt=""> <!-- Description -->
-              <p class="text-muted mb-2"> The theme for your project. </p>
-              <address class="text-muted">
-                <abbr title="US phone code">+1</abbr> (234) 567-8910 </address><!-- Social -->
-              <ul class="list-inline mb-5 mb-md-0">
-                <li class="list-inline-item mr-3" data-aos="fade-in" data-aos-delay="0">
-                  <a href="#" class="text-muted text-decoration-none" title="twitter"><img class="grayscale" src="{{ asset('') }}admin/images/avatars/twitter.svg" alt="" width="24"></a>
-                </li>
-                <li class="list-inline-item mr-3" data-aos="fade-in" data-aos-delay="100">
-                  <a href="#" class="text-muted text-decoration-none" title="instagram"><img class="grayscale" src="{{ asset('') }}admin/images/avatars/instagram.svg" alt="" width="24"></a>
-                </li>
-                <li class="list-inline-item mr-3" data-aos="fade-in" data-aos-delay="200">
-                  <a href="#" class="text-muted text-decoration-none" title="dribbble"><img class="grayscale" src="{{ asset('') }}admin/images/avatars/dribbble.svg" alt="" width="24"></a>
-                </li>
-                <li class="list-inline-item mr-3" data-aos="fade-in" data-aos-delay="300">
-                  <a href="#" class="text-muted text-decoration-none" title="medium"><img class="grayscale" src="{{ asset('') }}admin/images/avatars/medium.svg" alt="" width="24"></a>
-                </li>
-              </ul>
+              <p class=" mb-2"> Graha Intercipta
+                Jl Tampak Siring Blok KJF, No 28-32
+                Pusat Bisnis Daan Mogot Baru
+                Jakarta 11840 </p>
+              <address class="">
+                <abbr title="US phone code">021 </abbr>5439 4888 </address><!-- Social -->
+                <strong>Email</strong>
+                <p>
+                  marketing@interciptacorp.com
+                </p>
             </div><!-- /.col -->
             <!-- .col -->
             <div class="col-6 col-md-4 col-lg-2 mb-3 mb-md-0">
@@ -372,7 +365,7 @@
               </ul>
             </div><!-- /.col -->
           </div><!-- /.row -->
-          <p class="text-muted text-center mt-5"> © 2023 Cipta Karir, Intercipta Corporation All rights reserved. </p>
+          <p class="text-muted text-center mt-5"> © 2024 Cipta Karir, Intercipta Corporation All rights reserved. </p>
         </div><!-- /.container -->
       </section><!-- /footer -->
     </main><!-- /.app -->
