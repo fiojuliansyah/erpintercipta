@@ -82,7 +82,7 @@ class Pkwtstable extends Component
     public function render()
     {
         $companies = Company::all();
-        $projects = Site::all();
+        $projects = Site::orderBy('name', 'asc')->get();
         $addendums = Addendum::all();
 
         $query = Pkwt::query();

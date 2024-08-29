@@ -236,7 +236,7 @@
                             </div>
                         </td>
                         <td>
-                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown" wire:ignore>
                                 <form action="{{ route('pkwts.update', $pkwt->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
