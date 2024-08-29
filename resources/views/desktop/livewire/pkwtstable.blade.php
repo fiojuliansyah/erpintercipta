@@ -130,7 +130,7 @@
             </div>            
             <div class="dropdown">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#deleteByProject"><i
-                        class="oi oi-shield"></i>
+                        class="oi oi-trash"></i>
                     <span>Hapus by Project</span></button>
             </div>
             <div class="modal fade" id="deleteByProject" tabindex="-1" role="dialog"
