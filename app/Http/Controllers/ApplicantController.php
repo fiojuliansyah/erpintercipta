@@ -9,6 +9,7 @@ use App\Models\Statory;
 use App\Models\Candidate;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
+use App\Notifications\CandidateUpdate;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ApplicantController extends Controller
