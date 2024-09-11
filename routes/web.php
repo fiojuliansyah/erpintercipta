@@ -127,6 +127,7 @@ Route::middleware('auth', 'visitor')->group(function () {
     Route::post('/import-pkwt-all',[AgreementController::class,'importAll'])->name('import-agreement-all');
     Route::post('/approve-by-project',[PkwtController::class,'approveByProject'])->name('approve-by-project');
     Route::post('/delete-by-project',[PkwtController::class,'deleteByProject'])->name('delete-by-project');
+    Route::post('/extension-by-project',[PkwtController::class,'extensionByProject'])->name('extension-by-project');
 
     Route::get ('training/gnc',[TrainingController::class, 'indexGNC'])->name('index-gnc');
     Route::get ('training/ncc',[TrainingController::class, 'indexNCC'])->name('index-ncc');

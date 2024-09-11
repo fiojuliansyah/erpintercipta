@@ -228,6 +228,21 @@ class PkwtController extends Controller
     
         return redirect()->route('pkwts.index')
                         ->with('success', 'All selected PKWTs deleted successfully');
-    }    
+    }
+    
+    public function extensionByProject(Request $request)
+    {
+        $projectId = $request->input('project_id');
+        if (empty($projectId)) {
+            return redirect()->back()->with('error', 'Please select a project');
+        }
+    
+
+    
+        // Menghapus semua tanda tangan yang ditemukan
+    
+        return redirect()->route('pkwts.index')
+                        ->with('success', 'All selected PKWTs deleted successfully');
+    }  
 
 }

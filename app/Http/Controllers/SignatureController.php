@@ -13,10 +13,7 @@ use App\Http\Requests\UpdateSignatureRequest;
 
 class SignatureController extends Controller
 {
-    function __construct()
-    {
-         $this->middleware('permission:signature-list', ['only' => ['index']]);
-    }
+
     /**
      * Display a listing of the resource.
      *

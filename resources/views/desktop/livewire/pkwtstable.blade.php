@@ -159,6 +159,37 @@
                     </div>
                 </div>
             </div>
+            <div class="dropdown">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#extensionByProject"><i
+                        class="oi oi-trash"></i>
+                    <span>Perpanjang Project</span></button>
+            </div>
+            <div class="modal fade" id="extensionByProject" tabindex="-1" role="dialog"
+                aria-labelledby="extensionByProjectLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="extensionByProjectLabel" class="modal-title"> Hapus PKWT </h5>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('extension-by-project') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <label for="project_id">Pilih Project/Site</label>
+                                <select name="project_id" class="form-control">
+                                    <option value="">Pilih</option>
+                                    @foreach ($projects as $site)
+                                        <option value="{{ $site->id }}">{{ $site->name }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div><!-- /.btn-toolbar -->
     </div>
     <div class="row">

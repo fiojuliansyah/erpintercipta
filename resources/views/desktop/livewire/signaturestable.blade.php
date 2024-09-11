@@ -19,7 +19,7 @@
                       </div><!-- /.modal-header -->
                       <!-- .modal-body -->
                       <div class="modal-body">
-                          <form action="{{ route('upload-signature') }}" method="POST" enctype="multipart/form-data">
+                          {{-- <form action="{{ route('upload-signature') }}" method="POST" enctype="multipart/form-data">
                               @csrf
                               <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
@@ -33,7 +33,7 @@
                                           @foreach ($users as $user)
                                             @if ($user->pkwt && $user->pkwt->agreement && $user->pkwt->agreement->addendum && $user->pkwt->agreement->addendum->site)   
                                               <option value="{{ $user->id }}">
-                                                {{ $user->pkwt->agreement->addendum->site['name'] ?? 'Tidak ada Data'}} | {{ $user->name }}
+                                                {{ $user->pkwt->agreement->addendum->site['name'] ?? 'Tidak ada Data'}} | {{ $user->name ?? '' }}
                                               </option>
                                             @endif
                                           @endforeach
@@ -52,7 +52,7 @@
                               <div class="modal-footer">
                                   <button type="submit" class="btn btn-success">Upload Signature</button>
                               </div>
-                          </form>
+                          </form> --}}
                       </div><!-- /.modal-body -->
                       <!-- .modal-footer -->
                   </div><!-- /.modal-content -->
