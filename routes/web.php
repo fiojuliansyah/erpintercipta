@@ -103,6 +103,7 @@ Route::middleware('auth', 'visitor')->group(function () {
 
     Route::resource('candidates', CandidateController::class);
     Route::get('/candidates/{candidate}',[CandidateController::class,'show'])->name('candidates.show');
+    Route::put('/candidates/update-barcode-all', [CandidateController::class, 'updateBarcodeAll'])->name('candidates.updateBarcodeAll');
 
     Route::put('/update-qrcode/{id}',[CandidateController::class,'QRUpdate'])->name('update-qrcode');
     Route::put('/update-qrcode-user/{id}',[userController::class,'QRUpdate'])->name('update-qrcode-user');

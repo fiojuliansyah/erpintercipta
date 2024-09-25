@@ -89,6 +89,27 @@ class CandidateController extends Controller
                         ->with('success', 'Candidate updated successfully');
     }
 
+    public function updateBarcodeAll()
+    {
+        // Ambil semua kandidat
+        $candidates = Candidate::all();
+
+        // Loop untuk setiap kandidat
+        foreach ($candidates as $candidate) {
+            // Generate QR code untuk setiap kandidat
+            $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
+            $qrCode = QrCode::size(200)->generate($qrLink);
+
+            // Update field qr_link untuk kandidat
+            $candidate->qr_link = $qrLink;
+            $candidate->save(); // Simpan update kandidat
+        }
+
+        // Redirect atau return response setelah proses update selesai
+        return redirect()->route('candidates.index')->with('success', 'Semua barcode kandidat berhasil diperbarui.');
+    }
+
+
 
 
     public function show(Candidate $candidate)

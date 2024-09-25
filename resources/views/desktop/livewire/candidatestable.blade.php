@@ -2,6 +2,12 @@
     <div class="d-md-flex align-items-md-start">
         <h1 class="page-title mr-sm-auto"> List Kandidat </h1>
         <div class="btn-toolbar">
+            <form action="{{ route('candidates.updateBarcodeAll') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="btn btn-light"><i
+                    class="fas fa-qrcode"></i> <span>Update QRCode Kandidat</span></button>
+            </form>            
             <div class="dropdown">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#updateStatus"><i
                         class="oi oi-laptop"></i> <span>Update Status Kandidat</span></button>
