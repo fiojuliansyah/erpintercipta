@@ -3,8 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\Site;
+use App\Models\Career;
 use Livewire\Component;
+use App\Models\Addendum;
 use App\Models\Training;
+use App\Models\Agreement;
 use App\Models\Candidate;
 use Livewire\WithPagination;
 use App\Exports\ExportCandidates;
