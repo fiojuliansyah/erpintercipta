@@ -101,7 +101,7 @@ class CandidateController extends Controller
             $qrCode = QrCode::size(200)->generate($qrLink);
 
             // Update field qr_link untuk kandidat
-            $candidate->qr_link = $qrLink;
+            $candidate->qr_link = $qrCode;
             $candidate->save(); // Simpan update kandidat
         }
 
