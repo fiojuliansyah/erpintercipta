@@ -123,6 +123,11 @@ class Nccstable extends Component
     {
         $projects = Site::all();
         $dataQuery = Candidate::query();
+        $sites = Site::all();
+        $careers = Career::all();
+        $addendums = Addendum::all();
+        $agreements = Agreement::all();
+        $hiddenUserIds = $this->getHiddenUserIds();
 
         if ($this->search != '') {
             $dataQuery->whereRelation('user', 'name', 'like', '%' . $this->search . '%')
@@ -139,6 +144,6 @@ class Nccstable extends Component
 
         $data = $dataQuery->paginate(10);
 
-        return view('desktop.livewire.nccstable', compact('data', 'projects'));
+        return view('desktop.livewire.nccstable', compact('data', 'projects','addendums', 'sites', 'careers', 'agreements'));
     }
 }
