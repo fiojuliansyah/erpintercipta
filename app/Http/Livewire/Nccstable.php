@@ -25,6 +25,55 @@ class Nccstable extends Component
         $this->resetPage();
     }
 
+    public function updateSelected(Request $request)
+    {   
+        if (count($this->selectedIds) > 0) {
+            // Mendapatkan user_id dari data candidat yang terpilih
+            $userIds = Candidate::whereIn('id', $this->selectedIds)->pluck('user_id')->toArray();
+
+            foreach ($this->selectedIds as $index => $selectedId) {
+                $candidate = Candidate::find($selectedId);
+
+                if ($candidate) {
+                    $candidate->user_id = $userIds[$index];
+                    $candidate->status = $this->status;
+                    $candidate->career_id = $this->career_id;
+                    $candidate->description_user = $this->description_user;
+                    $candidate->description_client = $this->description_client;
+                    $candidate->site_id = $this->site_id;
+                    $candidate->date = $this->date;
+                    $candidate->responsible = $this->responsible;
+
+                    $candidate->save();
+                    
+                    if ($candidate->wasChanged()) {
+                        $statory = new Statory;
+                        $statory->status = $candidate->status;
+                        $statory->candidate_id = $candidate->id;
+                        $statory->save();
+                    }
+
+                   
+                    $notifiable = $candidate->user;
+                    $phone = $candidate->user->phone;
+
+                    if ($notifiable && $phone) {
+                        $notifiable->notify(new CandidateUpdate(
+                            $candidate->status,
+                            $candidate->description_user,
+                            $candidate->responsible,
+                            $candidate->date,
+                            $phone
+                        ));
+                    }
+                }
+            }
+            session()->flash('success', 'Selected candidates updated successfully.');
+        } else {
+            session()->flash('error', 'No candidates selected for update.');
+        }
+    }
+
     public function exportSelected()
     {
         if (count($this->selectedIds) > 0) {
