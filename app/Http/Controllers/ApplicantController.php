@@ -46,25 +46,33 @@ class ApplicantController extends Controller
 
     public function store(Request $request)
     {
+        // Create a new Candidate instance and assign values from the request
         $candidate = new Candidate;
         $candidate->status = $request->status;
         $candidate->user_id = $request->user_id;
         $candidate->career_id = $request->career_id;
+        
+        // Save the candidate to get the ID
+        $candidate->save();
     
-        $qrLink = route('candidates.show', ['candidate' => $candidate->user_id]);
+        // Generate QR code based on the saved candidate ID and store it
+        $qrLink = route('candidates.show', ['candidate' => $candidate->id]);
         $qrCode = QrCode::size(200)->generate($qrLink);
     
-        $candidate->qr_link = $qrCode;
-        $candidate->save();
-
+        // Update the candidate with the generated QR code link
+        $candidate->qr_link = $qrLink; // If you store the URL for later usage
+        $candidate->save(); // Save again with the QR code link
+    
+        // Create a new Statory instance and associate it with the candidate
         $statory = new Statory;
         $statory->status = $request->status;
         $statory->candidate_id = $candidate->id;
         $statory->save();
-
+    
+        // Notify the user (if phone number is available)
         $notifiable = $candidate->user;
         $phone = $candidate->user->phone;
-
+    
         if ($notifiable && $phone) {
             $notifiable->notify(new CandidateUpdate(
                 $candidate->status,
@@ -72,10 +80,12 @@ class ApplicantController extends Controller
                 $candidate->responsible,
                 $candidate->date,
                 $phone 
-                ));
+            ));
         }
-        
+    
+        // Redirect with success message
         return redirect()->route('applicants.index')
                         ->with('success', 'Berhasil Melamar Pekerjaan');
-    }  
+    }
+     
 }
