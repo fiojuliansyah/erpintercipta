@@ -101,11 +101,16 @@ Route::middleware('auth', 'visitor')->group(function () {
     Route::resource('vendors', VendorController::class);
     Route::resource('careers', CareerController::class);
 
-    Route::resource('candidates', CandidateController::class);
-    Route::get('/candidates/{candidate}',[CandidateController::class,'show'])->name('candidates.show');
+ 
+    // Route untuk update semua barcode kandidat
     Route::put('/candidates/update-barcode-all', [CandidateController::class, 'updateBarcodeAll'])->name('candidates.updateBarcodeAll');
 
-    Route::put('/update-qrcode/{id}',[CandidateController::class,'QRUpdate'])->name('update-qrcode');
+    // Route untuk update QR code spesifik berdasarkan ID kandidat
+    Route::put('/update-qrcode/{id}', [CandidateController::class, 'QRUpdate'])->name('update-qrcode');
+
+    // Route Resource untuk candidates (termasuk show, update, delete, dsb.)
+    Route::resource('candidates', CandidateController::class);
+    
     Route::put('/update-qrcode-user/{id}',[userController::class,'QRUpdate'])->name('update-qrcode-user');
    
     Route::resource('pkwts', PkwtController::class);
