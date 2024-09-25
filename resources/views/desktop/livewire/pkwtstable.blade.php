@@ -169,7 +169,7 @@
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 id="extensionByProjectLabel" class="modal-title"> Hapus PKWT </h5>
+                            <h5 id="extensionByProjectLabel" class="modal-title"> Perpanjangan PKWT </h5>
                         </div>
                         <div class="modal-body">
                             <form action="{{ route('extension-by-project') }}" method="POST"
@@ -183,7 +183,7 @@
                                     @endforeach
                                 </select>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-success">Perpanjang</button>
                                 </div>
                             </form>
                         </div>
