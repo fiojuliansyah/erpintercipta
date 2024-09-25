@@ -130,7 +130,6 @@ class Nccstable extends Component
         $careers = Career::all();
         $addendums = Addendum::all();
         $agreements = Agreement::all();
-        $hiddenUserIds = $this->getHiddenUserIds();
 
         if ($this->search != '') {
             $dataQuery->whereRelation('user', 'name', 'like', '%' . $this->search . '%')
