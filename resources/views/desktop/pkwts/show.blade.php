@@ -14,6 +14,11 @@
                         <div class="card">
                             <!-- .card-body -->
                             <div class="card-body" style="background-color: white; color: black">
+                                @if(!empty($pkwt->agreement->addendum->site->company['image']))
+                                    <img src="{{ $pkwt->agreement->addendum->site->company['image'] }}" width="20%" style="display: block; margin: 0 auto;">
+                                @else
+                                    <!-- Jika tidak ada gambar, tampilkan elemen kosong atau apapun sesuai kebutuhan -->
+                                @endif                                                            
                                 <span id="addendum" class="printable-text">
                                     {!! $pkwt->agreement?->addendum['addendum'] !!}
                                     <br>
