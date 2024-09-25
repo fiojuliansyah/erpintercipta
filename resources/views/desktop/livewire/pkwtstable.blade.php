@@ -161,7 +161,7 @@
             </div>
             <div class="dropdown">
                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#extensionByProject"><i
-                        class="oi oi-trash"></i>
+                        class="fab fa-500px"></i>
                     <span>Perpanjang Project</span></button>
             </div>
             <div class="modal fade" id="extensionByProject" tabindex="-1" role="dialog"

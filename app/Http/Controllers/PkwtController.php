@@ -236,10 +236,7 @@ class PkwtController extends Controller
         if (empty($projectId)) {
             return redirect()->back()->with('error', 'Please select a project');
         }
-    
 
-    
-        // Menghapus semua tanda tangan yang ditemukan
     
         return redirect()->route('pkwts.index')
                         ->with('success', 'All selected PKWTs deleted successfully');
