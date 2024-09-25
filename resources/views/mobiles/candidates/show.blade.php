@@ -178,7 +178,7 @@
             </div>
         </div>
         <a href="#" data-menu="update-lowongan"
-            class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Update Lowongan</a>
+            class="btn btn-full btn-margins bg-highlight rounded-sm shadow-xl btn-m text-uppercase font-900">Update Kandidat</a>
 
     </div>
 @endsection
