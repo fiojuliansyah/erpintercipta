@@ -212,7 +212,6 @@ class PkwtController extends Controller
             return redirect()->back()->with('error', 'Please select a project');
         }
     
-        // Mendapatkan semua PKWT yang terkait dengan project_id
         $pkws = Pkwt::whereHas('agreement.addendum', function ($query) use ($projectId) {
             $query->where('site_id', $projectId);
         })->get();
@@ -233,13 +232,21 @@ class PkwtController extends Controller
     public function extensionByProject(Request $request)
     {
         $projectId = $request->input('project_id');
-        if (empty($projectId)) {
-            return redirect()->back()->with('error', 'Please select a project');
-        }
-
     
-        return redirect()->route('pkwts.index')
-                        ->with('success', 'All selected PKWTs deleted successfully');
+        // Get all PKWTs related to the project
+        $pkwts = Pkwt::whereHas('agreement.addendum', function ($query) use ($projectId) {
+            $query->where('site_id', $projectId);
+        })->get();
+        
+        // Extract user_ids from PKWTs
+        $userIds = $pkwts->pluck('user_id')->filter()->toArray();
+        
+        // Delete signatures for these users
+        $deletedCount = Signature::whereIn('user_id', $userIds)
+            ->delete();
+        
+        return redirect()->back()
+            ->with('success', "Successfully deleted {$deletedCount} signature records");
     }  
 
 }
