@@ -15,19 +15,19 @@
 
         <div class="card card-style">
             <div class="content" id="addendum">
-                {!! Auth::user()->pkwt->agreement->addendum['addendum'] !!}
+                {!! Auth::user()->pkwt->last()->agreement->addendum['addendum'] !!}
             </div>
         </div>
 
         <div class="card card-style">
             <div class="content" id="attachment_1">
-                {!! Auth::user()->pkwt->agreement->addendum['attachment_1'] !!}
+                {!! Auth::user()->pkwt->last()->agreement->addendum['attachment_1'] !!}
             </div>
         </div>
 
         <div class="card card-style">
             <div class="content" id="attachment_2">
-                {!! Auth::user()->pkwt->agreement->addendum['attachment_2'] !!}
+                {!! Auth::user()->pkwt->last()->agreement->addendum['attachment_2'] !!}
             </div>
         </div>
 
